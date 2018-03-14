@@ -8,4 +8,7 @@ jdk:
 script: 
   - cd desapp-groupf-backend 
   - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
-  
+deploy:
+  provider: heroku
+  api_key: fdd7c837-145a-4cd1-8d83-e6af98ca1003
+  app: cd desapp-groupf-backend  
