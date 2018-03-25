@@ -2,10 +2,22 @@ package model;
 
 public class Score {
 	String description;
-	Integer score;
+	Integer value;
 	
-	public Score(String description, Integer score) {
+	public Score(String description) {
 		this.description = description;
-		this.score = score;
+	}
+	
+	public Score(String description, Integer value) {
+		this.description = description;
+		this.value = value;
+	}
+	
+	public Integer getValue() {
+		return value;
+	}
+
+	public void setValue(Integer value) {
+		this.value = value;		
 	}
 }
