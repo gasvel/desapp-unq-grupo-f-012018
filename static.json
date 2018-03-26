@@ -1,0 +1,14 @@
+{
+  "root": "desapp-grupo-f-frontend/dist",
+  "clean_urls": true,
+  "proxies": {
+    "/api/": {
+      "origin": "https://desapp-unq-grupof.herokuapp.com/api"
+    }
+  },
+    "headers": {
+    "/**": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}
