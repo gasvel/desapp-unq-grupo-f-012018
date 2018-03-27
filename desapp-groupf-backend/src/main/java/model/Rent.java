@@ -1,16 +1,15 @@
 package model;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class Rent {
 
 	Float cost;
 	Date startDate;
-	Timestamp endDate;
+	Date endDate;
 	User client;
 	
-	public Rent(Float cost, Date startDate, Timestamp endDate, User client) {
+	public Rent(Float cost, Date startDate, Date endDate, User client) {
 		this.cost = cost;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -33,11 +32,11 @@ public class Rent {
 		this.startDate = startDate;
 	}
 	
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 	
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	

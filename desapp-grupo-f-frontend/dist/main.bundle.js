@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"#\">CarPnD</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\n\n</button>\n    </form>\n    <ul class=\"navbar-nav mr-auto\" style=\"position: absolute;right: 0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\n      </li>\n    </ul>\n\n  </div>\n</nav>\n\n<router-outlet></router-outlet>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"#\"><img src=\"assets/img/CarPnDLogo1.png\" width=\"50px\" height=\"50px\"> CarPnD</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\n\n</button>\n    </form>\n    <ul class=\"navbar-nav mr-auto\" style=\"position: absolute;right: 0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\n      </li>\n    </ul>\n\n  </div>\n</nav>\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -127,7 +127,7 @@ module.exports = ".post{\n\tdisplay: inline-block;\n\theight: 400px;\n\twidth: 3
 /***/ "./src/app/posts/posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<div class=\"card post\" style=\"width: 18rem;margin-top: 20px;margin-left: 10px; \" *ngFor=\"let post of posts\">\n  \t\t<img class=\"card-img-top\" src=\"{{post.photo}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\n  \t\t<div class=\"card-body\">\n    \t\t<h5 class=\"card-title\">{{post.title}}</h5>\n    \t\t<h6 class=\"card-subtitle mb-2 text-muted\">{{post.username}}</h6>\n\n    \t\t<p class=\"card-text\">{{post.description}}</p>\n    \t\t<a href=\"#\" class=\"btn btn-primary\">Mas detalles <i class=\"fas fa-info-circle\"></i></a>\n  \t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"container\">\n\t<div class=\"card post\" style=\"width: 18rem;margin-top: 20px;margin-left: 10px; \" *ngFor=\"let post of posts\">\n  \t\t<img class=\"card-img-top\" src=\"{{post.photo}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\n  \t\t<div class=\"card-body\">\n    \t\t<h5 class=\"card-title\">{{post.title}}</h5>\n    \t\t<h6 class=\"card-subtitle mb-2 text-muted\">{{post.username}}</h6>\n\n    \t\t<p class=\"card-text\">{{post.description}}</p>\n    \t\t<a href=\"#\" class=\"btn btn-primary\" (click)=\"abrirPublicacion()\">Mas detalles <i class=\"fas fa-info-circle\"></i></a>\n  \t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -158,6 +158,8 @@ var PostsComponent = /** @class */ (function () {
         this.posts.push(post2);
     }
     PostsComponent.prototype.ngOnInit = function () {
+    };
+    PostsComponent.prototype.abrirPublicacion = function () {
     };
     PostsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

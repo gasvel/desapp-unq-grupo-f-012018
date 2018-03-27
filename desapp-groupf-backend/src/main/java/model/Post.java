@@ -1,52 +1,45 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Post {
 	
-	Vehicle vehicle;
 	TypeVehicle typeVehicle;
 	Integer capacity;
 	String location;
 	String description;
-	Integer phoneNumber;
+	String phoneNumber;
 	List<Reservation> reservations;
 	List<Rent> rents;
 	String availability;
 	String photo;
-	Integer price;
+	Integer priceDay;
+	Integer priceHour;
 	String addressToDrop;
 	String addressToPickUp;
 	
 
-	public Post(Vehicle vehicle, TypeVehicle typeVehicle, Integer capacity, String location, String description,
-			Integer phoneNumber, List<Reservation> reservations, List<Rent> rents, String availability, String photo,
-			Integer price, String addressToDrop, String addressToPickUp) {
+	public Post( TypeVehicle typeVehicle, Integer capacity, String location, String description,
+			String phoneNumber, String availability, String photo,
+			Integer priceH,Integer priceD, String addressToDrop, String addressToPickUp) {
 		
-		this.vehicle = vehicle;
 		this.typeVehicle = typeVehicle;
 		this.capacity = capacity;
 		this.location = location;
 		this.description = description;
 		this.phoneNumber = phoneNumber;
-		this.reservations = reservations;
-		this.rents = rents;
+		this.reservations = new ArrayList<Reservation>();
+		this.rents = new ArrayList<Rent>();
 		this.availability = availability;
 		this.photo = photo;
-		this.price = price;
+		this.priceDay = priceD;
+		this.priceHour = priceH;
 		this.addressToDrop = addressToDrop;
 		this.addressToPickUp = addressToPickUp;
 	}
 
-	public Vehicle getVehicle() {
-		return vehicle;
-	}
-	
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
-	
 	public Integer getCapacity() {
 		return capacity;
 	}
@@ -71,11 +64,11 @@ public class Post {
 		this.description = description;
 	}
 	
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -111,14 +104,24 @@ public class Post {
 		this.photo = photo;
 	}
 	
-	public Integer getPrice() {
-		return price;
+	public Integer getPriceDay() {
+		return priceDay;
 	}
 	
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setPriceDay(Integer price) {
+		this.priceDay = price;
 	}
 	
+	
+	
+	public Integer getPriceHour() {
+		return priceHour;
+	}
+
+	public void setPriceHour(Integer priceHour) {
+		this.priceHour = priceHour;
+	}
+
 	public String getAddressToDrop() {
 		return addressToDrop;
 	}
@@ -134,6 +137,11 @@ public class Post {
 	
 	public void setAddressToPickUp(String addressToPickUp) {
 		this.addressToPickUp = addressToPickUp;
+	}
+	
+	public void newReservation(User client,Date start,Date end) {
+		Reservation newReservation = new Reservation(start,end,client);
+		this.reservations.add(newReservation);
 	}
 	
 }

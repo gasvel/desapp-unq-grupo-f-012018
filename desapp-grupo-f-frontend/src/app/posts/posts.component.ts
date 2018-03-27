@@ -22,4 +22,8 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
   }
 
+  abrirPublicacion(){
+  	
+  }
+
 }
