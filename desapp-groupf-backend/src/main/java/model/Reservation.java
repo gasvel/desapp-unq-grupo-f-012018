@@ -9,8 +9,8 @@ public class Reservation {
 	private Date startDate;
 	private Date endDate;
 	private User client;
-	public long days;
-	public long hours;
+	
+	HandlerReserRent serviceRR;
 	
 	public Reservation() {
 		
@@ -21,10 +21,7 @@ public class Reservation {
 		this.timeOfRent = end.getTime() - start.getTime() ;
 		this.startDate = start;
 		this.endDate = end;
-		
-        
-        this.days = TimeUnit.DAYS.convert(this.timeOfRent, TimeUnit.MILLISECONDS);
-        this.hours  = TimeUnit.HOURS.convert(timeOfRent, TimeUnit.MILLISECONDS) - (this.days * 24);
+		this.serviceRR = new HandlerReserRent();
 	}
 
 
@@ -38,8 +35,7 @@ public class Reservation {
 	}
 	
 	public void confirmReservation(Post post) {
-		
-		Rent newRent;
+		serviceRR.confirmReservation(post, this.startDate, this.endDate, this.timeOfRent, this.client, this);
 	}
 	
 	

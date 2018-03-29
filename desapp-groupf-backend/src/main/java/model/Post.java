@@ -20,6 +20,8 @@ public class Post {
 	String addressToDrop;
 	String addressToPickUp;
 	
+	HandlerReserRent serviceRR; 
+	
 
 	public Post( TypeVehicle typeVehicle, Integer capacity, String location, String description,
 			String phoneNumber, String availability, String photo,
@@ -38,6 +40,7 @@ public class Post {
 		this.priceHour = priceH;
 		this.addressToDrop = addressToDrop;
 		this.addressToPickUp = addressToPickUp;
+		this.serviceRR = new HandlerReserRent();
 	}
 
 	public Integer getCapacity() {
@@ -140,8 +143,16 @@ public class Post {
 	}
 	
 	public void newReservation(User client,Date start,Date end) {
-		Reservation newReservation = new Reservation(start,end,client);
+		Reservation newReservation = serviceRR.newReservation(start,end,client);
 		this.reservations.add(newReservation);
+	}
+
+	public void addNewRent(Rent newRent) {
+		this.rents.add(newRent);
+	}
+
+	public void removeReservation(Reservation reservation) {
+		this.reservations.remove(reservation);
 	}
 	
 }
