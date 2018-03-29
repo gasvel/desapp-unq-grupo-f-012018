@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
+import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    EjemploGmapsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,10 @@ import { PostsComponent } from './posts/posts.component';
     			path:'',
     			redirectTo:'/posts',
     			pathMatch:'full'
+    		},
+    		{
+    			path:'ejemploGMaps',
+    			component:EjemploGmapsComponent
     		}
     	])
   ],

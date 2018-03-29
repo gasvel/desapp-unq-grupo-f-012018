@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"#\"><img src=\"assets/img/CarPnDLogo1.png\" width=\"50px\" height=\"50px\"> CarPnD</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\n\n</button>\n    </form>\n    <ul class=\"navbar-nav mr-auto\" style=\"position: absolute;right: 0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\n      </li>\n    </ul>\n\n  </div>\n</nav>\n\n<router-outlet></router-outlet>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\n  <div>\n  <a class=\"navbar-brand\" routerLink=\"/posts\" style=\"margin: auto;\"><p style=\"float: left;\"><img src=\"assets/img/CarPnDLogo1.png\" width=\"30px\" height=\"35px\"> </p> <p style=\"font-family: 'Times New Roman', Times, serif;\">  CarPnD</p></a>\n</div>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto;position: center\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\n\n</button>\n    </form>\n    <ul class=\"navbar-nav mr-auto\" style=\"margin: auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\n      </li>\n      <li>\n      \t<a class=\"nav-link\" routerLink=\"/ejemploGMaps\">Ejemplo GMaps</a>\n      </li>\n    </ul>\n\n  </div>\n</nav>\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -72,12 +72,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__posts_posts_component__ = __webpack_require__("./src/app/posts/posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ejemplo_gmaps_ejemplo_gmaps_component__ = __webpack_require__("./src/app/ejemplo-gmaps/ejemplo-gmaps.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -90,7 +92,8 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__posts_posts_component__["a" /* PostsComponent */]
+                __WEBPACK_IMPORTED_MODULE_4__posts_posts_component__["a" /* PostsComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__ejemplo_gmaps_ejemplo_gmaps_component__["a" /* EjemploGmapsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -103,6 +106,10 @@ var AppModule = /** @class */ (function () {
                         path: '',
                         redirectTo: '/posts',
                         pathMatch: 'full'
+                    },
+                    {
+                        path: 'ejemploGMaps',
+                        component: __WEBPACK_IMPORTED_MODULE_5__ejemplo_gmaps_ejemplo_gmaps_component__["a" /* EjemploGmapsComponent */]
                     }
                 ])
             ],
@@ -111,6 +118,93 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/ejemplo-gmaps/ejemplo-gmaps.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/ejemplo-gmaps/ejemplo-gmaps.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div #map style=\"width:100%;height:400px\">\n</div>\n<div id=\"distancia\" ><p class=\"text-info text-center\">Distancia entre punto A y B :</p> </div>\n<div id=\"duracion\"><p class=\"text-info text-center\">Duracion del viaje: </p> </div>\n\n\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/ejemplo-gmaps/ejemplo-gmaps.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EjemploGmapsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var EjemploGmapsComponent = /** @class */ (function () {
+    function EjemploGmapsComponent() {
+    }
+    EjemploGmapsComponent.prototype.ngOnInit = function () {
+        console.log(this.mapa);
+        this.initMap();
+    };
+    EjemploGmapsComponent.prototype.initMap = function () {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        this.map = new google.maps.Map(this.mapa.nativeElement, {
+            center: new google.maps.LatLng(-34.7583014, -58.2088815),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        console.log(this.map);
+        directionsDisplay.setMap(this.map);
+        this.calculateAndDisplayRoute(directionsService, directionsDisplay);
+    };
+    EjemploGmapsComponent.prototype.calculateAndDisplayRoute = function (directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: { lat: -34.760661, lng: -58.210101 },
+            destination: { lat: -34.751555, lng: -58.225844 },
+            travelMode: google.maps.TravelMode["DRIVING"]
+        }, function (response, status) {
+            if (status == 'OK') {
+                console.log(response);
+                document.getElementById('distancia').innerHTML +=
+                    '<p class="text-danger text-center">' + response.routes[0].legs[0].distance.text + '</p>';
+                document.getElementById('duracion').innerHTML +=
+                    '<p class="text-danger text-center">' + response.routes[0].legs[0].duration.text + '</p>';
+                directionsDisplay.setDirections(response);
+            }
+            else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", Object)
+    ], EjemploGmapsComponent.prototype, "mapa", void 0);
+    EjemploGmapsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-ejemplo-gmaps',
+            template: __webpack_require__("./src/app/ejemplo-gmaps/ejemplo-gmaps.component.html"),
+            styles: [__webpack_require__("./src/app/ejemplo-gmaps/ejemplo-gmaps.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EjemploGmapsComponent);
+    return EjemploGmapsComponent;
 }());
 
 
@@ -206,7 +300,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
