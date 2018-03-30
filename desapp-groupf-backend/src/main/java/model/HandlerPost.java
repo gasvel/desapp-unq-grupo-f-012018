@@ -4,7 +4,7 @@ public class HandlerPost {
 	
 	public void newPost(TypeVehicle typeVehicle, Integer capacity, String location, String description,
 		String phoneNumber, String availability, String photo,
-		Integer priceH, Integer priceD, String addressToDrop, String addressToPickUp, User client) {
+		Integer priceH, Integer priceD, String addressToDrop, String addressToPickUp, User owner) {
 		
 		if(typeVehicle == null) {
 			throwError();
@@ -23,7 +23,7 @@ public class HandlerPost {
 				phoneNumber, availability, photo,
 				priceH, priceD, addressToDrop, addressToPickUp); 
 		
-		client.addPost(newPost);
+		owner.addPost(newPost);
 	}
 	
 	public void throwError() {

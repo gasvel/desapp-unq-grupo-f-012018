@@ -10,7 +10,6 @@ public class HandlerUser {
 		
 		User newUser = new User(cuil,address,name,mail);
 		return newUser;
-
 	}
 	
 	public void throwError() {
