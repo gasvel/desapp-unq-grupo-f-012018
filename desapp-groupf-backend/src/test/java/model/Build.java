@@ -5,7 +5,7 @@ import java.util.List;
 public class Build {
 	//User builder
 	public static class UserBuilder {
-		User anUser = new User();		
+		private User anUser = new User();		
 		
 		public UserBuilder withScores(List<Score> scores) {
 			anUser.setScores(scores);
@@ -23,7 +23,7 @@ public class Build {
 	
 	//Score builder
 	public static class ScoreBuilder {
-		Score aScore = new Score("Description test");
+		 private Score aScore = new Score("Description test");
 		
 		public ScoreBuilder withValue(Integer value) {
 			aScore.setValue(value);

@@ -6,19 +6,19 @@ import java.util.List;
 
 public class Post {
 	
-	TypeVehicle typeVehicle;
-	Integer capacity;
-	String location;
-	String description;
-	String phoneNumber;
-	List<Reservation> reservations;
-	List<Rent> rents;
-	String availability;
-	String photo;
-	Integer priceDay;
-	Integer priceHour;
-	String addressToDrop;
-	String addressToPickUp;
+	private TypeVehicle typeVehicle;
+	private Integer capacity;
+	private String location;
+	private String description;
+	private String phoneNumber;
+	private List<Reservation> reservations;
+	private List<Rent> rents;
+	private String availability;
+	private String photo;
+	private Integer priceDay;
+	private Integer priceHour;
+	private String addressToDrop;
+	private String addressToPickUp;
 	
 	HandlerReserRent serviceRR; 
 	
@@ -154,5 +154,15 @@ public class Post {
 	public void removeReservation(Reservation reservation) {
 		this.reservations.remove(reservation);
 	}
+
+	public TypeVehicle getTypeVehicle() {
+		return typeVehicle;
+	}
+
+	public void setTypeVehicle(TypeVehicle typeVehicle) {
+		this.typeVehicle = typeVehicle;
+	}
+	
+	
 	
 }

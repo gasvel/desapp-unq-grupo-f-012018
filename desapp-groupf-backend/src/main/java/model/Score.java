@@ -1,8 +1,8 @@
 package model;
 
 public class Score {
-	String description;
-	Integer value;
+	private String description;
+	private Integer value;
 	
 	public Score(String description) {
 		this.description = description;
@@ -20,4 +20,14 @@ public class Score {
 	public void setValue(Integer value) {
 		this.value = value;		
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 }

@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Rent {
 
-	Float cost;
-	Date startDate;
-	Date endDate;
-	User client;
+	private Float cost;
+	private Date startDate;
+	private Date endDate;
+	private User client;
 	
 	public Rent(Float cost, Date startDate, Date endDate, User client) {
 		this.cost = cost;
