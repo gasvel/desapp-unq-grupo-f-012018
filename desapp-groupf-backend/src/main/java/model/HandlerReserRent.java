@@ -26,9 +26,4 @@ public class HandlerReserRent {
 		post.addNewRent(newRent);
 		post.removeReservation(reservation);		
 	}
-
-
-
-	
-
 }

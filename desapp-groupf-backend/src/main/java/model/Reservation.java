@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class Reservation {
 	
@@ -24,8 +23,6 @@ public class Reservation {
 		this.serviceRR = new HandlerReserRent();
 	}
 
-
-
 	public User getClient() {
 		return client;
 	}
@@ -37,8 +34,4 @@ public class Reservation {
 	public void confirmReservation(Post post) {
 		serviceRR.confirmReservation(post, this.startDate, this.endDate, this.timeOfRent, this.client, this);
 	}
-	
-	
-	
-
 }

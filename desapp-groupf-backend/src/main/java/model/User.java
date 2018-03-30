@@ -38,12 +38,16 @@ public class User {
 	}	
 	
 	public void createPost(TypeVehicle type, Integer capacity,
-			String location,String description,String phoneNumber,
-			String availability,String photo,Integer priceH,Integer priceD,String addressToDrop,String addressToPickUp) {
+		String location,String description,String phoneNumber,
+		String availability,String photo,Integer priceH,Integer priceD,String addressToDrop,String addressToPickUp) {
 		
 		Post newPost = new Post(type,capacity,location,description,phoneNumber,
 				availability,photo,priceH,priceD,addressToDrop,addressToPickUp);
 		
 		this.posts.add(newPost);
+	}
+
+	public void addPost(Post newPost) {
+		this.posts.add(newPost);		
 	}
 }
