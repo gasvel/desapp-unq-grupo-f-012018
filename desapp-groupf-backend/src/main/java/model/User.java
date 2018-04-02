@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-	String cuil;
-	String address;
-	String name;
-	String email;
-	List<Post> posts;
-	List<Score> score;
+	private String cuil;
+	private String address;
+	private String name;
+	private String email;
+	private List<Post> posts;
+	private List<Score> score;
 	
 	public User(String cuil, String address, String name,String mail) {
 		this.cuil = cuil;

@@ -26,4 +26,35 @@ public class HandlerReserRent {
 		post.addNewRent(newRent);
 		post.removeReservation(reservation);		
 	}
+	
+	public void confirmVehiclePickUp(Rent rent,Post post,User user) {
+		switch(rent.getState()) {
+		case New:
+			if(user.getCuil() == rent.getClient().getCuil()) {
+				rent.clientConfirmsPickUp();
+				
+			}
+			else {
+				rent.ownerConfirmsPickUp();
+			}
+			break;
+			
+		case ClientConfirmedPickUp:
+			if(user.getCuil() != rent.getClient().getCuil()) {
+				rent.pickUpConfirmed();
+			}
+			break;
+			
+		case OwnerConfirmedPickUp:
+			if(user.getCuil() == rent.getClient().getCuil()) {
+				rent.pickUpConfirmed();
+			}
+			break;
+
+		default:
+			break;
+			
+		}
+		
+	}
 }

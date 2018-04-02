@@ -9,7 +9,7 @@ public class Reservation {
 	private Date endDate;
 	private User client;
 	
-	HandlerReserRent serviceRR;
+	private HandlerReserRent serviceRR;
 	
 	public Reservation() {
 		
