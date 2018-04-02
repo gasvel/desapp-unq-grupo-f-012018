@@ -88,6 +88,6 @@ public class HandlerPostTest {
 		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
 				"11111111", "availability", "photo", 100, 500, 
 				"addressToDrop", "addressToPickUp", owner);		
-		assertEquals(1, owner.posts.size());
+		assertEquals(1, owner.getPosts().size());
 	}
 }
