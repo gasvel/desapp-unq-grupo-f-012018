@@ -43,6 +43,9 @@ public class Post {
 		this.serviceRR = new HandlerReserRent();
 	}
 
+	public Post() {
+	}
+
 	public Integer getCapacity() {
 		return capacity;
 	}

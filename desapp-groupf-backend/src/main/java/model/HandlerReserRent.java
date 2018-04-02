@@ -31,11 +31,11 @@ public class HandlerReserRent {
 		switch(rent.getState()) {
 		case New:
 			if(user.getCuil() == rent.getClient().getCuil()) {
-				rent.clientConfirmsPickUp();
+				rent.clientConfirmsPickUp(rent.PICK_UP_TIME);
 				
 			}
-			else {
-				rent.ownerConfirmsPickUp();
+			else if(user.getPosts().contains(post)) {
+				rent.ownerConfirmsPickUp(rent.PICK_UP_TIME);
 			}
 			break;
 			
