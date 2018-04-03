@@ -22,8 +22,6 @@ public class HandlerReserRentTest {
 		client = Build.anUser().withCuil("1").build();
 		owner = Build.anUser().withCuil("2").withPost(post).build();
 		rent = Build.aRent().withUser(this.client).build();
-
-		
 	}
 
 	@After

@@ -15,5 +15,34 @@ public class HandlerUser {
 	public void throwError() {
 		throw new IllegalArgumentException("Invalid argument");
 	}
+	
+	public void rateUser(User user, Integer score, String description) {
+		if(!ArgumentsValidator.isValidScore(score)){
+			throwError();
+		}
+		user.addScore(new Score(description, score));
+		checkBan(user);
+	}
+	
+	public void checkBan(User user) {
+		if(user.getScore() < 4 && user.getScores().size() >= 10) {
+			banUser(user);
+		}
+	}
+	
+	public void banUser(User user) {
+		switch(user.getState()) {
+			case REGULAR:
+				user.setState(User_State.BANNED);
+				break;
+			case REFORMED:
+				user.setState(User_State.PERMABANNED);
+				break;
+			case BANNED:
+				break;
+			case PERMABANNED:
+				break;
+		}
+	}
 
 }

@@ -5,9 +5,9 @@ import java.util.concurrent.TimeUnit;
 
 public class HandlerReserRent {
 
-	public Reservation newReservation(Date start, Date end, User client) {
+	public void newReservation(Date start, Date end, User client, Post post) {
 		Reservation newReservation = new Reservation(start, end, client);
-		return newReservation;
+		post.addNewReservation(newReservation);
 	}
 
 	private Float calculateCost(long timeOfRent, Integer priceDay, Integer priceHour) {

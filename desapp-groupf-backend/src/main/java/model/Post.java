@@ -18,10 +18,7 @@ public class Post {
 	private Integer priceDay;
 	private Integer priceHour;
 	private String addressToDrop;
-	private String addressToPickUp;
-	
-	HandlerReserRent serviceRR; 
-	
+	private String addressToPickUp;	
 
 	public Post( TypeVehicle typeVehicle, Integer capacity, String location, String description,
 			String phoneNumber, String availability, String photo,
@@ -40,7 +37,6 @@ public class Post {
 		this.priceHour = priceH;
 		this.addressToDrop = addressToDrop;
 		this.addressToPickUp = addressToPickUp;
-		this.serviceRR = new HandlerReserRent();
 	}
 
 	public Post() {
@@ -145,11 +141,6 @@ public class Post {
 		this.addressToPickUp = addressToPickUp;
 	}
 	
-	public void newReservation(User client,Date start,Date end) {
-		Reservation newReservation = serviceRR.newReservation(start,end,client);
-		this.reservations.add(newReservation);
-	}
-
 	public void addNewRent(Rent newRent) {
 		this.rents.add(newRent);
 	}
@@ -165,7 +156,9 @@ public class Post {
 	public void setTypeVehicle(TypeVehicle typeVehicle) {
 		this.typeVehicle = typeVehicle;
 	}
-	
-	
+
+	public void addNewReservation(Reservation newReservation) {
+		this.reservations.add(newReservation);		
+	}
 	
 }

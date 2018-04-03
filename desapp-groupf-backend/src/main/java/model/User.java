@@ -10,6 +10,7 @@ public class User {
 	private String email;
 	private List<Post> posts;
 	private List<Score> score;
+	private User_State state;
 	
 	public User(String cuil, String address, String name,String mail) {
 		this.cuil = cuil;
@@ -18,9 +19,11 @@ public class User {
 		this.email=mail;
 		this.posts = new ArrayList<Post>();
 		this.score = new ArrayList<Score>();
+		this.state = User_State.REGULAR;
 	}
 	
 	public User() {
+		this.state = User_State.REGULAR;
 		this.posts = new ArrayList<Post>();
 		this.score = new ArrayList<Score>();
 	}
@@ -30,7 +33,7 @@ public class User {
 			return 0; 
 		}	
 		
-		Integer sumScores = 0;
+		double sumScores = 0;
 		for (Score aScore : score) {
 			sumScores += aScore.getValue();
 		}
@@ -65,6 +68,10 @@ public class User {
 	public String getName() {
 		return name;
 	}
+	
+	public List<Score> getScores() {
+		return this.score;
+	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -89,6 +96,16 @@ public class User {
 	public void setScore(List<Score> score) {
 		this.score = score;
 	}
+
+	public void addScore(Score score) {
+		this.score.add(score);
+	}
+
+	public User_State getState() {
+		return state;
+	}
 	
-	
+	public void setState(User_State newState) {
+		this.state = newState;
+	}
 }

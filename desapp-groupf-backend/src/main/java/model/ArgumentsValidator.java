@@ -19,6 +19,13 @@ public class ArgumentsValidator {
 	    return false;
 	}
 	
+	public static boolean isValidScore(Integer score) {
+		if  (score >= 1 && score <= 5)
+	           return true;
+	 
+	    return false;
+	}
+	
 	public static boolean isNotAValidMailAddress(String... strArr) {
 	    if(isNullOrEmptyString(strArr))
 	    	return true;

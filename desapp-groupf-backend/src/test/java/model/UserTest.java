@@ -33,6 +33,67 @@ public class UserTest {
 		assertEquals(5, anUser.getScore(), 0);
 	}
 	
+	@Test
+	public void isShoudBePossibleRateAnUser() {
+		List<Score> scores = new ArrayList<Score>();
+		User anUser = Build.anUser().withScores(scores).build();
+		handler.rateUser(anUser, 3, "");
+		assertEquals(1, anUser.getScores().size());
+	}
+	
+	@Test
+	public void ifAnUserHasAnAverageScoreOf3AndLessOf10Scores_heShouldntBeBanned() {
+		List<Score> scores = new ArrayList<Score>();
+		User anUser = Build.anUser().withScores(scores).build();
+		handler.rateUser(anUser, 3, "");
+		handler.rateUser(anUser, 3, "");
+		handler.rateUser(anUser, 3, "");
+		
+		assertEquals(3, anUser.getScores().size());
+		assertEquals(3, anUser.getScore(), 0);
+		assertEquals(User_State.REGULAR, anUser.getState());
+	}
+	
+	@Test
+	public void ifAnUserHasAnAverageScoreGreaterThan4AndMoreOf10Scores_heShouldntBeBanned() {
+		List<Score> scores = new ArrayList<Score>();
+		User anUser = Build.anUser().withScores(scores).build();
+		handler.rateUser(anUser, 1, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		
+		assertEquals(10, anUser.getScores().size());
+		assertEquals(4.1, anUser.getScore(), 0);
+		assertEquals(User_State.REGULAR, anUser.getState());
+	}
+	
+	@Test
+	public void ifAnUserHasAnAverageScoreLessThan4AndMoreOf10Scores_heShouldBeBanned() {
+		List<Score> scores = new ArrayList<Score>();
+		User anUser = Build.anUser().withScores(scores).build();
+		handler.rateUser(anUser, 1, "");
+		handler.rateUser(anUser, 1, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 5, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		handler.rateUser(anUser, 4, "");
+		
+		assertEquals(10, anUser.getScores().size());
+		assertEquals(3.7, anUser.getScore(), 0);
+		assertEquals(User_State.BANNED, anUser.getState());
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAnUserIsCreatedWithInvalidCUIT_itShouldThrowIllegalArgumentException() {
 		handler.newUser("1000000000","Calle falsa 123", "Carlos","carlito@gmail.com");
