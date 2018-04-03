@@ -12,6 +12,16 @@ public class Build {
 			return this;
 		}
 		
+		public UserBuilder withCuil(String cuil) {
+			anUser.setCuil(cuil);
+			return this;
+		}
+		
+		public UserBuilder withPost(Post post) {
+			anUser.addPost(post);
+			return this;
+		}
+		
 		public User build() {
 			return anUser;
 		}
@@ -37,6 +47,36 @@ public class Build {
 	
 	public static ScoreBuilder aScore() {
 		return new ScoreBuilder();
+	}
+	
+	public static class RentBuilder{
+		private Rent aRent = new Rent();
+		
+		public RentBuilder withUser(User user) {
+			aRent.setClient(user);
+			return this;
+		}
+		
+		public Rent build() {
+			
+			return aRent;
+		}
+	}
+	
+	public static RentBuilder aRent() {
+		return new RentBuilder();
+	}
+	
+	public static class PostBuilder{
+		private Post aPost = new Post();
+		
+		public Post build() {
+			return aPost;
+		}
+	}
+	
+	public static PostBuilder aPost() {
+		return new PostBuilder();
 	}
 	
 }

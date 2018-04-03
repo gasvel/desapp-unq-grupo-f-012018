@@ -21,6 +21,8 @@ public class User {
 	}
 	
 	public User() {
+		this.posts = new ArrayList<Post>();
+		this.score = new ArrayList<Score>();
 	}
 	
 	public double getScore() {

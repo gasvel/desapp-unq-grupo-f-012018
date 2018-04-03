@@ -14,11 +14,21 @@ public class Rent {
 	private Rent_State state;
 	private Timer timer = new Timer();
 	
+	public long PICK_UP_TIME = TimeUnit.MINUTES.toMillis(30);
+	
 	public Rent(Float cost, Date startDate, Date endDate, User client) {
 		this.cost = cost;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.client = client;
+		this.state = Rent_State.New;
+	}
+	
+	public Rent(User client) {
+		this.client = client;
+	}
+	
+	public Rent() {
 		this.state = Rent_State.New;
 	}
 
@@ -70,7 +80,7 @@ public class Rent {
 		this.timer = timer;
 	}
 
-	public void clientConfirmsPickUp() {
+	public void clientConfirmsPickUp(long time) {
 		this.setState(Rent_State.ClientConfirmedPickUp);
 		this.timer.schedule(new TimerTask() {
 			
@@ -79,11 +89,11 @@ public class Rent {
 				state = Rent_State.Cancelled;
 				
 			}
-		}, TimeUnit.MINUTES.toMillis(30));
+		}, time);
 		
 	}
 
-	public void ownerConfirmsPickUp() {
+	public void ownerConfirmsPickUp(long time) {
 		this.setState(Rent_State.OwnerConfirmedPickUp);
 		this.timer.schedule(new TimerTask() {
 			
@@ -92,7 +102,7 @@ public class Rent {
 				state = Rent_State.PickUpConfirmed;
 				
 			}
-		}, TimeUnit.MINUTES.toMillis(30));
+		}, time);
 		
 	}
 
