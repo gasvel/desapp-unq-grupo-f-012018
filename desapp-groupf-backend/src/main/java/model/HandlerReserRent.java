@@ -19,8 +19,7 @@ public class HandlerReserRent {
 	}
 
 	public void confirmReservation(Post post, Date startDate, Date endDate, long timeOfRent, User client,
-			Reservation reservation) {
-		
+			Reservation reservation) {		
 		Float cost = this.calculateCost(timeOfRent, post.getPriceDay(), post.getPriceHour());
 		Rent newRent = new Rent(cost, startDate, endDate, client);
 		post.addNewRent(newRent);
@@ -54,7 +53,6 @@ public class HandlerReserRent {
 		default:
 			break;
 			
-		}
-		
+		}		
 	}
 }
