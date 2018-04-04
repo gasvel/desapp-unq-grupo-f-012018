@@ -6,10 +6,17 @@ import java.util.concurrent.TimeUnit;
 public class HandlerReserRent {
 
 	public void newReservation(Date start, Date end, User client, Post post) {
+		if(ArgumentsValidator.areInvalidDates(start, end) || post.isThereAnotherReservation(start,end) || post.isThereAnotherRent(start, end)){
+			throwError();
+		}
 		Reservation newReservation = new Reservation(start, end, client);
 		post.addNewReservation(newReservation);
 	}
 
+	public void throwError() {
+		throw new IllegalArgumentException("Invalid argument or there is another reservation for those days");
+	}
+	
 	private Float calculateCost(long timeOfRent, Integer priceDay, Integer priceHour) {
 		long days = TimeUnit.DAYS.convert(timeOfRent, TimeUnit.MILLISECONDS);
         long hours  = TimeUnit.HOURS.convert(timeOfRent, TimeUnit.MILLISECONDS) - (days * 24);

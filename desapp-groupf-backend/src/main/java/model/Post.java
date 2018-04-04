@@ -160,5 +160,32 @@ public class Post {
 	public void addNewReservation(Reservation newReservation) {
 		this.reservations.add(newReservation);		
 	}
+
+	public boolean isThereAnotherReservation(Date start, Date end) {
+		for(Reservation reservation:this.reservations){
+			if(isBetween(reservation.getStartDate(), reservation.getEndDate(),start,end)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isBetween(Date startR, Date endR, Date start, Date end) {
+		boolean isStartDateBetween = 
+				start.after(startR) && start.before(endR);  
+		boolean isEndDateBetween = 
+				end.after(startR) && end.before(endR);
+			
+		return isEndDateBetween || isStartDateBetween;
+	}
+
+	public boolean isThereAnotherRent(Date start, Date end) {
+		for(Rent rent:this.rents){
+			if(isBetween(rent.getStartDate(), rent.getEndDate(),start,end)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

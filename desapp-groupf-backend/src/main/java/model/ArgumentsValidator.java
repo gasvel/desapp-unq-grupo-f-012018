@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 import org.apache.commons.validator.routines.EmailValidator;
 
 public class ArgumentsValidator {
@@ -65,6 +67,13 @@ public class ArgumentsValidator {
 	public static boolean isInvalidFullName(String name) {
 		if(isNullOrEmptyString(name) || (name.length() < 4 || name.length() > 50)) 
 			return true;
+		return false;
+	}
+	
+	public static boolean areInvalidDates(Date start, Date end){
+		if(start.after(end) || start.before(new Date())){
+			return true;
+		}
 		return false;
 	}
 }
