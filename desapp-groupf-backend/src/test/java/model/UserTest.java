@@ -17,13 +17,13 @@ public class UserTest {
 	}
 
 	@Test
-	public void ifAnUserHasNoQualifications_hisScoreShouldBeZero() {
+	public void ifAnUserHasNoQualificationsHisScoreShouldBeZero() {
 		User anUser = Build.anUser().withScores(new ArrayList<Score>()).build();
 		assertEquals(0, anUser.getScore(), 0);
 	}
 	
 	@Test
-	public void ifAnUserHasTwoQualificationsWithValues4And6_hisScoreShouldBe5() {
+	public void ifAnUserHasTwoQualificationsWithValues4And6hisScoreShouldBe5() {
 		List<Score> scores = new ArrayList<Score>();
 		scores.add(Build.aScore().withValue(4).build());
 		scores.add(Build.aScore().withValue(6).build());
@@ -41,7 +41,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void ifAnUserHasAnAverageScoreOf3AndLessOf10Scores_heShouldntBeBanned() {
+	public void ifAnUserHasAnAverageScoreOf3AndLessOf10ScoresheShouldntBeBanned() {
 		List<Score> scores = new ArrayList<Score>();
 		User anUser = Build.anUser().withScores(scores).build();
 		handler.rateUser(anUser, 3, "");
@@ -54,7 +54,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void ifAnUserHasAnAverageScoreGreaterThan4AndMoreOf10Scores_heShouldntBeBanned() {
+	public void ifAnUserHasAnAverageScoreGreaterThan4AndMoreOf10ScoresheShouldntBeBanned() {
 		List<Score> scores = new ArrayList<Score>();
 		User anUser = Build.anUser().withScores(scores).build();
 		handler.rateUser(anUser, 1, "");
@@ -74,7 +74,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void ifAnUserHasAnAverageScoreLessThan4AndMoreOf10Scores_heShouldBeBanned() {
+	public void ifAnUserHasAnAverageScoreLessThan4AndMoreOf10ScoresheShouldBeBanned() {
 		List<Score> scores = new ArrayList<Score>();
 		User anUser = Build.anUser().withScores(scores).build();
 		handler.rateUser(anUser, 1, "");
@@ -94,27 +94,27 @@ public class UserTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void ifAnUserIsCreatedWithInvalidCUIT_itShouldThrowIllegalArgumentException() {
+	public void ifAnUserIsCreatedWithInvalidCUITitShouldThrowIllegalArgumentException() {
 		handler.newUser("1000000000","Calle falsa 123", "Carlos","carlito@gmail.com");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void ifAnUserIsCreatedWithInvalidAddress_itShouldThrowIllegalArgumentException() {
+	public void ifAnUserIsCreatedWithInvalidAddressitShouldThrowIllegalArgumentException() {
 		handler.newUser("20390960299","", "Carlos","carlito@gmail.com");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void ifAnUserIsCreatedWithInvalidName_itShouldThrowIllegalArgumentException() {
+	public void ifAnUserIsCreatedWithInvalidNameitShouldThrowIllegalArgumentException() {
 		handler.newUser("20390960299","Calle falsa 123", "Car","carlito@gmail.com");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void ifAnUserIsCreatedWithInvalidEmail_itShouldThrowIllegalArgumentException() {
+	public void ifAnUserIsCreatedWithInvalidEmailitShouldThrowIllegalArgumentException() {
 		handler.newUser("20390960299","Calle falsa 123", "Carlos","carlitogmail.com");
 	}
 	
 	@Test
-	public void ifAnUserIsCreatedWithValidsArguments_itShouldReturnANewUser() {
+	public void ifAnUserIsCreatedWithValidsArgumentsitShouldReturnANewUser() {
 		assertTrue(handler.newUser("20390960299","Calle falsa 123", "Carlos","carlito@gmail.com") != null);
 	}
 }

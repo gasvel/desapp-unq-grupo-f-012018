@@ -36,7 +36,7 @@ public class HandlerReserRentTest {
 	}
 
 	@Test
-	public void ifTheClientOfTheRentConfirmsPickUpAndTheOwnerDoesntConfirmsInTheTimeGived_itShouldChangeTheRentStateToCancelled() throws InterruptedException {
+	public void ifTheClientOfTheRentConfirmsPickUpAndTheOwnerDoesntConfirmsInTheTimeGivedItShouldChangeTheRentStateToCancelled() throws InterruptedException {
 		rent.PICK_UP_TIME = TimeUnit.SECONDS.toMillis(1);
 		this.handler.confirmVehiclePickUp(rent,post, this.client);
 		Thread.sleep(TimeUnit.SECONDS.toMillis(3));
@@ -44,7 +44,7 @@ public class HandlerReserRentTest {
 	}
 	
 	@Test
-	public void ifTheOwnerOfTheRentConfirmsPickUpAndTheClientDoesntConfirmsInTheTimeGived_itShouldChangeTheRentStateToPickUpConfirmed() throws InterruptedException {
+	public void ifTheOwnerOfTheRentConfirmsPickUpAndTheClientDoesntConfirmsInTheTimeGivedItShouldChangeTheRentStateToPickUpConfirmed() throws InterruptedException {
 		rent.PICK_UP_TIME = TimeUnit.SECONDS.toMillis(1);
 		this.handler.confirmVehiclePickUp(rent,post, this.owner);
 		Thread.sleep(TimeUnit.SECONDS.toMillis(3));
@@ -52,32 +52,32 @@ public class HandlerReserRentTest {
 	}
 	
 	@Test
-	public void ifTheClientOfTheRentConfirmsPickUpAndTheOwnerAlsoConfirmsItBeforeExpirationTime_itShouldChangeTheRentStateToConfirmed() {
+	public void ifTheClientOfTheRentConfirmsPickUpAndTheOwnerAlsoConfirmsItBeforeExpirationTimeItShouldChangeTheRentStateToConfirmed() {
 		this.handler.confirmVehiclePickUp(rent,post, this.client);
 		this.handler.confirmVehiclePickUp(rent,post, owner);
 		assertEquals(rent.getState(), Rent_State.PickUpConfirmed);
 	}
 	
 	@Test
-	public void ifTheClientOfTheRentConfirmsPickUp_itShouldChangeTheRentStateToClientConfirmedPickUp() throws InterruptedException {
+	public void ifTheClientOfTheRentConfirmsPickUpItShouldChangeTheRentStateToClientConfirmedPickUp() throws InterruptedException {
 		this.handler.confirmVehiclePickUp(rent,post, client);
 		assertEquals(rent.getState(), Rent_State.ClientConfirmedPickUp);
 	}
 	
 	@Test
-	public void ifTheOwnerOfTheRentConfirmsPickUp_itShouldChangeTheRentStateToOwnerConfirmedPickUp() throws InterruptedException {
+	public void ifTheOwnerOfTheRentConfirmsPickUpItShouldChangeTheRentStateToOwnerConfirmedPickUp() throws InterruptedException {
 		this.handler.confirmVehiclePickUp(rent,post, owner);
 		assertEquals(rent.getState(), Rent_State.OwnerConfirmedPickUp);
 	}
 	
 	@Test
-	public void ifAReservationIsCreatedInAPostWithNoReservationsOrRents_thePostShouldHaveOneReservation() {
+	public void ifAReservationIsCreatedInAPostWithNoReservationsOrRentsThePostShouldHaveOneReservation() {
 		this.handler.newReservation(new GregorianCalendar(2018,6,5).getTime(), new GregorianCalendar(2018,6,7).getTime(), this.client, this.post);
 		assertEquals(this.post.getReservations().size(),1);
 	}
 	
 	@Test
-	public void ifAReservationIsCreatedAndConfirmedInAPostWithNoReservationsOrRents_thePostShouldHaveNoReservationsAndOneRent() {
+	public void ifAReservationIsCreatedAndConfirmedInAPostWithNoReservationsOrRentsThePostShouldHaveNoReservationsAndOneRent() {
 		this.post.setPriceDay(40);
 		this.post.setPriceHour(5);
 		this.handler.newReservation(new GregorianCalendar(2018,6,5).getTime(), new GregorianCalendar(2018,6,7).getTime(), this.client, this.post);
@@ -87,7 +87,7 @@ public class HandlerReserRentTest {
 	}
 	
 	@Test
-	public void ifAReservationIsCreatedAndConfirmedWithADurationOfTwoDaysAndTheCostOfEachDayIs40_theRentCostShouldBe80() {
+	public void ifAReservationIsCreatedAndConfirmedWithADurationOfTwoDaysAndTheCostOfEachDayIs40TheRentCostShouldBe80() {
 		this.post.setPriceDay(40);
 		this.post.setPriceHour(5);
 		this.handler.newReservation(new GregorianCalendar(2018,6,5).getTime(), new GregorianCalendar(2018,6,7).getTime(), this.client, this.post);
@@ -98,7 +98,7 @@ public class HandlerReserRentTest {
 	
 	
 	@Test
-	public void ifClientAndOwnerOfTheRentConfirmsVehicleReturned_itShouldChangeTheRentStateToRentDone() {
+	public void ifClientAndOwnerOfTheRentConfirmsVehicleReturnedItShouldChangeTheRentStateToRentDone() {
 		this.rent.setState(Rent_State.PickUpConfirmed);
 		this.handler.confirmVehicleReturns(this.rent, this.post, client, owner, Build.aScore().build());
 		this.handler.confirmVehicleReturns(this.rent, this.post, owner,client, Build.aScore().build());
@@ -107,14 +107,14 @@ public class HandlerReserRentTest {
 	}
 	
 	@Test
-	public void ifTheClientOfTheRentConfirmsVehicleReturned_itShouldChangeTheRentStateToClientConfirmedReturn() throws InterruptedException {
+	public void ifTheClientOfTheRentConfirmsVehicleReturnedItShouldChangeTheRentStateToClientConfirmedReturn() throws InterruptedException {
 		this.rent.setState(Rent_State.PickUpConfirmed);
 		this.handler.confirmVehicleReturns(this.rent, this.post, client, owner, Build.aScore().build());
 		assertEquals(rent.getState(), Rent_State.ClientConfirmedReturn);
 	}
 	
 	@Test
-	public void ifTheOwnerOfTheRentConfirmsVehicle_itShouldChangeTheRentStateToOwnerConfirmedReturn() throws InterruptedException {
+	public void ifTheOwnerOfTheRentConfirmsVehicleItShouldChangeTheRentStateToOwnerConfirmedReturn() throws InterruptedException {
 		this.rent.setState(Rent_State.PickUpConfirmed);
 		this.handler.confirmVehicleReturns(this.rent, this.post, owner,client, Build.aScore().build());
 		assertEquals(rent.getState(), Rent_State.OwnerConfirmedReturn);
