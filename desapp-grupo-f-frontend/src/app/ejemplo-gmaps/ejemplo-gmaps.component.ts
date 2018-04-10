@@ -20,9 +20,7 @@ export class EjemploGmapsComponent implements OnInit {
   }
 
   ngOnInit() {
-  	console.log(this.mapa);
   	this.initMap();
-
   }
 
 
@@ -34,7 +32,6 @@ export class EjemploGmapsComponent implements OnInit {
       	  zoom: 15,
       	  mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        console.log(this.map);
         directionsDisplay.setMap(this.map);
 
         this.calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -49,11 +46,9 @@ export class EjemploGmapsComponent implements OnInit {
         }, function(response, status) {
           if (status == 'OK') {
           	console.log(response);
-         	document.getElementById('distancia').innerHTML += 
-            '<p class="text-danger text-center">'+response.routes[0].legs[0].distance.text + '</p>';
+         	document.getElementById('distancia').innerHTML += '<p class="text-danger text-center">'+response.routes[0].legs[0].distance.text + '</p>';
 
-         	document.getElementById('duracion').innerHTML += 
-            '<p class="text-danger text-center">'+response.routes[0].legs[0].duration.text + '</p>';
+         	document.getElementById('duracion').innerHTML += '<p class="text-danger text-center">'+response.routes[0].legs[0].duration.text + '</p>';
             directionsDisplay.setDirections(response);
 
 

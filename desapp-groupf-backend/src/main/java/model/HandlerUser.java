@@ -42,6 +42,8 @@ public class HandlerUser {
 				break;
 			case PERMABANNED:
 				break;
+			default:
+				break;
 		}
 	}
 

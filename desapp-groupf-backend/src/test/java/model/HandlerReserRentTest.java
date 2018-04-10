@@ -11,11 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class HandlerReserRentTest {
-	HandlerReserRent handler;
-	Post post;
-	User client;
-	User owner;
-	Rent rent;
+	private HandlerReserRent handler;
+	private Post post;
+	private User client;
+	private User owner;
+	private Rent rent;
 
 	@Before
 	public void setUp() throws Exception {

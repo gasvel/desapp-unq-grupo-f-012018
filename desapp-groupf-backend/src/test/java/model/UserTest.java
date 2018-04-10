@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -116,6 +115,6 @@ public class UserTest {
 	
 	@Test
 	public void ifAnUserIsCreatedWithValidsArguments_itShouldReturnANewUser() {
-		Assert.assertTrue(handler.newUser("20390960299","Calle falsa 123", "Carlos","carlito@gmail.com") != null);
+		assertTrue(handler.newUser("20390960299","Calle falsa 123", "Carlos","carlito@gmail.com") != null);
 	}
 }

@@ -1,0 +1,17 @@
+---------------------------------------------------------------------
+TAG ENTREGA 1
+---------------------------------------------------------------------
+NEW FEATURES:
+* Implementation of app model
+* Continuous Integration with Travis
+* Added project to Codacy
+* Implementation of Home Page
+* Implementation of Gmap example
+
+
+NOTES:
+* Complete testing of cost calculations
+
+
+KNOWN ISSUES:
+

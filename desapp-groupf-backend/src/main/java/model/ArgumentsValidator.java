@@ -22,10 +22,8 @@ public class ArgumentsValidator {
 	}
 	
 	public static boolean isValidScore(Integer score) {
-		if  (score >= 1 && score <= 5)
-	           return true;
-	 
-	    return false;
+		return (score >= 1 && score <= 5);
+	    
 	}
 	
 	public static boolean isNotAValidMailAddress(String... strArr) {
@@ -61,19 +59,15 @@ public class ArgumentsValidator {
 
 		int control = (11 - (result % 11)) % 11;
 
-		return (!(control == c[10]));
+		return ((control != c[10]));
 	}
 	
 	public static boolean isInvalidFullName(String name) {
-		if(isNullOrEmptyString(name) || (name.length() < 4 || name.length() > 50)) 
-			return true;
-		return false;
+		return (isNullOrEmptyString(name) || (name.length() < 4 || name.length() > 50));
+
 	}
 	
 	public static boolean areInvalidDates(Date start, Date end){
-		if(start.after(end) || start.before(new Date())){
-			return true;
-		}
-		return false;
+		return (start.after(end) || start.before(new Date()));
 	}
 }
