@@ -6,37 +6,36 @@ import java.util.List;
 
 public class Post {
 	
-	private TypeVehicle typeVehicle;
-	private Integer capacity;
-	private String location;
-	private String description;
-	private String phoneNumber;
 	private List<Reservation> reservations;
 	private List<Rent> rents;
 	private String availability;
-	private String photo;
 	private Integer priceDay;
 	private Integer priceHour;
+	private TypeVehicle typeVehicle;
+	private Integer capacity; 
+	private String description;
+	private String photo;
+	private String location;
+	private String phoneNumber;
 	private String addressToDrop;
-	private String addressToPickUp;	
-
-	public Post( TypeVehicle typeVehicle, Integer capacity, String location, String description,
-			String phoneNumber, String availability, String photo,
-			Integer priceH,Integer priceD, String addressToDrop, String addressToPickUp) {
+	private String addressToPickUp;
+	
+	public Post(VehicleInfo vehicleInfo, UserInfo userInfo, 
+		String availability, Integer priceH,Integer priceD) {
 		
-		this.typeVehicle = typeVehicle;
-		this.capacity = capacity;
-		this.location = location;
-		this.description = description;
-		this.phoneNumber = phoneNumber;
+		this.typeVehicle = vehicleInfo.typeVehicle;
+		this.capacity = vehicleInfo.capacity;
+		this.description = vehicleInfo.description;
+		this.photo = vehicleInfo.photo;		
 		this.reservations = new ArrayList<Reservation>();
 		this.rents = new ArrayList<Rent>();
 		this.availability = availability;
-		this.photo = photo;
 		this.priceDay = priceD;
 		this.priceHour = priceH;
-		this.addressToDrop = addressToDrop;
-		this.addressToPickUp = addressToPickUp;
+		this.addressToDrop = userInfo.addressToDrop;
+		this.addressToPickUp = userInfo.addressToPickUp;
+		this.location = userInfo.location;
+		this.phoneNumber = userInfo.phoneNumber;
 	}
 
 	public Post() {
