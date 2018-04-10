@@ -22,6 +22,15 @@ public class Build {
 			return this;
 		}
 		
+		public UserBuilder valid(){
+			anUser.setCuil("20390960299");
+			anUser.setAddress("Calle falsa 123");
+			anUser.setName("Carlos");
+			anUser.setEmail("carlito@gmail.com");
+			
+			return this;
+		}
+		
 		public User build() {
 			return anUser;
 		}
@@ -73,6 +82,22 @@ public class Build {
 		public Post build() {
 			return aPost;
 		}
+		
+		public PostBuilder buildValidPost() {
+			aPost.setTypeVehicle(TypeVehicle.Auto);
+			aPost.setAddressToDrop("Calle falsa 123");
+			aPost.setAddressToPickUp("Calle falsa 123");
+			aPost.setPhoneNumber("45689359");
+			aPost.setCapacity(2);
+			aPost.setAvailability("disponible");
+			aPost.setLocation("Mi casa :v");
+			aPost.setPhoto("autito.jpg");
+			aPost.setPriceDay(20);
+			aPost.setPriceHour(2);
+			
+			return this;
+		}
+		
 	}
 	
 	public static PostBuilder aPost() {

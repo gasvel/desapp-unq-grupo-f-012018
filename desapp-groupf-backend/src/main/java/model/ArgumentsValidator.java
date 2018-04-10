@@ -70,4 +70,35 @@ public class ArgumentsValidator {
 	public static boolean areInvalidDates(Date start, Date end){
 		return (start.after(end) || start.before(new Date()));
 	}
+
+	public static void validateUser(User user) {
+
+		if(ArgumentsValidator.isInvalidCUIT(user.getCuil()) || ArgumentsValidator.isNotAValidMailAddress(user.getEmail()) ||
+				ArgumentsValidator.isNullOrEmptyString(user.getAddress()) || ArgumentsValidator.isInvalidFullName(user.getName())) {
+			throwError();
+		}
+		
+	}
+	
+	public static void validatePost(Post post) {
+		if(post.getTypeVehicle() == null) {
+			throwError();
+		}
+		
+		if(ArgumentsValidator.isNullOrEmptyString(post.getAddressToDrop(),post.getAddressToPickUp(),post.getAvailability(),
+				post.getDescription(),post.getLocation(),post.getPhoneNumber(),post.getPhoto())) {
+			throwError();
+		}
+		
+		if(ArgumentsValidator.isNegativeInt(post.getCapacity(), post.getPriceDay(), post.getPriceHour())) {
+			throwError();
+		}
+
+		
+	}
+	
+	public static void throwError() {
+		throw new IllegalArgumentException("Invalid argument");
+	}
+
 }

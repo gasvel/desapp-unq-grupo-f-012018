@@ -95,26 +95,35 @@ public class UserTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAnUserIsCreatedWithInvalidCUITitShouldThrowIllegalArgumentException() {
-		handler.newUser("1000000000","Calle falsa 123", "Carlos","carlito@gmail.com");
+		User anUser = Build.anUser().valid().build();
+		anUser.setCuil("1000000000");
+		handler.newUser(anUser);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAnUserIsCreatedWithInvalidAddressitShouldThrowIllegalArgumentException() {
-		handler.newUser("20390960299","", "Carlos","carlito@gmail.com");
+		User anUser = Build.anUser().valid().build();
+		anUser.setAddress("");
+		handler.newUser(anUser);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAnUserIsCreatedWithInvalidNameitShouldThrowIllegalArgumentException() {
-		handler.newUser("20390960299","Calle falsa 123", "Car","carlito@gmail.com");
+		User anUser = Build.anUser().valid().build();
+		anUser.setName("Car");
+		handler.newUser(anUser);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAnUserIsCreatedWithInvalidEmailitShouldThrowIllegalArgumentException() {
-		handler.newUser("20390960299","Calle falsa 123", "Carlos","carlitogmail.com");
+		User anUser = Build.anUser().valid().build();
+		anUser.setEmail("carlitogmail.com");
+		handler.newUser(anUser);
 	}
 	
 	@Test
 	public void ifAnUserIsCreatedWithValidsArgumentsitShouldReturnANewUser() {
-		assertTrue(handler.newUser("20390960299","Calle falsa 123", "Carlos","carlito@gmail.com") != null);
+		User anUser = Build.anUser().valid().build();
+		assertTrue(handler.newUser(anUser) != null);
 	}
 }
