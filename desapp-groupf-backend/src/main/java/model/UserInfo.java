@@ -13,4 +13,20 @@ public class UserInfo {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public String getAddressToDrop() {
+		return addressToDrop;
+	}
+
+	public String getAddressToPickUp() {
+		return addressToPickUp;
+	}
+
 }

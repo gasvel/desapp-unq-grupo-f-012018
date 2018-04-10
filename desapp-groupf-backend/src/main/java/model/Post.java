@@ -23,19 +23,19 @@ public class Post {
 	public Post(VehicleInfo vehicleInfo, UserInfo userInfo, 
 		String availability, Integer priceH,Integer priceD) {
 		
-		this.typeVehicle = vehicleInfo.typeVehicle;
-		this.capacity = vehicleInfo.capacity;
-		this.description = vehicleInfo.description;
-		this.photo = vehicleInfo.photo;		
+		this.typeVehicle = vehicleInfo.getTypeVehicle();
+		this.capacity = vehicleInfo.getCapacity();
+		this.description = vehicleInfo.getDescription();
+		this.photo = vehicleInfo.getPhoto();		
 		this.reservations = new ArrayList<Reservation>();
 		this.rents = new ArrayList<Rent>();
 		this.availability = availability;
 		this.priceDay = priceD;
 		this.priceHour = priceH;
-		this.addressToDrop = userInfo.addressToDrop;
-		this.addressToPickUp = userInfo.addressToPickUp;
-		this.location = userInfo.location;
-		this.phoneNumber = userInfo.phoneNumber;
+		this.addressToDrop = userInfo.getAddressToDrop();
+		this.addressToPickUp = userInfo.getAddressToPickUp();
+		this.location = userInfo.getLocation();
+		this.phoneNumber = userInfo.getPhoneNumber();
 	}
 
 	public Post() {
