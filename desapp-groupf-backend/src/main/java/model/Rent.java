@@ -112,6 +112,18 @@ public class Rent {
 		this.setState(Rent_State.PickUpConfirmed);
 		
 	}
+
+	public void clientConfirmsReturn() {
+		this.setState(Rent_State.ClientConfirmedReturn);
+	}
+	
+	public void ownerConfirmsReturn() {
+		this.setState(Rent_State.OwnerConfirmedReturn);
+	}
+
+	public void transactionDone() {
+		this.setState(Rent_State.RentDone);
+	}
 	
 	
 }

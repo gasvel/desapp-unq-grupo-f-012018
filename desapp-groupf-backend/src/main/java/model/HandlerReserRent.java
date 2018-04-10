@@ -62,4 +62,34 @@ public class HandlerReserRent {
 			
 		}		
 	}
+	
+	public void confirmVehicleReturns(Rent rent, Post post, User user, User otherUser, Score score){
+		
+		switch(rent.getState()) {
+		case PickUpConfirmed:
+			if(user.getCuil() == rent.getClient().getCuil()){
+				rent.clientConfirmsReturn();
+				otherUser.addScore(score);
+			} else if(user.getPosts().contains(post)) {
+				rent.ownerConfirmsReturn();
+				otherUser.addScore(score);
+			}
+			break;
+		
+		case ClientConfirmedReturn:
+			if(user.getCuil() != rent.getClient().getCuil()) {
+				rent.transactionDone();
+			}
+			break;
+			
+		case OwnerConfirmedReturn:
+			if(user.getCuil() == rent.getClient().getCuil()) {
+				rent.transactionDone();
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
 }
