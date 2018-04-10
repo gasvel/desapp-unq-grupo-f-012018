@@ -1,10 +1,10 @@
 package model;
 
 public class UserInfo {
-	String location;
-	String phoneNumber;
-	String addressToDrop;
-	String addressToPickUp;
+	private String location;
+	private String phoneNumber;
+	private String addressToDrop;
+	private String addressToPickUp;
 	
 	public UserInfo(String location, String phoneNumber, String addressToDrop, String addressToPickUp) {		
 		this.addressToDrop = addressToDrop;
