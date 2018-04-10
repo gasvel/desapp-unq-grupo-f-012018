@@ -40,6 +40,8 @@ public class Post {
 	}
 
 	public Post() {
+		this.reservations = new ArrayList<Reservation>();
+		this.rents = new ArrayList<Rent>();
 	}
 
 	public Integer getCapacity() {

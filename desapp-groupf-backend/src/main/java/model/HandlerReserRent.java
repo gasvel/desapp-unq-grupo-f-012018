@@ -25,10 +25,10 @@ public class HandlerReserRent {
 		return costDays + costHours;
 	}
 
-	public void confirmReservation(Post post, Date startDate, Date endDate, long timeOfRent, User client,
+	public void confirmReservation(Post post, User client,
 			Reservation reservation) {		
-		Float cost = this.calculateCost(timeOfRent, post.getPriceDay(), post.getPriceHour());
-		Rent newRent = new Rent(cost, startDate, endDate, client);
+		Float cost = this.calculateCost(reservation.getTimeOfRent(), post.getPriceDay(), post.getPriceHour());
+		Rent newRent = new Rent(cost, reservation.getStartDate(), reservation.getEndDate(), client);
 		post.addNewRent(newRent);
 		post.removeReservation(reservation);		
 	}
