@@ -15,79 +15,78 @@ public class HandlerPostTest {
 	}
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidTypeOfVehicleItShouldThrowIllegalArgumentException() {		
-		handler.newPost(null, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setTypeVehicle(null);
+		handler.newPost(post, owner);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidCapacityItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, -4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setCapacity(-2);
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidLocationItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setLocation("");
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidDescriptionItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setTypeVehicle(null);
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidPhoneItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				null, "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setPhoneNumber("");
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidAvailabilityItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setTypeVehicle(null);
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidPhotoItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setPhoto(null);
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidPriceItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", -23, 500, 
-				"addressToDrop", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setPriceDay(-2);
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidAddressToDropItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"", "addressToPickUp", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setAddressToDrop("");
+		handler.newPost(post, owner);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidAddressToPickUpItShouldThrowIllegalArgumentException() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "", owner);
+		Post post= Build.aPost().buildValidPost().build();
+		post.setAddressToPickUp("");
+		handler.newPost(post, owner);
 	}
 
 	public void ifAnPostIsCreatedWithValidsArgumentsTheOwnerShouldBeANewPost() {		
-		handler.newPost(TypeVehicle.Auto, 4, "aLocation", "aDescription", 
-				"11111111", "availability", "photo", 100, 500, 
-				"addressToDrop", "addressToPickUp", owner);		
+		Post post= Build.aPost().buildValidPost().build();
+		handler.newPost(post, owner);	
 		assertEquals(1, owner.getPosts().size());
 	}
 }

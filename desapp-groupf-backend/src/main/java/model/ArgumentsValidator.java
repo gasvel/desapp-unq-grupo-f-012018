@@ -80,4 +80,25 @@ public class ArgumentsValidator {
 		
 	}
 	
+	public static void validatePost(Post post) {
+		if(post.getTypeVehicle() == null) {
+			throwError();
+		}
+		
+		if(ArgumentsValidator.isNullOrEmptyString(post.getAddressToDrop(),post.getAddressToPickUp(),post.getAvailability(),
+				post.getDescription(),post.getLocation(),post.getPhoneNumber(),post.getPhoto())) {
+			throwError();
+		}
+		
+		if(ArgumentsValidator.isNegativeInt(post.getCapacity(), post.getPriceDay(), post.getPriceHour())) {
+			throwError();
+		}
+
+		
+	}
+	
+	public static void throwError() {
+		throw new IllegalArgumentException("Invalid argument");
+	}
+
 }
