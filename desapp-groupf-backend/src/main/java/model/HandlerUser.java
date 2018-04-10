@@ -2,23 +2,18 @@ package model;
 
 public class HandlerUser {
 	
-	public User newUser(String cuil, String address, String name,String mail) {
-		if(ArgumentsValidator.isInvalidCUIT(cuil) || ArgumentsValidator.isNotAValidMailAddress(mail) ||
-				ArgumentsValidator.isNullOrEmptyString(address) || ArgumentsValidator.isInvalidFullName(name)) {
-			throwError();
-		}
+	public User newUser(User user) {
 		
-		User newUser = new User(cuil,address,name,mail);
-		return newUser;
+		ArgumentsValidator.validateUser(user);
+		
+		return user;
 	}
 	
-	public void throwError() {
-		throw new IllegalArgumentException("Invalid argument");
-	}
+
 	
 	public void rateUser(User user, Integer score, String description) {
 		if(!ArgumentsValidator.isValidScore(score)){
-			throwError();
+			ArgumentsValidator.throwError();
 		}
 		user.addScore(new Score(description, score));
 		checkBan(user);

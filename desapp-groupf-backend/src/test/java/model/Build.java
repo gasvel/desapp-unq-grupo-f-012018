@@ -22,6 +22,15 @@ public class Build {
 			return this;
 		}
 		
+		public UserBuilder valid(){
+			anUser.setCuil("20390960299");
+			anUser.setAddress("Calle falsa 123");
+			anUser.setName("Carlos");
+			anUser.setEmail("carlito@gmail.com");
+			
+			return this;
+		}
+		
 		public User build() {
 			return anUser;
 		}

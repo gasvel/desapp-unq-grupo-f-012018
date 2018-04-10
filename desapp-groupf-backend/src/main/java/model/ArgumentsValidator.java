@@ -70,4 +70,14 @@ public class ArgumentsValidator {
 	public static boolean areInvalidDates(Date start, Date end){
 		return (start.after(end) || start.before(new Date()));
 	}
+
+	public static void validateUser(User user) {
+
+		if(ArgumentsValidator.isInvalidCUIT(user.getCuil()) || ArgumentsValidator.isNotAValidMailAddress(user.getEmail()) ||
+				ArgumentsValidator.isNullOrEmptyString(user.getAddress()) || ArgumentsValidator.isInvalidFullName(user.getName())) {
+			throwError();
+		}
+		
+	}
+	
 }
