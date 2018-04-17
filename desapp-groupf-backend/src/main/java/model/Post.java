@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Post {
+public class Post extends Entity{
 	
+	private static final long serialVersionUID = -773835182887417591L;
 	private List<Reservation> reservations;
 	private List<Rent> rents;
 	private String availability;

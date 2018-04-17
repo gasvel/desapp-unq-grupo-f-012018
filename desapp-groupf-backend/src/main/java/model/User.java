@@ -3,7 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User extends Entity{
+	private static final long serialVersionUID = 5054708596541854955L;
 	private String cuil;
 	private String address;
 	private String name;

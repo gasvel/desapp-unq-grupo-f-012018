@@ -1,6 +1,8 @@
 package model;
 
-public class Score {
+public class Score extends Entity{
+
+	private static final long serialVersionUID = -2303641468955834123L;
 	private String description;
 	private Integer value;
 	

@@ -2,8 +2,10 @@ package model;
 
 import java.util.Date;
 
-public class Reservation {
+public class Reservation extends Entity{
 	
+
+	private static final long serialVersionUID = 889307147768765621L;
 	private long timeOfRent;
 	private Date startDate;
 	private Date endDate;

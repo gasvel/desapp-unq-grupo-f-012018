@@ -5,8 +5,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class Rent {
+public class Rent extends Entity{
 
+	private static final long serialVersionUID = 121873193372209101L;
 	private Float cost;
 	private Date startDate;
 	private Date endDate;
