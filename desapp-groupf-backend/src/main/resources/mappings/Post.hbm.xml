@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.Post">
+		<id column="ID" name="id">
+			<generator class="native" />
+		</id>
+		<property name="availability" />
+		<property name="priceDay" />
+		<property name="priceHour" />
+		<property name="typeVehicle" />
+		<property name="capacity" />
+		<property name="description" />
+		<property name="photo" />
+		<property name="location" />
+		<property name="phoneNumber" />
+		<property name="addressToDrop" />
+		<property name="addressToPickUp" />
+		<list name="reservations" lazy="false">
+			<key column="reservationID" />
+			<list-index column="id" />
+			<one-to-many class="model.Reservation" />
+		</list>
+		<list name="rent" lazy="false">
+			<key column="rentID" />
+			<list-index column="id" />
+			<one-to-many class="model.Rent" />
+		</list>
+	</class>
+</hibernate-mapping>
