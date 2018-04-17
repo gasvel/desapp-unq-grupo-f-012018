@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.Rent">
+		<id column="ID" name="id">
+			<generator class="native" />
+		</id>
+		<property name="cost" />
+		<property name="startDate" />
+		<property name="endDate"/>
+		<property name="client"/>
+		<property name="state"/>
+		<property name="timer"/>
+		<property name="PICK_UP_TIME"/>
+	</class>
+</hibernate-mapping>
