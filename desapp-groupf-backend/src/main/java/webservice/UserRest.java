@@ -23,9 +23,9 @@ public class UserRest {
    @GET
    @Path("/users")
    @Produces("application/json")
-   public List<User> getAllUsers() {
-       List<User> users = userService.retriveAll();
-       return users;
+   public String getAllUsers() {
+       //List<User> users = userService.retriveAll();
+       return "GG";
    }
 
     public void setUserService(final UserService userServ) {

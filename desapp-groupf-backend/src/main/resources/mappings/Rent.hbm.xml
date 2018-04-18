@@ -12,7 +12,6 @@
 		<property name="endDate"/>
 		<property name="client"/>
 		<property name="state"/>
-		<property name="timer"/>
 		<property name="PICK_UP_TIME"/>
 	</class>
 </hibernate-mapping>

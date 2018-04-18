@@ -23,7 +23,7 @@
 			<list-index column="id" />
 			<one-to-many class="model.Reservation" />
 		</list>
-		<list name="rent" lazy="false">
+		<list name="rents" lazy="false">
 			<key column="rentID" />
 			<list-index column="id" />
 			<one-to-many class="model.Rent" />
