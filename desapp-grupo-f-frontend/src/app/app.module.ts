@@ -6,13 +6,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
+import { NuevoUserComponent } from './nuevo-user/nuevo-user.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
-    EjemploGmapsComponent
+    EjemploGmapsComponent,
+    NuevoUserComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +32,14 @@ import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
     		{
     			path:'ejemploGMaps',
     			component:EjemploGmapsComponent
-    		}
-    	])
+				},
+				{
+					path:'registro',
+					component:NuevoUserComponent
+				}
+			]),
+			ReactiveFormsModule,
+			FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

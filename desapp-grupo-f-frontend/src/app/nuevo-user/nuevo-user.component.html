@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="usuario">
+    <div class="form-group">
+      <label for="cuilInput">CUIL/CUIT</label>
+      <input type="string" class="form-control" id="cuilInput" placeholder="20-00000000-0" formControlName="cuil">
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Nombre y apellido</label>
+      <input type="string" class="form-control" id="nameInput" placeholder="Nombre completo" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="addressInput">Direccion</label>
+      <input type="string" class="form-control" id="addressInput" placeholder="Humbreto Primo 3598" formControlName="address">
+    </div>
+    <div class="form-group">
+      <label for="mailInput">Mail</label>
+      <input type="email" class="form-control" id="mailInput" placeholder="ejemplo@gmail.com" formControlName="email">
+    </div>
+    <button type="submit" class="btn btn-success">Aceptar</button>
+    <button class="btn btn-danger">Atras</button>
+  </form>
+</div>
