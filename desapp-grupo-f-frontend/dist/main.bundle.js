@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\n  <div>\n  <a class=\"navbar-brand\" routerLink=\"/posts\" style=\"margin: auto;\"><p style=\"float: left;\"><img src=\"assets/img/CarPnDLogo1.png\" width=\"30px\" height=\"35px\"> </p> <p style=\"font-family: 'Times New Roman', Times, serif;\">  CarPnD</p></a>\n</div>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto;position: center\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\n\n</button>\n    </form>\n    <ul class=\"navbar-nav mr-auto\" style=\"margin: auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\n      </li>\n      <li>\n      \t<a class=\"nav-link\" routerLink=\"/ejemploGMaps\">Ejemplo GMaps</a>\n      </li>\n    </ul>\n\n  </div>\n</nav>\n\n<router-outlet></router-outlet>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\r\n  <div class=\"container-fluid\" style=\"float: left;font-family: Nunito, sans-serif\">\r\n    \r\n    <a class=\"navbar-brand\" routerLink=\"/posts\" style=\"margin: auto;\"><p style=\"float: left;\"><img src=\"assets/img/CarPnDLogo1.png\" width=\"30px\" height=\"30px\"> </p> <p style=\"font-family: Nunito, sans-serif;\">  CarPnD</p></a>\r\n\r\n    <form class=\"form-inline my-2 my-lg-0\" style=\"margin: auto;position: center\">\r\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" size=\"50px\">\r\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search\"></i>\r\n      </button>\r\n    </form>\r\n\r\n    <ul class=\"navbar-nav mr-auto\" style=\"margin: auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Iniciar sesion <i class=\"fas fa-user\"></i></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Registrarse</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n      \t<a class=\"nav-link\" routerLink=\"/ejemploGMaps\">Ejemplo GMaps</a>\r\n      </li>\r\n    </ul>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -134,7 +134,7 @@ module.exports = ""
 /***/ "./src/app/ejemplo-gmaps/ejemplo-gmaps.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div #map style=\"width:100%;height:400px\">\n</div>\n<div id=\"distancia\" ><p class=\"text-info text-center\">Distancia entre punto A y B :</p> </div>\n<div id=\"duracion\"><p class=\"text-info text-center\">Duracion del viaje: </p> </div>\n\n\n\n\n"
+module.exports = "<div #map style=\"width:100%;height:400px\">\r\n</div>\r\n<div id=\"distancia\" ><p class=\"text-info text-center\">Distancia entre punto A y B :</p> </div>\r\n<div id=\"duracion\"><p class=\"text-info text-center\">Duracion del viaje: </p> </div>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -158,7 +158,6 @@ var EjemploGmapsComponent = /** @class */ (function () {
     function EjemploGmapsComponent() {
     }
     EjemploGmapsComponent.prototype.ngOnInit = function () {
-        console.log(this.mapa);
         this.initMap();
     };
     EjemploGmapsComponent.prototype.initMap = function () {
@@ -169,7 +168,6 @@ var EjemploGmapsComponent = /** @class */ (function () {
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        console.log(this.map);
         directionsDisplay.setMap(this.map);
         this.calculateAndDisplayRoute(directionsService, directionsDisplay);
     };
@@ -181,10 +179,8 @@ var EjemploGmapsComponent = /** @class */ (function () {
         }, function (response, status) {
             if (status == 'OK') {
                 console.log(response);
-                document.getElementById('distancia').innerHTML +=
-                    '<p class="text-danger text-center">' + response.routes[0].legs[0].distance.text + '</p>';
-                document.getElementById('duracion').innerHTML +=
-                    '<p class="text-danger text-center">' + response.routes[0].legs[0].duration.text + '</p>';
+                document.getElementById('distancia').innerHTML += '<p class="text-danger text-center">' + response.routes[0].legs[0].distance.text + '</p>';
+                document.getElementById('duracion').innerHTML += '<p class="text-danger text-center">' + response.routes[0].legs[0].duration.text + '</p>';
                 directionsDisplay.setDirections(response);
             }
             else {
@@ -214,14 +210,14 @@ var EjemploGmapsComponent = /** @class */ (function () {
 /***/ "./src/app/posts/posts.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".post{\n\tdisplay: inline-block;\n\theight: 400px;\n\twidth: 300px;\n\tvertical-align: top;\n}\n"
+module.exports = ".post{\r\n\tdisplay: inline-block;\r\n\theight: 400px;\r\n\twidth: 300px;\r\n\tvertical-align: top;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/posts/posts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<div class=\"card post\" style=\"width: 18rem;margin-top: 20px;margin-left: 10px; \" *ngFor=\"let post of posts\">\n  \t\t<img class=\"card-img-top\" src=\"{{post.photo}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\n  \t\t<div class=\"card-body\">\n    \t\t<h5 class=\"card-title\">{{post.title}}</h5>\n    \t\t<h6 class=\"card-subtitle mb-2 text-muted\">{{post.username}}</h6>\n\n    \t\t<p class=\"card-text\">{{post.description}}</p>\n    \t\t<a href=\"#\" class=\"btn btn-primary\" (click)=\"abrirPublicacion()\">Mas detalles <i class=\"fas fa-info-circle\"></i></a>\n  \t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"container\">\r\n\t<div class=\"card post\" style=\"width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif \" *ngFor=\"let post of posts\">\r\n  \t\t<img class=\"card-img-top\" src=\"{{post.photo}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\r\n  \t\t<div class=\"card-body\">\r\n    \t\t<h5 class=\"card-title\">{{post.title}}</h5>\r\n    \t\t<h6 class=\"card-subtitle mb-2 text-muted\">{{post.username}}</h6>\r\n\r\n    \t\t<p class=\"card-text\">{{post.description}}</p>\r\n    \t\t<a href=\"#\" class=\"btn btn-primary\" (click)=\"abrirPublicacion()\">Mas detalles <i class=\"fas fa-info-circle\"></i></a>\r\n  \t\t</div>\r\n\t</div>\r\n</div>"
 
 /***/ }),
 
