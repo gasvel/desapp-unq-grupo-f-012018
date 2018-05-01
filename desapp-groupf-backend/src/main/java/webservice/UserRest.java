@@ -3,13 +3,17 @@ package webservice;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import model.User;
+import persistence.UserRepository;
 import service.UserService;
 
-@Path("/posts")
+@Path("/users")
 public class UserRest {
 
     public static final int NUMBER_OF_POST = 10;
@@ -19,16 +23,28 @@ public class UserRest {
      * servicio REST solo debe hacer un delegate simple.
      */
     private UserService userService;
+    
 
    @GET
-   @Path("/users")
+   @Path("/all")
    @Produces("application/json")
-   public String getAllUsers() {
-       //List<User> users = userService.retriveAll();
-       return "GG";
+   public List<User> getAllUsers() {
+       List<User> users = this.userService.retriveAll();
+       return users;
+   }
+   
+   @POST
+   @Path("/new")
+   @Produces("application/json")
+   public void newUser(@RequestBody User user){
+	   this.userService.save(user);
    }
 
     public void setUserService(final UserService userServ) {
         userService= userServ;
     }
+    
+
+    
+    
 }

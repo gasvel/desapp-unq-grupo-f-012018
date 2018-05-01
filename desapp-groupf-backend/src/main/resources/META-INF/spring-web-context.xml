@@ -5,7 +5,7 @@
 	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xmlns:cxf="http://cxf.apache.org/core" 
 	xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
 http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
@@ -27,7 +27,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
-	<jaxrs:server id="post" address="/"  > 
+	<jaxrs:server id="user" address="/"  > 
 		<jaxrs:serviceBeans>
 			<ref bean="userRest" />
 		</jaxrs:serviceBeans>
@@ -43,11 +43,11 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
-
-    <bean id="service.user" class="service.UserService" />
+	
+	
 	
 	<bean id="userRest" class="webservice.UserRest">
-		<property name="userService" ref="service.user" />
+		<property name="userService" ref="services.user" ></property>
 	</bean>
 
 </beans>

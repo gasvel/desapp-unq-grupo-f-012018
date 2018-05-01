@@ -13,9 +13,13 @@
     	
     	<param-value>
     	classpath*:/META-INF/spring-persistence-context.xml,
-		classpath*:/META-INF/spring-services-context.xml,
+		classpath*:/META-INF/spring-service-context.xml,
     	classpath*:/META-INF/spring-web-context.xml
     	</param-value>
+	</context-param>
+	<context-param>
+		<param-name>configuration</param-name>
+		<param-value>development</param-value>
 	</context-param>
 
 	<listener>
@@ -23,6 +27,8 @@
    	 		  org.springframework.web.context.ContextLoaderListener
    			 </listener-class>
   	</listener>
+  	
+
 
 
 	<servlet>

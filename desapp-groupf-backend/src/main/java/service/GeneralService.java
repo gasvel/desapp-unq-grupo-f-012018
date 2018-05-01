@@ -8,7 +8,7 @@ public class GeneralService {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(final UserService userService) {
 		this.userService = userService;
 	}
 	
