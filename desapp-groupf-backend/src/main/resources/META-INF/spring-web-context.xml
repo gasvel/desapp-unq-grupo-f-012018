@@ -44,8 +44,6 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 	
-	
-	
 	<bean id="userRest" class="webservice.UserRest">
 		<property name="userService" ref="services.user" ></property>
 	</bean>

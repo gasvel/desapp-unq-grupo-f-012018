@@ -1,7 +1,6 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
 import { } from '@types/googlemaps';
 
-
 @Component({
   selector: 'app-ejemplo-gmaps',
   templateUrl: './ejemplo-gmaps.component.html',
@@ -14,15 +13,12 @@ export class EjemploGmapsComponent implements OnInit {
 	  distancia:String;
 	  duracion:String;
 
-
   constructor() {
-
   }
 
   ngOnInit() {
   	this.initMap();
   }
-
 
   initMap() {
         var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -40,8 +36,8 @@ export class EjemploGmapsComponent implements OnInit {
 
    calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
-          origin: {lat: -34.760661, lng: -58.210101},  
-          destination: {lat: -34.751555, lng: -58.225844},  
+          origin: {lat: -34.760661, lng: -58.210101},
+          destination: {lat: -34.751555, lng: -58.225844},
           travelMode: google.maps.TravelMode["DRIVING"]
         }, function(response, status) {
           if (status == 'OK') {

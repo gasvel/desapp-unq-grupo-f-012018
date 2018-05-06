@@ -20,6 +20,4 @@ export class UsersService {
   saveUser(user):Observable<any> {
     return this.http.post(this.url + "/new",user)
   }
-
-
 }

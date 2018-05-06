@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
+import { PostsComponent } from './posts/post-item/posts.component';
 import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
 import { NuevoUserComponent } from './nuevo-user/nuevo-user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AppComponent,
     PostsComponent,
     EjemploGmapsComponent,
-    NuevoUserComponent
+    NuevoUserComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 				{
 					path:'registro',
 					component:NuevoUserComponent
+				},
+        {
+					path:'newPost',
+					component:CreatePostComponent
 				}
 			]),
 			ReactiveFormsModule,
