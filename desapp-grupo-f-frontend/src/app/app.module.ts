@@ -2,14 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/post-item/posts.component';
+import { PostsComponent } from './posts/post-list/posts.component';
 import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
 import { NuevoUserComponent } from './nuevo-user/nuevo-user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
-
+import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 
 @NgModule({
   declarations: [
@@ -21,6 +20,7 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
   ],
   imports: [
     BrowserModule,
+    NgxInputFileUploadModule,
     RouterModule.forRoot([
     		{
     			path:'posts',

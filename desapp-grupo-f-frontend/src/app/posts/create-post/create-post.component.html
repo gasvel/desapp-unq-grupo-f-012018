@@ -1,3 +1,72 @@
-<p>
-  create-post works!
-</p>
+<div class="container">
+  <div style="width: 98%;margin-top: 30px;margin-left: 10px;font-family: Nunito, sans-serif; border: 1px solid #d8d8d8; border-radius: 3px">
+    <div style="width: 98%; padding-top: 20px; padding-left: 20px; padding-right: 20px;">
+      <div>
+        <h4>Ingrese fotos del vehiculo</h4>
+          <br/>
+          <ngx-input-file-upload [acceptHtml]="acceptHtml" [acceptTs]="acceptTs" [activeColor]="activeColor">
+          </ngx-input-file-upload>
+        <br/>
+      </div>
+      <form [formGroup]="postForm">
+        <div class="form-group">
+          <h4>Descripcíon del vehiculo</h4>
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label required" >Título: </label>
+              <input type="string" class="form-control" id="postTitle" placeholder="Escriba un título" formControlName="postTitle">
+              <label class="control-label required" >Disponibilidad: </label>
+              <input type="string" class="form-control" id="availability" formControlName="availability">
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label required" >Tipo de vehículo:</label>
+              <select class="form-control" id="sel1" formControlName="typeOption">
+                <option *ngFor="let op of typeOptions" [ngValue]="op"> {{op}} </option>>
+              </select>
+              <label class="control-label required" >Capacidad:</label>
+              <select class="form-control" id="sel1" formControlName="capacity">
+                <option *ngFor="let op of capacityOptions" [ngValue]="op"> {{op}} </option>>
+              </select>
+            </div>
+              <div class="col-sm-12">
+              <label >Descripción del vehiculo: </label>
+              <textarea class="form-control" rows="3" id="description" placeholder="Escriba una descripción" formControlName="description">
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <h4>Ubicación del vehiculo</h4>
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label required" >Dirección de retiro: </label>
+              <input type="string" class="form-control" id="addressToPickUp" formControlName="addressToPickUp">
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label required" >Dirección de entrega: </label>
+              <input type="string" class="form-control" id="addressToDrop" formControlName="addressToDrop">
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Ingrese un precio</h4>
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label required" >Precio por hora: </label>
+              <input type="number" class="form-control" id="priceHour" min="0" formControlName="priceHour">
+            </div>
+            <div class="col-sm-6">
+              <label class="control-label required" >Precio por día: </label>
+              <input type="number" class="form-control" id="priceDay" min="0" formControlName="priceDay">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <h4>Datos de contacto </h4>
+            <label class="control-label required" >Teléfono: </label>
+            <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+        </div>
+        <button class="btn btn-default">Atras</button>
+        <button class="btn btn-primary" (click)="save()">Publicar</button>
+      </form>
+</div>
