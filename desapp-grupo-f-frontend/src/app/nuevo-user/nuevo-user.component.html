@@ -1,22 +1,23 @@
 <div class="container">
-  <form [formGroup]="usuario">
+  <h2 style="font-family: Poppins, sans-serif">Crear cuenta</h2>
+  <form [formGroup]="usuario" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="cuilInput">CUIL/CUIT</label>
-      <input type="string" class="form-control" id="cuilInput" placeholder="20-00000000-0" formControlName="cuil">
+      <label for="cuilInput">CUIL/CUIT (sin guiones)</label>
+      <input type="string" class="form-control" id="cuilInput" placeholder="20000000013" formControlName="cuil" [class.invalid]="usuario.controls['cuil'].invalid && usuario.controls['cuil'].dirty">
     </div>
     <div class="form-group">
       <label for="nameInput">Nombre y apellido</label>
-      <input type="string" class="form-control" id="nameInput" placeholder="Nombre completo" formControlName="name">
+      <input type="string" class="form-control" id="nameInput" placeholder="Nombre completo" formControlName="name" [class.invalid]="usuario.controls['name'].invalid && usuario.controls['name'].dirty">
     </div>
     <div class="form-group">
       <label for="addressInput">Direccion</label>
-      <input type="string" class="form-control" id="addressInput" placeholder="Humbreto Primo 3598" formControlName="address">
+      <input type="string" class="form-control" id="addressInput" placeholder="Humbreto Primo 3598" formControlName="address" [class.invalid]="usuario.controls['address'].invalid && usuario.controls['address'].dirty">
     </div>
     <div class="form-group">
       <label for="mailInput">Mail</label>
-      <input type="email" class="form-control" id="mailInput" placeholder="ejemplo@gmail.com" formControlName="email">
+      <input type="email" class="form-control" id="mailInput" placeholder="ejemplo@gmail.com" formControlName="email" [class.invalid]="usuario.controls['email'].invalid && usuario.controls['email'].dirty">
     </div>
-    <button type="submit" class="btn btn-success">Aceptar</button>
-    <button class="btn btn-danger">Atras</button>
+    <button type="submit" class="btn btn-success" [class.buttonInvalid]="validForm()" [disabled]="validForm()">Aceptar</button>
+    <button class="btn btn-danger" routerLink="/posts">Atras</button>
   </form>
 </div>

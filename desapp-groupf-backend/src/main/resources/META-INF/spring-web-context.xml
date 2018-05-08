@@ -38,6 +38,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<jaxrs:providers>
 			<ref bean="jaxbProvider" />
 			<ref bean="jacksonProvider" />
+			<bean class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
 		</jaxrs:providers>
 		<jaxrs:features>
 			<cxf:logging />

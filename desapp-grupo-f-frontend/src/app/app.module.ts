@@ -9,6 +9,9 @@ import { NuevoUserComponent } from './nuevo-user/nuevo-user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
+import { UsersService } from './services/users.service';
+import { PostService } from './services/post.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,9 +48,10 @@ import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 				}
 			]),
 			ReactiveFormsModule,
-			FormsModule
+			FormsModule,
+			HttpClientModule
   ],
-  providers: [],
+  providers: [UsersService,PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

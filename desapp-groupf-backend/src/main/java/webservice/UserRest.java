@@ -9,13 +9,14 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import model.User;
 import service.UserService;
 
 @Path("/users")
+@CrossOriginResourceSharing(allowAllOrigins = true)
 public class UserRest {
 
     public static final int NUMBER_OF_USERS = 10;
@@ -29,6 +30,7 @@ public class UserRest {
    @Produces("application/json")
    public List<User> getAllUsers() {
        List<User> users = this.userService.retriveAll();
+       System.out.println(users.size());
        return users;
    }
    
@@ -36,6 +38,7 @@ public class UserRest {
    @Path("/new")
    @Produces("application/json")
    public void newUser(@RequestBody User user){
+	   System.out.println(user.getCuil());
 	   this.userService.save(user);
    }
    
