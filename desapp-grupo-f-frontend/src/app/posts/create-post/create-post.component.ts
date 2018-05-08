@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgxInputFileUploadComponent } from 'ngx-input-file-upload'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Post } from '../../model/post'
@@ -13,6 +13,7 @@ export class CreatePostComponent implements OnInit {
   typeOptions:any = ["Moto", "Camioneta", "Auto", "Furgoneta"];
   capacityOptions:any = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
   @ViewChild(NgxInputFileUploadComponent)
+
   private NgxInputFileUploadComponent: NgxInputFileUploadComponent;
   acceptHtml="image/*"
   acceptTs=/image-*/
@@ -41,6 +42,25 @@ export class CreatePostComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
   }
+
+  @ViewChild("addressToDropRef")
+  public addressToDropRef: ElementRef;addressToPickUp
+  @ViewChild("addressToPickUpRef")
+  public addressToPickUpRef: ElementRef;
+
+  ngAfterViewInit(){
+      let component = this;
+			let options = {
+	      types: [],
+	      componentRestrictions: {country: "ar"}
+	    };
+      let autocomplete1 = new google.maps.places.Autocomplete(this.addressToDropRef.nativeElement, options);
+			autocomplete1.addListener('place_changed', function() {
+				//this.postForm.get('addressToDrop').setValue(autocomplete.getPlace().formatted_address);
+			});
+      let autocomplete2 = new google.maps.places.Autocomplete(this.addressToPickUpRef.nativeElement, options);
+      autocomplete2.addListener('place_changed', function() {});
+	}
 
   ngOnInit() {
   }

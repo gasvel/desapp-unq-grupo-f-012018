@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/post-list/posts.component';
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    GooglePlaceModule,
     NgxInputFileUploadModule,
     RouterModule.forRoot([
     		{

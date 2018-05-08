@@ -28,6 +28,7 @@
     "angular-drop-image": "^1.0.8",
     "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
+    "ngx-google-places-autocomplete": "^2.0.1",
     "ngx-input-file-upload": "0.0.0",
     "popper.js": "^1.14.1",
     "rxjs": "^5.5.6",
