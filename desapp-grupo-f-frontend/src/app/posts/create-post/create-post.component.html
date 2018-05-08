@@ -40,11 +40,11 @@
           <div class="row">
             <div class="col-sm-6">
               <label class="control-label required" >Dirección de retiro: </label>
-              <input type="string" class="form-control" id="addressToPickUp" formControlName="addressToPickUp">
+              <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef/>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >Dirección de entrega: </label>
-              <input type="string" class="form-control" id="addressToDrop" formControlName="addressToDrop">
+              <input type="string" class="form-control" formControlName="addressToDrop" #addressToDropRef/>
             </div>
           </div>
         </div>
