@@ -70,6 +70,18 @@ public class ArgumentsValidator {
 	public static boolean areInvalidDates(Date start, Date end){
 		return (start.after(end) || start.before(new Date()));
 	}
+	
+	public static void validateRent(Rent rent){
+		if(ArgumentsValidator.areInvalidDates(rent.getStartDate(), rent.getEndDate())){
+			throwError();
+		}
+	}
+	
+	public static void validateReserv(Reservation reserv, Post post){
+		if(ArgumentsValidator.areInvalidDates(reserv.getStartDate(), reserv.getEndDate()) || post.isThereAnotherReservation(reserv.getStartDate(),reserv.getEndDate()) || post.isThereAnotherRent(reserv.getStartDate(), reserv.getEndDate())){
+			throwError();
+		}
+	}
 
 	public static void validateUser(User user) {
 

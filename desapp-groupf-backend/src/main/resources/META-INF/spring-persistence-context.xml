@@ -111,6 +111,15 @@
 	<bean id="persistence.userrepository" class="persistence.UserRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.postrepository" class="persistence.PostRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="persistence.rentrepository" class="persistence.RentRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="persistence.reserrepository" class="persistence.ReserRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 
 	
 

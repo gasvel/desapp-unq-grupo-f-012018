@@ -45,8 +45,71 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 	
+	<jaxrs:server id="reser" address="/"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="reserRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+			<bean class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+	
+	<jaxrs:server id="rent" address="/"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="rentRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+			<bean class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+	
+	<jaxrs:server id="post" address="/"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="postRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+			<bean class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+	
 	<bean id="userRest" class="webservice.UserRest">
 		<property name="userService" ref="services.user" ></property>
+	</bean>
+	<bean id="reserRest" class="webservice.ReserRest">
+		<property name="reserService" ref="services.reser"></property>
+	</bean>
+	<bean id="rentRest" class="webservice.RentRest">
+		<property name="rentService" ref="services.rent"></property>
+	</bean>
+	<bean id="postRest" class="webservice.PostRest">
+		<property name="postService" ref="services.post"></property>
 	</bean>
 
 </beans>

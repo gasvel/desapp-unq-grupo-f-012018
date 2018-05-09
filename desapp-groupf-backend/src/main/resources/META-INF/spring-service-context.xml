@@ -14,6 +14,15 @@
 	<bean id="services.user" class="service.UserService">
 		<property name="repository" ref="persistence.userrepository" />
 	</bean>
-
+	
+	<bean id="services.post" class="service.PostService">
+		<property name="repository" ref="persistence.postrepository"></property>
+	</bean>
+	<bean id="services.rent" class="service.RentService">
+		<property name="repository" ref="persistence.rentrepository"></property>
+	</bean>
+	<bean id="services.reser" class="service.ReserService">
+		<property name="repository" ref="persistence.reserrepository"></property>
+	</bean>
 
 </beans>
