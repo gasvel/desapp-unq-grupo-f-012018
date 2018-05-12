@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgxInputFileUploadComponent } from 'ngx-input-file-upload'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../../model/post'
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-post',
@@ -41,7 +43,10 @@ export class CreatePostComponent implements OnInit {
   });
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute) {
+
   }
 
   @ViewChild("addressToDropRef")
@@ -64,6 +69,16 @@ export class CreatePostComponent implements OnInit {
 	}
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      let isEdit = Object.keys(params).length === 1;
+      if(isEdit) {
+        let post = JSON.parse(params['post']);
+        console.log(post);
+      }
+      else {
+        console.log('New post');
+      }
+    });
   }
 
   save(){

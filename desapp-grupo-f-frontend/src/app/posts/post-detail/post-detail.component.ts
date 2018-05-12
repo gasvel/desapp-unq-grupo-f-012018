@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,7 +14,8 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private dialog: MatDialog) {
 
   }
 
@@ -30,11 +32,25 @@ export class PostDetailComponent implements OnInit {
   }
 
   edit() {
-    console.log('Edit');
+    let postToEdit = JSON.stringify(this.post);
+    this.router.navigate(['editPost', postToEdit ]);
   }
 
   delete() {
-    console.log('Delete');
     this.router.navigate(['']);
   }
+
+  openDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        const component = this;
+        const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe(data => {
+          if(data) {
+            component.delete()
+          }
+        });
+    }
 }

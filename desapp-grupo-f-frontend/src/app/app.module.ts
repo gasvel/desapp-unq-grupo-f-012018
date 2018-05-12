@@ -14,8 +14,9 @@ import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 import { UsersService } from './services/users.service';
 import { PostService } from './services/post.service';
 import { HttpClientModule } from '@angular/common/http';
-import {MatMenuModule} from '@angular/material/';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatDialogModule, MatMenuModule} from "@angular/material";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.component'
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     EjemploGmapsComponent,
     NuevoUserComponent,
     CreatePostComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
     GooglePlaceModule,
     MatMenuModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     NgxInputFileUploadModule,
     RouterModule.forRoot([
@@ -58,6 +61,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
         {
 					path:'newPost',
 					component:CreatePostComponent
+				},
+        {
+					path:'editPost/:post',
+					component:CreatePostComponent
 				}
 			]),
 			ReactiveFormsModule,
@@ -65,6 +72,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 			HttpClientModule
   ],
   providers: [UsersService,PostService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent]
 })
 export class AppModule { }
