@@ -18,6 +18,7 @@ export class CreatePostComponent implements OnInit {
   acceptHtml="image/*"
   acceptTs=/image-*/
   activeColor: string = '#3366CC';
+  submitted:boolean = false;
   postForm : FormGroup = this.formBuilder.group({
     postTitle: new FormControl('',Validators.compose([
       Validators.required,
@@ -81,5 +82,9 @@ export class CreatePostComponent implements OnInit {
       post.photo = this.NgxInputFileUploadComponent.imageSrc;
       console.log(post);
     }
+  }
+
+  onSubmit() {
+    this.submitted = true;
   }
 }

@@ -1,0 +1,59 @@
+<div class="container">
+  <div style="width: 98%;margin-top: 30px;margin-left: 10px;font-family: Nunito, sans-serif; border: 1px solid #d8d8d8; border-radius: 3px">
+    <div style="width: 98%; padding-top: 20px; padding-left: 20px; padding-right: 20px;">
+      <div align="right">
+        <button mat-button [matMenuTriggerFor]="menu"><i class="fa fa-bars"></i></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="edit()">Editar</button>
+          <button mat-menu-item (click)="delete()">Eliminar</button>
+        </mat-menu>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-sm-8">
+            <img class="card-img-top" src="{{post.photo}}" alt="Card image cap">
+          </div>
+          <div class="col-sm-4">
+            <h2>{{post.title}}</h2><br/>
+
+            <h4>Precio por dia: $500</h4>
+            <h4>Precio por hora: $100</h4><br/>
+            <h4>Dirección de retiro:</h4>
+            <p > {{post.addressToPickUp}} </p><br/>
+            <button class="btn btn-primary" (click)="rent()">Reservar</button>
+          </div>
+        </div>
+    		<div >
+          <br/>
+          <h3>Descripcíon del vehiculo</h3>
+          <p class="card-text">{{post.description}}</p>
+          <div class="">
+            <span>Tipo de vehículo:</span>
+            <span>{{post.capacity}}</span>
+          </div>
+          <div class="">
+            <span>Capacidad:</span>
+            <span>{{post.typeVehicle}}</span>
+          </div>
+          <div class="">
+            <span>Disponibilidad:</span>
+            <span>{{post.availability}}</span>
+          </div>
+          <div class="">
+            <span>Direccion de devolucion:</span>
+            <span>{{post.addressToDrop}}</span>
+          </div>
+          <br/>
+          <h3>Contacto</h3>
+          <div class="">
+            <span>Usuario:</span>
+            <span>{{post.username}}</span><br/>
+          </div>
+          <div class="">
+            <span>Teléfono:</span>
+            <span>{{post.phoneNumber}}</span><br/><br/>
+          </div>
+    		</div>
+      </div>
+    </div>
+  </div>

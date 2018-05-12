@@ -10,6 +10,7 @@ export class Post {
   priceDay: number;
   priceHour: number;
   phoneNumber: number;
+  username: string;
 
 	constructor() {
 	}

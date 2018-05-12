@@ -8,15 +8,21 @@
           </ngx-input-file-upload>
         <br/>
       </div>
-      <form [formGroup]="postForm">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <h4>Descripcíon del vehiculo</h4>
           <div class="row">
             <div class="col-sm-6">
               <label class="control-label required" >Título: </label>
               <input type="string" class="form-control" id="postTitle" placeholder="Escriba un título" formControlName="postTitle">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['postTitle'].invalid && submitted">
+                Por favor ingrese un título
+              </p>
               <label class="control-label required" >Disponibilidad: </label>
               <input type="string" class="form-control" id="availability" formControlName="availability">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['availability'].invalid && submitted">
+                Por favor ingrese un disponibilidad
+              </p>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >Tipo de vehículo:</label>
@@ -32,6 +38,9 @@
               <label >Descripción del vehiculo: </label>
               <textarea class="form-control" rows="3" id="description" placeholder="Escriba una descripción" formControlName="description">
               </textarea>
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['description'].invalid && submitted">
+                Por favor ingrese un descripción
+              </p>
             </div>
           </div>
         </div>
@@ -41,10 +50,16 @@
             <div class="col-sm-6">
               <label class="control-label required" >Dirección de retiro: </label>
               <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef/>
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToPickUp'].invalid && submitted">
+                Por favor ingrese un dirección válido
+              </p>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >Dirección de entrega: </label>
               <input type="string" class="form-control" formControlName="addressToDrop" #addressToDropRef/>
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToDrop'].invalid && submitted">
+                Por favor ingrese un dirección válido
+              </p>
             </div>
           </div>
         </div>
@@ -64,9 +79,12 @@
         <div class="form-group">
           <h4>Datos de contacto </h4>
             <label class="control-label required" >Teléfono: </label>
-            <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+            <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+            <p style="color:red" class="error_message" *ngIf="postForm.controls['phoneNumber'].invalid && submitted">
+              Por favor ingrese un telefono válido
+            </p>
         </div>
         <button class="btn btn-default">Atras</button>
-        <button class="btn btn-primary" (click)="save()">Publicar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">Publicar</button>
       </form>
 </div>

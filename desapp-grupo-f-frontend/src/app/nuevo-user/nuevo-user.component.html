@@ -4,10 +4,12 @@
     <div class="form-group">
       <label for="cuilInput">CUIL/CUIT (sin guiones)</label>
       <input type="string" class="form-control" id="cuilInput" placeholder="20000000013" formControlName="cuil" [class.invalid]="usuario.controls['cuil'].invalid && usuario.controls['cuil'].dirty">
+      <p style="color:red" class="error_message" *ngIf="usuario.controls['cuil'].invalid && (usuario.controls.submitted || usuario.controls['cuil'].dirty)">Ingrese un número de CUIL válido</p>
     </div>
     <div class="form-group">
       <label for="nameInput">Nombre y apellido</label>
       <input type="string" class="form-control" id="nameInput" placeholder="Nombre completo" formControlName="name" [class.invalid]="usuario.controls['name'].invalid && usuario.controls['name'].dirty">
+      <p style="color:red" class="error_message" *ngIf="usuario.controls['name'].invalid && (usuario.controls.submitted || usuario.controls['name'].dirty)">El nombre de usuario debe tener al menos 4 letras</p>
     </div>
     <div class="form-group">
       <label for="addressInput">Direccion</label>
