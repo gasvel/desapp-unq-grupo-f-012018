@@ -41,7 +41,7 @@ import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.compo
     			component:PostsComponent
     		},
         {
-    			path:'post/:title',
+    			path:'post/:post',
     			component:PostDetailComponent
     		},
     		{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Router, ActivatedRoute } from '@angular/router';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,17 +14,15 @@ export class PostDetailComponent implements OnInit {
   post:any;
 
   constructor(
+    private service : PostService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog) {
-
   }
 
   ngOnInit() {
-    this.route
-      .queryParams
-        .subscribe(params => {
-          this.post = JSON.parse(params['post']);
+    this.route.params.subscribe((params) => {
+        this.post = JSON.parse(params['post']);
     });
   }
 
@@ -37,6 +36,13 @@ export class PostDetailComponent implements OnInit {
   }
 
   delete() {
+    /*this.service.delete(this.post.id).subscribe(
+      res => {
+          console.log(res);
+          this.router.navigate(['']);
+      },
+      error => console.log(error)
+    );*/
     this.router.navigate(['']);
   }
 

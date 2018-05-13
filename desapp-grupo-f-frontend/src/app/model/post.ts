@@ -1,5 +1,6 @@
 export class Post {
 
+  title: string;
   availability: string;
   typeVehicle: number;
   capacity:number;

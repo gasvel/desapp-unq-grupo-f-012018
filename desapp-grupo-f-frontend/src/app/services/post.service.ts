@@ -20,4 +20,12 @@ export class PostService {
   savePost(post):Observable<any> {
     return this.http.post(this.url + "/new",post)
   }
+
+  updatePost(post):Observable<any> {
+    return this.http.post(this.url + "/update",post)
+  }
+
+  delete(id):Observable<any> {
+    return this.http.delete(this.url + "/delete" + id)
+  }
 }

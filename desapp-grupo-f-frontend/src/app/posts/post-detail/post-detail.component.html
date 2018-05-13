@@ -15,9 +15,15 @@
           </div>
           <div class="col-sm-4">
             <h2>{{post.title}}</h2><br/>
-
-            <h4>Precio por dia: $500</h4>
-            <h4>Precio por hora: $100</h4><br/>
+            <div class="">
+              <span>Precio por dia: $</span>
+              <span>{{post.priceDay}}</span>
+            </div>
+            <div class="">
+              <span>Precio por hora: $</span>
+              <span>{{post.priceHour}}</span>
+            </div>
+            <br/>
             <h4>Dirección de retiro:</h4>
             <p > {{post.addressToPickUp}} </p><br/>
             <button class="btn btn-primary" (click)="rent()">Reservar</button>
