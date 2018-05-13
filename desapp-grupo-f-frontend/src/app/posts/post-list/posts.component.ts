@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -10,9 +11,11 @@ import { PostService } from '../../services/post.service';
 export class PostsComponent implements OnInit {
 
   posts= [];
-
-  constructor(private postServ: PostService){
   	
+  constructor(private route: ActivatedRoute,
+    private router: Router,private postServ: PostService
+    ){
+
   }
 
   ngOnInit() {
@@ -26,8 +29,9 @@ export class PostsComponent implements OnInit {
     )
   }
 
-  abrirPublicacion(){
-
+  viewPost(post) {
+    this.router.navigate(['post', post ]);
   }
+
 
 }

@@ -1,5 +1,6 @@
 export class Post {
 
+  title: string;
   availability: string;
   typeVehicle: number;
   capacity:number;
@@ -10,6 +11,7 @@ export class Post {
   priceDay: number;
   priceHour: number;
   phoneNumber: number;
+  username: string;
 
 	constructor() {
 	}

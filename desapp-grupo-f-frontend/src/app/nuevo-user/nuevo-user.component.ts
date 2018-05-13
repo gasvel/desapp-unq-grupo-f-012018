@@ -50,8 +50,7 @@ export class NuevoUserComponent implements OnInit {
   }
 
 
-  onSubmit(){
-    
+  onSubmit(){    
     this.userServ.saveUser(this.usuario.value).subscribe(
       res => {console.log(res);this.volverAtras()},
       error => console.log(error)

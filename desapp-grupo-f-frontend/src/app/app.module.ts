@@ -5,6 +5,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/post-list/posts.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 import { EjemploGmapsComponent } from './ejemplo-gmaps/ejemplo-gmaps.component';
 import { NuevoUserComponent } from './nuevo-user/nuevo-user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -13,6 +14,9 @@ import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 import { UsersService } from './services/users.service';
 import { PostService } from './services/post.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule, MatMenuModule} from "@angular/material";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.component'
 
 @NgModule({
   declarations: [
@@ -20,18 +24,28 @@ import { HttpClientModule } from '@angular/common/http';
     PostsComponent,
     EjemploGmapsComponent,
     NuevoUserComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostDetailComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
     GooglePlaceModule,
+    MatMenuModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
     NgxInputFileUploadModule,
     RouterModule.forRoot([
     		{
     			path:'posts',
     			component:PostsComponent
     		},
+        {
+    			path:'post/:post',
+    			component:PostDetailComponent
+    		},
     		{
+
     			path:'',
     			redirectTo:'/posts',
     			pathMatch:'full'
@@ -47,6 +61,10 @@ import { HttpClientModule } from '@angular/common/http';
         {
 					path:'newPost',
 					component:CreatePostComponent
+				},
+        {
+					path:'editPost/:post',
+					component:CreatePostComponent
 				}
 			]),
 			ReactiveFormsModule,
@@ -54,6 +72,7 @@ import { HttpClientModule } from '@angular/common/http';
 			HttpClientModule
   ],
   providers: [UsersService,PostService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent]
 })
 export class AppModule { }
