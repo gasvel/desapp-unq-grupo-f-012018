@@ -21,6 +21,6 @@
 			<list-index column="id"/>
 			<one-to-many class="model.Score"/>
 		</list>
-		<property name="state"/>
+		<property name="state" type="inegert"/>
 	</class>
 </hibernate-mapping>
