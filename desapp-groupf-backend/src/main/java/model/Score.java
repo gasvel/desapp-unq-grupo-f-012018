@@ -6,6 +6,11 @@ public class Score extends Entity{
 	private String description;
 	private Integer value;
 	
+	
+	public Score() {
+		
+	}
+	
 	public Score(String description) {
 		this.description = description;
 	}

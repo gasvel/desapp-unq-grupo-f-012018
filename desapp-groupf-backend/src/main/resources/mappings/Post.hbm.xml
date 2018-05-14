@@ -10,7 +10,12 @@
 		<property name="availability" />
 		<property name="priceDay" />
 		<property name="priceHour" />
-		<property name="typeVehicle" />
+		<property name="typeVehicle">
+			<type name="org.hibernate.type.EnumType">
+                <param name="enumClass">model.TypeVehicle</param>
+                <param name="useNamed">true</param>
+            </type>
+		</property>
 		<property name="capacity" />
 		<property name="description" />
 		<property name="photo" />

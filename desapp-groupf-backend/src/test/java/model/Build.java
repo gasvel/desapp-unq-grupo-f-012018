@@ -84,7 +84,7 @@ public class Build {
 		}
 		
 		public PostBuilder buildValidPost() {
-			aPost.setTypeVehicle(TypeVehicle.Auto);
+			aPost.setTypeVehicle(TypeVehicle.Car);
 			aPost.setAddressToDrop("Calle falsa 123");
 			aPost.setAddressToPickUp("Calle falsa 123");
 			aPost.setPhoneNumber("45689359");

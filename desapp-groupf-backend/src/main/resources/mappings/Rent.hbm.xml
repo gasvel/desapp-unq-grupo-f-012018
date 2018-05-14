@@ -11,7 +11,12 @@
 		<property name="startDate" />
 		<property name="endDate"/>
 		<property name="client"/>
-		<property name="state"/>
+		<property name="state">
+			<type name="org.hibernate.type.EnumType">
+                <param name="enumClass">model.Rent_State</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
 		<property name="PICK_UP_TIME"/>
 	</class>
 </hibernate-mapping>
