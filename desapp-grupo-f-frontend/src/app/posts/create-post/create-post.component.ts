@@ -94,25 +94,25 @@ export class CreatePostComponent implements OnInit {
   }
 
   updatePost(post){
-    /*this.service.updatePost(post).subscribe(
+    this.service.updatePost(post).subscribe(
       res => {
           console.log(res);
           this.router.navigate(['post', JSON.stringify(post)])
       },
       error => console.log(error)
-    );*/
-    this.router.navigate(['post', JSON.stringify(post)])
+    );
   }
 
   savePost(post){
-    /*this.service.savePost(post).subscribe(
+    console.log(post);
+    this.service.savePost(post).subscribe(
       res => {
           console.log(res);
           this.router.navigate(['']);
       },
       error => console.log(error)
-    );*/
-    this.router.navigate(['']);
+    );
+    //this.router.navigate(['']);
   }
 
   save(){
