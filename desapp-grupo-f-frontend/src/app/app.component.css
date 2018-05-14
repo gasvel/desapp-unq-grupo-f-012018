@@ -1,3 +1,9 @@
 .navbar{
     background-color: #B2DFDB;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Nunito', sans-serif
+}
