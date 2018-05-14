@@ -22,10 +22,10 @@ export class PostService {
   }
 
   updatePost(post):Observable<any> {
-    return this.http.post(this.url + "/update",post)
+    return this.http.post(this.url +'/'+ post.id + "/update", post)
   }
 
   delete(id):Observable<any> {
-    return this.http.delete(this.url + "/delete" + id)
+    return this.http.delete(this.url + "/delete/" + id)
   }
 }

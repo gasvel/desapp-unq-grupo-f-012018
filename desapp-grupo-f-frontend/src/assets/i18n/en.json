@@ -47,6 +47,8 @@
     "Nombre y apellido": "Name and surname",
     "Nombre completo": "Complete name",
     "Direccion": "Address",
-    "Aceptar": "Accept"
+    "Aceptar": "Accept",
+    "Distancia entre punto A y B": "Distance between point A and B",
+    "Duracion del viaje": "Trip duration"
 
 }

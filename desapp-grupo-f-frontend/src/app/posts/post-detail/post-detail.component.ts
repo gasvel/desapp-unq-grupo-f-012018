@@ -36,14 +36,13 @@ export class PostDetailComponent implements OnInit {
   }
 
   delete() {
-    /*this.service.delete(this.post.id).subscribe(
+    this.service.delete(this.post.id).subscribe(
       res => {
           console.log(res);
           this.router.navigate(['']);
       },
       error => console.log(error)
-    );*/
-    this.router.navigate(['']);
+    );
   }
 
   openDialog() {
