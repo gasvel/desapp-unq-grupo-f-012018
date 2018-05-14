@@ -4,23 +4,28 @@
     <a class="navbar-brand" routerLink="/posts" style="margin: auto;"><p style="float: left;"><img src="assets/img/CarPnDLogo1.png" width="30px" height="30px"> </p> <p style="font-family: Nunito, sans-serif;">  CarPnD</p></a>
 
     <form class="form-inline my-2 my-lg-0" style="margin: auto;position: center">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" size="50px">
+      <input class="form-control mr-sm-2" type="search" placeholder="{{'Buscar' | translate}}" aria-label="Search" size="50px">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>
       </button>
     </form>
 
     <ul class="navbar-nav mr-auto" style="margin: auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Iniciar sesion <i class="fas fa-user"></i></a>
+        <a class="nav-link" href="#">{{'Iniciar sesion' | translate}} <i class="fas fa-user"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/registro">Registrarse</a>
+        <a class="nav-link" routerLink="/registro">{{'Registrarse' | translate}}</a>
       </li>
       <li class="nav-item">
-      	<a class="nav-link" routerLink="/ejemploGMaps">Ejemplo GMaps</a>
+      	<a class="nav-link" routerLink="/ejemploGMaps">{{'Ejemplo GMaps' | translate}}</a>
       </li>
       <li class="nav-item">
-      	<a class="nav-link" routerLink="/newPost">Publicar</a>
+      	<a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
+      </li>
+      <li>
+        <a [routerLink]="" (click)="changeLang('es')"><img src="assets/img/es.svg" height="20px" width="25px"></a>
+        <span> | </span>
+        <a [routerLink]="" (click)="changeLang('en')"><img src="assets/img/gb.svg" height="20px" width="25px"></a>
       </li>
     </ul>
   </div>

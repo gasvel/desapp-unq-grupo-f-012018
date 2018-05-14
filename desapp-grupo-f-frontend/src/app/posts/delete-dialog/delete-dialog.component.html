@@ -1,10 +1,10 @@
-<h2  mat-dialog-title > Eliminar </h2>
+<h2  mat-dialog-title > {{'Eliminar' | translate}} </h2>
 
   <mat-dialog-content>
-      <p> Esta publicación se eliminará.</p>
+      <p> {{'Esta publicación se eliminará' | translate}}.</p>
   </mat-dialog-content>
 
   <mat-dialog-actions>
-      <button  class="btn btn-default" (click)="close() " >Cancelar</button>
-      <button  class="btn btn-primary" (click)="delete()" > Eliminar publicacíon </button>
+      <button  class="btn btn-default" (click)="close() " >{{'Cancelar' | translate}}</button>
+      <button  class="btn btn-primary" (click)="delete()" > {{'Eliminar publicacíon' | translate}} </button>
   </mat-dialog-actions>
