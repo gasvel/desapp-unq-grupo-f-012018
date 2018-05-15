@@ -11,11 +11,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PostsComponent implements OnInit {
 
   posts= [];
-  	
+
   constructor(private route: ActivatedRoute,
     private router: Router,private postServ: PostService
     ){
-
   }
 
   ngOnInit() {
@@ -30,8 +29,6 @@ export class PostsComponent implements OnInit {
   }
 
   viewPost(post) {
-    this.router.navigate(['post', JSON.stringify(post) ]);
+    this.router.navigate(['id', post.id ]);
   }
-
-
 }

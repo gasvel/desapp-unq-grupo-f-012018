@@ -49,7 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
     			component:PostsComponent
     		},
         {
-    			path:'post/:post',
+    			path:'post/:id',
     			component:PostDetailComponent
     		},
     		{
@@ -71,7 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
 					component:CreatePostComponent
 				},
         {
-					path:'editPost/:post',
+					path:'editPost/:id',
 					component:CreatePostComponent
 				}
 			]),
