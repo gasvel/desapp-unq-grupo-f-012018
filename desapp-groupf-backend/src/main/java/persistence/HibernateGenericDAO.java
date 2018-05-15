@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-import org.springframework.transaction.annotation.Transactional;
 
 public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport implements GenericRepository<T>, Serializable {
 
@@ -37,6 +36,7 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
 		this.getHibernateTemplate().delete(obj);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		List<T> find = (List<T>) this.getHibernateTemplate().find("from " + this.persistentClass.getName() + " o");
 		return find;

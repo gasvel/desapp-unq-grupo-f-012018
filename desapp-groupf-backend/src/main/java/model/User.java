@@ -1,16 +1,21 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class User extends Entity{
 	private static final long serialVersionUID = 5054708596541854955L;
+	private Integer id;
 	private String cuil;
 	private String address;
 	private String name;
 	private String email;
 	private String password;
-	private List<Post> posts;
+	private Set<Post> posts;
 	private List<Score> score;
 	private User_State state;
 	
@@ -20,14 +25,14 @@ public class User extends Entity{
 		this.name = name;
 		this.email=mail;
 		this.password = pass;
-		this.posts = new ArrayList<Post>();
+		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
 	}
 	
 	public User() {
 		this.state = User_State.REGULAR;
-		this.posts = new ArrayList<Post>();
+		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 	}
 	
@@ -88,11 +93,12 @@ public class User extends Entity{
 		this.email = email;
 	}
 
-	public List<Post> getPosts() {
+	@JsonIgnore
+	public Set<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<Post> posts) {
+	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
 
@@ -112,7 +118,18 @@ public class User extends Entity{
 		this.state = newState;
 	}
 
+
 	public String getPassword() {
 		return password;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 }

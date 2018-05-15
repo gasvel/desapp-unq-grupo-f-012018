@@ -5,17 +5,13 @@
 	default-cascade="save-update">
 	<class name="model.User" table="`user`">
 		<id column="ID" name="id">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="cuil" />
 		<property name="address" />
 		<property name="name"/>
 		<property name="email"/>
-		<list name="posts" lazy="false">
-			<key column="postID" />
-			<list-index column="id" />
-			<one-to-many class="model.Post" />
-		</list>
+
 		<list name="score" lazy="false">
 			<key column="scoreID" />
 			<list-index column="id"/>
@@ -27,5 +23,10 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
+        
+<set name="posts" lazy="false" cascade="all">
+        <key column="user_id"/>
+        <one-to-many class="model.Post"/>
+    </set>
 	</class>
 </hibernate-mapping>

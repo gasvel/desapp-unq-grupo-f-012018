@@ -13,5 +13,7 @@ public class PostRepository extends HibernateGenericDAO<Post> implements Generic
 	protected Class<Post> getDomainClass() {
 		return Post.class;
 	}
+	
+
 
 }

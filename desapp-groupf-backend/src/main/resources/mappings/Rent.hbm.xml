@@ -5,7 +5,7 @@
 	default-cascade="save-update">
 	<class name="model.Rent">
 		<id column="ID" name="id">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="cost" />
 		<property name="startDate" />

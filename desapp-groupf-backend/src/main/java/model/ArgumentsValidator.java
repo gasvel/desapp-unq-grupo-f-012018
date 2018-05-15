@@ -85,9 +85,9 @@ public class ArgumentsValidator {
 
 	public static void validateUser(User user) {
 
-		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwError();};
-		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwError();};
-		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwError();};
+		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwError();}
+		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwError();}
+		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwError();}
 		if(ArgumentsValidator.isInvalidFullName(user.getName())) {
 			throwError();
 		}
@@ -99,8 +99,9 @@ public class ArgumentsValidator {
 			throwError();
 		}
 		
+		//agregar photo location
 		if(ArgumentsValidator.isNullOrEmptyString(post.getAddressToDrop(),post.getAddressToPickUp(),post.getAvailability(),
-				post.getDescription(),post.getLocation(),post.getPhoneNumber(),post.getPhoto())) {
+				post.getDescription(),post.getPhoneNumber())) { 
 			throwError();
 		}
 		

@@ -18,7 +18,7 @@ export class PostService {
   }
 
   savePost(post):Observable<any> {
-    return this.http.post(this.url + "/new",post)
+    return this.http.post(this.url + "/1" + "/new",post)
   }
 
   updatePost(post):Observable<any> {

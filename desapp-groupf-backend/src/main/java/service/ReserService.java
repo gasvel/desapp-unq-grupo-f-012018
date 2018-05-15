@@ -32,7 +32,7 @@ public class ReserService extends GenericService<Reservation> {
 	
 	@Override
 	@Transactional
-	public Reservation getById(long id){
+	public Reservation getById(Integer id){
 		return super.getById(id);
 	}
 	

@@ -22,7 +22,8 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-        this.post = JSON.parse(params['post']);
+        let id = params['id'];
+        this.getPost(id);
     });
   }
 
@@ -30,9 +31,15 @@ export class PostDetailComponent implements OnInit {
     console.log('Rent');
   }
 
+  getPost(id) {
+    this.service.getPost(id).subscribe(
+      res => this.post = res,
+      error => console.log(error)
+    );
+  }
+
   edit() {
-    let postToEdit = JSON.stringify(this.post);
-    this.router.navigate(['editPost', postToEdit ]);
+    this.router.navigate(['editPost', this.post.id ]);
   }
 
   delete() {
@@ -46,16 +53,16 @@ export class PostDetailComponent implements OnInit {
   }
 
   openDialog() {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        const component = this;
-        const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const component = this;
+    const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
 
-        dialogRef.afterClosed().subscribe(data => {
-          if(data) {
-            component.delete()
-          }
-        });
-    }
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        component.delete()
+      }
+    });
+  }
 }
