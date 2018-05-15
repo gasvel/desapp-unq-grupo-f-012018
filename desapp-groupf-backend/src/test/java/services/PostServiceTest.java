@@ -10,6 +10,10 @@ import model.Build;
 import model.Post;
 import service.PostService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath*:/META-INF/spring-persistence-context.xml","classpath*:/META-INF/spring-service-context.xml"})
+@TransactionConfiguration(transactionManager="persistence.transactionManager",defaultRollback=true)
+@Transactional
 public class PostServiceTest {
 
 	
