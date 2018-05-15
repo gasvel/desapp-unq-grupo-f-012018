@@ -1,13 +1,10 @@
 package service;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
 import model.User;
+import persistence.UserRepository;
 
 public class UserService extends GenericService<User> {
 	
@@ -27,11 +24,9 @@ public class UserService extends GenericService<User> {
 		super.update(user);
 	}
 
-	@SuppressWarnings("deprecation")
+	@Transactional
 	public User getByEmail(String email) {
-		Session session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(User.class);
-		Criterion criterion = Restrictions.eq("email", email);
-		return (User) criteria.add(criterion).uniqueResult();
+		UserRepository userRep = (UserRepository) this.getRepository();
+		return userRep.getByEmail(email);
     }
 }

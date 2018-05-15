@@ -12,6 +12,7 @@ import { PostService } from '../../services/post.service';
 
 export class PostDetailComponent implements OnInit {
   post:any;
+  isFromUser:boolean = false;
 
   constructor(
     private service : PostService,
@@ -33,7 +34,7 @@ export class PostDetailComponent implements OnInit {
 
   getPost(id) {
     this.service.getPost(id).subscribe(
-      res => this.post = res,
+      res => {this.post = res; this.isFromUser = this.post.creator.id == localStorage.getItem("id");},
       error => console.log(error)
     );
   }
@@ -65,4 +66,10 @@ export class PostDetailComponent implements OnInit {
       }
     });
   }
+
+  logged(){
+    return localStorage.getItem("id") != null;
+  }
+
+
 }

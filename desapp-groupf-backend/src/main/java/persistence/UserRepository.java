@@ -1,6 +1,8 @@
 package persistence;
 
 import org.apache.log4j.Logger;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import model.User;
 
@@ -14,4 +16,10 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		return User.class;
 	}
 	
+	
+	public User getByEmail(String mail){
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
+	    criteria.add(Restrictions.eq("email", mail));
+		return (User) this.getHibernateTemplate().findByCriteria(criteria).get(0);
+	}
 }

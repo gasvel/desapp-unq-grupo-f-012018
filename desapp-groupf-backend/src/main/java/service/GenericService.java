@@ -2,16 +2,9 @@ package service;
 
 import java.io.Serializable;
 import java.util.List;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import model.Credential;
-import model.User;
 import persistence.GenericRepository;
 
 public class GenericService<T> implements Serializable {

@@ -25,7 +25,7 @@ export class LoginUserComponent implements OnInit {
         this.user = result;
         console.log(this.user);
         localStorage.setItem("id", this.user.id);
-        this.routerServ.navigate(['/posts', {id: this.user.id}]);
+        this.routerServ.navigate(['/posts']);
       },
       error => {
         console.log(error);

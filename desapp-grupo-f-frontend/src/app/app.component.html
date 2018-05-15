@@ -10,18 +10,19 @@
     </form>
 
     <ul class="navbar-nav mr-auto" style="margin: auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">{{'Iniciar sesion' | translate}} <i class="fas fa-user"></i></a>
+        <li class="nav-item" *ngIf="logged()">
+            <a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
+          </li>
+      <li class="nav-item" *ngIf="!logged()">
+        <a class="nav-link" routerLink="/login">{{'Iniciar sesion' | translate}} <i class="fas fa-user"></i></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!logged()">
         <a class="nav-link" routerLink="/registro">{{'Registrarse' | translate}}</a>
       </li>
       <!--<li class="nav-item">
       	<a class="nav-link" routerLink="/ejemploGMaps">{{'Ejemplo GMaps' | translate}}</a>
       </li>-->
-      <li class="nav-item">
-      	<a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
-      </li>
+      
       <li>
         <a [routerLink]="" (click)="changeLang('es')"><img src="assets/img/es.svg" height="20px" width="25px"></a>
         <span> | </span>

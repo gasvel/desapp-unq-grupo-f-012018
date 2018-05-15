@@ -12,12 +12,8 @@ import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Credential;
-
-
-
 import model.User;
 import service.UserService;
 
@@ -82,7 +78,7 @@ public class UserRest {
 		if(user == null) {
 			throw new RuntimeException("No existe usuario con ese username");
 		}
-		if(user.getPassword() != cred.password) {
+		if(!user.getPassword().equals(cred.password)) {
 			throw new RuntimeException("Password incorrecto");
 		}
 		

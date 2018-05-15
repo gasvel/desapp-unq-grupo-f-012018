@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import model.ArgumentsValidator;
-import model.Post;
 import model.Reservation;
 
 public class ReserService extends GenericService<Reservation> {

@@ -11,6 +11,7 @@
 		<property name="address" />
 		<property name="name"/>
 		<property name="email"/>
+		<property name="password"/>
 
 		<list name="score" lazy="false">
 			<key column="scoreID" />

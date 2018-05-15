@@ -17,4 +17,8 @@ export class AppComponent {
   changeLang(lang){
     this.translateService.use(lang);
   }
+
+  logged(){
+    return localStorage.getItem("id") != null;
+  }
 }
