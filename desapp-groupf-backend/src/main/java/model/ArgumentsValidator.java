@@ -85,9 +85,9 @@ public class ArgumentsValidator {
 
 	public static void validateUser(User user) {
 
-		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwError();};
-		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwError();};
-		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwError();};
+		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwError();}
+		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwError();}
+		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwError();}
 		if(ArgumentsValidator.isInvalidFullName(user.getName())) {
 			throwError();
 		}

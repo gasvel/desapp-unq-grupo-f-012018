@@ -12,10 +12,10 @@ import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Post;
 import service.PostService;
+import service.UserService;
 
 @Path("/posts")
 @CrossOriginResourceSharing(allowAllOrigins = true)
@@ -24,6 +24,7 @@ public class PostRest {
 	public static final int NUMBER_OF_POSTS = 10;
 	
 	private PostService postService;
+	private UserService userService;
 	
 	
 	@GET
@@ -36,9 +37,10 @@ public class PostRest {
 	}
 	
 	@POST
-	@Path("/new")
+	@Path("{id}/new")
 	@Produces("application/json")
-	public void newPost(@RequestBody Post post){
+	public void newPost(@RequestBody Post post,@PathParam("id") final Integer id){
+		post.setCreator(this.userService.getById(id));
 		this.postService.save(post);
 	}
 	
@@ -67,5 +69,11 @@ public class PostRest {
 	public void setPostService(final PostService postSer) {
 		postService = postSer;
 	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 public class Post extends Entity{
 	
 	private static final long serialVersionUID = -773835182887417591L;
+	private Integer id;
 	private List<Reservation> reservations;
 	private List<Rent> rents;
 	private String title;
@@ -208,6 +209,16 @@ public class Post extends Entity{
 	public void setCreator(User creator) {
 		this.creator = creator;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 	

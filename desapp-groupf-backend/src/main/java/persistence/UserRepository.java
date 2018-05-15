@@ -13,5 +13,7 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 	protected Class<User> getDomainClass() {
 		return User.class;
 	}
+	
+
 
 }

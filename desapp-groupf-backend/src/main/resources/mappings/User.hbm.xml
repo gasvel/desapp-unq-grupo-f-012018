@@ -5,7 +5,7 @@
 	default-cascade="save-update">
 	<class name="model.User" table="`user`">
 		<id column="ID" name="id">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="cuil" />
 		<property name="address" />

@@ -5,8 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class User extends Entity{
 	private static final long serialVersionUID = 5054708596541854955L;
+	private Integer id;
 	private String cuil;
 	private String address;
 	private String name;
@@ -88,6 +91,7 @@ public class User extends Entity{
 		this.email = email;
 	}
 
+	@JsonIgnore
 	public Set<Post> getPosts() {
 		return posts;
 	}
@@ -111,4 +115,14 @@ public class User extends Entity{
 	public void setState(User_State newState) {
 		this.state = newState;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 }
