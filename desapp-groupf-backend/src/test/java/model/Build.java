@@ -94,6 +94,7 @@ public class Build {
 			aPost.setPhoto("autito.jpg");
 			aPost.setPriceDay(20);
 			aPost.setPriceHour(2);
+			aPost.setDescription("descripcion alv");
 			
 			return this;
 		}
