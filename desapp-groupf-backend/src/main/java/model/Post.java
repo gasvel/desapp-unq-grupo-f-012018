@@ -9,6 +9,7 @@ public class Post extends Entity{
 	private static final long serialVersionUID = -773835182887417591L;
 	private List<Reservation> reservations;
 	private List<Rent> rents;
+	private String title;
 	private String availability;
 	private Integer priceDay;
 	private Integer priceHour;
@@ -22,8 +23,9 @@ public class Post extends Entity{
 	private String addressToPickUp;
 	
 	public Post(VehicleInfo vehicleInfo, UserInfo userInfo, 
-		String availability, Integer priceH,Integer priceD) {
+		String availability, Integer priceH,Integer priceD, String title) {
 		
+		this.title = title;
 		this.typeVehicle = vehicleInfo.getTypeVehicle();
 		this.capacity = vehicleInfo.getCapacity();
 		this.description = vehicleInfo.getDescription();

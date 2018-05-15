@@ -7,6 +7,7 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
+		<property name="title" />
 		<property name="availability" />
 		<property name="priceDay" />
 		<property name="priceHour" />
