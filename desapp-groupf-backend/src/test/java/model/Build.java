@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Blob;
 import java.util.List;
 
 public class Build {

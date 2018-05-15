@@ -99,8 +99,9 @@ public class ArgumentsValidator {
 			throwError();
 		}
 		
+		//agregar photo location
 		if(ArgumentsValidator.isNullOrEmptyString(post.getAddressToDrop(),post.getAddressToPickUp(),post.getAvailability(),
-				post.getDescription(),post.getLocation(),post.getPhoneNumber(),post.getPhoto())) {
+				post.getDescription(),post.getPhoneNumber())) { 
 			throwError();
 		}
 		

@@ -54,6 +54,14 @@ public class Post extends Entity{
 		this.capacity = capacity;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public String getLocation() {
 		return location;
 	}

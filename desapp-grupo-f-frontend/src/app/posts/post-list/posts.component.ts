@@ -29,6 +29,6 @@ export class PostsComponent implements OnInit {
   }
 
   viewPost(post) {
-    this.router.navigate(['id', post.id ]);
+    this.router.navigate(['post', post.id ]);
   }
 }
