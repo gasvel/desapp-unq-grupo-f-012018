@@ -20,6 +20,7 @@ import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.compo
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EditarUserComponent } from './editar-user/editar-user.component';
+import { LoginUserComponent } from './login-user/login-user.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +35,8 @@ export function createTranslateLoader(http: HttpClient) {
     CreatePostComponent,
     PostDetailComponent,
     DeleteDialogComponent,
-    EditarUserComponent
+    EditarUserComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,10 @@ export function createTranslateLoader(http: HttpClient) {
         {
 					path:'editPost/:post',
 					component:CreatePostComponent
+				},
+				{
+					path:'login',
+					component: LoginUserComponent
 				}
 			]),
 			TranslateModule.forRoot({

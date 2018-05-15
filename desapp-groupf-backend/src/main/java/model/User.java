@@ -9,15 +9,17 @@ public class User extends Entity{
 	private String address;
 	private String name;
 	private String email;
+	private String password;
 	private List<Post> posts;
 	private List<Score> score;
 	private User_State state;
 	
-	public User(String cuil, String address, String name,String mail) {
+	public User(String cuil, String address, String name,String mail, String pass) {
 		this.cuil = cuil;
 		this.address = address;
 		this.name = name;
 		this.email=mail;
+		this.password = pass;
 		this.posts = new ArrayList<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
@@ -108,5 +110,9 @@ public class User extends Entity{
 	
 	public void setState(User_State newState) {
 		this.state = newState;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }
