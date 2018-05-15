@@ -6,8 +6,12 @@ cache:
 jdk:
   - oraclejdk8
 
-ignore:
-  - desapp-groupf-backend/src/test/java/services/*
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE d4sd0fn020bobf;" -U postgres
+  - psql -c "CREATE USER akjkjapmietxtl WITH PASSWORD '27fd4d689d4312e4bbe99e5158e127323bf73d60ffdc7f3450074bc999037d8c';" -U postgres
+
 script: 
   - cd desapp-groupf-backend 
   - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
