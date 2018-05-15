@@ -13,7 +13,7 @@ import { PostService } from '../../services/post.service';
 export class CreatePostComponent implements OnInit {
   isSave:boolean = true;
   imagePost:any = "assets/img/no-image.jpg";
-  typeOptions:any = ["Moto", "Camioneta", "Auto", "Furgoneta"];
+  typeOptions:any = ["Car", "Motorcycle", "Van", "Pickup"];
   capacityOptions:any = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
   @ViewChild(NgxInputFileUploadComponent)
 
@@ -56,9 +56,7 @@ export class CreatePostComponent implements OnInit {
       let isEdit = Object.keys(params).length === 1;
       if(isEdit) {
         this.isSave = false;
-        this.post = JSON.parse(params['post']);
-        this.NgxInputFileUploadComponent.imageSrc = this.post.photo;
-        this.setPostForm();
+        this.getPost(params['id']);
       }
       else {
         this.post = { "id":"", "title":"", "typeVehicle":"Auto", "description":"", "availability":"",
@@ -67,6 +65,17 @@ export class CreatePostComponent implements OnInit {
         this.setPostForm();
       }
     });
+  }
+
+  getPost(id) {
+    this.service.getPost(id).subscribe(
+      res => {
+        this.post = res;
+        this.NgxInputFileUploadComponent.imageSrc = this.post.photo;
+        this.setPostForm();
+      },
+      error => console.log(error)
+    );
   }
 
   setPostForm() {
@@ -97,7 +106,7 @@ export class CreatePostComponent implements OnInit {
     this.service.updatePost(post).subscribe(
       res => {
           console.log(res);
-          this.router.navigate(['post', JSON.stringify(post)])
+          this.router.navigate(['post', post.id])
       },
       error => console.log(error)
     );
@@ -112,13 +121,12 @@ export class CreatePostComponent implements OnInit {
       },
       error => console.log(error)
     );
-    //this.router.navigate(['']);
   }
 
   save(){
     console.log(this.postForm.valid);
     if(this.postForm.valid) {
-      let post = this.getPost();
+      let post = this.getPostToSave();
       if(this.isSave) {
         this.savePost(post);
       }
@@ -128,7 +136,7 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-  getPost() {
+  getPostToSave() {
     let post = new Post();
     post.title = this.postForm.get('postTitle').value;
     post.availability = this.postForm.get('availability').value;
@@ -153,7 +161,7 @@ export class CreatePostComponent implements OnInit {
       this.router.navigate(['']);
     }
     else {
-      this.router.navigate(['post', JSON.stringify(this.post)]);
+      this.router.navigate(['post', this.post.id]);
     }
   }
 }

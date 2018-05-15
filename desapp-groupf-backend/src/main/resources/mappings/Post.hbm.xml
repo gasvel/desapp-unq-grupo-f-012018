@@ -7,6 +7,7 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
+		<property name="title" />
 		<property name="availability" />
 		<property name="priceDay" />
 		<property name="priceHour" />
@@ -18,7 +19,7 @@
 		</property>
 		<property name="capacity" />
 		<property name="description" />
-		<property name="photo" />
+		<property name="photo" length='10000000'/>
 		<property name="location" />
 		<property name="phoneNumber" />
 		<property name="addressToDrop" />
