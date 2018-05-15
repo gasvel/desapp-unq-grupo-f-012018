@@ -32,6 +32,7 @@ public class PostServiceTest {
 	@Test
 	public void saveANewValidPostAndSinceDBHas4PostNowShouldHave5() {
 		Post newPost = Build.aPost().buildValidPost().build();
+		newPost.setCreator(Build.anUser().valid().build());
 		this.postServ.save(newPost);
 		assertEquals(5,this.postServ.retriveAll().size());
 	}
