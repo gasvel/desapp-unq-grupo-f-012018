@@ -23,7 +23,26 @@ export class CreatePostComponent implements OnInit {
   activeColor: string = '#3366CC';
   submitted:boolean = false;
   post:any;
-  postForm : FormGroup;
+  postForm : FormGroup = this.formBuilder.group({
+    postTitle: new FormControl('' ,Validators.compose([
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(50)
+    ])),
+    availability: new FormControl('' ,Validators.required),
+    typeOption: new FormControl('' ,Validators.required),
+    capacity: new FormControl('' ,Validators.required),
+    addressToPickUp: new FormControl('' ,Validators.required),
+    addressToDrop: new FormControl('' ,Validators.required),
+    description: new FormControl('',Validators.required),
+    priceDay: new FormControl('',Validators.required),
+    priceHour: new FormControl('' ,Validators.required),
+    phoneNumber: new FormControl('' ,Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(15)
+    ])),
+  });
 
   constructor(
     private service : PostService,
@@ -60,7 +79,7 @@ export class CreatePostComponent implements OnInit {
       }
       else {
         this.post = { "id":"", "title":"", "typeVehicle":"Auto", "description":"", "availability":"",
-                    "photo":"","username":"", "capacity":"5", "addressToPickUp":"", "addressToDrop":"",
+                    "photo":"", "capacity":"5", "addressToPickUp":"", "addressToDrop":"",
                     "priceDay":"", "priceHour":"", "phoneNumber":""};
         this.setPostForm();
       }
@@ -71,6 +90,7 @@ export class CreatePostComponent implements OnInit {
     this.service.getPost(id).subscribe(
       res => {
         this.post = res;
+        console.log(this.post);
         this.NgxInputFileUploadComponent.imageSrc = this.post.photo;
         this.setPostForm();
       },
@@ -137,19 +157,19 @@ export class CreatePostComponent implements OnInit {
   }
 
   getPostToSave() {
-    let post = new Post();
-    post.title = this.postForm.get('postTitle').value;
-    post.availability = this.postForm.get('availability').value;
-    post.description = this.postForm.get('description').value;
-    post.typeVehicle = this.postForm.get('typeOption').value;
-    post.capacity = this.postForm.get('capacity').value;
-    post.priceDay = this.postForm.get('priceDay').value;
-    post.priceHour = this.postForm.get('priceHour').value;
-    post.phoneNumber = this.postForm.get('phoneNumber').value;
-    post.addressToPickUp = this.postForm.get('addressToPickUp').value;
-    post.addressToDrop = this.postForm.get('addressToDrop').value;
-    post.photo = this.NgxInputFileUploadComponent.imageSrc;
-    return post;
+    this.post.creator = null;
+    this.post.title = this.postForm.get('postTitle').value;
+    this.post.availability = this.postForm.get('availability').value;
+    this.post.description = this.postForm.get('description').value;
+    this.post.typeVehicle = this.postForm.get('typeOption').value;
+    this.post.capacity = this.postForm.get('capacity').value;
+    this.post.priceDay = this.postForm.get('priceDay').value;
+    this.post.priceHour = this.postForm.get('priceHour').value;
+    this.post.phoneNumber = this.postForm.get('phoneNumber').value;
+    this.post.addressToPickUp = this.postForm.get('addressToPickUp').value;
+    this.post.addressToDrop = this.postForm.get('addressToDrop').value;
+    this.post.photo = this.NgxInputFileUploadComponent.imageSrc;
+    return this.post;
   }
 
   onSubmit() {

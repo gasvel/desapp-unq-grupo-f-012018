@@ -39,6 +39,6 @@
         class="model.User" 
         column="user_id"
         lazy="false"
-        not-null="true"/> 
+        not-null="true" cascade="none"/> 
         	</class>
 </hibernate-mapping>

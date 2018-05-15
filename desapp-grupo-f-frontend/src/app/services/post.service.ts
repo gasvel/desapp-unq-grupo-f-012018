@@ -22,7 +22,7 @@ export class PostService {
   }
 
   updatePost(post):Observable<any> {
-    return this.http.post(this.url +'/'+ post.id + "/update", post)
+    return this.http.put(this.url +'/'+ localStorage.getItem("id") + "/update", post)
   }
 
   delete(id):Observable<any> {

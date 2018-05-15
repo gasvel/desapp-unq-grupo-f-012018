@@ -14,6 +14,7 @@ import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import model.Post;
+import model.User;
 import service.PostService;
 import service.UserService;
 
@@ -45,9 +46,11 @@ public class PostRest {
 	}
 	
 	@PUT
-	@Path("/{id}/update")
+	@Path("{id}/update")
 	@Produces("application/json")
-    public void updatePost(@PathParam("id") long id,@RequestBody Post post){
+    public void updatePost(@PathParam("id") Integer id,@RequestBody Post post){
+		User creator = this.userService.getById(id);
+		post.setCreator(creator);
 		this.postService.update(post);
 	}
 	   

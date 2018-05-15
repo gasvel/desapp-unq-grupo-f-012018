@@ -4,12 +4,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.Build;
 import model.Post;
 import service.PostService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath*:/META-INF/spring-persistence-context.xml","classpath*:/META-INF/spring-service-context.xml"})
+@TransactionConfiguration(transactionManager="persistence.transactionManager",defaultRollback=true)
+@Transactional
 public class PostServiceTest {
 
 	
