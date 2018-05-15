@@ -5,9 +5,9 @@
       <input type="text" class="form-control" id="inputEmail" placeholder="Ingresa tu email" [(ngModel)]="credential.email" name="email">
     </div>
     <div class="form-group">
-      <label for="inputPassword">Password</label>
+      <label for="inputPassword">{{'Password' | translate}}</label>
       <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" [(ngModel)]="credential.password" name="password">
     </div>
-    <button (click)="onSubmit()" class="btn btn-primary">Ingresar</button>
+    <button (click)="onSubmit()" class="btn btn-primary">{{'Ingresar' | translate}}</button>
   </form>
 </div>

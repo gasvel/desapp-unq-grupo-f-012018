@@ -49,6 +49,8 @@
     "Direccion": "Address",
     "Aceptar": "Accept",
     "Distancia entre punto A y B": "Distance between point A and B",
-    "Duracion del viaje": "Trip duration"
+    "Duracion del viaje": "Trip duration",
+    "Ingresar": "Enter",
+    "Contraseña": "Password"
 
 }
