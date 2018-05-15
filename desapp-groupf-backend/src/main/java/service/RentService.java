@@ -33,7 +33,7 @@ public class RentService extends GenericService<Rent> {
 	
 	@Override
 	@Transactional
-	public Rent getById(long id){
+	public Rent getById(Integer id){
 		return super.getById(id);
 	}
 	

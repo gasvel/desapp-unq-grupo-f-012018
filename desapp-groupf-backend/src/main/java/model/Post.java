@@ -20,6 +20,7 @@ public class Post extends Entity{
 	private String phoneNumber;
 	private String addressToDrop;
 	private String addressToPickUp;
+	private User creator;
 	
 	public Post(VehicleInfo vehicleInfo, UserInfo userInfo, 
 		String availability, Integer priceH,Integer priceD) {
@@ -189,5 +190,15 @@ public class Post extends Entity{
 		}
 		return false;
 	}
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public void setCreator(User creator) {
+		this.creator = creator;
+	}
+	
+	
 	
 }

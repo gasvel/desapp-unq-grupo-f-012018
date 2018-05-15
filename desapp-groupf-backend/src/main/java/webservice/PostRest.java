@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
@@ -44,14 +45,14 @@ public class PostRest {
 	@PUT
 	@Path("/{id}/update")
 	@Produces("application/json")
-    public void updatePost(@RequestParam("id") long id,@RequestBody Post post){
+    public void updatePost(@PathParam("id") long id,@RequestBody Post post){
 		this.postService.update(post);
 	}
 	   
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces("application/json")
-	public void deletePost(@RequestParam("id") long id){
+	public void deletePost(@PathParam("id") Integer id){
 		Post postToDelete = this.postService.getById(id);
 		this.postService.delete(postToDelete);
 	}
@@ -59,7 +60,7 @@ public class PostRest {
 	@GET
 	@Path("/post/{id}")
 	@Produces("application/json")
-	public Post getPost(@RequestParam("id") long id){
+	public Post getPost(@PathParam("id") Integer id){
 		return this.postService.getById(id);
 	}
 

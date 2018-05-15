@@ -42,7 +42,7 @@ public class GenericService<T> implements Serializable {
     }
     
     @Transactional
-    public T getById(long id){
+    public T getById(Integer id){
     	return this.getRepository().findById(id);
     }
 

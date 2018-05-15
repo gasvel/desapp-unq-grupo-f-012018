@@ -33,7 +33,7 @@ public class PostService extends GenericService<Post>{
 	
 	@Override
 	@Transactional
-	public Post getById(long id){
+	public Post getById(Integer id){
 		return super.getById(id);
 	}
 	

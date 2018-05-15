@@ -33,5 +33,10 @@
 			<list-index column="id" />
 			<one-to-many class="model.Rent" />
 		</list>
-	</class>
+		
+   <!--   <many-to-one name="creator" 
+        class="model.User" 
+        column="user_id"
+        not-null="true"/> -->
+        	</class>
 </hibernate-mapping>

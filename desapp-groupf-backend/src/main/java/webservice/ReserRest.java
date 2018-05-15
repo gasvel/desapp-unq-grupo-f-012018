@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
@@ -47,7 +48,7 @@ public class ReserRest {
 	@PUT
 	@Path("/{id}/update")
 	@Produces("application/json")
-    public void updateReser(@RequestParam("id") long id,@RequestBody Reservation reser, @RequestBody Post post){
+    public void updateReser(@PathParam("id") Integer id,@RequestBody Reservation reser, @RequestBody Post post){
 		ArgumentsValidator.validateReserv(reser, post);
 		this.reserService.update(reser);
 	}
@@ -55,7 +56,7 @@ public class ReserRest {
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces("application/json")
-	public void deleteReser(@RequestParam("id") long id){
+	public void deleteReser(@PathParam("id") Integer id){
 		Reservation reserToDelete = this.reserService.getById(id);
 		this.reserService.delete(reserToDelete);
 	}
@@ -63,7 +64,7 @@ public class ReserRest {
 	@GET
 	@Path("/reservation/{id}")
 	@Produces("application/json")
-	public Reservation getReser(@RequestParam("id") long id){
+	public Reservation getReser(@PathParam("id") Integer id){
 		return this.reserService.getById(id);
 	}
 

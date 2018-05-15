@@ -7,11 +7,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import model.User;
 import service.UserService;
 
@@ -45,14 +47,14 @@ public class UserRest {
    @PUT
    @Path("/{id}/update")
    @Produces("application/json")
-   public void updateUser(@RequestParam("id") long id,@RequestBody User user){
+   public void updateUser(@PathParam("id") Integer id,@RequestBody User user){
 	   this.userService.update(user);
    }
    
    @DELETE
    @Path("/delete/{id}")
    @Produces("application/json")
-   public void deleteUser(@RequestParam("id") long id){
+   public void deleteUser(@PathParam("id") Integer id){
 	   User savedUser = this.userService.getById(id);
 	   this.userService.delete(savedUser);
    }
@@ -60,7 +62,7 @@ public class UserRest {
    @GET
    @Path("/user/{id}")
    @Produces("application/json")
-   public User getUser(@RequestParam("id") long id){
+   public User getUser(@PathParam("id") final Integer id){
 	   return this.userService.getById(id);
    }
 

@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User extends Entity{
 	private static final long serialVersionUID = 5054708596541854955L;
@@ -9,7 +11,7 @@ public class User extends Entity{
 	private String address;
 	private String name;
 	private String email;
-	private List<Post> posts;
+	private Set<Post> posts;
 	private List<Score> score;
 	private User_State state;
 	
@@ -18,14 +20,14 @@ public class User extends Entity{
 		this.address = address;
 		this.name = name;
 		this.email=mail;
-		this.posts = new ArrayList<Post>();
+		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
 	}
 	
 	public User() {
 		this.state = User_State.REGULAR;
-		this.posts = new ArrayList<Post>();
+		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 	}
 	
@@ -86,11 +88,11 @@ public class User extends Entity{
 		this.email = email;
 	}
 
-	public List<Post> getPosts() {
+	public Set<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<Post> posts) {
+	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
 
