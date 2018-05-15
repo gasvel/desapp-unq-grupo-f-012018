@@ -5,6 +5,9 @@ cache:
     - $HOME/.m2
 jdk:
   - oraclejdk8
+
+ignore:
+  - desapp-groupf-backend/src/test/java/services/*
 script: 
   - cd desapp-groupf-backend 
   - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
