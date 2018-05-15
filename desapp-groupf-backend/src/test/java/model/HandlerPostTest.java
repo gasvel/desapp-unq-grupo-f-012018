@@ -31,7 +31,7 @@ public class HandlerPostTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidLocationItShouldThrowIllegalArgumentException() {		
 		Post post= Build.aPost().buildValidPost().build();
-		post.setLocation("");
+		post.setDescription(null);;
 		handler.newPost(post, owner);
 	}
 	
@@ -56,12 +56,7 @@ public class HandlerPostTest {
 		handler.newPost(post, owner);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void ifAPostIsCreatedWithInvalidPhotoItShouldThrowIllegalArgumentException() {		
-		Post post= Build.aPost().buildValidPost().build();
-		post.setPhoto(null);
-		handler.newPost(post, owner);
-	}
+
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidPriceItShouldThrowIllegalArgumentException() {		
