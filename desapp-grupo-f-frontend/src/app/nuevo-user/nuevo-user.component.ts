@@ -25,6 +25,7 @@ export class NuevoUserComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(50)
     ])),
+    password: new FormControl(''),
     email: new FormControl('',Validators.compose([
       Validators.pattern(this.EMAIL_REGEXP),
       Validators.required
@@ -51,6 +52,7 @@ export class NuevoUserComponent implements OnInit {
 
 
   onSubmit(){    
+    this.usuario.controls.password.setValue("1234");
     this.userServ.saveUser(this.usuario.value).subscribe(
       res => {console.log(res);this.volverAtras()},
       error => console.log(error)

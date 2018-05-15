@@ -31,9 +31,27 @@ export class EditarUserComponent implements OnInit {
     ]))
   });
 
+  oldUser:any;
+
   constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(){
+    this.userServ.getUser(localStorage.getItem("id")).subscribe(
+      res => {console.log(res);this.setUsuario(res)},
+      error => console.log(error)
+    );;
+  }
+
+  setUsuario(res){
+    this.oldUser= res;
+    this.usuario.controls.cuil.setValue(res.cuil);
+    this.usuario.controls.address.setValue(res.address);
+    this.usuario.controls.name.setValue(res.name);
+    this.usuario.controls.email.setValue( res.email);
   }
 
   volverAtras(){
@@ -48,9 +66,18 @@ export class EditarUserComponent implements OnInit {
     return (invalid || (!(this.usuario.dirty)));
   }
 
+  setFinalUser(){
+    this.oldUser.cuil = this.usuario.controls.cuil.value;
+    this.oldUser.name = this.usuario.controls.name.value;
+    this.oldUser.email = this.usuario.controls.email.value;
+    this.oldUser.address = this.usuario.controls.address.value;
+    console.log(this.oldUser);
+    return this.oldUser;
+  }
+
 
   onSubmit(){    
-    this.userServ.saveUser(this.usuario.value).subscribe(
+    this.userServ.updateUser(this.setFinalUser()).subscribe(
       res => {console.log(res);this.volverAtras()},
       error => console.log(error)
     );

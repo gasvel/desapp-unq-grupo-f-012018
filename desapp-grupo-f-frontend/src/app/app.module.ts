@@ -69,6 +69,11 @@ export function createTranslateLoader(http: HttpClient) {
 					path:'registro',
 					component:NuevoUserComponent
 				},
+				{
+					path:'editUser',
+					component:EditarUserComponent
+				}
+				,
         {
 					path:'newPost',
 					component:CreatePostComponent
