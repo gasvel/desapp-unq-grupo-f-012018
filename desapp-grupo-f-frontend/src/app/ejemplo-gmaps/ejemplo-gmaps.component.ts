@@ -1,4 +1,5 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { } from '@types/googlemaps';
 
 @Component({
@@ -13,7 +14,7 @@ export class EjemploGmapsComponent implements OnInit {
 	  distancia:String;
 	  duracion:String;
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
   }
 
   ngOnInit() {

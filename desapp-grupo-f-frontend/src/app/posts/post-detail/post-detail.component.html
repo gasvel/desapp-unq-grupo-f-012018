@@ -4,8 +4,8 @@
       <div align="right">
         <button mat-button [matMenuTriggerFor]="menu"><i class="fa fa-bars"></i></button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="edit()">Editar</button>
-          <button mat-menu-item (click)="openDialog()">Eliminar</button>
+          <button mat-menu-item (click)="edit()">{{'Editar' | translate}}</button>
+          <button mat-menu-item (click)="openDialog()">{{'Eliminar' | translate}}</button>
         </mat-menu>
       </div>
       <div>
@@ -16,47 +16,47 @@
           <div class="col-sm-4">
             <h2>{{post.title}}</h2><br/>
             <div class="">
-              <span>Precio por dia: $</span>
+              <span>{{'Precio por dia' | translate}}: $</span>
               <span>{{post.priceDay}}</span>
             </div>
             <div class="">
-              <span>Precio por hora: $</span>
+              <span>{{'Precio por hora' | translate}}: $</span>
               <span>{{post.priceHour}}</span>
             </div>
             <br/>
-            <h4>Dirección de retiro:</h4>
+            <h4>{{'Dirección de retiro' | translate}}:</h4>
             <p > {{post.addressToPickUp}} </p><br/>
-            <button class="btn btn-primary" (click)="rent()">Reservar</button>
+            <button class="btn btn-primary" (click)="rent()">{{'Reservar' | translate}}</button>
           </div>
         </div>
     		<div >
           <br/>
-          <h3>Descripcíon del vehiculo</h3>
+          <h3>{{'Descripcíon del vehiculo' | translate}}</h3>
           <p class="card-text">{{post.description}}</p>
           <div class="">
-            <span>Tipo de vehículo:</span>
+            <span>{{'Tipo de vehículo' | translate}}:</span>
             <span>{{post.capacity}}</span>
           </div>
           <div class="">
-            <span>Capacidad:</span>
+            <span>{{'Capacidad' | translate}}:</span>
             <span>{{post.typeVehicle}}</span>
           </div>
           <div class="">
-            <span>Disponibilidad:</span>
+            <span>{{'Disponibilidad' | translate}}:</span>
             <span>{{post.availability}}</span>
           </div>
           <div class="">
-            <span>Direccion de devolucion:</span>
+            <span>{{'Direccion de devolucion' | translate}}:</span>
             <span>{{post.addressToDrop}}</span>
           </div>
           <br/>
-          <h3>Contacto</h3>
+          <h3>{{'Contacto' | translate}}</h3>
           <div class="">
-            <span>Usuario:</span>
-            <span>{{post.username}}</span><br/>
+            <span>{{'Usuario' | translate}}:</span>
+            <span>{{post.postid}}</span><br/>
           </div>
           <div class="">
-            <span>Teléfono:</span>
+            <span>{{'Teléfono' | translate}}:</span>
             <span>{{post.phoneNumber}}</span><br/><br/>
           </div>
     		</div>

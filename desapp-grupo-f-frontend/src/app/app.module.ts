@@ -13,10 +13,17 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 import { UsersService } from './services/users.service';
 import { PostService } from './services/post.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MatMenuModule} from "@angular/material";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.component'
+import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { EditarUserComponent } from './editar-user/editar-user.component';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +33,8 @@ import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.compo
     NuevoUserComponent,
     CreatePostComponent,
     PostDetailComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    EditarUserComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,13 @@ import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.compo
 					component:CreatePostComponent
 				}
 			]),
+			TranslateModule.forRoot({
+				loader: {
+					provide: TranslateLoader,
+					useFactory: (createTranslateLoader),
+					deps: [HttpClient]
+				}
+			}),
 			ReactiveFormsModule,
 			FormsModule,
 			HttpClientModule

@@ -24,13 +24,13 @@ export class PostsComponent implements OnInit {
 
   traerPosts(){
     this.postServ.getAll().subscribe(
-      res => this.posts = res,
+      res => {console.log(res);this.posts = res;},
       error => console.log(error)
     )
   }
 
   viewPost(post) {
-    this.router.navigate(['post', post ]);
+    this.router.navigate(['post', JSON.stringify(post) ]);
   }
 
 

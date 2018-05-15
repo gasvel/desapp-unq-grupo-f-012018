@@ -2,7 +2,7 @@
   <div style="width: 98%;margin-top: 30px;margin-left: 10px;font-family: Nunito, sans-serif; border: 1px solid #d8d8d8; border-radius: 3px">
     <div style="width: 98%; padding-top: 20px; padding-left: 20px; padding-right: 20px;">
       <div>
-        <h4>Ingrese fotos del vehiculo</h4>
+        <h4>{{'Ingrese fotos del vehiculo' | translate}}</h4>
           <br/>
           <ngx-input-file-upload [acceptHtml]="acceptHtml" [acceptTs]="acceptTs" [activeColor]="activeColor">
           </ngx-input-file-upload>
@@ -10,82 +10,82 @@
       </div>
       <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <h4>Descripcíon del vehiculo</h4>
+          <h4>{{'Descripcíon del vehiculo' | translate}}</h4>
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label required" >Título: </label>
-              <input type="string" class="form-control" id="postTitle" placeholder="Escriba un título" formControlName="postTitle">
+              <label class="control-label required" >{{'Título' | translate}}: </label>
+              <input type="string" class="form-control" id="postTitle" placeholder="{{'Escriba un título' | translate}}" formControlName="postTitle">
               <p style="color:red" class="error_message" *ngIf="postForm.controls['postTitle'].invalid && submitted">
-                Por favor ingrese un título
+                {{'Por favor ingrese un título' | translate}}
               </p>
-              <label class="control-label required" >Disponibilidad: </label>
+              <label class="control-label required" >{{'Disponibilidad' | translate}}: </label>
               <input type="string" class="form-control" id="availability" formControlName="availability">
               <p style="color:red" class="error_message" *ngIf="postForm.controls['availability'].invalid && submitted">
-                Por favor ingrese un disponibilidad
+                {{'Por favor ingrese un disponibilidad' | translate}}
               </p>
             </div>
             <div class="col-sm-6">
-              <label class="control-label required" >Tipo de vehículo:</label>
+              <label class="control-label required" >{{'Tipo de vehículo' | translate}}:</label>
               <select class="form-control" id="sel1" formControlName="typeOption">
-                <option *ngFor="let op of typeOptions" [ngValue]="op"> {{op}} </option>>
+                <option *ngFor="let op of typeOptions" [ngValue]="op"> {{op | translate}} </option>>
               </select>
-              <label class="control-label required" >Capacidad:</label>
+              <label class="control-label required" >{{'Capacidad' | translate}}:</label>
               <select class="form-control" id="sel1" formControlName="capacity">
                 <option *ngFor="let op of capacityOptions" [ngValue]="op"> {{op}} </option>>
               </select>
             </div>
               <div class="col-sm-12">
-              <label >Descripción del vehiculo: </label>
-              <textarea class="form-control" rows="3" id="description" placeholder="Escriba una descripción" formControlName="description">
+              <label >{{'Descripción del vehiculo' | translate}}: </label>
+              <textarea class="form-control" rows="3" id="description" placeholder="{{'Escriba una descripción' | translate}}" formControlName="description">
               </textarea>
               <p style="color:red" class="error_message" *ngIf="postForm.controls['description'].invalid && submitted">
-                Por favor ingrese un descripción
+                {{'Por favor ingrese un descripción' | translate}}
               </p>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <h4>Ubicación del vehiculo</h4>
+          <h4>{{'Ubicación del vehiculo' | translate}}</h4>
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label required" >Dirección de retiro: </label>
+              <label class="control-label required" >{{'Dirección de retiro' | translate}}: </label>
               <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef/>
               <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToPickUp'].invalid && submitted">
-                Por favor ingrese un dirección válido
+                {{'Por favor ingrese un dirección válido' | translate}}
               </p>
             </div>
             <div class="col-sm-6">
-              <label class="control-label required" >Dirección de entrega: </label>
+              <label class="control-label required" >{{'Dirección de entrega' | translate}}: </label>
               <input type="string" class="form-control" formControlName="addressToDrop" #addressToDropRef/>
               <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToDrop'].invalid && submitted">
-                Por favor ingrese un dirección válido
+                {{'Por favor ingrese un dirección válido' | translate}}
               </p>
             </div>
           </div>
         </div>
         <div>
-          <h4>Ingrese un precio</h4>
+          <h4>{{'Ingrese un precio' | translate}}</h4>
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label required" >Precio por hora: </label>
+              <label class="control-label required" >{{'Precio por hora' | translate}}: </label>
               <input type="number" class="form-control" id="priceHour" min="0" formControlName="priceHour">
             </div>
             <div class="col-sm-6">
-              <label class="control-label required" >Precio por día: </label>
+              <label class="control-label required" >{{'Precio por día' | translate}}: </label>
               <input type="number" class="form-control" id="priceDay" min="0" formControlName="priceDay">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <h4>Datos de contacto </h4>
-            <label class="control-label required" >Teléfono: </label>
+          <h4>{{'Datos de contacto' | translate}} </h4>
+            <label class="control-label required" >{{'Teléfono' | translate}}: </label>
             <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber">
             <p style="color:red" class="error_message" *ngIf="postForm.controls['phoneNumber'].invalid && submitted">
-              Por favor ingrese un telefono válido
+              {{'Por favor ingrese un telefono válido' | translate}}
             </p>
         </div>
-        <button class="btn btn-default" (click)="back()">Atras</button>
-        <button type="submit" class="btn btn-primary" (click)="save()">Guardar</button>
+        <button class="btn btn-default" (click)="back()">{{'Atras' | translate}}</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">{{'Guardar' | translate}}</button>
 
       </form>
 </div>
