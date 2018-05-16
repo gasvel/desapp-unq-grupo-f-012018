@@ -29,3 +29,5 @@ NOTES:
 * From the frontend some validations are missing when creating post and users
 
 KNOWN ISSUES:
+
+* Deploy in heroku failed
