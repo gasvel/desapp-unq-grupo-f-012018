@@ -16,9 +16,9 @@ export class PostService {
   getPost(id):Observable<any> {
     return this.http.get(this.url + "/post/" + id);
   }
-
+ 
   savePost(post):Observable<any> {
-    return this.http.post(this.url + "/1" + "/new",post)
+    return this.http.post(this.url + "/" + localStorage.getItem("id") + "/new",post)
   }
 
   updatePost(post):Observable<any> {
