@@ -19,7 +19,7 @@ public class UserTest {
 	@Test
 	public void ifAnUserHasNoQualificationsHisScoreShouldBeZero() {
 		User anUser = Build.anUser().withScores(new ArrayList<Score>()).build();
-		assertEquals(0, anUser.getScore(), 0);
+		assertEquals(0, anUser.scoreAvg(), 0);
 	}
 	
 	@Test
@@ -29,7 +29,7 @@ public class UserTest {
 		scores.add(Build.aScore().withValue(6).build());
 		
 		User anUser = Build.anUser().withScores(scores).build();
-		assertEquals(5, anUser.getScore(), 0);
+		assertEquals(5, anUser.scoreAvg(), 0);
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class UserTest {
 		List<Score> scores = new ArrayList<Score>();
 		User anUser = Build.anUser().withScores(scores).build();
 		handler.rateUser(anUser, 3, "");
-		assertEquals(1, anUser.getScores().size());
+		assertEquals(1, anUser.getScore().size());
 	}
 	
 	@Test
@@ -48,8 +48,8 @@ public class UserTest {
 		handler.rateUser(anUser, 3, "");
 		handler.rateUser(anUser, 3, "");
 		
-		assertEquals(3, anUser.getScores().size());
-		assertEquals(3, anUser.getScore(), 0);
+		assertEquals(3, anUser.getScore().size());
+		assertEquals(3, anUser.scoreAvg(), 0);
 		assertEquals(User_State.REGULAR, anUser.getState());
 	}
 	
@@ -68,8 +68,8 @@ public class UserTest {
 		handler.rateUser(anUser, 4, "");
 		handler.rateUser(anUser, 4, "");
 		
-		assertEquals(10, anUser.getScores().size());
-		assertEquals(4.1, anUser.getScore(), 0);
+		assertEquals(10, anUser.getScore().size());
+		assertEquals(4.1, anUser.scoreAvg(), 0);
 		assertEquals(User_State.REGULAR, anUser.getState());
 	}
 	
@@ -88,8 +88,8 @@ public class UserTest {
 		handler.rateUser(anUser, 4, "");
 		handler.rateUser(anUser, 4, "");
 		
-		assertEquals(10, anUser.getScores().size());
-		assertEquals(3.7, anUser.getScore(), 0);
+		assertEquals(10, anUser.getScore().size());
+		assertEquals(3.7, anUser.scoreAvg(), 0);
 		assertEquals(User_State.BANNED, anUser.getState());
 	}
 	

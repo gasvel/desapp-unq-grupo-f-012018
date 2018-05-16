@@ -15,6 +15,7 @@ public class User extends Entity{
 	private String name;
 	private String email;
 	private String password;
+	@JsonIgnore
 	private Set<Post> posts;
 	private List<Score> score;
 	private User_State state;
@@ -36,7 +37,7 @@ public class User extends Entity{
 		this.score = new ArrayList<Score>();
 	}
 	
-	public double getScore() {
+	public double scoreAvg() {
 		if(score.isEmpty()) {
 			return 0; 
 		}	
@@ -48,10 +49,16 @@ public class User extends Entity{
 		return sumScores / score.size();
 	}
 
-	public void setScores(List<Score> score) {
+	public void setScore(List<Score> score) {
 		this.score = score;		
-	}	
+	}
 	
+	
+	
+
+	public List<Score> getScore() {
+		return score;
+	}
 
 	public void addPost(Post newPost) {
 		this.posts.add(newPost);		
@@ -77,9 +84,6 @@ public class User extends Entity{
 		return name;
 	}
 	
-	public List<Score> getScores() {
-		return this.score;
-	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -102,9 +106,6 @@ public class User extends Entity{
 		this.posts = posts;
 	}
 
-	public void setScore(List<Score> score) {
-		this.score = score;
-	}
 
 	public void addScore(Score score) {
 		this.score.add(score);
@@ -121,6 +122,10 @@ public class User extends Entity{
 
 	public String getPassword() {
 		return password;
+	}
+	
+	public void setPassword(String pass) {
+		this.password = pass;
 	}
 
 	public int getId() {

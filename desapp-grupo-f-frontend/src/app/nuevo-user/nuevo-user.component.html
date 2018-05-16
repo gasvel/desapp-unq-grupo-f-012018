@@ -19,6 +19,11 @@
       <label for="mailInput">Mail</label>
       <input type="email" class="form-control" id="mailInput" placeholder="ejemplo@gmail.com" formControlName="email" [class.invalid]="usuario.controls['email'].invalid && usuario.controls['email'].dirty">
     </div>
+    <div class="form-group" *ngIf="!isEdit">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control" id="passwordInput" placeholder="******" formControlName="password" [class.invalid]="usuario.controls['password'].invalid && usuario.controls['password'].dirty">
+    </div>
+
     <button type="submit" class="btn btn-success" [class.buttonInvalid]="validForm()" [disabled]="validForm()">{{'Aceptar' | translate}}</button>
     <button class="btn btn-danger" routerLink="/posts">{{'Atras' | translate}}</button>
   </form>

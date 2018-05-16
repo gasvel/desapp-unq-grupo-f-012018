@@ -20,7 +20,7 @@ public class HandlerUser {
 	}
 	
 	public void checkBan(User user) {
-		if(user.getScore() < 4 && user.getScores().size() >= 10) {
+		if(user.scoreAvg() < 4 && user.getScore().size() >= 10) {
 			banUser(user);
 		}
 	}

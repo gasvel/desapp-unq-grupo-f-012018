@@ -8,7 +8,7 @@ public class Build {
 		private User anUser = new User();		
 		
 		public UserBuilder withScores(List<Score> scores) {
-			anUser.setScores(scores);
+			anUser.setScore(scores);
 			return this;
 		}
 		

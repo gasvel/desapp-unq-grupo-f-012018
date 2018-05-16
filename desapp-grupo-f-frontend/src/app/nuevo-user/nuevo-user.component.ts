@@ -25,13 +25,13 @@ export class NuevoUserComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(50)
     ])),
-    password: new FormControl(''),
+    password: new FormControl('',Validators.required),
     email: new FormControl('',Validators.compose([
       Validators.pattern(this.EMAIL_REGEXP),
       Validators.required
     ]))
   });
-
+  isEdit:boolean = false;
 
   constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) { }
 

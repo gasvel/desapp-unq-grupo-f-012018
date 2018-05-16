@@ -32,6 +32,7 @@ export class EditarUserComponent implements OnInit {
   });
 
   oldUser:any;
+  isEdit:boolean = true;
 
   constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) { }
 
