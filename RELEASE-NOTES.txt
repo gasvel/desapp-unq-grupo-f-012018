@@ -15,3 +15,17 @@ NOTES:
 
 KNOWN ISSUES:
 
+---------------------------------------------------------------------
+TAG ENTREGA 2
+---------------------------------------------------------------------
+NEW FEATURES:
+* Persistence with hibernate
+* Services using spring
+* Implementation of ABM vehicle post
+* Implementation of AM user
+* Created fake data to test the application
+
+NOTES:
+* From the frontend some validations are missing when creating post and users
+
+KNOWN ISSUES:
