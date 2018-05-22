@@ -1040,7 +1040,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginService = /** @class */ (function () {
     function LoginService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/rest/users";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/users";
     }
     LoginService.prototype.logIn = function (cred) {
         return this.http.post(this.url + "/login", cred);
@@ -1077,7 +1077,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PostService = /** @class */ (function () {
     function PostService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/rest/posts";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/posts";
     }
     PostService.prototype.getAll = function () {
         return this.http.get(this.url + "/all");
@@ -1126,7 +1126,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var UsersService = /** @class */ (function () {
     function UsersService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/rest/users";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/users";
     }
     UsersService.prototype.getUsers = function () {
         return this.http.get(this.url + "/all");
