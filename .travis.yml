@@ -5,6 +5,9 @@ cache:
     - $HOME/.m2
 jdk:
   - oraclejdk8
+  
+env:
+  -DATABASE_URL=postgres://postgres:postgres@localhost:5432/carpnd
 
 services:
   - postgresql
