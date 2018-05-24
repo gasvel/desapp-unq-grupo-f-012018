@@ -13,6 +13,7 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 import { UsersService } from './services/users.service';
 import { PostService } from './services/post.service';
+import { SharedSearchFilterService } from './services/shared-search-filter.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MatMenuModule} from "@angular/material";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -22,6 +23,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EditarUserComponent } from './editar-user/editar-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginService } from './services/login.service';
+import { PipesModule } from './pipes/pipes.module';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +40,8 @@ export function createTranslateLoader(http: HttpClient) {
     PostDetailComponent,
     DeleteDialogComponent,
     EditarUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -96,9 +100,10 @@ export function createTranslateLoader(http: HttpClient) {
 			}),
 			ReactiveFormsModule,
 			FormsModule,
-			HttpClientModule
+			HttpClientModule,
+			PipesModule
   ],
-  providers: [UsersService,PostService,LoginService],
+  providers: [UsersService,PostService,LoginService, SharedSearchFilterService],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialogComponent]
 })

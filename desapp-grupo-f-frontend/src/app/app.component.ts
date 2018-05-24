@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { SharedSearchFilterService } from './services/shared-search-filter.service'
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'app';
+  searchText = "";
 
-  constructor(private translateService: TranslateService) {
+  constructor(private translateService: TranslateService, private sharedSearchService: SharedSearchFilterService) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');
   }
@@ -20,5 +22,16 @@ export class AppComponent {
 
   logged(){
     return localStorage.getItem("id") != null;
+  }
+
+  setSearch(){
+    console.log(this.searchText);
+    this.sharedSearchService.setSetSearchText(this.searchText);
+  }
+
+  cleanSearch(){
+    this.searchText = "";
+    console.log(this.searchText);
+    this.sharedSearchService.setSetSearchText(this.searchText);
   }
 }
