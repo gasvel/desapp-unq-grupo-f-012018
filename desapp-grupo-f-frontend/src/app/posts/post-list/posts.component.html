@@ -1,4 +1,6 @@
 <div class="container">
+
+
 	<div class="card post" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif " *ngFor="let post of posts | postFilter : searchText | paginate: { itemsPerPage: 3, currentPage: p }">
   		<img class="card-img-top" src="{{post.photo}}" alt="Card image cap" height="150px" width="250px">
   		<div class="card-body">

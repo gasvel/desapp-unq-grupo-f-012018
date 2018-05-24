@@ -24,4 +24,12 @@ export class UsersService {
   updateUser(user):Observable<any> {
     return this.http.put(this.url + "/1"+ "/update",user)
   }
+
+  altaCreditos(idUser,creditos){
+    return this.http.put(this.url + "/user/credits/add/" + idUser + "/"+ creditos,{})
+  }
+
+  retiroCreditos(idUser,creditos){
+    return this.http.put(this.url + "/user/credits/remove/" + idUser + "/"+ creditos,{})
+  }
 }

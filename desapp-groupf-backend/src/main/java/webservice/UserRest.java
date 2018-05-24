@@ -86,4 +86,20 @@ public class UserRest {
 		
 	}
     
+    @PUT
+    @Path("/user/credits/add/{idUser}/{credits}")
+    @Produces("application/json")
+    public void addCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits){
+    	this.userService.addCredits(id,credits);
+    	
+    }
+    
+    @PUT
+    @Path("/user/credits/remove/{idUser}/{credits}")
+    @Produces("application/json")
+    public void removeCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits){
+    	this.userService.removeCredits(id,credits);
+    	
+    }
+    
 }

@@ -12,6 +12,7 @@
 		<property name="name"/>
 		<property name="email"/>
 		<property name="password"/>
+		<property name="credits" type="float"></property>
 
 		<list name="score" lazy="false">
 			<key column="scoreID" />

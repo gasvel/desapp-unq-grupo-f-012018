@@ -1,21 +1,44 @@
 <nav class="navbar navbar-expand-md">
-  <div class="container-fluid" style="float: left;font-family: Nunito, sans-serif">
-
+    <div class="row container-fluid" style="font-family: Nunito, sans-serif">
+      <div class="col-md-3">
     <a class="navbar-brand" routerLink="/posts" (click)="cleanSearch()" style="margin: auto;"><p style="float: left;"><img src="assets/img/CarPnDLogo1.png" width="30px" height="30px"> </p> <p style="font-family: Nunito, sans-serif;">  CarPnD</p></a>
-
-    <div class="form-inline my-2 my-lg-0" style="margin: auto;position: center">
+  </div>  
+    <div class="col-md">
+    <div class="form-inline" style="margin: auto;position: center">
       <input [(ngModel)]="searchText" class="form-control mr-sm-2" type="search" placeholder="{{'Buscar' | translate}}" aria-label="Search" size="50px">
         <button class="btn btn-outline-info my-2 my-sm-0"  (click)="setSearch()" ><i class="fas fa-search"></i>
       </button>
     </div>
-
+  </div>
+    <div class="col-md">
     <ul class="navbar-nav mr-auto" style="margin: auto">
-        <li class="nav-item" *ngIf="logged()">
-            <a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
+
+          <li class="nav-item" *ngIf="logged()">
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hola {{user.name}} !
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownProfile">
+                    <a class="dropdown-item" routerLink="/editUser">{{'Editar perfil' | translate}}</a>    
+                </div>
+            </div>
           </li>
           <li class="nav-item" *ngIf="logged()">
-            <a class="nav-link" routerLink="/editUser">{{'Editar perfil' | translate}}</a>
+              <a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
+            </li>
+          <li class="nav-item" *ngIf="logged()">
+            <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Creditos: {{user.credits}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" [routerLink]="" (click)="addCredits()">Alta de creditos</a>
+                <a class="dropdown-item" [routerLink]="" (click)="extractCredits()">Retiro de creditos</a>    
+            </div>
+            </div>
+
           </li>
+
       <li class="nav-item" *ngIf="!logged()">
         <a class="nav-link" routerLink="/login">{{'Iniciar sesion' | translate}} <i class="fas fa-user"></i></a>
       </li>
@@ -26,13 +49,16 @@
       	<a class="nav-link" routerLink="/ejemploGMaps">{{'Ejemplo GMaps' | translate}}</a>
       </li>-->
       
-      <li>
-        <a [routerLink]="" (click)="changeLang('es')"><img src="assets/img/es.svg" height="20px" width="25px"></a>
-        <span> | </span>
-        <a [routerLink]="" (click)="changeLang('en')"><img src="assets/img/gb.svg" height="20px" width="25px"></a>
+      <li class="nav-item" style="margin-left: 10px">
+        <a [routerLink]="" (click)="changeLang('es')" style="border-right: 0.5px solid black;padding-right: 5px"><img src="assets/img/es.svg" height="20px" width="25px"></a>
+        
+        <a [routerLink]="" (click)="changeLang('en')" style="border-left: 0.5px solid black;padding-left: 5px"><img src="assets/img/gb.svg" height="20px" width="25px"></a>
       </li>
     </ul>
   </div>
+  </div>
+
 </nav>
+
 
 <router-outlet></router-outlet>

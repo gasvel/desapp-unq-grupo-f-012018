@@ -29,4 +29,20 @@ public class UserService extends GenericService<User> {
 		UserRepository userRep = (UserRepository) this.getRepository();
 		return userRep.getByEmail(email);
     }
+
+	@Transactional
+	public void addCredits(Integer id, float credits) {
+		User user = this.getById(id);
+		user.addCredits(credits);
+		this.update(user);
+		
+	}
+	
+	@Transactional
+	public void removeCredits(Integer id, float credits) {
+		User user = this.getById(id);
+		user.removeCredits(credits);
+		this.update(user);
+		
+	}
 }

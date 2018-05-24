@@ -15,6 +15,7 @@ public class User extends Entity{
 	private String name;
 	private String email;
 	private String password;
+	private float credits;
 	@JsonIgnore
 	private Set<Post> posts;
 	private List<Score> score;
@@ -29,12 +30,14 @@ public class User extends Entity{
 		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
+		this.credits = 0;
 	}
 	
 	public User() {
 		this.state = User_State.REGULAR;
 		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
+		this.credits = 0;
 	}
 	
 	public double scoreAvg() {
@@ -135,6 +138,25 @@ public class User extends Entity{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public float getCredits() {
+		return credits;
+	}
+
+	public void setCredits(float credits) {
+		this.credits = credits;
+	}
+
+	public void addCredits(float credits2) {
+		this.credits += credits2;
+		
+	}
+	
+	public void removeCredits(float credits2){
+		this.credits -= credits2;
+	}
+	
+	
 	
 	
 }

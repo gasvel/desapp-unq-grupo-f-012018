@@ -25,6 +25,8 @@ import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginService } from './services/login.service';
 import { PipesModule } from './pipes/pipes.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AltaCreditosComponent } from './alta-creditos/alta-creditos.component';
+import { RetiroCreditosComponent } from './retiro-creditos/retiro-creditos.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,6 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
     DeleteDialogComponent,
     EditarUserComponent,
     LoginUserComponent,
+    AltaCreditosComponent,
+    RetiroCreditosComponent,
     
   ],
   imports: [
@@ -89,6 +93,14 @@ export function createTranslateLoader(http: HttpClient) {
 				{
 					path:'login',
 					component: LoginUserComponent
+				},
+				{
+					path:'credits/add/:userId/:credits',
+					component:AltaCreditosComponent
+				},
+				{
+					path:'credits/extract/:userId/:credits',
+					component: RetiroCreditosComponent
 				}
 			]),
 			TranslateModule.forRoot({
