@@ -4,3 +4,9 @@
 	width: 300px;
 	vertical-align: top;
 }
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #B2DFDB;
+    border-radius: 5px;
+    text-align: left;
+}

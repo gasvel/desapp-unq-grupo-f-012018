@@ -24,7 +24,7 @@ import { EditarUserComponent } from './editar-user/editar-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginService } from './services/login.service';
 import { PipesModule } from './pipes/pipes.module';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,7 +101,8 @@ export function createTranslateLoader(http: HttpClient) {
 			ReactiveFormsModule,
 			FormsModule,
 			HttpClientModule,
-			PipesModule
+			PipesModule,
+			NgxPaginationModule
   ],
   providers: [UsersService,PostService,LoginService, SharedSearchFilterService],
   bootstrap: [AppComponent],

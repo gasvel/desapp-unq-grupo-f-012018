@@ -51,6 +51,8 @@
     "Distancia entre punto A y B": "Distance between point A and B",
     "Duracion del viaje": "Trip duration",
     "Ingresar": "Enter",
-    "Contraseña": "Password"
+    "Contraseña": "Password",
+    "Anterior": "Previous",
+    "Siguiente": "Next"
 
 }
