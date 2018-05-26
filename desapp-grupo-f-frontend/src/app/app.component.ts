@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SharedSearchFilterService } from './services/shared-search-filter.service'
 import { UsersService } from './services/users.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,13 @@ export class AppComponent implements OnInit{
   searchText = "";
   user:any = {};
 
-  constructor(private translateService: TranslateService, private sharedSearchService: SharedSearchFilterService,private userServ : UsersService,private routerServ : Router) {
+  constructor(
+    private translateService: TranslateService,
+    private sharedSearchService: SharedSearchFilterService,
+    private userServ : UsersService,
+    private routerServ : Router,
+  private socialAuthService: AuthService
+  ) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');
   }
@@ -39,6 +46,14 @@ export class AppComponent implements OnInit{
 
   logged(){
     return localStorage.getItem("id") != null;
+  }
+
+  signOut(){
+    this.socialAuthService.signOut().then(
+      () => {
+        this.routerServ.navigate(["/posts"]);
+      }
+    );
   }
 
   setSearch(){

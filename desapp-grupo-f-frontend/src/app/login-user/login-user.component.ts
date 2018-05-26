@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../services/login.service';
 import { Router } from '@angular/router';
-import {
-    AuthService,
-    GoogleLoginProvider
-} from 'angular5-social-login';
+import { AuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
 
 @Component({
   selector: 'app-login-user',
@@ -19,12 +17,13 @@ export class LoginUserComponent implements OnInit {
   constructor(
     private loginServ: LoginService,
     private routerServ: Router,
-    private socialAuthService: AuthService
+    private authService: AuthService
   ) {
 
   }
 
   ngOnInit() {
+
   }
 
   onSubmit() { this.login(); }
@@ -43,16 +42,12 @@ export class LoginUserComponent implements OnInit {
       );
   }
 
-  public socialSignIn(socialPlatform : string) {
-    let socialPlatformProvider;
-    if(socialPlatform == "google"){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-
-    this.socialAuthService.signIn(socialPlatformProvider).then(
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
-        console.log(socialPlatform+" sign in data : " , userData);            
+        console.log(userData);
+        this.routerServ.navigate(['/posts']);
       }
-    );
+    );;
   }
 }
