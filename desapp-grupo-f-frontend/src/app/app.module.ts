@@ -27,9 +27,26 @@ import { PipesModule } from './pipes/pipes.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AltaCreditosComponent } from './alta-creditos/alta-creditos.component';
 import { RetiroCreditosComponent } from './retiro-creditos/retiro-creditos.component';
+import {
+    SocialLoginModule,
+    AuthServiceConfig,
+    GoogleLoginProvider
+} from "angular5-social-login";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("663771392055-5epsk5veaf196v3qmnsnjuo9f1erndeb.apps.googleusercontent.com")
+        }
+      ]
+  );
+  return config;
 }
 
 @NgModule({
@@ -45,11 +62,12 @@ export function createTranslateLoader(http: HttpClient) {
     LoginUserComponent,
     AltaCreditosComponent,
     RetiroCreditosComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     GooglePlaceModule,
+    SocialLoginModule,
     MatMenuModule,
     MatDialogModule,
     BrowserAnimationsModule,
@@ -116,7 +134,16 @@ export function createTranslateLoader(http: HttpClient) {
 			PipesModule,
 			NgxPaginationModule
   ],
-  providers: [UsersService,PostService,LoginService, SharedSearchFilterService],
+  providers: [
+    UsersService,
+    PostService,
+    LoginService,
+    SharedSearchFilterService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialogComponent]
 })

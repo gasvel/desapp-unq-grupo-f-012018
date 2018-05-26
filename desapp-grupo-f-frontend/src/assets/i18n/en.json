@@ -53,6 +53,8 @@
     "Ingresar": "Enter",
     "Contraseña": "Password",
     "Anterior": "Previous",
-    "Siguiente": "Next"
+    "Siguiente": "Next",
+    "Ingresa tu Email": "Enter your Email",
+    "Ingresar con Google": "Login with Google"
 
 }

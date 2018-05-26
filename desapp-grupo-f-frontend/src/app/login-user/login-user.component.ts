@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../services/login.service';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
+import {
+    AuthService,
+    GoogleLoginProvider
+} from 'angular5-social-login';
 
 @Component({
   selector: 'app-login-user',
@@ -12,7 +16,13 @@ export class LoginUserComponent implements OnInit {
   public credential = {email: '', password: ''};
   public user: any;
 
-  constructor(private loginServ: LoginService, private routerServ: Router) { }
+  constructor(
+    private loginServ: LoginService,
+    private routerServ: Router,
+    private socialAuthService: AuthService
+  ) {
+
+  }
 
   ngOnInit() {
   }
@@ -31,5 +41,18 @@ export class LoginUserComponent implements OnInit {
         console.log(error);
       }
       );
+  }
+
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform+" sign in data : " , userData);            
+      }
+    );
   }
 }
