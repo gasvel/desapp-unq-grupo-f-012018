@@ -17,6 +17,10 @@ export class UsersService {
     return this.http.get(this.url + "/user/" + id);
   }
 
+  getUserByEmail(mail):Observable<any> {
+    return this.http.get(this.url + "/user/byEmail/" + mail);
+  }
+
   saveUser(user):Observable<any> {
     return this.http.post(this.url + "/new",user)
   }

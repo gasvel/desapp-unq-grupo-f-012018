@@ -45,4 +45,10 @@ public class UserService extends GenericService<User> {
 		this.update(user);
 		
 	}
+
+	@Transactional
+	public Boolean checkMail(String mail) {
+		UserRepository userRepo = (UserRepository) this.getRepository();
+		return userRepo.checkByEmail(mail);
+	}
 }

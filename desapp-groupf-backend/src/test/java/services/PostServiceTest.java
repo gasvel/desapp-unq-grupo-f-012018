@@ -38,7 +38,6 @@ public class PostServiceTest {
 	public void saveANewValidPostAndSinceDBHas4PostNowShouldHave5() {
 		Post newPost = Build.aPost().buildValidPost().build();
 		User user = Build.anUser().valid().build();
-		user.setPassword("1234");
 		this.userServ.save(user);
 		newPost.setCreator(user);
 		this.postServ.save(newPost);

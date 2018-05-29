@@ -17,12 +17,12 @@ export class PostService {
     return this.http.get(this.url + "/post/" + id);
   }
  
-  savePost(post):Observable<any> {
-    return this.http.post(this.url + "/" + localStorage.getItem("id") + "/new",post)
+  savePost(post,id):Observable<any> {
+    return this.http.post(this.url + "/" + id + "/new",post)
   }
 
-  updatePost(post):Observable<any> {
-    return this.http.put(this.url +'/'+ localStorage.getItem("id") + "/update", post)
+  updatePost(post,id):Observable<any> {
+    return this.http.put(this.url +'/'+ id + "/update", post)
   }
 
   delete(id):Observable<any> {

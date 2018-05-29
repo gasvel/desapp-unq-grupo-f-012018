@@ -88,16 +88,16 @@ let config = new AuthServiceConfig([
 					component:NuevoUserComponent
 				},
 				{
-					path:'editUser',
+					path:'editUser/:id',
 					component:EditarUserComponent
 				}
 				,
         {
-					path:'newPost',
+					path:'newPost/:userId',
 					component:CreatePostComponent
 				},
         {
-					path:'editPost/:id',
+					path:'editPost/:id/:userId',
 					component:CreatePostComponent
 				},
 				{

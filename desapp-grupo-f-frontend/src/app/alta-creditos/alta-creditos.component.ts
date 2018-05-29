@@ -33,7 +33,7 @@ export class AltaCreditosComponent implements OnInit {
 
   actionCredits(){
     this.userServ.altaCreditos(this.userId,this.form.controls.credits.value).subscribe(
-      res => {console.log(res);this.routerServ.navigate(["/posts"])},
+      res => {console.log(res);location.reload();this.routerServ.navigate(["/posts"])},
       error => console.log(error)
     )
   }

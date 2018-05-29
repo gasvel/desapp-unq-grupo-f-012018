@@ -12,4 +12,8 @@ export class LoginService {
   logIn(cred): Observable<any> {
     return this.http.post(this.url + "/login", cred);
   }
+
+  checkUser(mail):Observable<any> {
+    return this.http.get(this.url + "/checkUser/" + mail);
+  }
 }

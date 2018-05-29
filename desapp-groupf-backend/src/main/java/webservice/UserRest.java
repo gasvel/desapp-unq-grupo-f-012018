@@ -36,6 +36,21 @@ public class UserRest {
        return users;
    }
    
+   @GET
+   @Path("/checkUser/{email}")
+   @Produces("application/json")
+   public Boolean checkMail(@PathParam("email") String mail){
+	   return this.userService.checkMail(mail);
+   }
+   
+   @GET
+   @Path("user/byEmail/{email}")
+   @Produces("application/json")
+   public User getByMail(@PathParam("email") String mail){
+	   return this.userService.getByEmail(mail);
+   }
+   
+   
    @POST
    @Path("/new")
    @Produces("application/json")
@@ -73,16 +88,8 @@ public class UserRest {
     @POST
     @Path("/login")
     @Produces("application/json")
-	public User login(@RequestBody Credential cred) {
-		User user = this.userService.getByEmail(cred.email);
-		if(user == null) {
-			throw new RuntimeException("No existe usuario con ese username");
-		}
-		if(!user.getPassword().equals(cred.password)) {
-			throw new RuntimeException("Password incorrecto");
-		}
-		
-		return user;
+	public void login(@RequestBody Credential cred) {
+
 		
 	}
     

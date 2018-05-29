@@ -44,6 +44,8 @@ export class CreatePostComponent implements OnInit {
     ])),
   });
 
+  userId:any;
+
   constructor(
     private service : PostService,
     private formBuilder: FormBuilder,
@@ -72,15 +74,18 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      let isEdit = Object.keys(params).length === 1;
+      let isEdit = params["id"] !== undefined;
       if(isEdit) {
         this.isSave = false;
+        this.userId = params["userId"];        
         this.getPost(params['id']);
+        
       }
       else {
         this.post = { "id":"", "title":"", "typeVehicle":"Auto", "description":"", "availability":"",
                     "photo":"", "capacity":"5", "addressToPickUp":"", "addressToDrop":"",
                     "priceDay":"", "priceHour":"", "phoneNumber":""};
+        this.userId = params["userId"];
         this.setPostForm();
       }
     });
@@ -123,7 +128,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   updatePost(post){
-    this.service.updatePost(post).subscribe(
+    this.service.updatePost(post,this.userId).subscribe(
       res => {
           console.log(res);
           this.router.navigate(['post', post.id])
@@ -134,7 +139,7 @@ export class CreatePostComponent implements OnInit {
 
   savePost(post){
     console.log(post);
-    this.service.savePost(post).subscribe(
+    this.service.savePost(post,this.userId).subscribe(
       res => {
           console.log(res);
           this.router.navigate(['']);

@@ -26,7 +26,7 @@
             <br/>
             <h4>{{'Dirección de retiro' | translate}}:</h4>
             <p > {{post.addressToPickUp}} </p><br/>
-            <button class="btn btn-primary" (click)="rent()">{{'Reservar' | translate}}</button>
+            <button class="btn btn-primary" *ngIf="logged() && !isFromUser" (click)="rent()">{{'Reservar' | translate}}</button>
           </div>
         </div>
     		<div >

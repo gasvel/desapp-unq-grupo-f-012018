@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService} from '../services/users.service';
 import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-nuevo-user',
@@ -25,17 +26,22 @@ export class NuevoUserComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(50)
     ])),
-    password: new FormControl('',Validators.required),
     email: new FormControl('',Validators.compose([
       Validators.pattern(this.EMAIL_REGEXP),
       Validators.required
     ]))
   });
   isEdit:boolean = false;
+  userInfo:SocialUser;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) { }
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) {
+      this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
+   }
 
   ngOnInit() {
+    console.log(this.userInfo);
+    this.usuario.controls.name.setValue(this.userInfo.name);
+    this.usuario.controls.email.setValue(this.userInfo.email);
   }
 
   volverAtras(){
@@ -52,9 +58,8 @@ export class NuevoUserComponent implements OnInit {
 
 
   onSubmit(){    
-    this.usuario.controls.password.setValue("1234");
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);this.volverAtras()},
+      res => {console.log(res);localStorage.setItem("token",this.userInfo.authToken);location.reload();this.volverAtras()},
       error => console.log(error)
     );
   }

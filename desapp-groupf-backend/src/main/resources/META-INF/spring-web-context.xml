@@ -42,12 +42,14 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<ref bean="jaxbProvider" />
 			<ref bean="jacksonProvider" />
 			<bean class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter" />
+			<ref bean="authFilter"/>
 		</jaxrs:providers>
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
 	
+	<bean id="authFilter" class="webservice.AuthFilter"></bean>
 	
 	
 	<bean id="userRest" class="webservice.UserRest">

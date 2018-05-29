@@ -10,8 +10,7 @@
 		<property name="cuil" />
 		<property name="address" />
 		<property name="name"/>
-		<property name="email"/>
-		<property name="password"/>
+		<property name="email" unique="true"/>
 		<property name="credits" type="float"></property>
 
 		<list name="score" lazy="false">
