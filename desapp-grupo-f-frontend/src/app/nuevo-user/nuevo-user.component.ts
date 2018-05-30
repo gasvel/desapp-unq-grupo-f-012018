@@ -59,7 +59,7 @@ export class NuevoUserComponent implements OnInit {
 
   onSubmit(){    
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);localStorage.setItem("token",this.userInfo.authToken);location.reload();this.volverAtras()},
+      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);location.reload();this.volverAtras()},
       error => console.log(error)
     );
   }

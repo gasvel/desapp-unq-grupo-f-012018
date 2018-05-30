@@ -48,8 +48,9 @@ export class LoginUserComponent implements OnInit {
         console.log(userData);
         this.loginServ.checkUser(userData.email).subscribe(
           res => {if(res){
-            localStorage.setItem("token",userData.authToken);
+            localStorage.setItem("token",userData.idToken);
             localStorage.setItem("userInfo",JSON.stringify(userData));
+            location.reload();
             this.routerServ.navigate(['/posts']);
           }
           else{
