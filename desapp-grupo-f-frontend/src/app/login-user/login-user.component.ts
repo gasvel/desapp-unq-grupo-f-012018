@@ -46,7 +46,20 @@ export class LoginUserComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
         console.log(userData);
-        this.routerServ.navigate(['/posts']);
+        this.loginServ.checkUser(userData.email).subscribe(
+          res => {if(res){
+            localStorage.setItem("token",userData.idToken);
+            localStorage.setItem("userInfo",JSON.stringify(userData));
+            location.reload();
+            this.routerServ.navigate(['/posts']);
+          }
+          else{
+            localStorage.setItem("userInfo",JSON.stringify(userData));
+            this.routerServ.navigate(['registro']);
+
+          }}
+        );
+        //this.routerServ.navigate(['/posts']);
       }
     );;
   }

@@ -14,19 +14,17 @@ public class User extends Entity{
 	private String address;
 	private String name;
 	private String email;
-	private String password;
 	private float credits;
 	@JsonIgnore
 	private Set<Post> posts;
 	private List<Score> score;
 	private User_State state;
 	
-	public User(String cuil, String address, String name,String mail, String pass) {
+	public User(String cuil, String address, String name,String mail) {
 		this.cuil = cuil;
 		this.address = address;
 		this.name = name;
 		this.email=mail;
-		this.password = pass;
 		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
@@ -123,13 +121,6 @@ public class User extends Entity{
 	}
 
 
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String pass) {
-		this.password = pass;
-	}
 
 	public int getId() {
 		return id;

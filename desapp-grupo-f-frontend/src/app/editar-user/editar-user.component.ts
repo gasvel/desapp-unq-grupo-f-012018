@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService} from '../services/users.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editar-user',
@@ -33,15 +33,18 @@ export class EditarUserComponent implements OnInit {
 
   oldUser:any;
   isEdit:boolean = true;
+  userId:any;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) { }
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private route : ActivatedRoute) {
+    this.userId = this.route.snapshot.paramMap.get("id");
+   }
 
   ngOnInit() {
     this.getUser();
   }
 
   getUser(){
-    this.userServ.getUser(localStorage.getItem("id")).subscribe(
+    this.userServ.getUser(this.userId).subscribe(
       res => {console.log(res);this.setUsuario(res)},
       error => console.log(error)
     );;

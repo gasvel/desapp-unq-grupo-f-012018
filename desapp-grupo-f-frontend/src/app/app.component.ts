@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SharedSearchFilterService } from './services/shared-search-filter.service'
 import { UsersService } from './services/users.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'angularx-social-login';
+import { AuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,8 @@ export class AppComponent implements OnInit{
   }
 
   getUser(){
-    this.userServ.getUser(localStorage.getItem("id")).subscribe(
+    let userInfo:SocialUser = JSON.parse(localStorage.getItem("userInfo"));
+    this.userServ.getUserByEmail(userInfo.email).subscribe(
       res => {console.log(res);this.user = res},
       error => console.log(error)
     );
@@ -45,12 +46,13 @@ export class AppComponent implements OnInit{
   }
 
   logged(){
-    return localStorage.getItem("id") != null;
+    return localStorage.getItem("token") != null;
   }
 
   signOut(){
     this.socialAuthService.signOut().then(
       () => {
+        localStorage.clear();
         this.routerServ.navigate(["/posts"]);
       }
     );

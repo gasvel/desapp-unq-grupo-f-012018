@@ -38,7 +38,7 @@ public class PostRest {
 	}
 	
 	@POST
-	@Path("{id}/new")
+	@Path("/{id}/new")
 	@Produces("application/json")
 	public void newPost(@RequestBody Post post,@PathParam("id") final Integer id){
 		post.setCreator(this.userService.getById(id));

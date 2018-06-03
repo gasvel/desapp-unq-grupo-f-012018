@@ -22,4 +22,10 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 	    criteria.add(Restrictions.eq("email", mail));
 		return (User) this.getHibernateTemplate().findByCriteria(criteria).get(0);
 	}
+	
+	public Boolean checkByEmail(String mail){
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
+	    criteria.add(Restrictions.eq("email", mail));
+		return !this.getHibernateTemplate().findByCriteria(criteria).isEmpty();
+	}
 }

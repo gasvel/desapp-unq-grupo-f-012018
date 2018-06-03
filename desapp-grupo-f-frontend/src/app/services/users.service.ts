@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -14,22 +14,37 @@ export class UsersService {
   }
 
   getUser(id):Observable<any> {
-    return this.http.get(this.url + "/user/" + id);
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.get(this.url + "/user/" + id,httpOptions);
+  }
+
+  getUserByEmail(mail):Observable<any> {
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.get(this.url + "/user/byEmail/" + mail,httpOptions);
   }
 
   saveUser(user):Observable<any> {
-    return this.http.post(this.url + "/new",user)
+    let httpOptions = {headers: new HttpHeaders({"Authorization": JSON.parse(localStorage.getItem("userInfo")).idToken})};
+
+    return this.http.post(this.url + "/new",user,httpOptions)
   }
 
   updateUser(user):Observable<any> {
-    return this.http.put(this.url + "/1"+ "/update",user)
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.put(this.url + "/1"+ "/update",user,httpOptions)
   }
 
   altaCreditos(idUser,creditos){
-    return this.http.put(this.url + "/user/credits/add/" + idUser + "/"+ creditos,{})
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.put(this.url + "/user/credits/add/" + idUser + "/"+ creditos,{},httpOptions)
   }
 
   retiroCreditos(idUser,creditos){
-    return this.http.put(this.url + "/user/credits/remove/" + idUser + "/"+ creditos,{})
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.put(this.url + "/user/credits/remove/" + idUser + "/"+ creditos,{},httpOptions)
   }
 }

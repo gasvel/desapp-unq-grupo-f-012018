@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -17,15 +17,21 @@ export class PostService {
     return this.http.get(this.url + "/post/" + id);
   }
  
-  savePost(post):Observable<any> {
-    return this.http.post(this.url + "/" + localStorage.getItem("id") + "/new",post)
+  savePost(post,id):Observable<any> {
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.post(this.url + "/" + id + "/new",post,httpOptions)
   }
 
-  updatePost(post):Observable<any> {
-    return this.http.put(this.url +'/'+ localStorage.getItem("id") + "/update", post)
+  updatePost(post,id):Observable<any> {
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.put(this.url +'/'+ id + "/update", post,httpOptions)
   }
 
   delete(id):Observable<any> {
-    return this.http.delete(this.url + "/delete/" + id)
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.delete(this.url + "/delete/" + id,httpOptions);
   }
 }

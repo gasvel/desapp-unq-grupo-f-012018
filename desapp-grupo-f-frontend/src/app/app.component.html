@@ -19,12 +19,13 @@
                     Hola {{user.name}} !
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownProfile">
-                    <a class="dropdown-item" routerLink="/editUser">{{'Editar perfil' | translate}}</a>    
+                    <a class="dropdown-item" [routerLink]="'/editUser/' + user.id ">{{'Editar perfil' | translate}}</a> 
+                    <a class="dropdown-item" [routerLink]="" (click)="signOut()">{{'Cerrar sesion' | translate}}</a>  
                 </div>
             </div>
           </li>
           <li class="nav-item" *ngIf="logged()">
-              <a class="nav-link" routerLink="/newPost">{{'Publicar' | translate}}</a>
+              <a class="nav-link" [routerLink]="'/newPost/' + user.id">{{'Publicar' | translate}}</a>
             </li>
           <li class="nav-item" *ngIf="logged()">
             <div class="dropdown">
@@ -42,9 +43,9 @@
       <li class="nav-item" *ngIf="!logged()">
         <a class="nav-link" routerLink="/login">{{'Iniciar sesion' | translate}} <i class="fas fa-user"></i></a>
       </li>
-      <li class="nav-item" *ngIf="!logged()">
+<!--      <li class="nav-item" *ngIf="!logged()">
         <a class="nav-link" routerLink="/registro">{{'Registrarse' | translate}}</a>
-      </li>
+      </li>-->
       <!--<li class="nav-item">
       	<a class="nav-link" routerLink="/ejemploGMaps">{{'Ejemplo GMaps' | translate}}</a>
       </li>-->

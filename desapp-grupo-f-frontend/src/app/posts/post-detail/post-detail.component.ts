@@ -34,13 +34,13 @@ export class PostDetailComponent implements OnInit {
 
   getPost(id) {
     this.service.getPost(id).subscribe(
-      res => {this.post = res; this.isFromUser = this.post.creator.id == localStorage.getItem("id");},
+      res => {this.post = res; this.isFromUser = (JSON.parse(localStorage.getItem("userInfo")) !== null) && (this.post.creator.email == JSON.parse(localStorage.getItem("userInfo")).email);},
       error => console.log(error)
     );
   }
 
   edit() {
-    this.router.navigate(['editPost', this.post.id ]);
+    this.router.navigate(['editPost', this.post.id ,this.post.creator.id]);
   }
 
   delete() {
@@ -68,7 +68,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   logged(){
-    return localStorage.getItem("id") != null;
+    return localStorage.getItem("token") != null;
   }
 
 
