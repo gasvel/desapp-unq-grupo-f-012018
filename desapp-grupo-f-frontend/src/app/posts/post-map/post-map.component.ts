@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operator/map';
 
 @Component({
   selector: 'app-post-map',
@@ -62,15 +63,27 @@ export class PostMapComponent implements OnInit {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          var html = '<h4>' + self.locations[i].title + '</h4>';
-          html += '<img id="clickableItem" src="' + self.locations[i].image + '" height="100" width="150"/><br/>';
+          let html = '<div >' + "<h4>" + self.locations[i].title + '</h4>';
+          html += '<img  src="' + self.locations[i].image + '" height="100" width="150"/><br/>';
           html += '<p>' + self.locations[i].availability + '</p>';
+          html += '<button class="btn btn-primary"  id="clickableItem">Ver post</button>';
+          html += '</div>';
           infowindow.setContent(html);
           infowindow.open(this.map, marker);
 
-          document.getElementById("clickableItem").addEventListener("click", function(e) {
-            self.viewPost(self.locations[i].id);
+          
+          infowindow.addListener("domready",function(e){
+            document.getElementById("clickableItem").addEventListener("click", function(e) {
+               infowindow.close();
+               
+                self.viewPost(self.locations[i].id);
+            });
           });
+
+          //document.getElementById("clickableItem").addEventListener("click", function(e) {
+           // infowindow.close();
+            //viewPost(self.locations[i].id);
+          //});
         }
       })(marker, i));
     }
@@ -101,8 +114,11 @@ export class PostMapComponent implements OnInit {
   }
 
   viewPost(id) {
+    console.log("VER POST");
     this.render = false;
-    this.router.navigate(['post', id ]);
+    
+    this.router.navigate(['post', id ]).then(() => location.reload());
+
   }
 
 }
