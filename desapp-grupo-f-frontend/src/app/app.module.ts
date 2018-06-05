@@ -33,6 +33,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationService } from './services/reservation.service';
 import { HttpModule } from '@angular/http';
 import {CalendarModule} from 'primeng/calendar';
+import { PostMapComponent } from './posts/post-map/post-map.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,6 +60,7 @@ let config = new AuthServiceConfig([
     AltaCreditosComponent,
     RetiroCreditosComponent,
     ReservationComponent,
+    PostMapComponent,
 
   ],
   imports: [
@@ -120,6 +122,10 @@ let config = new AuthServiceConfig([
 				{
 					path:'credits/extract/:userId/:credits',
 					component: RetiroCreditosComponent
+				},
+        {
+					path:'posts/map',
+					component: PostMapComponent
 				}
 			]),
 			TranslateModule.forRoot({

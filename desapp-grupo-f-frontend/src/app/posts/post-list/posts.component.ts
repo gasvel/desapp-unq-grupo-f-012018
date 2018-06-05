@@ -16,8 +16,10 @@ export class PostsComponent implements OnInit {
   subscription: Subscription;
   posts= [];
 
-  constructor(private route: ActivatedRoute,
-    private router: Router,private postServ: PostService,
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private postServ: PostService,
     private searchFilterServ: SharedSearchFilterService
     ){
       this.subscription = searchFilterServ.sharedSearchText$.subscribe(
@@ -33,12 +35,19 @@ export class PostsComponent implements OnInit {
 
   traerPosts(){
     this.postServ.getAll().subscribe(
-      res => {console.log(res);this.posts = res;},
+      res => {
+        console.log(res);
+        this.posts = res;
+      },
       error => console.log(error)
     )
   }
 
   viewPost(post) {
     this.router.navigate(['post', post.id ]);
+  }
+
+  viewMap() {
+    this.router.navigate(['posts/map']);
   }
 }
