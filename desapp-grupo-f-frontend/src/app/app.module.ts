@@ -29,6 +29,10 @@ import { AltaCreditosComponent } from './alta-creditos/alta-creditos.component';
 import { RetiroCreditosComponent } from './retiro-creditos/retiro-creditos.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { ReservationComponent } from './reservation/reservation.component';
+import { ReservationService } from './services/reservation.service';
+import { HttpModule } from '@angular/http';
+import {CalendarModule} from 'primeng/calendar';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,6 +58,7 @@ let config = new AuthServiceConfig([
     LoginUserComponent,
     AltaCreditosComponent,
     RetiroCreditosComponent,
+    ReservationComponent,
 
   ],
   imports: [
@@ -72,7 +77,11 @@ let config = new AuthServiceConfig([
         {
     			path:'post/:id',
     			component:PostDetailComponent
-    		},
+				},
+				{
+					path:'reservation/:id',
+					component: ReservationComponent
+				},
     		{
 
     			path:'',
@@ -124,13 +133,16 @@ let config = new AuthServiceConfig([
 			FormsModule,
 			HttpClientModule,
 			PipesModule,
-			NgxPaginationModule
+			NgxPaginationModule,
+			HttpModule,
+			CalendarModule
   ],
   providers: [
     UsersService,
     PostService,
     LoginService,
-    SharedSearchFilterService
+		SharedSearchFilterService,
+		ReservationService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialogComponent]

@@ -17,6 +17,7 @@ import model.ArgumentsValidator;
 import model.Post;
 import model.Reservation;
 import service.ReserService;
+import service.PostService;
 
 @Path("/reservations")
 @CrossOriginResourceSharing(allowAllOrigins = true)
@@ -25,6 +26,7 @@ public class ReserRest {
 	public static final int NUMBER_OF_RESER = 10;
 	
 	private ReserService reserService;
+	private PostService postService;
 	
 	
 	@GET
@@ -37,9 +39,10 @@ public class ReserRest {
 	}
 	
 	@POST
-	@Path("/new")
+	@Path("/new/{idPost}")
 	@Produces("application/json")
-	public void newReser(@RequestBody Reservation reser, @RequestBody Post post){
+	public void newReser(@PathParam("idPost") final Integer id, @RequestBody Reservation reser){
+		Post post = this.postService.getById(id);
 		ArgumentsValidator.validateReserv(reser, post);
 		this.reserService.save(reser);
 	}

@@ -31,7 +31,7 @@ public class AuthFilter implements ContainerRequestFilter {
 	}
 	
 
-	@Override
+	//@Override
 	public void filter(ContainerRequestContext req) throws IOException {
 		
 		Boolean inWhitelist = false;
