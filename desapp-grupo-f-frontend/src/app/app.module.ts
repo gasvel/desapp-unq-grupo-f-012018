@@ -29,6 +29,7 @@ import { AltaCreditosComponent } from './alta-creditos/alta-creditos.component';
 import { RetiroCreditosComponent } from './retiro-creditos/retiro-creditos.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { PostMapComponent } from './posts/post-map/post-map.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,6 +55,7 @@ let config = new AuthServiceConfig([
     LoginUserComponent,
     AltaCreditosComponent,
     RetiroCreditosComponent,
+    PostMapComponent,
 
   ],
   imports: [
@@ -111,6 +113,10 @@ let config = new AuthServiceConfig([
 				{
 					path:'credits/extract/:userId/:credits',
 					component: RetiroCreditosComponent
+				},
+        {
+					path:'posts/map',
+					component: PostMapComponent
 				}
 			]),
 			TranslateModule.forRoot({
