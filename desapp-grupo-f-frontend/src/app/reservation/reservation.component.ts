@@ -17,59 +17,62 @@ export class ReservationComponent implements OnInit {
   @ViewChild("scheduler_here") schedulerContainer: ElementRef;
   formReserv:FormGroup = this.formBuilder.group({
     startDate: new FormControl('', Validators.required),
-    endDate: new FormControl('', Validators.required),
-    timeOfRent: new FormControl(),
-    client: new FormControl()
+    startHour: new FormControl('', Validators.required),
+    endHour: new FormControl('', Validators.required),
+    endDate: new FormControl('', Validators.required)
   })
   newReservation;
   idPost:any;
+  mailUser:any;
   
 
   constructor(private userService: UsersService, private reservService: ReservationService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    console.log(new Date("2018-06-09 GMT-0300 (ART)"));
     // scheduler.init(this.schedulerContainer.nativeElement, new Date());
     // this.reservService.getReservations().subscribe(
     //   res => {console.log(res);scheduler.parse(res, "json");},
     //   error => console.log(error)
     // );
     this.route.params.subscribe((params) => {
-      this.idPost = params["idPost"];
+      this.idPost = params["id"];
     });
     console.log(this.idPost);
-    this.newReservation = {startDate:'', endDate: '', timeOfRent:'', client:''};
+    this.newReservation = {startDate:'', endDate: ''};
   }
 
   saveReservation(){
     console.log(this.formReserv.controls.startDate.value);
     console.log(this.formReserv.controls.endDate.value);
+    this.setDates();
     this.getClient();
-    this.calculateTimeRent();
-    this.reservService.saveReservation(this.formReserv.value, this.idPost).subscribe(
-        res => console.log(res),
+    this.setNewReservation();
+    this.reservService.saveReservation(this.newReservation, this.idPost, this.mailUser).subscribe(
+        res => {console.log(res); this.router.navigate(['posts']);},
   			error => console.log(error)
     );
   }
 
-  calculateTimeRent(){
-    let startDate = this.formReserv.controls.startDate.value;
-    let endDate = this.formReserv.controls.endDate.value;
-    let time = endDate.getTime() - startDate.getTime();
-    this.formReserv.controls.timeOfRent.setValue(time);
-    console.log(this.formReserv.controls.timeOfRent.value);
+  setNewReservation(){
+    this.newReservation.startDate = this.formReserv.controls.startDate.value;
+    this.newReservation.endDate = this.formReserv.controls.endDate.value;
+  }
+
+  setDates(){
+    this.formReserv.controls.startDate.setValue(new Date(this.formReserv.controls.startDate.value + " GMT-0300").setHours(this.formReserv.controls.startHour.value));
+    //console.log(new Date((this.formReserv.controls.startDate.value + " GMT-0300 ").setHours(this.formReserv.controls.startHour.value)).toUTCString());
+    this.formReserv.controls.endDate.setValue(new Date(this.formReserv.controls.endDate.value + " GMT-0300").setHours(this.formReserv.controls.endHour.value));
   }
 
   backToPostDetail(){
-
+    this.router.navigate(['post', this.idPost ]);
   }
 
   getClient(){
-    let idUser = localStorage.getItem("id");
-    console.log(idUser);
-    this.userService.getUser(idUser).subscribe(
-      res => {console.log(res);this.formReserv.controls.client.setValue(res);},
-      error => console.log(error)
-    )
+    this.mailUser = JSON.parse(localStorage.getItem("userInfo")).email;
+    console.log(this.mailUser);
   }
 
 }

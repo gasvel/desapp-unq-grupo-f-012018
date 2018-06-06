@@ -35,7 +35,6 @@ public class Reservation extends Entity{
 
 	public Reservation(Date start,Date end, User userClient) {
 		this.client = userClient;
-		this.timeOfRent = end.getTime() - start.getTime() ;
 		this.startDate = start;
 		this.endDate = end;
 //		this.serviceRR = new HandlerReserRent();
@@ -55,6 +54,10 @@ public class Reservation extends Entity{
 
 	public void setTimeOfRent(long timeOfRent) {
 		this.timeOfRent = timeOfRent;
+	}
+
+	public void generateTimeRent() {
+		this.timeOfRent = this.endDate.getTime() - this.startDate.getTime() ;
 	}
 	
 //	public void confirmReservation(Post post) {
