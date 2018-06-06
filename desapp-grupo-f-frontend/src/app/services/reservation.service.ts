@@ -10,10 +10,10 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
 
-  saveReservation(reservation,idPost): Observable<any>{
+  saveReservation(reservation,idPost, mailUser): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
 
-    return this.http.post(this.url + "/new/" + idPost ,reservation,httpOptions)
+    return this.http.post(this.url + "/new/" + idPost + "/" + mailUser ,reservation,httpOptions)
   }
 
   getReservations(): Observable<any>{

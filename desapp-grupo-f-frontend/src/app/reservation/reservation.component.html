@@ -16,14 +16,16 @@
      </div> -->
       <form [formGroup]="formReserv">
          
-         <h4>Marque desde/hasta que dia usara el vehiculo</h4>
-         <input type="date" formControlName="startDate">
-         <p-calendar formControlName="startDate" dateFormat="dd.mm.yy"></p-calendar>
-         <br>
-         <p-calendar formControlName="endDate" dateFormat="dd.mm.yy"></p-calendar>
-         <!--<input type="date" class="form-control" formControlName="startDate">
-         <input type="date" class="form-control" formControlName="endDate">-->
+         <label for="starDateInput">Indique fecha de comienzo</label>         
+         <input type="date" id="starDateInput" class="form-control" formControlName="startDate">
+         <label for="startHourInput">Indique hora de comienzo</label>
+         <input type="number" id="startHourInput" class="form-control" formControlName="startHour" min="1" max="24">
+         <label for="endDateInput">Indique fecha de fin</label>         
+         <input type="date" id="endDateInput" class="form-control" formControlName="endDate">
+         <label for="endHourInput">Indique hora de fin</label>
+         <input type="number" id="endHourInput" class="form-control" formControlName="endHour" min="1" max="24">
          <button class="btn btn-success" (click)="saveReservation()">{{'Aceptar' | translate}}</button>
+         <button class="btn btn-danger" (click)="backToPostDetail()">{{'Atras' | translate}}</button>
       </form>
     </div>
   </div>

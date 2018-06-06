@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import model.ArgumentsValidator;
+import model.Post;
 import model.Reservation;
 
 public class ReserService extends GenericService<Reservation> {
@@ -13,6 +15,13 @@ public class ReserService extends GenericService<Reservation> {
 	@Override
 	@Transactional
 	public void save(Reservation reserv){
+		super.save(reserv);
+	}
+	
+	@Transactional
+	public void saveWithPost(Reservation reserv, Post post){
+		ArgumentsValidator.validateReserv(reserv, post);
+		post.addNewReservation(reserv);
 		super.save(reserv);
 	}
 	

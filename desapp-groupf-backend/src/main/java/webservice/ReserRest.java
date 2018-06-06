@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import model.ArgumentsValidator;
 import model.Post;
 import model.Reservation;
+import model.User;
 import service.ReserService;
 import service.PostService;
+import service.UserService;
 
 @Path("/reservations")
 @CrossOriginResourceSharing(allowAllOrigins = true)
@@ -27,6 +29,7 @@ public class ReserRest {
 	
 	private ReserService reserService;
 	private PostService postService;
+	private UserService userService;
 	
 	
 	@GET
@@ -39,12 +42,17 @@ public class ReserRest {
 	}
 	
 	@POST
-	@Path("/new/{idPost}")
+	@Path("/new/{idPost}/{mailUser}")
 	@Produces("application/json")
-	public void newReser(@PathParam("idPost") final Integer id, @RequestBody Reservation reser){
-		Post post = this.postService.getById(id);
-		ArgumentsValidator.validateReserv(reser, post);
-		this.reserService.save(reser);
+	public void newReser(@PathParam("idPost") final Integer idPost, @PathParam("mailUser") String emailUser,  @RequestBody Reservation reser){
+		Post post = this.postService.getById(idPost);
+		User user = this.userService.getByEmail(emailUser);
+		reser.setClient(user);
+		reser.generateTimeRent();
+		System.out.println(reser.getStartDate()); 
+		System.out.println(reser.getEndDate());
+		this.reserService.saveWithPost(reser, post);
+		this.postService.update(post);
 	}
 	
 	@PUT
@@ -74,5 +82,11 @@ public class ReserRest {
 		reserService = reserServ;
 	}
 
+	public void setPostService(final PostService postServ){
+		postService = postServ;
+	}
 
+	public void setUserService(final UserService userServ){
+		userService = userServ;
+	}
 }
