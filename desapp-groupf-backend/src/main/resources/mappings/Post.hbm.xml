@@ -4,7 +4,7 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.Post">
-		<id column="ID" name="id">
+		<id column="POST_ID" name="id">
 			<generator class="increment" />
 		</id>
 		<property name="title" />
@@ -24,20 +24,20 @@
 		<property name="phoneNumber" />
 		<property name="addressToDrop" />
 		<property name="addressToPickUp" />
-		<list name="reservations" lazy="false">
-			<key column="reservationID" />
+		<list name="reservations" inverse="true" lazy="false">
+			<key column="POST_ID" />
 			<list-index column="id" />
-			<one-to-many class="model.Reservation" />
+			<one-to-many class="model.Reservation" not-found="ignore" />
 		</list>
-		<list name="rents" lazy="false">
-			<key column="rentID" />
+		<list name="rents" inverse="true" lazy="false">
+			<key column="POST_ID" />
 			<list-index column="id" />
-			<one-to-many class="model.Rent" />
+			<one-to-many class="model.Rent" not-found="ignore" />
 		</list>
 		
     <many-to-one name="creator" 
         class="model.User" 
-        column="user_id"
+        column="creator"
         lazy="false"
         not-null="true" cascade="none"/> 
         	</class>

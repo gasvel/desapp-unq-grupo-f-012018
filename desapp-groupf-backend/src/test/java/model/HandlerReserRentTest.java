@@ -22,7 +22,8 @@ public class HandlerReserRentTest {
 		handler = new HandlerReserRent();
 		post = Build.aPost().build();
 		client = Build.anUser().withCuil("1").build();
-		owner = Build.anUser().withCuil("2").withPost(post).build();
+		owner = Build.anUser().withCuil("2").build();
+		post.setCreator(owner);
 		rent = Build.aRent().withUser(this.client).build();
 	}
 
@@ -31,7 +32,8 @@ public class HandlerReserRentTest {
 		handler = new HandlerReserRent();
 		post = Build.aPost().build();
 		client = Build.anUser().withCuil("1").build();
-		owner = Build.anUser().withCuil("2").withPost(post).build();
+		owner = Build.anUser().withCuil("2").build();
+		post.setCreator(owner);
 		rent = Build.aRent().withUser(this.client).build();
 	}
 

@@ -8,8 +8,9 @@ import java.util.Map;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.persister.entity.EntityPersister;
-import org.hibernate.persister.walking.spi.AttributeDefinition;
+import org.hibernate.type.Type;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,34 +44,39 @@ public class ArchTest {
 	}
 
 	@Test
-	public void test() {
-		Map metadata = sessionFactory.getAllClassMetadata();
+	public void hibernateMappingTest() {
+		Map<String, ClassMetadata> metadata = sessionFactory.getAllClassMetadata();
 
-		for (Iterator it = metadata.values().iterator(); it.hasNext();) {
+		for (Iterator<ClassMetadata> it = metadata.values().iterator(); it.hasNext();) {
 
 		EntityPersister persister = (EntityPersister) it.next();
 		
 		List<String> attrs = new ArrayList<String>();
+		String attrsJoin = "";
+		String[] properties = persister.getPropertyNames();
+		Type[] types = persister.getPropertyTypes();
 		
-		for (Iterator it2 = persister.getAttributes().iterator();it2.hasNext();) {
-			AttributeDefinition attr = (AttributeDefinition) it2.next();
-			if(attr.getName() != "rents" && attr.getName() != "creator" && attr.getName() != "reservations" && attr.getName() != "score") {
-				System.out.println(persister.getEntityName() + "." +attr.getName());
-
-				attrs.add("c." + attr.getName());
+		for(int i =0 ; i<properties.length;i++){
+			if(!types[i].isCollectionType()){
+				attrs.add("c." + properties[i]);
 			}
-			
+			else{
+				attrs.add(properties[i] + "ATTR");
+				attrsJoin += (" join c."+ properties[i]+ " " + properties[i] +"ATTR ");
+			}
+
 		}
-		
+
+				
 		String columns = String.join(",", attrs);
 		
 		Query q = session.createQuery(
 
-		"select " + columns + " from " + persister.getEntityName() + " c");
+		"select " + columns + " from " + persister.getEntityName() + " c" + attrsJoin);
 		
-		System.out.println(q.toString());
 
 		q.iterate();
+		
 
 		}
 

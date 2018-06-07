@@ -11,7 +11,8 @@ public class Reservation extends Entity{
 	private Date endDate;
 	private User client;
 	
-//	private HandlerReserRent serviceRR;
+	private Post post;
+	
 	
 	public Reservation() {
 		
@@ -37,7 +38,7 @@ public class Reservation extends Entity{
 		this.client = userClient;
 		this.startDate = start;
 		this.endDate = end;
-//		this.serviceRR = new HandlerReserRent();
+		this.generateTimeRent();
 	}
 
 	public User getClient() {
@@ -59,10 +60,18 @@ public class Reservation extends Entity{
 	public void generateTimeRent() {
 		this.timeOfRent = this.endDate.getTime() - this.startDate.getTime() ;
 	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
 	
-//	public void confirmReservation(Post post) {
-//		serviceRR.confirmReservation(post, this.startDate, this.endDate, this.timeOfRent, this.client, this);
-//	}
+
+	
+	
 	
 	
 }

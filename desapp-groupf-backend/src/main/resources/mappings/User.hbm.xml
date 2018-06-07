@@ -16,7 +16,7 @@
 		<list name="score" lazy="false">
 			<key column="scoreID" />
 			<list-index column="id"/>
-			<one-to-many class="model.Score"/>
+			<one-to-many class="model.Score" not-found="ignore"/>
 		</list>
 		<property name="state">
 			<type name="org.hibernate.type.EnumType">
@@ -24,10 +24,6 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
-<!--  
-<set name="posts" lazy="false" cascade="merge">
-        <key column="user_id"/>
-        <one-to-many class="model.Post"/>
-    </set>-->
+
 	</class>
 </hibernate-mapping>

@@ -18,5 +18,8 @@
             </type>
         </property>
 		<property name="PICK_UP_TIME"/>
+		
+		<many-to-one name="post" class="model.Post" column="POST_ID"></many-to-one>
+		
 	</class>
 </hibernate-mapping>
