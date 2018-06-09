@@ -9,7 +9,7 @@
 
 <aop:aspectj-autoproxy />
 
-<bean id="beforeHibernate" class="aspects.HibernateAspect"/>
+<bean id="beforeService" class="aspects.AuditAspect"/>
 
 	<!-- beans de spring -->	
 	<bean id="services.general" class="service.GeneralService">
