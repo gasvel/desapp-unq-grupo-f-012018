@@ -76,4 +76,8 @@ export class AppComponent implements OnInit{
   extractCredits(){
     this.routerServ.navigate(["/credits/extract",this.user.id,this.user.credits]);
   }
+
+  confirmation(){
+    this.routerServ.navigate(["/confirmations"]);
+  }
 }

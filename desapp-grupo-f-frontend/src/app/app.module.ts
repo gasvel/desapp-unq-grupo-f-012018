@@ -34,6 +34,7 @@ import { ReservationService } from './services/reservation.service';
 import { HttpModule } from '@angular/http';
 import {CalendarModule} from 'primeng/calendar';
 import { PostMapComponent } from './posts/post-map/post-map.component';
+import { ConfirmationsComponent } from './confirmations/confirmations.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,6 +62,7 @@ let config = new AuthServiceConfig([
     RetiroCreditosComponent,
     ReservationComponent,
     PostMapComponent,
+    ConfirmationsComponent
 
   ],
   imports: [
@@ -83,6 +85,10 @@ let config = new AuthServiceConfig([
 				{
 					path:'reservation/:id',
 					component: ReservationComponent
+				},
+				{
+					path:'confirmations',
+					component: ConfirmationsComponent
 				},
     		{
 

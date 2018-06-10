@@ -19,6 +19,24 @@ export class ReservationService {
   getReservations(): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
     
-    return this.http.get(this.url + "/all");
+    return this.http.get(this.url + "/all", httpOptions);
+  }
+
+  getAll(mailUser):Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.get(this.url + "/allFrom/" + mailUser, httpOptions);
+  }
+
+  confirmReserv(reser): Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    
+    return this.http.put(this.url + "/confirm", reser, httpOptions)
+  }
+
+  cancelReserv(reser){
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    
+    return this.http.put(this.url + "/cancel", reser, httpOptions)
   }
 }

@@ -1,6 +1,9 @@
 package webservice;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -49,9 +52,42 @@ public class ReserRest {
 		User user = this.userService.getByEmail(emailUser);
 		reser.setClient(user);
 		reser.generateTimeRent();
+		reser.setPost(post);
 		System.out.println(reser.getStartDate()); 
 		System.out.println(reser.getEndDate());
 		this.reserService.saveWithPost(reser, post);
+		this.postService.update(post);
+	}
+	
+	@GET
+	@Path("/allFrom/{mailUser}")
+	@Produces("application/json")
+	public List<Reservation> getReservationsFromUser(@PathParam("mailUser") String emailUser){
+		User user = this.userService.getByEmail(emailUser);
+		List<Reservation> allReser = this.getAllReser().stream()
+									.filter(res -> res.getPost().getCreator().getId() == user.getId())
+									.collect(Collectors.toList());
+		return allReser;
+	}
+	
+	@PUT
+	@Path("/confirm")
+	@Produces("application/json")
+    public void confirmReservation(@RequestBody Reservation reser){
+		Post post = reser.getPost();
+		post.removeReservation(reser);
+		//crea renta, guardarla en el post y update post
+		this.reserService.delete(reser);
+		this.postService.update(post);
+	}
+	
+	@DELETE
+	@Path("/cancel")
+	@Produces("application/json")
+    public void cancelReservation(@RequestBody Reservation reser){
+		Post post = reser.getPost();
+		post.removeReservation(reser);
+		this.reserService.delete(reser);
 		this.postService.update(post);
 	}
 	
