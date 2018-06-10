@@ -16,12 +16,12 @@
           <div class="col-sm-4">
             <h2>{{post.title}}</h2><br/>
             <div class="">
-              <span>{{'Precio por dia' | translate}}: $</span>
-              <span>{{post.priceDay}}</span>
+              <span>{{'Precio por dia' | translate}}: </span>
+              <span>{{post.priceDay | currency}}</span>
             </div>
             <div class="">
-              <span>{{'Precio por hora' | translate}}: $</span>
-              <span>{{post.priceHour}}</span>
+              <span>{{'Precio por hora' | translate}}: </span>
+              <span>{{post.priceHour | currency}}</span>
             </div>
             <br/>
             <h4>{{'Dirección de retiro' | translate}}:</h4>

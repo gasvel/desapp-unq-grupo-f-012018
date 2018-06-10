@@ -64,12 +64,15 @@ export class CreatePostComponent implements OnInit {
 	      types: [],
 	      componentRestrictions: {country: "ar"}
 	    };
+      let self = this;
       let autocomplete1 = new google.maps.places.Autocomplete(this.addressToDropRef.nativeElement, options);
 			autocomplete1.addListener('place_changed', function() {
-				//this.postForm.get('addressToDrop').setValue(autocomplete.getPlace().formatted_address);
+				self.postForm.get('addressToDrop').setValue(autocomplete1.getPlace().formatted_address);
 			});
       let autocomplete2 = new google.maps.places.Autocomplete(this.addressToPickUpRef.nativeElement, options);
-      autocomplete2.addListener('place_changed', function() {});
+      autocomplete2.addListener('place_changed', function() {
+        self.postForm.get('addressToPickUp').setValue(autocomplete2.getPlace().formatted_address);
+      });
 	}
 
   ngOnInit() {
@@ -77,9 +80,9 @@ export class CreatePostComponent implements OnInit {
       let isEdit = params["id"] !== undefined;
       if(isEdit) {
         this.isSave = false;
-        this.userId = params["userId"];        
+        this.userId = params["userId"];
         this.getPost(params['id']);
-        
+
       }
       else {
         this.post = { "id":"", "title":"", "typeVehicle":"Auto", "description":"", "availability":"",
