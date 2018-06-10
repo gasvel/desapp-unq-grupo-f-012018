@@ -1,11 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class User extends Entity{
 	private static final long serialVersionUID = 5054708596541854955L;
@@ -15,8 +11,6 @@ public class User extends Entity{
 	private String name;
 	private String email;
 	private float credits;
-	@JsonIgnore
-	private Set<Post> posts;
 	private List<Score> score;
 	private User_State state;
 	
@@ -25,7 +19,6 @@ public class User extends Entity{
 		this.address = address;
 		this.name = name;
 		this.email=mail;
-		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
 		this.credits = 0;
@@ -33,7 +26,6 @@ public class User extends Entity{
 	
 	public User() {
 		this.state = User_State.REGULAR;
-		this.posts = new HashSet<Post>();
 		this.score = new ArrayList<Score>();
 		this.credits = 0;
 	}
@@ -61,9 +53,7 @@ public class User extends Entity{
 		return score;
 	}
 
-	public void addPost(Post newPost) {
-		this.posts.add(newPost);		
-	}
+
 
 	public String getCuil() {
 		return cuil;
@@ -96,15 +86,6 @@ public class User extends Entity{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@JsonIgnore
-	public Set<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(Set<Post> posts) {
-		this.posts = posts;
 	}
 
 

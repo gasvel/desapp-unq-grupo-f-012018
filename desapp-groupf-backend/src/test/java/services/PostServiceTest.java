@@ -45,5 +45,21 @@ public class PostServiceTest {
 		this.userServ.update(user);
 		assertEquals(5,this.postServ.retriveAll().size());
 	}
+	
+	@Test
+	public void addAReservation(){
+		Post newPost = Build.aPost().buildValidPost().build();
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		newPost.setCreator(user);
+		this.postServ.save(newPost);
+		user.setName("ansofjans");
+		this.userServ.update(user);
+		newPost.addNewRent(Build.aRent().build());
+		this.postServ.update(newPost);
+		assertEquals(this.postServ.getById(newPost.getId()).getRents().size() , 1);
+
+		
+	}
 
 }

@@ -40,7 +40,7 @@ public class HandlerReserRent {
 				rent.clientConfirmsPickUp(rent.PICK_UP_TIME);
 				
 			}
-			else if(user.getPosts().contains(post)) {
+			else if(post.getCreator() == user) {
 				rent.ownerConfirmsPickUp(rent.PICK_UP_TIME);
 			}
 			break;
@@ -70,7 +70,7 @@ public class HandlerReserRent {
 			if(user.getCuil() == rent.getClient().getCuil()){
 				rent.clientConfirmsReturn();
 				otherUser.addScore(score);
-			} else if(user.getPosts().contains(post)) {
+			} else if(post.getCreator() == user) {
 				rent.ownerConfirmsReturn();
 				otherUser.addScore(score);
 			}

@@ -14,6 +14,7 @@ public class Rent extends Entity{
 	private User client;
 	private Rent_State state;
 	private Timer timer = new Timer();
+	private Post post;
 	
 	public long PICK_UP_TIME = TimeUnit.MINUTES.toMillis(30);
 	
@@ -125,6 +126,16 @@ public class Rent extends Entity{
 	public void transactionDone() {
 		this.setState(Rent_State.RentDone);
 	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+	
+	
 	
 	
 }

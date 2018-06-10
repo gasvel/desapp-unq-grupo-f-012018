@@ -82,6 +82,6 @@ public class HandlerPostTest {
 	public void ifAnPostIsCreatedWithValidsArgumentsTheOwnerShouldBeANewPost() {		
 		Post post= Build.aPost().buildValidPost().build();
 		handler.newPost(post, owner);	
-		assertEquals(1, owner.getPosts().size());
+		assertEquals(post.getCreator() , owner);
 	}
 }

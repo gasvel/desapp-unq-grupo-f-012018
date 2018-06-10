@@ -6,7 +6,7 @@ public class HandlerPost {
 		
 		ArgumentsValidator.validatePost(post);
 		
-		owner.addPost(post);
+		post.setCreator(owner);
 	}
 	
 

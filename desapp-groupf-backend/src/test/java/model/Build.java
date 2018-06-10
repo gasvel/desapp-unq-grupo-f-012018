@@ -17,10 +17,7 @@ public class Build {
 			return this;
 		}
 		
-		public UserBuilder withPost(Post post) {
-			anUser.addPost(post);
-			return this;
-		}
+
 		
 		public UserBuilder valid(){
 			anUser.setCuil("20390960299");
