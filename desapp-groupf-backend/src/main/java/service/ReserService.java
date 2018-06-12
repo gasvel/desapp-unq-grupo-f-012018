@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import model.ArgumentsValidator;
 import model.Post;
 import model.Reservation;
+import persistence.ReserRepository;
 
 public class ReserService extends GenericService<Reservation> {
 
@@ -47,5 +48,12 @@ public class ReserService extends GenericService<Reservation> {
 	@Transactional
 	public List<Reservation> retriveAll(){
 		return super.retriveAll();
+	}
+
+	@Transactional
+	public List<Reservation> getAllFromCreator(String emailUser) {
+		ReserRepository repo = (ReserRepository) this.getRepository();
+		return repo.getAllFromCreator(emailUser);
+		
 	}
 }

@@ -10,10 +10,10 @@
 		<property name="timeOfRent" />
 		<property name="startDate" />
 		<property name="endDate" />
-		<property name="client"/>
+		<one-to-one name="client" class="model.User"></one-to-one>
 
 		<!-- <many-to-one name="post" class="model.Post" column="POST_ID" lazy="false"></many-to-one> -->
-		<many-to-one name="post" class="model.Post" column="POST_ID"></many-to-one>
+		<many-to-one name="post" class="model.Post" column="POST_ID" lazy="false"></many-to-one>
 
 	</class>
 </hibernate-mapping>

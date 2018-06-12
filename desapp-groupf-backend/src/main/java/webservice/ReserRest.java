@@ -1,9 +1,6 @@
 package webservice;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,8 +17,8 @@ import model.ArgumentsValidator;
 import model.Post;
 import model.Reservation;
 import model.User;
-import service.ReserService;
 import service.PostService;
+import service.ReserService;
 import service.UserService;
 
 @Path("/reservations")
@@ -56,17 +53,13 @@ public class ReserRest {
 		System.out.println(reser.getStartDate()); 
 		System.out.println(reser.getEndDate());
 		this.reserService.saveWithPost(reser, post);
-		this.postService.update(post);
 	}
 	
 	@GET
-	@Path("/allFrom/{mailUser}")
+	@Path("/from/{mailUser}")
 	@Produces("application/json")
 	public List<Reservation> getReservationsFromUser(@PathParam("mailUser") String emailUser){
-		User user = this.userService.getByEmail(emailUser);
-		List<Reservation> allReser = this.getAllReser().stream()
-									.filter(res -> res.getPost().getCreator().getId() == user.getId())
-									.collect(Collectors.toList());
+		List<Reservation> allReser = this.reserService.getAllFromCreator(emailUser);
 		return allReser;
 	}
 	

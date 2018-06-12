@@ -1,5 +1,8 @@
 package persistence;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.Logger;
 
 import model.Reservation;
@@ -12,6 +15,13 @@ public class ReserRepository extends HibernateGenericDAO<Reservation> implements
 	@Override
 	protected Class<Reservation> getDomainClass() {
 		return Reservation.class;
+	}
+
+	public List<Reservation> getAllFromCreator(String emailUser) {
+		return this.findAll().stream()
+		.filter(res -> res.getPost().getCreator().getEmail().equals(emailUser))
+		.collect(Collectors.toList());
+
 	}
 
 }

@@ -25,7 +25,7 @@ export class ReservationService {
   getAll(mailUser):Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
 
-    return this.http.get(this.url + "/allFrom/" + mailUser, httpOptions);
+    return this.http.get(this.url + "/from/" + mailUser, httpOptions);
   }
 
   confirmReserv(reser): Observable<any>{

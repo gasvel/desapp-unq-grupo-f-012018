@@ -24,16 +24,7 @@
 		<property name="phoneNumber" />
 		<property name="addressToDrop" />
 		<property name="addressToPickUp" />
-		<list name="reservations" inverse="true" lazy="false">
-			<key column="POST_ID" />
-			<list-index column="id" />
-			<one-to-many class="model.Reservation" not-found="ignore" />
-		</list>
-		<list name="rents" inverse="true" lazy="false">
-			<key column="POST_ID" />
-			<list-index column="id" />
-			<one-to-many class="model.Rent" not-found="ignore" />
-		</list>
+
 		
     <many-to-one name="creator" 
         class="model.User" 

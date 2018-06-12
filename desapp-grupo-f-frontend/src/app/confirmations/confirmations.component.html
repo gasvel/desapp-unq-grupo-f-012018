@@ -2,11 +2,13 @@
   <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
     <li class="list-group-item" *ngFor="let reserv of reservs"> 
     <div class="row">
-      <div class="col-md-2">{{reserv.client}}</div>
+      <div class="col-md-2">{{reserv.client.name}}</div>
+    </div>
+    <div class="row">
         <div class="col-md">
           <a [routerLink]="" (click)="confirmReserv(reserv)">
             <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-              <i class="far fa-check"></i> 
+              <i class="fas fa-check-circle"></i> 
             </span>
           </a>
         </div>
@@ -17,7 +19,7 @@
             </span>
           </a>
         </div>
-    </div>
+      </div>
   </li>
   </ul>
 </div>
