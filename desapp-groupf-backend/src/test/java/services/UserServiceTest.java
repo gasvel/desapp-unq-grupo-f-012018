@@ -39,5 +39,60 @@ public class UserServiceTest {
 		assertEquals(user.getCuil(),this.userServ.getById(user.getId()).getCuil());
 		
 	}
+	
+	@Test
+	public void ifAValidUserIsSavedAndAdds200CreditsItShouldHave200Credits(){
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		this.userServ.addCredits(user.getId(), 200);
+		assert(200 == this.userServ.getById(user.getId()).getCredits());
+
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void ifAValidUserIsSavedAndAddsANegativeAmountOfCreditsItShouldThrowAnException(){
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		this.userServ.addCredits(user.getId(), -200);
+
+	}
+	
+	@Test
+	public void ifAValidUserIsSavedAndAdds200CreditsAndExtract100CreditsItShouldHave100Credits(){
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		this.userServ.addCredits(user.getId(), 200);
+		this.userServ.removeCredits(user.getId(), 100);
+		assert(100 == this.userServ.getById(user.getId()).getCredits());
+
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void ifAValidUserIsSavedAndExtract100CreditsWhithoutHavingThatAmountItShouldThrowAnException(){
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		this.userServ.removeCredits(user.getId(), 100);
+
+	}
+	
+	@Test
+	public void idAValidUserIsSaveAndRemovedTheListOfUserInDBShouldHave3OfLength(){
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		this.userServ.delete(user);
+		assertEquals(3,this.userServ.retriveAll().size());
+	}
+	
+	@Test
+	public void ifAValidUserIsSavedEditedAndUpdatedTheNameOfTheUserShouldBeTheSameInDB() {
+		User user = Build.anUser().valid().build();
+		this.userServ.save(user);
+		user.setName("Carlos Osorio");
+		this.userServ.update(user);
+		assertEquals(user.getName(),this.userServ.getById(user.getId()).getName());
+		
+	}
+	
+	
 
 }

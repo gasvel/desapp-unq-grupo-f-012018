@@ -120,11 +120,18 @@ public class User extends Entity{
 	}
 
 	public void addCredits(float credits2) {
+		if(credits2 <0){
+			throw new IllegalArgumentException("The amount of credits to add must be positive");
+
+		}
 		this.credits += credits2;
 		
 	}
 	
 	public void removeCredits(float credits2){
+		if(credits2 > this.credits || credits2 < 0){
+			throw new IllegalArgumentException("The amount of credits to remove must be less or equal than actual credits");
+		}
 		this.credits -= credits2;
 	}
 	
