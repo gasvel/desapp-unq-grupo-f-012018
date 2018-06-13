@@ -22,4 +22,7 @@
       </div>
   </li>
   </ul>
+  <div *ngIf="reservs.length == 0">
+    <h2>{{'No posee confirmaciones pendientes' | translate}}</h2>
+  </div>
 </div>

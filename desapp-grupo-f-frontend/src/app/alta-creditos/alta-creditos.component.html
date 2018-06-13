@@ -3,8 +3,9 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-group">
         <label for="inputCreditos">{{textoLabel}}</label>
-        <input type="number" formControlName="credits" [max]="credits == 0 ?  20000 : credits" class="form-control" id="inputCreditos" placeholder="0" [class.invalid]="form.controls['credits'].invalid && form.controls['credits'].dirty">
-    </div>
+        <input type="number" formControlName="credits" [max]="credits == 0 ?  20000 : credits" class="form-control" id="inputCreditos" aria-describedby="errorCreditos" placeholder="0" [class.invalid]="form.controls['credits'].invalid && form.controls['credits'].dirty">
+        <small *ngIf="form.controls['credits'].invalid" id="errorCreditos" style="color: red">{{textoError}}</small>
+      </div>
     <button type="submit" class="btn btn-success" [disabled]="(form.controls['credits'].invalid && form.controls['credits'].dirty) || !form.controls['credits'].dirty">{{textoBoton}}</button>
 
   </form>

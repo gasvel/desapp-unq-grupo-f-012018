@@ -16,9 +16,10 @@ export class AltaCreditosComponent implements OnInit {
   userId:any;
   textoBoton:String = "Agregar a la cuenta";
   textoLabel:String = "Ingrese la cantidad de creditos a agregar: ";
+  textoError:String = "La cantidad ingresada debe ser mayor a 0"
   form: FormGroup = this.formBuilder.group({
     credits : new FormControl('',Validators.compose(
-      [Validators.required,Validators.max(this.credits)]
+      [Validators.required,Validators.min(1)]
     ))
   }
   );

@@ -16,9 +16,10 @@ export class RetiroCreditosComponent implements OnInit {
   userId:any;
   textoLabel:String = "Ingrese la cantidad de creditos a retirar: ";
   textoBoton: String = "Retirar creditos";
+  textoError:String = "La cantidad ingresada debe ser entre 1 y " + this.credits;
   form: FormGroup = this.formBuilder.group({
     credits : new FormControl('',Validators.compose(
-      [Validators.required]
+      [Validators.required,Validators.max(this.credits),Validators.min(1)]
     ))
   }
   );

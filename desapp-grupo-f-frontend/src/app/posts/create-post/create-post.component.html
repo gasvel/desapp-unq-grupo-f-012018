@@ -15,12 +15,12 @@
             <div class="col-sm-6">
               <label class="control-label required" >{{'Título' | translate}}: </label>
               <input type="string" class="form-control" id="postTitle" placeholder="{{'Escriba un título' | translate}}" formControlName="postTitle">
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['postTitle'].invalid && submitted">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['postTitle'].invalid">
                 {{'Por favor ingrese un título' | translate}}
               </p>
               <label class="control-label required" >{{'Disponibilidad' | translate}}: </label>
               <input type="string" class="form-control" id="availability" formControlName="availability">
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['availability'].invalid && submitted">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['availability'].invalid">
                 {{'Por favor ingrese un disponibilidad' | translate}}
               </p>
             </div>
@@ -38,7 +38,7 @@
               <label >{{'Descripción del vehiculo' | translate}}: </label>
               <textarea class="form-control" rows="3" id="description" placeholder="{{'Escriba una descripción' | translate}}" formControlName="description">
               </textarea>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['description'].invalid && submitted">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['description'].invalid">
                 {{'Por favor ingrese un descripción' | translate}}
               </p>
             </div>
@@ -50,14 +50,14 @@
             <div class="col-sm-6">
               <label class="control-label required" >{{'Dirección de retiro' | translate}}: </label>
               <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef/>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToPickUp'].invalid && submitted">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToPickUp'].invalid">
                 {{'Por favor ingrese un dirección válido' | translate}}
               </p>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >{{'Dirección de entrega' | translate}}: </label>
               <input type="string" class="form-control" formControlName="addressToDrop" #addressToDropRef/>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToDrop'].invalid && submitted">
+              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToDrop'].invalid">
                 {{'Por favor ingrese un dirección válido' | translate}}
               </p>
             </div>
@@ -80,7 +80,7 @@
           <h4>{{'Datos de contacto' | translate}} </h4>
             <label class="control-label required" >{{'Teléfono' | translate}}: </label>
             <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber">
-            <p style="color:red" class="error_message" *ngIf="postForm.controls['phoneNumber'].invalid && submitted">
+            <p style="color:red" class="error_message" *ngIf="postForm.controls['phoneNumber'].invalid">
               {{'Por favor ingrese un telefono válido' | translate}}
             </p>
         </div>
