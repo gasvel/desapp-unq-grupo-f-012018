@@ -77,9 +77,10 @@ public class ReserRest {
 	}
 	
 	@DELETE
-	@Path("/cancel")
+	@Path("/cancel/{id}")
 	@Produces("application/json")
-    public void cancelReservation(@RequestBody Reservation reser){
+    public void cancelReservation(@PathParam("id") Integer id){
+		Reservation reser = this.reserService.getById(id);
 		Post post = reser.getPost();
 		post.removeReservation(reser);
 		this.reserService.delete(reser);

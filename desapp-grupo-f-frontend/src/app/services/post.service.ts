@@ -9,6 +9,13 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
+
+  getVehicleTypes():Observable<any> {
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+
+    return this.http.get(this.url + "/vehicle/types", httpOptions);
+  }
+
   getAll():Observable<any> {
     return this.http.get(this.url + "/all");
   }

@@ -14,6 +14,7 @@ import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import model.Post;
+import model.TypeVehicle;
 import model.User;
 import service.PostService;
 import service.UserService;
@@ -61,7 +62,14 @@ public class PostRest {
 		Post postToDelete = this.postService.getById(id);
 		this.postService.delete(postToDelete);
 	}
-	   
+	
+	@GET
+	@Path("/vehicle/types")
+	@Produces("application/json")
+	public TypeVehicle[] getVehicleTypes(){
+		return TypeVehicle.values();
+	}
+	
 	@GET
 	@Path("/post/{id}")
 	@Produces("application/json")

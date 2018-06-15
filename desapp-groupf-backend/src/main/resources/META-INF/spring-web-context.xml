@@ -59,6 +59,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<property name="reserService" ref="services.reser"></property>
 		<property name="postService" ref="services.post"></property>
 		<property name="userService" ref="services.user" ></property>
+		<property name="rentService" ref="services.rent" ></property>
 	</bean>
 	<bean id="rentRest" class="webservice.RentRest">
 		<property name="rentService" ref="services.rent"></property>

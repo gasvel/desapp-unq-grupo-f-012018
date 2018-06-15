@@ -5,7 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PostFilterPipe implements PipeTransform {
 
-  transform(posts: any[], searchText: String): any[] {
+
+  transform(posts: any[], searchText: string): any[] {
     if(!posts) return [];
     if(!searchText) return posts;
     searchText = searchText.toLowerCase();
@@ -15,7 +16,10 @@ export class PostFilterPipe implements PipeTransform {
     var postFilterTitle =  posts.filter( post => {
       return post.title.toLowerCase().includes(searchText);
    });
-   var postTotal = postFilterDescription.concat(postFilterTitle);
+   var postFilterType = posts.filter( post => {
+      return post.typeVehicle.toLowerCase().includes(searchText);
+   });
+   var postTotal = postFilterType.concat(postFilterDescription.concat(postFilterTitle));
    return postTotal.filter(function(post, index, self){
      return index === self.indexOf(post);
    })

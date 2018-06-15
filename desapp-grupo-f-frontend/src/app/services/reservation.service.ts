@@ -34,9 +34,9 @@ export class ReservationService {
     return this.http.put(this.url + "/confirm", reser, httpOptions)
   }
 
-  cancelReserv(reser){
+  cancelReserv(idReser){
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
     
-    return this.http.put(this.url + "/cancel", reser, httpOptions)
+    return this.http.put(this.url + "/cancel" + idReser , httpOptions)
   }
 }

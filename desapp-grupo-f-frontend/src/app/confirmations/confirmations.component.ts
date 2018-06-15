@@ -26,20 +26,21 @@ export class ConfirmationsComponent implements OnInit {
   confirmReserv(reser){
     this.spinner.show();
     this.reservService.confirmReserv(reser).subscribe(
-      res => {console.log(res);this.spinner.hide();},
+      res => {console.log(res);this.spinner.hide();window.location.reload();},
       error => {console.log(error);this.spinner.hide();}
     );
   }
 
   cancelReserv(reser){
     this.spinner.show();
-    this.reservService.cancelReserv(reser).subscribe(
-      res => {console.log(res);this.spinner.hide();},
+    this.reservService.cancelReserv(reser.id).subscribe(
+      res => {console.log(res);this.spinner.hide();window.location.reload();},
       error => {console.log(error);this.spinner.hide();}
     );
   }
 
   seleccionarReser(reser){
+    console.log(reser.id);
     this.reservaSeleccionada = reser;
     this.reservaSeleccionada.startDate = new Date(this.reservaSeleccionada.startDate);
     this.reservaSeleccionada.endDate = new Date(this.reservaSeleccionada.endDate);
