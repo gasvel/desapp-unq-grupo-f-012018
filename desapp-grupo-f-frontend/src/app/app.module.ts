@@ -35,6 +35,8 @@ import { HttpModule } from '@angular/http';
 import {CalendarModule} from 'primeng/calendar';
 import { PostMapComponent } from './posts/post-map/post-map.component';
 import { ConfirmationsComponent } from './confirmations/confirmations.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -147,7 +149,8 @@ let config = new AuthServiceConfig([
 			PipesModule,
 			NgxPaginationModule,
 			HttpModule,
-			CalendarModule
+			CalendarModule,
+			NgxSpinnerModule
   ],
   providers: [
     UsersService,

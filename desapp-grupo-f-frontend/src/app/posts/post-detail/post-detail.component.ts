@@ -3,6 +3,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-post-detail',
@@ -18,7 +19,8 @@ export class PostDetailComponent implements OnInit {
     private service : PostService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -35,9 +37,10 @@ export class PostDetailComponent implements OnInit {
   }
 
   getPost(id) {
+    this.spinner.show();
     this.service.getPost(id).subscribe(
-      res => {this.post = res; this.isFromUser = (JSON.parse(localStorage.getItem("userInfo")) !== null) && (this.post.creator.email == JSON.parse(localStorage.getItem("userInfo")).email);},
-      error => console.log(error)
+      res => {this.post = res; this.isFromUser = (JSON.parse(localStorage.getItem("userInfo")) !== null) && (this.post.creator.email == JSON.parse(localStorage.getItem("userInfo")).email);this.spinner.hide();},
+      error => {console.log(error);this.spinner.hide();}
     );
   }
 

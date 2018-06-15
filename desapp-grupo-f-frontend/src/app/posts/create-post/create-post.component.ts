@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../../model/post';
 import { PostService } from '../../services/post.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create-post',
@@ -50,7 +51,8 @@ export class CreatePostComponent implements OnInit {
     private service : PostService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private spinner: NgxSpinnerService) {
   }
 
   @ViewChild("addressToDropRef")
@@ -95,14 +97,16 @@ export class CreatePostComponent implements OnInit {
   }
 
   getPost(id) {
+    this.spinner.show();
     this.service.getPost(id).subscribe(
       res => {
         this.post = res;
+        this.spinner.hide();
         console.log(this.post);
         this.NgxInputFileUploadComponent.imageSrc = this.post.photo;
         this.setPostForm();
       },
-      error => console.log(error)
+      error => {console.log(error);this.spinner.hide();}
     );
   }
 

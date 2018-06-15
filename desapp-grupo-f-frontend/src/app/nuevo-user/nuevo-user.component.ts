@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { UsersService} from '../services/users.service';
 import { Router } from '@angular/router';
 import { SocialUser } from 'angularx-social-login';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-nuevo-user',
@@ -34,7 +35,7 @@ export class NuevoUserComponent implements OnInit {
   isEdit:boolean = false;
   userInfo:SocialUser;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router) {
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private spinner: NgxSpinnerService) {
       this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
    }
 
@@ -57,10 +58,11 @@ export class NuevoUserComponent implements OnInit {
   }
 
 
-  onSubmit(){    
+  onSubmit(){   
+    this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);location.reload();this.volverAtras()},
-      error => console.log(error)
+      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();location.reload();this.volverAtras()},
+      error => {console.log(error);this.spinner.hide();}
     );
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService} from '../services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-editar-user',
@@ -35,7 +36,7 @@ export class EditarUserComponent implements OnInit {
   isEdit:boolean = true;
   userId:any;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private route : ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private route : ActivatedRoute, private spinner: NgxSpinnerService) {
     this.userId = this.route.snapshot.paramMap.get("id");
    }
 
@@ -44,9 +45,10 @@ export class EditarUserComponent implements OnInit {
   }
 
   getUser(){
+    this.spinner.show();
     this.userServ.getUser(this.userId).subscribe(
-      res => {console.log(res);this.setUsuario(res)},
-      error => console.log(error)
+      res => {console.log(res);this.setUsuario(res); this.spinner.hide();},
+      error => {console.log(error);this.spinner.hide();}
     );;
   }
 
@@ -81,9 +83,10 @@ export class EditarUserComponent implements OnInit {
 
 
   onSubmit(){    
+    this.spinner.show();
     this.userServ.updateUser(this.setFinalUser()).subscribe(
-      res => {console.log(res);this.volverAtras()},
-      error => console.log(error)
+      res => {console.log(res);this.volverAtras();this.spinner.hide();},
+      error => {console.log(error);this.spinner.hide();}
     );
   }
 

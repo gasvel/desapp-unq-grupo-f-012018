@@ -3,6 +3,7 @@ import { PostService } from '../../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription }   from 'rxjs';
 import { SharedSearchFilterService } from './../../services/shared-search-filter.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-posts',
@@ -20,7 +21,8 @@ export class PostsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private postServ: PostService,
-    private searchFilterServ: SharedSearchFilterService
+    private searchFilterServ: SharedSearchFilterService,
+    private spinner: NgxSpinnerService
     ){
       this.subscription = searchFilterServ.sharedSearchText$.subscribe(
         text => {
@@ -34,12 +36,14 @@ export class PostsComponent implements OnInit {
   }
 
   traerPosts(){
+    this.spinner.show();
     this.postServ.getAll().subscribe(
       res => {
         console.log(res);
         this.posts = res;
+        this.spinner.hide();
       },
-      error => console.log(error)
+      error => {console.log(error);this.spinner.hide();}
     )
   }
 

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Build {
@@ -71,6 +74,29 @@ public class Build {
 	
 	public static RentBuilder aRent() {
 		return new RentBuilder();
+	}
+	
+	public static class ReservationBuilder{
+		private Reservation aReser = new Reservation();
+		
+		public Reservation build(){
+			return aReser;
+		}
+		
+		public ReservationBuilder buildValidReservation(){
+			Date startDate = new GregorianCalendar(2019, Calendar.MARCH, 29).getTime();
+			Date endDate = new GregorianCalendar(2019, Calendar.JUNE, 29).getTime();
+			aReser.setStartDate(startDate);
+			aReser.setEndDate(endDate);
+			aReser.generateTimeRent();
+			
+			return this;
+		}
+		
+	}
+	
+	public static ReservationBuilder aReservation(){
+		return new ReservationBuilder();
 	}
 	
 	public static class PostBuilder{

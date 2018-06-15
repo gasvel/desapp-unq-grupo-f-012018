@@ -20,6 +20,7 @@ import model.User;
 import service.PostService;
 import service.ReserService;
 import service.UserService;
+import service.RentService;
 
 @Path("/reservations")
 @CrossOriginResourceSharing(allowAllOrigins = true)
@@ -30,6 +31,7 @@ public class ReserRest {
 	private ReserService reserService;
 	private PostService postService;
 	private UserService userService;
+	private RentService rentService;
 	
 	
 	@GET
@@ -68,8 +70,8 @@ public class ReserRest {
 	@Produces("application/json")
     public void confirmReservation(@RequestBody Reservation reser){
 		Post post = reser.getPost();
+//		this.rentService.newRent(reser);
 		post.removeReservation(reser);
-		//crea renta, guardarla en el post y update post
 		this.reserService.delete(reser);
 		this.postService.update(post);
 	}
@@ -117,5 +119,9 @@ public class ReserRest {
 
 	public void setUserService(final UserService userServ){
 		userService = userServ;
+	}
+	
+	public void setRentService(final RentService rentServ){
+		rentService = rentServ;
 	}
 }
