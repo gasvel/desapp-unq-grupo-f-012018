@@ -70,7 +70,7 @@ public class ReserRest {
 	@Produces("application/json")
     public void confirmReservation(@RequestBody Reservation reser){
 		Post post = reser.getPost();
-//		this.rentService.newRent(reser);
+		this.rentService.newRent(reser);
 		post.removeReservation(reser);
 		this.reserService.delete(reser);
 		this.postService.update(post);

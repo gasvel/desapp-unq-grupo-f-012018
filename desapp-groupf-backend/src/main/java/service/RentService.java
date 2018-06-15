@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import model.ArgumentsValidator;
 import model.Rent;
 import model.Reservation;
-import persistence.RentRepository;
 
 
 public class RentService extends GenericService<Rent> {
@@ -46,14 +45,20 @@ public class RentService extends GenericService<Rent> {
 	public List<Rent> retriveAll(){
 		return super.retriveAll();
 	}
+	
+	public Float calculateCost(long timeOfRent, Integer priceDay, Integer priceHour){
+		long days = TimeUnit.DAYS.convert(timeOfRent, TimeUnit.MILLISECONDS);
+        long hours  = TimeUnit.HOURS.convert(timeOfRent, TimeUnit.MILLISECONDS) - (days * 24);
+        float costDays = days * priceDay;
+        float costHours = hours * priceHour;
+		return costDays + costHours;
+	}
 
 	@Transactional
 	public void newRent(Reservation reser) {
-		RentRepository repo = (RentRepository) this.getRepository();
-		Rent newRent = new Rent(repo.calculateCost(reser.getTimeOfRent(), reser.getPost().getPriceDay(), reser.getPost().getPriceHour()),
+		Rent newRent = new Rent(this.calculateCost(reser.getTimeOfRent(), reser.getPost().getPriceDay(), reser.getPost().getPriceHour()),
 								reser.getStartDate(), reser.getEndDate(),reser.getClient());
 		newRent.setPost(reser.getPost());
-		reser.getPost().addNewRent(newRent);
 		super.save(newRent);
 	}
 	

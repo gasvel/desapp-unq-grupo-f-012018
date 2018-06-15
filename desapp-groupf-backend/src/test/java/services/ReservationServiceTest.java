@@ -48,6 +48,7 @@ public class ReservationServiceTest {
 		this.userServ.update(user);
 		post.setCreator(user);
 		User client = Build.anUser().valid().build();
+		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
 		newReservation.setClient(client);
