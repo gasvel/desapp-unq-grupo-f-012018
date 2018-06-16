@@ -36,7 +36,11 @@ import {CalendarModule} from 'primeng/calendar';
 import { PostMapComponent } from './posts/post-map/post-map.component';
 import { ConfirmationsComponent } from './confirmations/confirmations.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/es-AR';
 
+registerLocaleData(localePt);
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -157,7 +161,8 @@ let config = new AuthServiceConfig([
     PostService,
     LoginService,
 		SharedSearchFilterService,
-		ReservationService
+		ReservationService,
+    { provide: LOCALE_ID, useValue: 'es-AR' }
   ],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialogComponent]

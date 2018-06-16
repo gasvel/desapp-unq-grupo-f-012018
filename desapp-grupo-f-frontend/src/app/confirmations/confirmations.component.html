@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
-    <li class="list-group-item" *ngFor="let reserv of reservs"> 
+    <li class="list-group-item" *ngFor="let reserv of reservs">
     <div class="row">
       <div class="col-md-3">{{reserv.client.name}}</div>
     </div>
@@ -8,21 +8,21 @@
         <div class="col-md">
             <a [routerLink]="" (click)="seleccionarReser(reserv)" data-toggle="modal" data-target="#exampleModalCenter">
               <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
-                <i class="fas fa-info"></i> 
+                <i class="fas fa-info"></i>
               </span>
             </a>
         </div>
         <div class="col-md">
           <a [routerLink]="" (click)="confirmReserv(reserv)">
             <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-              <i class="fas fa-check-circle"></i> 
+              <i class="fas fa-check-circle"></i>
             </span>
           </a>
         </div>
         <div class="col-md">
           <a [routerLink]="" (click)="cancelReserv(reserv)">
             <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-              <i class="fas fa-times"></i> 
+              <i class="fas fa-times"></i>
             </span>
           </a>
         </div>
@@ -45,10 +45,10 @@
           <div class="modal-body">
             <ul class="list-group">
               <li class="list-group-item">
-                <p>Fecha comienzo: <strong>{{reservaSeleccionada.startDate}}</strong></p>
+                <p>Fecha comienzo: <strong>{{reservaSeleccionada.startDate | date:'medium':'shortTime':'es-AR'}}</strong></p>
               </li>
               <li class="list-group-item">
-                  <p>Fecha fin: <strong>{{reservaSeleccionada.endDate}}</strong></p>
+                  <p>Fecha fin: <strong>{{reservaSeleccionada.endDate | date:'medium':'short':'es-AR'}}</strong></p>
               </li>
               <li class="list-group-item">
                   <p>Cliente: <strong>{{reservaSeleccionada.client.name}}</strong></p>
@@ -62,7 +62,7 @@
       </div>
   </div>
 
-  <ngx-spinner  
+  <ngx-spinner
   bdColor="rgba(51,51,51,0.8)"
   size="medium"
   color="#B2DFDB"
