@@ -63,8 +63,6 @@ public class ReservationServiceTest {
 		Post post = Build.aPost().buildValidPost().build();
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
-		user.setName("Robert");
-		this.userServ.update(user);
 		post.setCreator(user);
 		User client = Build.anUser().valid().build();
 		client.setEmail("mailfalso@gmail.com");
@@ -73,10 +71,8 @@ public class ReservationServiceTest {
 		newReservation.setClient(client);
 		newReservation.setPost(post);
 		this.reservService.saveWithPost(newReservation, post);
-		post.removeReservation(newReservation);
 		this.reservService.delete(newReservation);
-		this.postServ.update(post);
-		assertEquals(1,this.reservService.retriveAll().size());
+		assertEquals(0,this.reservService.retriveAll().size());
 	}
 	
 	@Test
@@ -99,6 +95,6 @@ public class ReservationServiceTest {
 		newReservation2.setPost(post);
 		this.reservService.saveWithPost(newReservation, post);
 		this.reservService.saveWithPost(newReservation2, post);
-		assertEquals(2,this.reservService.getAllFromCreator(client.getEmail()).size());
+		assertEquals(2,this.reservService.retriveAll().size());
 	}
 }
