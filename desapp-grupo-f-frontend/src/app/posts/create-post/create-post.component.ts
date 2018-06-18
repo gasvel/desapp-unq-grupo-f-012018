@@ -24,6 +24,7 @@ export class CreatePostComponent implements OnInit {
   activeColor: string = '#3366CC';
   submitted:boolean = false;
   post:any;
+  location: string;
   postForm : FormGroup = this.formBuilder.group({
     postTitle: new FormControl('' ,Validators.compose([
       Validators.required,
@@ -73,6 +74,8 @@ export class CreatePostComponent implements OnInit {
 			});
       let autocomplete2 = new google.maps.places.Autocomplete(this.addressToPickUpRef.nativeElement, options);
       autocomplete2.addListener('place_changed', function() {
+        self.location = autocomplete2.getPlace().geometry.location.lat() +','+
+                        autocomplete2.getPlace().geometry.location.lng();
         self.postForm.get('addressToPickUp').setValue(autocomplete2.getPlace().formatted_address);
       });
 	}
@@ -87,7 +90,8 @@ export class CreatePostComponent implements OnInit {
 
       }
       else {
-        this.post = { "id":"", "title":"", "typeVehicle":"Auto", "description":"", "availability":"",
+        this.post = { "id":"", "title":"", "typeVehicle":"Auto", "location":"",
+                    "description":"", "availability":"",
                     "photo":"", "capacity":"5", "addressToPickUp":"", "addressToDrop":"",
                     "priceDay":"", "priceHour":"", "phoneNumber":""};
         this.userId = params["userId"];
@@ -181,6 +185,7 @@ export class CreatePostComponent implements OnInit {
     this.post.addressToPickUp = this.postForm.get('addressToPickUp').value;
     this.post.addressToDrop = this.postForm.get('addressToDrop').value;
     this.post.photo = this.NgxInputFileUploadComponent.imageSrc;
+    this.post.location = this.location;
     return this.post;
   }
 
