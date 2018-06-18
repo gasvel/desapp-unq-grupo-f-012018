@@ -58,16 +58,26 @@ public class Build {
 		return new ScoreBuilder();
 	}
 	
+	//Rent builder
 	public static class RentBuilder{
 		private Rent aRent = new Rent();
+		
+		public RentBuilder buildValidRent() {
+			Date startDate = new GregorianCalendar(2019, Calendar.MARCH, 29).getTime();
+			Date endDate = new GregorianCalendar(2019, Calendar.JUNE, 29).getTime();
+			aRent.setStartDate(startDate);
+			aRent.setEndDate(endDate);
+			aRent.setState(Rent_State.New);
+			aRent.setCost(100f);
+			return this;
+		}
 		
 		public RentBuilder withUser(User user) {
 			aRent.setClient(user);
 			return this;
 		}
 		
-		public Rent build() {
-			
+		public Rent build() {			
 			return aRent;
 		}
 	}
@@ -76,6 +86,7 @@ public class Build {
 		return new RentBuilder();
 	}
 	
+	//Rent builder
 	public static class ReservationBuilder{
 		private Reservation aReser = new Reservation();
 		
@@ -99,6 +110,7 @@ public class Build {
 		return new ReservationBuilder();
 	}
 	
+	//Rent builder
 	public static class PostBuilder{
 		private Post aPost = new Post();
 		

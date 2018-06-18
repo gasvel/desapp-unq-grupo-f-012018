@@ -1,0 +1,139 @@
+2018-06-16 12:48:54,382 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:285) - Root WebApplicationContext: initialization started
+2018-06-16 12:48:54,748 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:510) - Refreshing Root WebApplicationContext: startup date [Sat Jun 16 12:48:54 ART 2018]; root of context hierarchy
+2018-06-16 12:48:54,843 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-persistence-context.xml]
+2018-06-16 12:48:55,308 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-service-context.xml]
+2018-06-16 12:48:55,401 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-web-context.xml]
+2018-06-16 12:48:55,511 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+2018-06-16 12:48:55,569 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-extension-soap.xml]
+2018-06-16 12:48:55,598 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+2018-06-16 12:48:56,298 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/hibernate.properties]
+2018-06-16 12:48:56,341 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/jdbc.properties]
+2018-06-16 12:48:58,218 INFO  org.hibernate.annotations.common.reflection.java.JavaReflectionManager (JavaReflectionManager.java:66) - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-06-16 12:48:58,250 INFO  org.hibernate.Version (Version.java:54) - HHH000412: Hibernate Core {4.3.6.Final}
+2018-06-16 12:48:58,254 INFO  org.hibernate.cfg.Environment (Environment.java:239) - HHH000206: hibernate.properties not found
+2018-06-16 12:48:58,257 INFO  org.hibernate.cfg.Environment (Environment.java:346) - HHH000021: Bytecode provider name : javassist
+2018-06-16 12:48:58,396 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-16 12:48:58,506 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-16 12:48:58,608 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-16 12:48:58,666 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-16 12:48:58,724 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-16 12:49:02,387 INFO  org.hibernate.dialect.Dialect (Dialect.java:145) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-06-16 12:49:02,436 INFO  org.hibernate.engine.jdbc.internal.LobCreatorBuilder (LobCreatorBuilder.java:123) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-06-16 12:49:02,623 INFO  org.hibernate.engine.transaction.internal.TransactionFactoryInitiator (TransactionFactoryInitiator.java:62) - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-06-16 12:49:02,636 INFO  org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory (ASTQueryTranslatorFactory.java:47) - HHH000397: Using ASTQueryTranslatorFactory
+2018-06-16 12:49:03,181 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-16 12:49:03,224 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Post drop constraint FK_3cu4u3ke419xpd0p557dtvy0h
+2018-06-16 12:49:03,224 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "post" does not exist
+2018-06-16 12:49:03,225 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_94jci3rlegua6h2njir8bd4f7
+2018-06-16 12:49:03,226 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-06-16 12:49:03,226 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_gaaan5b999hk5p3fglrl3fi5a
+2018-06-16 12:49:03,227 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-06-16 12:49:03,227 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Score drop constraint FK_3t8l1e15f6giw5f5tnthtqrah
+2018-06-16 12:49:03,228 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "score" does not exist
+2018-06-16 12:49:04,326 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-06-16 12:49:04,472 INFO  org.springframework.orm.hibernate4.HibernateTransactionManager (HibernateTransactionManager.java:360) - Using DataSource [org.apache.commons.dbcp.BasicDataSource@72e789cb] of Hibernate SessionFactory for HibernateTransactionManager
+2018-06-16 12:49:04,518 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-06-16 12:49:04,575 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory (SQLErrorCodesFactory.java:126) - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-06-16 12:49:06,772 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:325) - Root WebApplicationContext: initialization completed in 12350 ms
+2018-06-16 12:57:07,317 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 12:57:07.316 , service.PostService.retriveAll ,  >
+2018-06-16 12:58:23,282 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 12:58:23.282 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 13:00:55,085 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:00:55.085 , service.PostService.retriveAll ,  >
+2018-06-16 13:01:00,984 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:00.984 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:24,445 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:24.444 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:24,907 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:24.907 , service.PostService.retriveAll ,  >
+2018-06-16 13:01:32,566 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:32.566 , service.PostService.retriveAll ,  >
+2018-06-16 13:01:32,979 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:32.979 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:35,823 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:35.823 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:45,313 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:45.313 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:59,003 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:59.003 , service.UserService.addCredits , [Ljava.lang.Object; , [Ljava.lang.Object; ,  >
+2018-06-16 13:01:59,263 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:01:59.263 , service.PostService.retriveAll ,  >
+2018-06-16 13:02:04,023 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:04.023 , service.PostService.retriveAll ,  >
+2018-06-16 13:02:04,031 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:04.031 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 13:02:10,117 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:10.117 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 13:02:33,931 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:33.931 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 13:02:33,942 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:33.942 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 13:02:33,947 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:33.947 , service.ReserService.saveWithPost , [Ljava.lang.Object; , [Ljava.lang.Object; ,  >
+2018-06-16 13:02:34,157 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:34.157 , service.PostService.retriveAll ,  >
+2018-06-16 13:02:38,043 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 13:02:38.043 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 14:31:58,625 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:31:58.625 , service.PostService.retriveAll ,  >
+2018-06-16 14:33:27,734 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:33:27.734 , service.PostService.retriveAll ,  >
+2018-06-16 14:33:35,626 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:33:35.626 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-16 14:33:35,713 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:33:35.713 , service.PostService.retriveAll ,  >
+2018-06-16 14:33:45,094 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:33:45.094 , service.PostService.retriveAll ,  >
+2018-06-16 14:33:48,103 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:33:48.103 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 14:34:26,612 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:34:26.612 , service.PostService.retriveAll ,  >
+2018-06-16 14:35:24,934 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:24.934 , service.UserService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:35:25,296 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:25.296 , service.PostService.save , [Ljava.lang.Object; ,  >
+2018-06-16 14:35:25,678 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:25.678 , service.PostService.retriveAll ,  >
+2018-06-16 14:35:30,070 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:30.07 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:35:37,706 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:37.705 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 14:35:39,567 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:35:39.567 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:36:34,513 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:36:34.513 , service.PostService.retriveAll ,  >
+2018-06-16 14:36:38,148 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:36:38.148 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:37:26,458 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:37:26.458 , service.PostService.retriveAll ,  >
+2018-06-16 14:37:40,474 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:37:40.473 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-16 14:38:09,271 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:38:09.271 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-16 14:39:54,119 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:39:54.118 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-16 14:39:54,598 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:39:54.597 , service.PostService.retriveAll ,  >
+2018-06-16 14:39:59,765 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:39:59.765 , service.PostService.retriveAll ,  >
+2018-06-16 14:39:59,855 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:39:59.855 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:11,099 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:11.099 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:32,282 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:32.282 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:32,287 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:32.287 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:32,292 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:32.291 , service.ReserService.saveWithPost , [Ljava.lang.Object; , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:32,936 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:32.936 , service.PostService.retriveAll ,  >
+2018-06-16 14:40:35,930 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:35.93 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:38,596 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:38.596 , service.PostService.retriveAll ,  >
+2018-06-16 14:40:46,324 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:46.324 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:46,387 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:46.387 , service.PostService.retriveAll ,  >
+2018-06-16 14:40:50,593 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:50.593 , service.PostService.retriveAll ,  >
+2018-06-16 14:40:50,712 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:50.711 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 14:40:55,496 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:40:55.496 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 14:41:00,627 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 14:41:00.627 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:05:12,856 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:05:12.856 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:05:12,856 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:05:12.856 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:12:48,954 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:12:48.906 , service.PostService.retriveAll ,  >
+2018-06-16 15:12:52,666 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:12:52.666 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:15:29,562 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:15:29.562 , service.PostService.retriveAll ,  >
+2018-06-16 15:15:31,766 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:15:31.709 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:15:58,229 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:15:58.229 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:18:09,531 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:18:09.531 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:18:09,557 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:18:09.557 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:21:12,499 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:21:12.499 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:21:12,755 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:21:12.755 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:22:37,786 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:22:37.786 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:22:38,157 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:22:38.157 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:22:59,663 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:22:59.663 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:23:00,919 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:23:00.919 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:26:30,539 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:26:30.539 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:26:30,881 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:26:30.88 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:26:58,702 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:26:58.702 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:26:58,922 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:26:58.922 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:28:00,815 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:28:00.815 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 15:28:00,924 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:28:00.924 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:31:29,380 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:31:29.367 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 15:31:29,611 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 15:31:29.61 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:04:16,447 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:04:16.446 , service.PostService.retriveAll ,  >
+2018-06-16 16:04:45,345 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:04:45.345 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-16 16:04:45,881 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:04:45.881 , service.PostService.retriveAll ,  >
+2018-06-16 16:04:53,200 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:04:53.2 , service.PostService.retriveAll ,  >
+2018-06-16 16:04:53,856 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:04:53.856 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:05:07,901 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:05:07.901 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:05:43,907 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:05:43.907 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:05:43,919 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:05:43.919 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:06:06,923 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:06:06.923 , service.PostService.retriveAll ,  >
+2018-06-16 16:06:09,842 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:06:09.837 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-16 16:06:19,944 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:06:19.944 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:06:44,879 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:06:44.879 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:06:44,901 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:06:44.894 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:07:25,883 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:07:25.883 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:07:26,141 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:07:26.138 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:07:49,082 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:07:49.082 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:07:49,123 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:07:49.123 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:08:40,158 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:08:40.157 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:08:40,378 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:08:40.378 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:10:51,008 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:10:50.924 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-16 16:10:51,485 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-16 16:10:51.485 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-16 16:13:30,259 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:862) - Closing Root WebApplicationContext: startup date [Sat Jun 16 12:48:54 ART 2018]; root of context hierarchy
+2018-06-16 16:13:35,760 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-16 16:13:41,169 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
