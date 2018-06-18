@@ -2,16 +2,20 @@
   <div style="width: 98%;margin-top: 30px;margin-left: 10px;font-family: Nunito, sans-serif; border: 1px solid #d8d8d8; border-radius: 3px">
     <div style="width: 98%; padding-top: 20px; padding-left: 20px; padding-right: 20px;">
       <div align="right">
-        <button mat-button [matMenuTriggerFor]="menu" *ngIf="logged() && isFromUser"><i class="fa fa-bars"></i></button>
-        <mat-menu #menu="matMenu" >
-          <button mat-menu-item (click)="edit()">{{'Editar' | translate}}</button>
-          <button mat-menu-item (click)="openDialog()">{{'Eliminar' | translate}}</button>
-        </mat-menu>
+        <div class="dropdown" *ngIf="logged() && isFromUser">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+            <a class="dropdown-item" [routerLink]="" (click)="edit()">{{'Editar' | translate}}</a>
+            <a class="dropdown-item" [routerLink]="" (click)="openDialog()">{{'Eliminar' | translate}}</a>
+          </div>
+      </div>
       </div>
       <div>
         <div class="row">
           <div class="col-sm-8">
-            <img class="card-img-top" [src]="post.photo" alt="Card image cap">
+            <img class="card-img-top" [src]="post.photo" alt="Imagen publicacion">
           </div>
           <div class="col-sm-4">
             <h2>{{post.title}}</h2><br/>

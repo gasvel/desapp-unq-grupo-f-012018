@@ -15,32 +15,36 @@
             <div class="col-sm-6">
               <label class="control-label required" >{{'Título' | translate}}: </label>
               <input type="string" class="form-control" id="postTitle" placeholder="{{'Escriba un título' | translate}}" formControlName="postTitle">
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['postTitle'].invalid">
+              <small style="color:red" *ngIf="postForm.controls['postTitle'].invalid && postForm.controls['postTitle'].dirty">
                 {{'Por favor ingrese un título' | translate}}
-              </p>
+              </small>
+              <br>
               <label class="control-label required" >{{'Disponibilidad' | translate}}: </label>
               <input type="string" class="form-control" id="availability" formControlName="availability">
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['availability'].invalid">
+              <small style="color:red" *ngIf="postForm.controls['availability'].invalid && postForm.controls['availability'].dirty">
                 {{'Por favor ingrese un disponibilidad' | translate}}
-              </p>
+              </small>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >{{'Tipo de vehículo' | translate}}:</label>
-              <select class="form-control" id="sel1" formControlName="typeOption">
+              <select class="form-control" id="sel1" formControlName="typeOption" aria-describedby="errorType">
                 <option *ngFor="let op of typeOptions" [ngValue]="op"> {{op | translate}} </option>>
               </select>
+              <br>
+              <small style="color: red" id="errorType" *ngIf="postForm.controls['typeOption'].invalid"></small>
               <label class="control-label required" >{{'Capacidad' | translate}}:</label>
-              <select class="form-control" id="sel1" formControlName="capacity">
+              <select class="form-control" id="sel1" formControlName="capacity" aria-describedby="errorCap">
                 <option *ngFor="let op of capacityOptions" [ngValue]="op"> {{op}} </option>>
               </select>
+              <small style="color: red" id="errorCap" *ngIf="postForm.controls['capacity'].invalid"></small>
             </div>
               <div class="col-sm-12">
               <label >{{'Descripción del vehiculo' | translate}}: </label>
-              <textarea class="form-control" rows="3" id="description" placeholder="{{'Escriba una descripción' | translate}}" formControlName="description">
+              <textarea class="form-control" rows="3" id="description" placeholder="{{'Escriba una descripción' | translate}}" aria-describedby="errorDes" formControlName="description">
               </textarea>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['description'].invalid">
+              <small style="color:red" id="errorDes" *ngIf="postForm.controls['description'].invalid && postForm.controls['description'].dirty">
                 {{'Por favor ingrese un descripción' | translate}}
-              </p>
+              </small>
             </div>
           </div>
         </div>
@@ -49,17 +53,17 @@
           <div class="row">
             <div class="col-sm-6">
               <label class="control-label required" >{{'Dirección de retiro' | translate}}: </label>
-              <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef/>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToPickUp'].invalid">
+              <input type="string" class="form-control" formControlName="addressToPickUp" #addressToPickUpRef aria-describedby="errorAddPick"/>
+              <small style="color:red" id="errorAddPick" *ngIf="postForm.controls['addressToPickUp'].invalid && postForm.controls['addressToPickUp'].dirty">
                 {{'Por favor ingrese un dirección válido' | translate}}
-              </p>
+              </small>
             </div>
             <div class="col-sm-6">
               <label class="control-label required" >{{'Dirección de entrega' | translate}}: </label>
-              <input type="string" class="form-control" formControlName="addressToDrop" #addressToDropRef/>
-              <p style="color:red" class="error_message" *ngIf="postForm.controls['addressToDrop'].invalid">
+              <input type="string" class="form-control" formControlName="addressToDrop" aria-describedby="errorAddDrop" #addressToDropRef/>
+              <small style="color:red" id="errorAddDrop" *ngIf="postForm.controls['addressToDrop'].invalid && postForm.controls['addressToDrop'].dirty">
                 {{'Por favor ingrese un dirección válido' | translate}}
-              </p>
+              </small>
             </div>
           </div>
         </div>
@@ -79,13 +83,13 @@
         <div class="form-group">
           <h4>{{'Datos de contacto' | translate}} </h4>
             <label class="control-label required" >{{'Teléfono' | translate}}: </label>
-            <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber">
-            <p style="color:red" class="error_message" *ngIf="postForm.controls['phoneNumber'].invalid">
+            <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber" aria-describedby="errorPhone">
+            <small id="errorPhone" style="color:red" *ngIf="postForm.controls['phoneNumber'].invalid && postForm.controls['phoneNumber'].dirty">
               {{'Por favor ingrese un telefono válido' | translate}}
-            </p>
+            </small>
         </div>
         <button class="btn btn-default" (click)="back()">{{'Atras' | translate}}</button>
-        <button type="submit" class="btn btn-primary" (click)="save()">{{'Guardar' | translate}}</button>
+        <button type="submit" [disabled]="postForm.invalid" class="btn btn-primary" (click)="save()">{{'Guardar' | translate}}</button>
 
       </form>
 
