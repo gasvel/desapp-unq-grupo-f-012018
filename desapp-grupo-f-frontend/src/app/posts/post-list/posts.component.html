@@ -1,14 +1,21 @@
 <div class="container">
-	<div style="margin-top: 20px;margin-bottom: 20px;">
-		<button class="btn btn-primary" (click)="viewMap()">
-			{{'Buscar en mapa' | translate}}
-		</button>
+	<div  style="margin-top: 20px;margin-bottom: 20px;">
+		<div class="custom-control custom-radio">
+				<input type="radio" id="radio1" name="radio" class="custom-control-input" [value]="false" [(ngModel)]="isMap">
+				<label class="custom-control-label" for="radio1"> {{'Busqueda por lista' | translate}} <i class="fas fa-list-ul"></i></label>
+		</div>
+		<div class="custom-control custom-radio">
+				<input type="radio" name="radio" id="radio2" class="custom-control-input" [value]="true" [(ngModel)]="isMap" >
+				<label class="custom-control-label" for="radio2"> {{'Buscar en mapa' | translate}} <i class="fas fa-map-marker-alt"></i> </label>
+
+		</div>
 	</div>
+		<div *ngIf="!isMap">
 	<div class="card post" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif " *ngFor="let post of posts | postFilter : searchText | paginate: { itemsPerPage: 3, currentPage: p }">
   		<img class="card-img-top" src="{{post.photo}}" alt="Card image cap" height="150px" width="250px">
   		<div class="card-body">
     		<h5 class="card-title">{{post.title}}</h5>
-    		<h6 class="card-subtitle mb-2 text-muted">{{post.typeVehicle}}</h6>
+    		<h6 class="card-subtitle mb-2 text-muted">{{post.typeVehicle | translate}}</h6>
 
     		<p class="card-text">{{post.description}}</p>
     		<button class="btn btn-primary" (click)="viewPost(post)">
@@ -26,6 +33,10 @@
   	color="#B2DFDB"
   	loadingText="Cargando..."
   	type="ball-pulse">
-  	</ngx-spinner>
+	  </ngx-spinner>
+	  
+	  </div>
+
+	  <app-post-map *ngIf="isMap"></app-post-map>
 
 </div>

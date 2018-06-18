@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   searchText;
   subscription: Subscription;
   posts= [];
+  isMap = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +46,10 @@ export class PostsComponent implements OnInit {
       },
       error => {console.log(error);this.spinner.hide();}
     )
+  }
+
+  print(){
+    console.log(this.isMap);
   }
 
   viewPost(post) {

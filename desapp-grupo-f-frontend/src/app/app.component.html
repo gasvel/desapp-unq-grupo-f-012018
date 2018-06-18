@@ -17,10 +17,11 @@
           <li class="nav-item" *ngIf="logged()">
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hola {{user.name}} !
+                    {{'Hola'| translate}} {{user.name}} !
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownProfile">
                     <a class="dropdown-item" [routerLink]="'/editUser/' + user.id ">{{'Editar perfil' | translate}}</a> 
+                    <a class="dropdown-item" [routerLink]="" (click)="confirmation()">{{'Confirmaciones'| translate}}</a>
                     <a class="dropdown-item" [routerLink]="" (click)="signOut()">{{'Cerrar sesion' | translate}}</a>  
                 </div>
             </div>
@@ -31,17 +32,14 @@
           <li class="nav-item" *ngIf="logged()">
             <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Creditos: {{user.credits}}
+                {{'Creditos'| translate}}: {{user.credits}}
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" [routerLink]="" (click)="addCredits()">Alta de creditos</a>
-                <a class="dropdown-item" [routerLink]="" (click)="extractCredits()">Retiro de creditos</a>    
+                <a class="dropdown-item" [routerLink]="" (click)="addCredits()">{{'Alta de creditos'| translate}}</a>
+                <a class="dropdown-item" [routerLink]="" (click)="extractCredits()">{{'Retiro de creditos' | translate}}</a>    
             </div>
             </div>
 
-          </li>
-          <li class="nav-item" *ngIf="logged()">
-              <a class="nav-link" [routerLink]="" (click)="confirmation()">Confirmaciones</a>
           </li>
 
       <li class="nav-item" *ngIf="!logged()">
