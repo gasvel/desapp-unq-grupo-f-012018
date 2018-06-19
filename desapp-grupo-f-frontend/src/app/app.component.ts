@@ -59,13 +59,19 @@ export class AppComponent implements OnInit{
   }
 
   setSearch(){
-    console.log(this.searchText);
-    this.sharedSearchService.setSetSearchText(this.searchText);
+    if(this.activeRoute.snapshot.url.join('') === "posts"){
+    	this.sharedSearchService.setSetSearchText(this.searchText);
+    }
+    else{
+    	this.routerServ.navigate(["/posts"]).then(
+    		() => this.sharedSearchService.setSetSearchText(this.searchText)
+    		);	
+    }
+    
   }
 
   cleanSearch(){
     this.searchText = "";
-    console.log(this.searchText);
     this.sharedSearchService.setSetSearchText(this.searchText);
   }
 

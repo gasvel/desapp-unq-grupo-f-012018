@@ -116,8 +116,7 @@ export class PostMapComponent implements OnInit {
   viewPost(id) {
     this.render = false;
     
-    this.router.navigate(['post', id ]);
-//.then(() => location.reload())
+    this.router.navigate(['post', id ]).then(() => location.reload());
   }
 
 }
