@@ -138,12 +138,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(translateService, sharedSearchService, userServ, routerServ, socialAuthService) {
+    function AppComponent(translateService, sharedSearchService, userServ, routerServ, socialAuthService, activeRoute) {
         this.translateService = translateService;
         this.sharedSearchService = sharedSearchService;
         this.userServ = userServ;
         this.routerServ = routerServ;
         this.socialAuthService = socialAuthService;
+        this.activeRoute = activeRoute;
         this.title = 'app';
         this.searchText = "";
         this.user = {};
@@ -202,7 +203,7 @@ var AppComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__services_shared_search_filter_service__["a" /* SharedSearchFilterService */],
             __WEBPACK_IMPORTED_MODULE_3__services_users_service__["a" /* UsersService */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_5_angularx_social_login__["a" /* AuthService */]])
+            __WEBPACK_IMPORTED_MODULE_5_angularx_social_login__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -790,7 +791,7 @@ var LoginUserComponent = /** @class */ (function () {
                 if (res) {
                     localStorage.setItem("token", userData.idToken);
                     localStorage.setItem("userInfo", JSON.stringify(userData));
-                    location.reload();
+                    //            location.reload();
                     _this.routerServ.navigate(['/posts']);
                 }
                 else {
@@ -1611,9 +1612,9 @@ var PostMapComponent = /** @class */ (function () {
         });
     };
     PostMapComponent.prototype.viewPost = function (id) {
-        console.log("VER POST");
         this.render = false;
-        this.router.navigate(['post', id]).then(function () { return location.reload(); });
+        this.router.navigate(['post', id]);
+        //.then(() => location.reload())
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),

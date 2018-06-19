@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedSearchFilterService } from './services/shared-search-filter.service'
 import { UsersService } from './services/users.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
     private sharedSearchService: SharedSearchFilterService,
     private userServ : UsersService,
     private routerServ : Router,
-  private socialAuthService: AuthService
+  private socialAuthService: AuthService, private activeRoute: ActivatedRoute
   ) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');

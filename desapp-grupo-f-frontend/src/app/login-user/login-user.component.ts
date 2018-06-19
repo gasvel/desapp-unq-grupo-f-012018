@@ -51,7 +51,7 @@ export class LoginUserComponent implements OnInit {
           res => {if(res){
             localStorage.setItem("token",userData.idToken);
             localStorage.setItem("userInfo",JSON.stringify(userData));
-            location.reload();
+//            location.reload();
             this.routerServ.navigate(['/posts']);
           }
           else{
