@@ -52,8 +52,6 @@ public class ReserRest {
 		reser.setClient(user);
 		reser.generateTimeRent();
 		reser.setPost(post);
-		System.out.println(reser.getStartDate()); 
-		System.out.println(reser.getEndDate());
 		this.reserService.saveWithPost(reser, post);
 	}
 	

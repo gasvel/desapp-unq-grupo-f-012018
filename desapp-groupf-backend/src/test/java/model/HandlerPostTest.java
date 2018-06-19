@@ -31,7 +31,7 @@ public class HandlerPostTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void ifAPostIsCreatedWithInvalidLocationItShouldThrowIllegalArgumentException() {		
 		Post post= Build.aPost().buildValidPost().build();
-		post.setDescription(null);;
+		post.setDescription(null);
 		handler.newPost(post, owner);
 	}
 	

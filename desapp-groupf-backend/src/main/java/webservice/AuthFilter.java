@@ -9,6 +9,8 @@ import java.util.List;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 
+import org.apache.log4j.Logger;
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -23,6 +25,8 @@ public class AuthFilter implements ContainerRequestFilter {
 	
 	private List<String> whitelist = new ArrayList<String>();
 	
+	private final static Logger logger = Logger.getLogger("Filter");
+	
 	public AuthFilter(){
 		super();
 		whitelist.add("/posts/post");
@@ -31,7 +35,6 @@ public class AuthFilter implements ContainerRequestFilter {
 	}
 	
 
-	//@Override
 	public void filter(ContainerRequestContext req) throws IOException {
 		
 		Boolean inWhitelist = false;
@@ -40,8 +43,7 @@ public class AuthFilter implements ContainerRequestFilter {
 			inWhitelist = inWhitelist || req.getUriInfo().getAbsolutePath().toString().contains(str);
 		}
 		
-		if(!inWhitelist){
-			if(req.getHeaders().containsKey("Authorization")){
+		if(!inWhitelist && req.getHeaders().containsKey("Authorization")){
 				String token = (req.getHeaders().get("Authorization").get(0));
 				try {
 					GoogleIdToken idToken = this.verifier.verify(token);
@@ -57,23 +59,20 @@ public class AuthFilter implements ContainerRequestFilter {
 
 						  // Informacion del perfil
 						  String email = payload.getEmail();
-//						  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
 						  String name = (String) payload.get("name");
-//						  String pictureUrl = (String) payload.get("picture");
 						  String locale = (String) payload.get("locale");
-//						  String familyName = (String) payload.get("family_name");
 						  String givenName = (String) payload.get("given_name");
 						  
-						  System.out.println(givenName + " | " + name + " | " + email + " | " + locale);
+						  logger.info(givenName + " | " + name + " | " + email + " | " + locale);
 					};
-				} catch (GeneralSecurityException e) {
-					e.printStackTrace();
+				} 
+				catch (GeneralSecurityException e) {
+					logger.error("Fallo en autenticacion", e);
 				}
 
 			}
-		}
 		
-		System.out.println(req.getUriInfo().getAbsolutePath());
+		
 	}
 
 }

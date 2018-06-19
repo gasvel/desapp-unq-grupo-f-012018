@@ -1,8 +1,7 @@
 package services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +25,14 @@ import service.UserService;
 public class ReservationServiceTest {
 	
 	@Autowired
-	ReserService reservService;
+	private ReserService reservService;
 	
 	@Autowired
-	PostService postServ;
+	private PostService postServ;
 	
 	@Autowired
-	UserService userServ;
+	private UserService userServ;
 
-	@Before
-	public void setUp() throws Exception {
-	}
 
 	@Test
 	public void saveANewValidReservationAndSinceDBHas0ReservationsNowShouldHave1() {

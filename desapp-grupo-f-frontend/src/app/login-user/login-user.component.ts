@@ -11,7 +11,7 @@ import { GoogleLoginProvider } from "angularx-social-login";
 })
 export class LoginUserComponent implements OnInit {
 
-  public credential = {email: '', password: ''};
+  //public credential = {email: '', password: ''};
   public user: any;
 
   constructor(
@@ -25,7 +25,7 @@ export class LoginUserComponent implements OnInit {
   ngOnInit() {
 
   }
-
+/*
   onSubmit() { this.login(); }
 
   login() {
@@ -41,6 +41,7 @@ export class LoginUserComponent implements OnInit {
       }
       );
   }
+  */
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(

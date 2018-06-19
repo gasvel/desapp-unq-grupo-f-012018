@@ -2,7 +2,6 @@ package services;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +24,11 @@ public class PostServiceTest {
 
 	
 	@Autowired
-	PostService postServ;
+	private PostService postServ;
 	
 	@Autowired
-	UserService userServ;
+	private UserService userServ;
 	
-	@Before
-	public void setUp() throws Exception {
-	}
 
 	@Test
 	public void saveANewValidPostAndSinceDBHas4PostNowShouldHave5() {

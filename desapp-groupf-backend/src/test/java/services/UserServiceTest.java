@@ -1,8 +1,8 @@
 package services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,8 @@ public class UserServiceTest {
 	 */
 	
 	@Autowired
-	UserService userServ;
-	
-	@Before
-	public void setUp() throws Exception {
-	}
+	private UserService userServ;
+
 
 	@Test
 	public void ifAValidUserIsSavedInADBWith3UseresTheListOfUsersInDBShouldHaveSize4() {
@@ -49,11 +46,17 @@ public class UserServiceTest {
 
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void ifAValidUserIsSavedAndAddsANegativeAmountOfCreditsItShouldThrowAnException(){
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
-		this.userServ.addCredits(user.getId(), -200);
+		try {
+			this.userServ.addCredits(user.getId(), -200);
+			fail();
+		}
+		catch (Exception e) {
+			assertEquals(e.getClass(), IllegalArgumentException.class);
+		}
 
 	}
 	
@@ -67,11 +70,17 @@ public class UserServiceTest {
 
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void ifAValidUserIsSavedAndExtract100CreditsWhithoutHavingThatAmountItShouldThrowAnException(){
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
-		this.userServ.removeCredits(user.getId(), 100);
+		try {
+			this.userServ.removeCredits(user.getId(), 100);
+			fail();
+		}
+		catch (Exception e) {
+			assertEquals(e.getClass(), IllegalArgumentException.class);
+		}
 
 	}
 	

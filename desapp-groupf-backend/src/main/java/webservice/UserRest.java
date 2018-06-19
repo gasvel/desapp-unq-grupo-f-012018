@@ -85,13 +85,6 @@ public class UserRest {
         userService= userServ;
     }
     
-    @POST
-    @Path("/login")
-    @Produces("application/json")
-	public void login(@RequestBody Credential cred) {
-
-		
-	}
     
     @PUT
     @Path("/user/credits/add/{idUser}/{credits}")

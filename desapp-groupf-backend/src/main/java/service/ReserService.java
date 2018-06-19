@@ -22,7 +22,6 @@ public class ReserService extends GenericService<Reservation> {
 	@Transactional
 	public void saveWithPost(Reservation reserv, Post post){
 		ArgumentsValidator.validateReserv(reserv, post);
-		post.addNewReservation(reserv);
 		super.save(reserv);
 	}
 	
