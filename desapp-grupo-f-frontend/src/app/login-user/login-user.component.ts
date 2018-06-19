@@ -61,7 +61,8 @@ export class LoginUserComponent implements OnInit {
           }}
         );
         //this.routerServ.navigate(['/posts']);
-      }
-    );;
+      },
+      error => console.log(error)
+    );
   }
 }

@@ -799,8 +799,7 @@ var LoginUserComponent = /** @class */ (function () {
                 }
             });
             //this.routerServ.navigate(['/posts']);
-        });
-        ;
+        }, function (error) { return console.log(error); });
     };
     LoginUserComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
