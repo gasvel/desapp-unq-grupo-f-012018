@@ -31,3 +31,24 @@ NOTES:
 KNOWN ISSUES:
 
 * Deploy in heroku failed
+
+---------------------------------------------------------------------
+TAG ENTREGA 3
+---------------------------------------------------------------------
+NEW FEATURES:
+* Car search in list
+* Car search in google map
+* Paging the list of post on the client side
+* Responsive web design
+* Authentication using google api
+* Service audit. Logging of services published with Spring using Log4j
+* Formatters of date, currency and numbers according to LOCALE
+* Load and remove credits
+* Implementation of rent vehicle
+* Implementation of confirm rent
+
+NOTES:
+* Missing architecture test
+
+
+
