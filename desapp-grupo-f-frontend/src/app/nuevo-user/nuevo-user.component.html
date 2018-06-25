@@ -1,5 +1,6 @@
 <div class="container">
   <h2 style="font-family: Poppins, sans-serif">{{'Crear cuenta' | translate}}</h2>
+  <img [src]="usuario.controls['imgsrc'].value" class="rounded-circle" alt="profilePic" width="80" height="80">
   <form [formGroup]="usuario" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="cuilInput">CUIL/CUIT ({{'sin guiones' | translate}})</label>

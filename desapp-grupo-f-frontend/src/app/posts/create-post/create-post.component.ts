@@ -5,6 +5,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../../model/post';
 import { PostService } from '../../services/post.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import {Observable} from 'rxjs/Observable';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-post',
@@ -15,6 +18,11 @@ export class CreatePostComponent implements OnInit {
   isSave:boolean = true;
   imagePost:any = "assets/img/no-image.jpg";
   typeOptions:any = ["Car", "Motorcycle", "Van", "Pickup"];
+
+  task: AngularFireUploadTask;
+  percentage: Observable<any>;
+  snapshot: Observable<any>;
+  downloadUrl: Observable<any>;
   capacityOptions:any = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
   @ViewChild(NgxInputFileUploadComponent)
 
@@ -45,15 +53,17 @@ export class CreatePostComponent implements OnInit {
       Validators.maxLength(15)
     ])),
   });
-
+  filePorcentage = 0;
   userId:any;
+  imageUrl:String = "";
 
   constructor(
     private service : PostService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private cloud: AngularFireStorage) {
   }
 
   @ViewChild("addressToDropRef")
@@ -172,6 +182,27 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
+  onChange(){
+    console.log(this.NgxInputFileUploadComponent.imageData);
+  }
+
+  upload(){
+    let path = 'post/' + this.userId + "/" + new Date();
+    const customMetadata = {app: 'Carpnd'};
+    this.task = this.cloud.upload(path,
+     this.NgxInputFileUploadComponent.imageData, { customMetadata });
+     let ref = this.cloud.ref(path);
+     this.percentage = this.task.percentageChanges();
+     this.percentage.subscribe(res=> {this.filePorcentage = res,console.log(res)},error => console.log(error));
+     this.snapshot = this.task.snapshotChanges();
+     this.snapshot.pipe(
+       finalize( () =>
+        {this.downloadUrl = ref.getDownloadURL(); this.downloadUrl.subscribe(
+          res => {this.imageUrl= res;console.log(res);},error => console.log(error)); }
+       )
+     ) ;
+  }
+
   getPostToSave() {
     this.post.creator = null;
     this.post.title = this.postForm.get('postTitle').value;
@@ -184,7 +215,7 @@ export class CreatePostComponent implements OnInit {
     this.post.phoneNumber = this.postForm.get('phoneNumber').value;
     this.post.addressToPickUp = this.postForm.get('addressToPickUp').value;
     this.post.addressToDrop = this.postForm.get('addressToDrop').value;
-    this.post.photo = this.NgxInputFileUploadComponent.imageSrc;
+    this.post.photo = this.downloadUrl;
     this.post.location = this.location;
     return this.post;
   }

@@ -39,6 +39,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/es-AR';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 
 registerLocaleData(localePt);
 
@@ -75,7 +79,9 @@ let config = new AuthServiceConfig([
     BrowserModule,
     GooglePlaceModule,
     SocialLoginModule.initialize(config),
-    MatMenuModule,
+		MatMenuModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFireStorageModule,
     MatDialogModule,
     BrowserAnimationsModule,
     NgxInputFileUploadModule,

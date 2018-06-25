@@ -17,6 +17,7 @@ export class NuevoUserComponent implements OnInit {
 
 
   usuario : FormGroup = this.formBuilder.group({
+    imgsrc: new FormControl(),
     cuil : new FormControl('',Validators.compose([
       Validators.required,
       Validators.minLength(10)
@@ -41,6 +42,7 @@ export class NuevoUserComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.userInfo);
+    this.usuario.controls.imgsrc.setValue(this.userInfo.photoUrl);
     this.usuario.controls.name.setValue(this.userInfo.name);
     this.usuario.controls.email.setValue(this.userInfo.email);
   }

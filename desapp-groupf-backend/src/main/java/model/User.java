@@ -5,6 +5,7 @@ import java.util.List;
 
 public class User extends Entity{
 	private static final long serialVersionUID = 5054708596541854955L;
+	private String imgsrc;
 	private Integer id;
 	private String cuil;
 	private String address;
@@ -22,12 +23,15 @@ public class User extends Entity{
 		this.score = new ArrayList<Score>();
 		this.state = User_State.REGULAR;
 		this.credits = 0;
+		this.imgsrc="";
 	}
 	
 	public User() {
 		this.state = User_State.REGULAR;
 		this.score = new ArrayList<Score>();
 		this.credits = 0;
+		this.imgsrc="";
+
 	}
 	
 	public double scoreAvg() {
@@ -134,6 +138,17 @@ public class User extends Entity{
 		}
 		this.credits -= credits2;
 	}
+
+	public String getImgsrc() {
+		return imgsrc;
+	}
+
+	public void setImgsrc(String imgsrc) {
+		this.imgsrc = imgsrc;
+	}
+
+	
+
 	
 	
 	

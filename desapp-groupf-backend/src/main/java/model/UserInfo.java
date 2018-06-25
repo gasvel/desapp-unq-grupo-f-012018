@@ -1,6 +1,7 @@
 package model;
 
-public class UserInfo {
+public class UserInfo{
+
 	private String location;
 	private String phoneNumber;
 	private String addressToDrop;

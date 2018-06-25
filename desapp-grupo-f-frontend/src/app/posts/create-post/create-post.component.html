@@ -4,8 +4,13 @@
       <div>
         <h4>{{'Ingrese fotos del vehiculo' | translate}}</h4>
           <br/>
-          <ngx-input-file-upload [acceptHtml]="acceptHtml" [acceptTs]="acceptTs" [activeColor]="activeColor">
+          <ngx-input-file-upload [acceptHtml]="acceptHtml" [acceptTs]="acceptTs" [activeColor]="activeColor" (change)="onChange()">
           </ngx-input-file-upload>
+          {{filePorcentage}}% {{imageUrl}}
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" [style.width]="filePorcentage + '%'" attr.aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <button class="btn btn-primary" (click)="upload()">{{'Subir imagen' | translate}}</button>
         <br/>
       </div>
       <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
