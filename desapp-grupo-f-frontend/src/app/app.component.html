@@ -16,8 +16,8 @@
 
           <li class="nav-item" *ngIf="logged()">
             <div class="dropdown">
-                <a class="d-inline nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span><img [src]="user.imgsrc" class="rounded-circle" width="25" height="25"> {{user.name}}</span>
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img [src]="user.imgsrc" class="rounded-circle" width="30" height="30"> {{user.name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownProfile">
                     <a class="dropdown-item" [routerLink]="'/editUser/' + user.id ">{{'Editar perfil' | translate}}</a> 

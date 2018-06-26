@@ -189,18 +189,15 @@ export class CreatePostComponent implements OnInit {
   upload(){
     let path = 'post/' + this.userId + "/" + new Date();
     const customMetadata = {app: 'Carpnd'};
+    const ref = this.cloud.ref(path);
     this.task = this.cloud.upload(path,
      this.NgxInputFileUploadComponent.imageData, { customMetadata });
-     let ref = this.cloud.ref(path);
+          
      this.percentage = this.task.percentageChanges();
      this.percentage.subscribe(res=> {this.filePorcentage = res,console.log(res)},error => console.log(error));
-     this.snapshot = this.task.snapshotChanges();
-     this.snapshot.pipe(
-       finalize( () =>
-        {this.downloadUrl = ref.getDownloadURL(); this.downloadUrl.subscribe(
-          res => {this.imageUrl= res;console.log(res);},error => console.log(error)); }
-       )
-     ) ;
+     this.task.snapshotChanges().subscribe(res => res.ref.getDownloadURL().then(url =>{console.log(url);this.imageUrl = url;}));
+
+   
   }
 
   getPostToSave() {
@@ -215,7 +212,7 @@ export class CreatePostComponent implements OnInit {
     this.post.phoneNumber = this.postForm.get('phoneNumber').value;
     this.post.addressToPickUp = this.postForm.get('addressToPickUp').value;
     this.post.addressToDrop = this.postForm.get('addressToDrop').value;
-    this.post.photo = this.downloadUrl;
+    this.post.photo = this.imageUrl;
     this.post.location = this.location;
     return this.post;
   }
