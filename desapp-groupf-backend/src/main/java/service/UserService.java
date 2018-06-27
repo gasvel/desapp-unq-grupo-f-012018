@@ -13,7 +13,7 @@ public class UserService extends GenericService<User> {
 	
 	public static Logger log = Logger.getLogger(UserService.class);
 
-	
+	private boolean testMode = false;
 	private EmailService emailServ;
 	private static final long serialVersionUID = 2131359482422367092L;
 	
@@ -21,11 +21,14 @@ public class UserService extends GenericService<User> {
 	@Transactional
 	public void save(User user){
 		ArgumentsValidator.validateUser(user);
-		try {
-			emailServ.welcomeMsg(user);
-		} catch (MessagingException e) {
-			log.error("Error al enviar mail", e);
+		if(!this.testMode){
+			try {
+				emailServ.welcomeMsg(user);
+			} catch (MessagingException e) {
+				log.error("Error al enviar mail", e);
+			}
 		}
+
 		super.save(user);
 	}
 	
@@ -70,6 +73,15 @@ public class UserService extends GenericService<User> {
 
 	public void setEmailServ(EmailService emailServ) {
 		this.emailServ = emailServ;
+	}
+
+	public void setTestMode(boolean b) {
+		this.testMode = b;
+		
+	}
+	
+	public boolean getTestMode(){
+		return this.testMode;
 	}
 	
 	

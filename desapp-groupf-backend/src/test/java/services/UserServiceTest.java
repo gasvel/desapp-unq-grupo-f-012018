@@ -3,6 +3,7 @@ package services;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class UserServiceTest {
 	
 	@Autowired
 	private UserService userServ;
+	
+	
+	@Before
+	public void setUp(){
+		this.userServ.setTestMode(true);
+	}
 
 
 	@Test
