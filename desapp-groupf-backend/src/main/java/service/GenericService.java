@@ -31,7 +31,6 @@ public class GenericService<T> implements Serializable {
         return this.getRepository().findAll();
     }
 
-    @Transactional(readOnly = false)
     public void save(final T object) {
         this.getRepository().save(object);
     }

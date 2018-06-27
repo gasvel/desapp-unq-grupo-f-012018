@@ -1,10 +1,9 @@
 package architecture;
 
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -14,7 +13,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.persister.entity.EntityPersister;
-import org.hibernate.type.Type;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +22,11 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+
+import com.tngtech.archunit.core.domain.JavaClasses;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
+import com.tngtech.archunit.lang.ArchRule;
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -61,25 +64,8 @@ public class ArchTest {
 
 			EntityPersister persister = (EntityPersister) it.next();
 		
-			List<String> attrs = new ArrayList<String>();
-			String attrsJoin = "";
-			String[] properties = persister.getPropertyNames();
-			Type[] types = persister.getPropertyTypes();
-		
-			for(int i =0 ; i<properties.length;i++){
-				if(!types[i].isCollectionType()){
-					attrs.add("c." + properties[i]);
-				}
-				else{
-					attrs.add(properties[i] + "ATTR");
-					attrsJoin += (" join c."+ properties[i]+ " " + properties[i] +"ATTR ");
-				}
-			}
-
-				
-		String columns = String.join(",", attrs);
 		try {
-			Query q = session.createQuery("select " + columns + " from " + persister.getEntityName() + " c" + attrsJoin);
+			Query q = session.createQuery(" from " + persister.getEntityName() + " c");
 			q.setMaxResults(1);
 			q.uniqueResult();
 		}
@@ -93,5 +79,32 @@ public class ArchTest {
 
 		assertTrue(allOk);
 	}
+	
+	@Test
+	public void packageAccessArchTest(){
+		
+		JavaClasses importedClasses = new ClassFileImporter().importPackages("");
+	    
+		//We check that all classes in persistance package are only accesible for the service package or the persistence package itself
+        ArchRule rule = classes()	
+        		.that().resideInAPackage("persistence")
+        	    .should().onlyBeAccessed().byClassesThat().resideInAnyPackage("service", "persistence");
+        
+        //We check that all classes in package service are only accesible for the package webservice and tests packages. Or the service package itself
+        ArchRule rule2 = classes()	
+        		.that().resideInAPackage("service")
+        	    .should().onlyBeAccessed().byClassesThat().resideInAnyPackage("service", "webservice","services","architecture");
+    
+        ArchRule rule3 = classes()	
+        		.that().resideInAPackage("webservice")
+        	    .should().onlyBeAccessed().byClassesThat().resideInAPackage("webservice");
+        
+        rule.check(importedClasses);
+        rule2.check(importedClasses);
+        rule3.check(importedClasses);
+		
+	}
+	
+	
 
 }

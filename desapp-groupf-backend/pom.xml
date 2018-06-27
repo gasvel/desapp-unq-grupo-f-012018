@@ -268,6 +268,15 @@
             <version>1.6.1</version>
         </dependency>
 		<!-- /Mail -->
+		
+		<!-- ArchTests -->
+		<dependency>
+    		<groupId>com.tngtech.archunit</groupId>
+    		<artifactId>archunit</artifactId>
+    		<version>0.8.2</version>
+    		<scope>test</scope>
+		</dependency>
+		<!-- /ArchTests -->
 	
   </dependencies>
   <build>
