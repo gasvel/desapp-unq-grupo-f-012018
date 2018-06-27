@@ -25,6 +25,13 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-context-support</artifactId>
+  			<version>${spring.version}</version>
+		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -253,6 +260,14 @@
 		</dependency>
 
 		<!-- /Jackson -->
+		
+		<!-- Mail -->
+		<dependency>
+        	<groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+		<!-- /Mail -->
 	
   </dependencies>
   <build>

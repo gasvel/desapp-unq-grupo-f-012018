@@ -1,5 +1,8 @@
 package service;
 
+import javax.mail.MessagingException;
+
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
@@ -8,12 +11,21 @@ import persistence.UserRepository;
 
 public class UserService extends GenericService<User> {
 	
+	public static Logger log = Logger.getLogger(UserService.class);
+
+	
+	private EmailService emailServ;
 	private static final long serialVersionUID = 2131359482422367092L;
 	
 	@Override
 	@Transactional
 	public void save(User user){
 		ArgumentsValidator.validateUser(user);
+		try {
+			emailServ.welcomeMsg(user);
+		} catch (MessagingException e) {
+			log.error("Error al enviar mail", e);
+		}
 		super.save(user);
 	}
 	
@@ -51,4 +63,14 @@ public class UserService extends GenericService<User> {
 		UserRepository userRepo = (UserRepository) this.getRepository();
 		return userRepo.checkByEmail(mail);
 	}
+
+	public EmailService getEmailServ() {
+		return emailServ;
+	}
+
+	public void setEmailServ(EmailService emailServ) {
+		this.emailServ = emailServ;
+	}
+	
+	
 }

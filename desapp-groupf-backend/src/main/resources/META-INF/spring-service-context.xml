@@ -11,13 +11,34 @@
 
 <bean id="beforeService" class="aspects.AuditAspect"/>
 
+	    <!-- SET default mail properties -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	  	<property name="host" value="smtp.gmail.com"/>
+	  	<property name="port" value="25"/>
+	  	<property name="username" value="carpnd.info@gmail.com"/>
+	 	<property name="password" value="toolsstudios42"/>
+	  	<property name="javaMailProperties">
+			<props>
+			    <prop key="mail.transport.protocol">smtp</prop>
+			    <prop key="mail.smtp.auth">true</prop>
+			    <prop key="mail.smtp.starttls.enable">true</prop>
+			    <prop key="mail.debug">true</prop>
+			</props>
+  		</property>
+    </bean>
+
 	<!-- beans de spring -->	
+	<bean id="services.email" class="service.EmailService">
+		<property name="sender" ref="mailSender" />
+	</bean>
+	
 	<bean id="services.general" class="service.GeneralService">
 		<property name="userService" ref="services.user" />
 	</bean>
 
 	<bean id="services.user" class="service.UserService">
 		<property name="repository" ref="persistence.userrepository" />
+		<property name="emailServ" ref="services.email" />
 	</bean>
 	
 	<bean id="services.post" class="service.PostService">
