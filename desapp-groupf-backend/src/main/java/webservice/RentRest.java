@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Rent;
+import model.User;
 import service.RentService;
+import service.UserService;
 
 
 
@@ -26,6 +28,8 @@ public class RentRest {
 	public static final int NUMBER_OF_RENTS = 10;
 	
 	private RentService rentService;
+	private UserService userService;
+
 	
 	
 	@GET
@@ -65,9 +69,35 @@ public class RentRest {
 	public Rent getRent(@PathParam("id") Integer id){
 		return this.rentService.getById(id);
 	}
+	
+	@PUT
+	@Path("/confirmPickUp/{mail}")
+	@Produces("application/json")
+	public void confirmRent(@PathParam("mail") String mail,@RequestBody Rent rent){
+		User user = this.userService.getByEmail(mail);
+		this.rentService.confirmPickUp(rent,user);
+	}
+	
+	@GET
+	@Path("/toConfirm/owner/{mail}")
+	@Produces("application/json")
+	public List<Rent> rentsToConfirmOwner(@PathParam("mail") String mail){
+		return this.rentService.allToConfirmOwner(mail);
+	}
+	
+	@GET
+	@Path("/toConfirm/client/{mail}")
+	@Produces("application/json")
+	public List<Rent> rentsToConfirmClient(@PathParam("mail") String mail){
+		return this.rentService.allToConfirmClient(mail);
+	}
 
 	public void setRentService(final RentService rentSer) {
 		rentService = rentSer;
+	}
+	
+	public void setUserService(final UserService userServ){
+		userService = userServ;
 	}
 
 }

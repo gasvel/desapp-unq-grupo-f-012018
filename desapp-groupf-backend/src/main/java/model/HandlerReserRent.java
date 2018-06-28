@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class HandlerReserRent {
+public final class HandlerReserRent {
 
 	public void newReservation(Date start, Date end, User client, Post post) {
 		if(ArgumentsValidator.areInvalidDates(start, end) || post.isThereAnotherReservation(start,end) || post.isThereAnotherRent(start, end)){
@@ -33,14 +33,14 @@ public class HandlerReserRent {
 		post.removeReservation(reservation);		
 	}
 	
-	public void confirmVehiclePickUp(Rent rent,Post post,User user) {
+	public static void confirmVehiclePickUp(Rent rent,Post post,User user) {
 		switch(rent.getState()) {
 		case New:
 			if(user.getCuil() == rent.getClient().getCuil()) {
 				rent.clientConfirmsPickUp(rent.PICK_UP_TIME);
 				
 			}
-			else if(post.getCreator() == user) {
+			else if(post.getCreator().getCuil() == user.getCuil()) {
 				rent.ownerConfirmsPickUp(rent.PICK_UP_TIME);
 			}
 			break;

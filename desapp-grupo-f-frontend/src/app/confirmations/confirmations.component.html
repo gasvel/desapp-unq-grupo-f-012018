@@ -1,6 +1,9 @@
 <div class="container">
+  <div style="border: 1px solid black; margin: 20px; padding-top: 30 px">
+      <h2 style="margin: 20px"> {{'Reservas por confirmar' | translate}}</h2>
+
   <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
-    <li class="list-group-item" *ngFor="let reserv of reservs">
+    <li class="list-group-item" style="margin: 10px" *ngFor="let reserv of reservs">
     <div class="row">
       <div class="col-md-3">{{reserv.client.name}}</div>
     </div>
@@ -30,8 +33,86 @@
   </li>
   </ul>
   <div *ngIf="reservs.length == 0">
-    <h2>{{'No posee confirmaciones pendientes' | translate}}</h2>
+    <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
   </div>
+</div>
+
+<div style="border: 1px solid black; margin: 20px; padding: 30 px">
+    <h2 style="margin: 20px"> {{'Mis vehiculos solicitados' | translate}}</h2>
+
+    <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
+      <li class="list-group-item" style="margin: 10px" *ngFor="let rentOwn of rentsOwner">
+      <div class="row">
+        <div class="col-md-3">{{rentOwn.client.name}} - {{rentOwn.state | translate}}</div>
+      </div>
+      <div class="row">
+          <div class="col-md">
+              <a [routerLink]="" (click)="seleccionarReser(rentOwn)" data-toggle="modal" data-target="#exampleModalCenter">
+                <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
+                  <i class="fas fa-info"></i>
+                </span>
+              </a>
+          </div>
+          <div class="col-md">
+            <a [routerLink]="" (click)="confirmRent(rentOwn)">
+              <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                <i class="fas fa-check-circle"></i>
+              </span>
+            </a>
+          </div>
+          <div class="col-md">
+            <a [routerLink]="" (click)="cancelRent(rentOwn)">
+              <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                <i class="fas fa-times"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+    </li>
+    </ul>
+    <div *ngIf="rentsOwner.length == 0">
+      <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
+    </div>
+  </div>
+
+  <div style="border: 1px solid black; margin: 20px; padding: 30 px">
+    <h2 style="margin: 20px"> {{'Vehiculos pedidos' | translate}}</h2>
+      <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
+        <li class="list-group-item" style="margin: 10px" *ngFor="let rentCli of rentsClient">
+        <div class="row">
+          <div class="col-md-3">{{rentCli.client.name}} - {{rentCli.state | translate}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <a [routerLink]="" (click)="seleccionarReser(rentCli)" data-toggle="modal" data-target="#exampleModalCenter">
+                  <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
+                    <i class="fas fa-info"></i>
+                  </span>
+                </a>
+            </div>
+            <div class="col-md">
+              <a [routerLink]="" (click)="confirmRent(rentCli)">
+                <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                  <i class="fas fa-check-circle"></i>
+                </span>
+              </a>
+            </div>
+            <div class="col-md">
+              <a [routerLink]="" (click)="cancelRent(rentCli)">
+                <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                  <i class="fas fa-times"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+      </li>
+      </ul>
+      <div *ngIf="rentsClient.length == 0">
+        <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
+      </div>
+    </div>
+
+
 
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">

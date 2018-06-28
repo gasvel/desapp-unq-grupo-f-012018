@@ -6,8 +6,11 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
+import model.HandlerReserRent;
 import model.Rent;
 import model.Reservation;
+import model.User;
+import persistence.RentRepository;
 
 
 public class RentService extends GenericService<Rent> {
@@ -60,6 +63,26 @@ public class RentService extends GenericService<Rent> {
 								reser.getStartDate(), reser.getEndDate(),reser.getClient());
 		newRent.setPost(reser.getPost());
 		super.save(newRent);
+	}
+
+	@Transactional
+	public void confirmPickUp(Rent rent, User user) {
+		HandlerReserRent.confirmVehiclePickUp(rent, rent.getPost(),user);
+		this.update(rent);
+	}
+
+
+
+	@Transactional
+	public List<Rent> allToConfirmOwner(String mail) {
+		RentRepository repo = (RentRepository) this.getRepository();
+		return repo.allToConfirmOwner(mail);
+	}
+
+	@Transactional
+	public List<Rent> allToConfirmClient(String mail) {
+		RentRepository repo = (RentRepository) this.getRepository();
+		return repo.allToConfirmClient(mail);
 	}
 	
 }

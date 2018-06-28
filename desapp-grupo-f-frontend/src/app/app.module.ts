@@ -42,6 +42,7 @@ import localePt from '@angular/common/locales/es-AR';
 import {environment} from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { RentService } from './services/rent.service';
 
 
 registerLocaleData(localePt);
@@ -165,7 +166,8 @@ let config = new AuthServiceConfig([
   providers: [
     UsersService,
     PostService,
-    LoginService,
+		LoginService,
+		RentService,
 		SharedSearchFilterService,
 		ReservationService,
     { provide: LOCALE_ID, useValue: 'es-AR' }

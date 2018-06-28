@@ -5,6 +5,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+
 public class Rent extends Entity{
 
 	private static final long serialVersionUID = 121873193372209101L;
@@ -13,6 +16,7 @@ public class Rent extends Entity{
 	private Date endDate;
 	private User client;
 	private Rent_State state;
+	@JsonIgnore
 	private Timer timer = new Timer();
 	private Post post;
 	
@@ -74,10 +78,12 @@ public class Rent extends Entity{
 		this.state = state;
 	}
 
+	@JsonIgnore
 	public Timer getTimer() {
 		return timer;
 	}
 
+	@JsonIgnore
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}

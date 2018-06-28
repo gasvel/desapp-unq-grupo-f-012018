@@ -39,7 +39,6 @@ public class ReserRest {
     @Produces("application/json")
 	public List<Reservation> getAllReser() {
 		List<Reservation> resers = this.reserService.retriveAll();
-	    System.out.println(resers.size());
 	    return resers;
 	}
 	
@@ -73,6 +72,9 @@ public class ReserRest {
 		this.reserService.delete(reser);
 		this.postService.update(post);
 	}
+	
+
+	
 	
 	@DELETE
 	@Path("/cancel/{id}")

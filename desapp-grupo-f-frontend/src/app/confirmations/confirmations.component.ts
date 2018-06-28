@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ReservationService } from '../services/reservation.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { RentService } from '../services/rent.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-confirmations',
@@ -12,15 +14,38 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ConfirmationsComponent implements OnInit {
 
   reservs = [];
+  rentsOwner = [];
+  rentsClient = [];
   reservaSeleccionada;
   mailUser:any;
 
-  constructor(private reservService: ReservationService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private reservService: ReservationService, private formBuilder: FormBuilder,
+     private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService,private rentServ : RentService) { }
 
   ngOnInit() {
     this.mailUser = JSON.parse(localStorage.getItem("userInfo")).email;
     console.log(this.mailUser);
-    this.getReservs();
+    this.loadData();
+
+  }
+
+  loadData(){
+    this.spinner.show();
+    Observable.forkJoin(
+      this.reservService.getAll(this.mailUser),
+      this.rentServ.toConfirmClient(this.mailUser),
+      this.rentServ.toConfirmOwner(this.mailUser)
+    ).subscribe( 
+      response =>{
+        this.reservs = <any>response[0];
+        this.rentsClient = <any>response[1];
+        this.rentsOwner = <any>response[2];
+        this.spinner.hide();
+      },error => {
+        console.log(error);this.spinner.hide();
+      }
+    );
+
   }
 
   confirmReserv(reser){
@@ -29,6 +54,17 @@ export class ConfirmationsComponent implements OnInit {
       res => {console.log(res);this.spinner.hide();window.location.reload();},
       error => {console.log(error);this.spinner.hide();}
     );
+  }
+
+  confirmRent(rent){
+    this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
+      res => {console.log(res)},
+      error => console.log(error)
+    )
+  }
+
+  cancelRent(rent){
+
   }
 
   cancelReserv(reser){
@@ -53,5 +89,21 @@ export class ConfirmationsComponent implements OnInit {
       error => {console.log(error); this.spinner.hide();}
     );
     console.log(this.reservs);
+  }
+
+  getRentsClient(){
+    this.spinner.show();
+    this.rentServ.toConfirmClient(this.mailUser).subscribe(
+      res => {this.rentsClient = res; console.log(res);this.spinner.hide()},
+      error => {console.log(error);this.spinner.hide()}
+    );
+  }
+
+  getRentsOwner(){
+    this.spinner.show();
+    this.rentServ.toConfirmOwner(this.mailUser).subscribe(
+      res => {this.rentsOwner = res; console.log(res);this.spinner.hide()},
+      error => {this.spinner.hide();console.log(error)}
+    );
   }
 }

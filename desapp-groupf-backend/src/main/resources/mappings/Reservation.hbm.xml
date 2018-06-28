@@ -10,7 +10,7 @@
 		<property name="timeOfRent" />
 		<property name="startDate" />
 		<property name="endDate" />
-		<one-to-one name="client" class="model.User"></one-to-one>
+		<many-to-one name="client" class="model.User" column="USER_ID" lazy="false"></many-to-one>
 
 		<!-- <many-to-one name="post" class="model.Post" column="POST_ID" lazy="false"></many-to-one> -->
 		<many-to-one name="post" class="model.Post" column="POST_ID" lazy="false"></many-to-one>
