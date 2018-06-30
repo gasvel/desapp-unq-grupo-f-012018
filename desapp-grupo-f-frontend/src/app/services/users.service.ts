@@ -20,6 +20,11 @@ export class UsersService {
     return this.http.get(this.url + "/user/" + id,httpOptions);
   }
 
+  getUserScore(id):Observable<any> {
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.get(this.url + "/userScore/" + id,httpOptions);
+  }
+
   getUserByEmail(mail):Observable<any> {
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
 

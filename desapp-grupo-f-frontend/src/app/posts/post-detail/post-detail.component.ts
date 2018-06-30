@@ -4,6 +4,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UsersService} from '../../services/users.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -14,8 +15,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class PostDetailComponent implements OnInit {
   post:any;
   isFromUser:boolean = false;
+  userScore:any;
 
   constructor(
+    private userServ : UsersService,
     private service : PostService,
     private route: ActivatedRoute,
     private router: Router,
@@ -39,8 +42,16 @@ export class PostDetailComponent implements OnInit {
   getPost(id) {
     this.spinner.show();
     this.service.getPost(id).subscribe(
-      res => {this.post = res; this.isFromUser = (JSON.parse(localStorage.getItem("userInfo")) !== null) && (this.post.creator.email == JSON.parse(localStorage.getItem("userInfo")).email);this.spinner.hide();},
+      res => {this.post = res; this.getUserScore(); this.isFromUser = (JSON.parse(localStorage.getItem("userInfo")) !== null) && (this.post.creator.email == JSON.parse(localStorage.getItem("userInfo")).email);this.spinner.hide();},
       error => {console.log(error);this.spinner.hide();}
+    );
+  }
+
+  getUserScore(){
+    this.spinner.show();
+    this.userServ.getUserScore(this.post.creator.id).subscribe(
+      res => {console.log(res); this.userScore = res;this.spinner.hide();},
+      error => {console.log(error); this.spinner.hide();}
     );
   }
 

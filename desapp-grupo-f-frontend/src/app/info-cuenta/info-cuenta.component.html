@@ -1,0 +1,31 @@
+<div class="container">
+    <div style="width: 98%;margin-top: 30px;margin-left: 10px;font-family: Nunito, sans-serif; border: 1px solid #d8d8d8; border-radius: 3px">
+        <div style="width: 98%; padding-top: 20px; padding-left: 20px; padding-right: 20px;">
+            <div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img class="card-img-top" [src]="user.imgsrc" alt="Imagen perfil">
+                    </div>
+                    <div class="col-sm-4">
+                        <h3>{{'Nombre' | translate}}</h3>
+                        <p>{{user.name}}</p>
+                        <h3>Cuil</h3>
+                        <p>{{user.cuil}}</p><br/>
+                        <h3>{{'Direccion' | translate}}</h3>
+                        <p>{{user.address}}</p><br/>
+                        <h3>Email</h3>
+                        <p>{{user.email}}</p><br/>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>{{'Creditos' | translate}}</h3>
+                        <p>{{user.credits}}</p><br/>
+                        <h3>{{'Puntuación' | translate}}</h3>
+                        <p>{{userScore}}</p><br/>
+                        <h3>{{'Estado' | translate}}</h3>
+                        <p>{{user.state | translate }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

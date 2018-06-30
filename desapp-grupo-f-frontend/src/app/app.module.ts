@@ -43,6 +43,7 @@ import {environment} from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { RentService } from './services/rent.service';
+import { InfoCuentaComponent } from './info-cuenta/info-cuenta.component';
 
 
 registerLocaleData(localePt);
@@ -73,7 +74,8 @@ let config = new AuthServiceConfig([
     RetiroCreditosComponent,
     ReservationComponent,
     PostMapComponent,
-    ConfirmationsComponent
+    ConfirmationsComponent,
+    InfoCuentaComponent
 
   ],
   imports: [
@@ -120,8 +122,11 @@ let config = new AuthServiceConfig([
 				{
 					path:'editUser/:id',
 					component:EditarUserComponent
-				}
-				,
+				},
+				{
+					path:'infoCuenta/:id',
+					component:InfoCuentaComponent
+				},
         {
 					path:'newPost/:userId',
 					component:CreatePostComponent
