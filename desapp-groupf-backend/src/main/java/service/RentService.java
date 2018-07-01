@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
@@ -14,6 +15,9 @@ import persistence.RentRepository;
 
 
 public class RentService extends GenericService<Rent> {
+	
+	public static Logger log = Logger.getLogger(RentService.class);
+
 
 	private static final long serialVersionUID = 5091408438519087152L;
 
@@ -68,6 +72,7 @@ public class RentService extends GenericService<Rent> {
 	@Transactional
 	public void confirmPickUp(Rent rent, User user) {
 		HandlerReserRent.confirmVehiclePickUp(rent, rent.getPost(),user);
+		log.info("RENTA CAMBIADA " + rent.getState());
 		this.update(rent);
 	}
 
