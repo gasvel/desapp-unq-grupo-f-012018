@@ -31,8 +31,7 @@ public class ReserRest {
 	private ReserService reserService;
 	private PostService postService;
 	private UserService userService;
-	private RentService rentService;
-	
+	private RentService rentService;	
 	
 	@GET
 	@Path("/all")
@@ -71,10 +70,7 @@ public class ReserRest {
 		post.removeReservation(reser);
 		this.reserService.delete(reser);
 		this.postService.update(post);
-	}
-	
-
-	
+	}	
 	
 	@DELETE
 	@Path("/cancel/{id}")

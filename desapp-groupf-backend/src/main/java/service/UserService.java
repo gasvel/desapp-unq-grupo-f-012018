@@ -83,6 +83,4 @@ public class UserService extends GenericService<User> {
 	public boolean getTestMode(){
 		return this.testMode;
 	}
-	
-	
 }
