@@ -39,6 +39,10 @@
     "Atras": "Back",
     "Guardar": "Save",
     "Auto": "Car",
+    "REGULAR": "REGULAR",
+    "REFORMED": "REFORMADO",
+    "PERMABANNED": "PERMABANEADO",
+    "BANNED": "BANEADO",
     "Car":"Car",
     "Camioneta": "Pickup truck",
     "Furgoneta": "Van",
@@ -47,6 +51,7 @@
     "sin guiones": "without dash",
     "Nombre y apellido": "Name and surname",
     "Nombre completo": "Complete name",
+    "Nombre": "Name",
     "Direccion": "Address",
     "Aceptar": "Accept",
     "Distancia entre punto A y B": "Distance between point A and B",
@@ -65,7 +70,10 @@
     "Hola": "Hello",
     "Editar perfil": "Edit profile",
     "Cerrar sesion": "Log out",
-    "Busqueda por lista" : "Search by list"
+    "Busqueda por lista" : "Search by list",
+    "Puntuación": "Score",
+    "Estado": "State",
+    "Puntuación del dueño": "Owner's score"
 
 
 

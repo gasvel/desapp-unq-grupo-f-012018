@@ -22,6 +22,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownProfile">
                     <a class="dropdown-item" [routerLink]="'/editUser/' + user.id ">{{'Editar perfil' | translate}}</a> 
                     <a class="dropdown-item" [routerLink]="" (click)="confirmation()">{{'Confirmaciones'| translate}}</a>
+                    <a class="dropdown-item" [routerLink]="'/infoCuenta/' + user.id ">{{'Estado cuenta' | translate}}</a> 
                     <a class="dropdown-item" [routerLink]="" (click)="signOut()">{{'Cerrar sesion' | translate}}</a>  
                 </div>
             </div>

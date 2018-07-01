@@ -80,6 +80,14 @@ public class UserRest {
    public User getUser(@PathParam("id") final Integer id){
 	   return this.userService.getById(id);
    }
+   
+   @GET
+   @Path("/userScore/{id}")
+   @Produces("application/json")
+   public double getUserScore(@PathParam("id") final Integer id){
+	   User user = this.userService.getById(id);
+	   return user.scoreAvg();
+   }
 
     public void setUserService(final UserService userServ) {
         userService= userServ;
