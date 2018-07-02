@@ -37,6 +37,7 @@ public class ReservationServiceTest {
 	@Before
 	public void setUp(){
 		this.userServ.setTestMode(true);
+		this.reservService.setTestMode(true);
 	}
 
 

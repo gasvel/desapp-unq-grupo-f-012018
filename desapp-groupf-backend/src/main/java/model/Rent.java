@@ -90,15 +90,16 @@ public class Rent extends Entity{
 
 	public void clientConfirmsPickUp(long time) {
 		this.setState(Rent_State.ClientConfirmedPickUp);
-		this.timer.schedule(new TimerTask() {
+		TimerTask task = new TimerTask() {
 			
 			@Override
 			public void run() {
 				state = Rent_State.Cancelled;
 				
 			}
-		}, time);
-		
+		};
+		this.timer.schedule(task, time);
+	
 	}
 
 	public void ownerConfirmsPickUp(long time) {

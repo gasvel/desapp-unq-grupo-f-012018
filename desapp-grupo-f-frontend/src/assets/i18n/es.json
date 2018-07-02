@@ -1,5 +1,9 @@
 {
     "Car": "Auto",
     "Motorcycle": "Moto",
-    "Van": "Camioneta"
+    "Van": "Camioneta",
+    "New": "Nueva",
+    "ClientConfirmedPickUp": "Retiro confirmado por cliente",
+    "OwnerConfirmedPickUp": "Retiro confirmado por dueño",
+    "PickUpConfirmed": "Retiro confirmado"
 }

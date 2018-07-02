@@ -41,6 +41,8 @@ public class RentServiceTest {
 	@Before
 	public void setUp(){
 		this.userServ.setTestMode(true);
+		this.rentService.setTestMode(true);
+		this.reservService.setTestMode(true);
 	}
 
 	@Test

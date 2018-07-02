@@ -23,7 +23,8 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 	public List<Rent> allToConfirmOwner(String mail) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
 		criteria.createAlias("post", "p").createAlias("p.creator", "user").add(Restrictions.and(Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled))
-				,Restrictions.not(Restrictions.eq("state", Rent_State.RentDone))
+				,Restrictions.not(Restrictions.eq("state", Rent_State.RentDone)), Restrictions.not(Restrictions.eq("state", Rent_State.OwnerConfirmedReturn))
+				,Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled)), Restrictions.not(Restrictions.eq("state", Rent_State.OwnerConfirmedPickUp))
 				,Restrictions.eq("user.email", mail)));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
 
@@ -33,7 +34,8 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 	public List<Rent> allToConfirmClient(String mail) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
 		criteria.createAlias("client", "user").add(Restrictions.and(Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled))
-				,Restrictions.not(Restrictions.eq("state", Rent_State.RentDone))
+				,Restrictions.not(Restrictions.eq("state", Rent_State.RentDone)),Restrictions.not(Restrictions.eq("state", Rent_State.ClientConfirmedReturn))
+				,Restrictions.not(Restrictions.eq("state", Rent_State.ClientConfirmedPickUp)),Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled))
 				,Restrictions.eq("user.email", mail)));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
 	}
