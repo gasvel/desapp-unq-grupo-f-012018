@@ -103,6 +103,20 @@ public class RentRest {
 	public List<Rent> rentsToConfirmClient(@PathParam("mail") String mail){
 		return this.rentService.allToConfirmClient(mail);
 	}
+	
+	@GET
+	@Path("/rentsDone/owner/{mail}")
+	@Produces("application/json")
+	public List<Rent> rentsDoneOwner(@PathParam("mail") String mail){
+		return this.rentService.allRentsDoneOwner(mail);
+	}
+	
+	@GET
+	@Path("/rentsDone/client/{mail}")
+	@Produces("application/json")
+	public List<Rent> rentsDoneClient(@PathParam("mail") String mail){
+		return this.rentService.allRentsDoneClient(mail);
+	}
 
 	public void setRentService(final RentService rentSer) {
 		rentService = rentSer;

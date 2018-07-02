@@ -45,4 +45,13 @@ export class RentService {
     return this.http.get(this.url + "/toConfirm/owner/" + mail , httpOptions)
   }
 
+  rentDoneClient(mail):Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.get(this.url + "/rentsDone/client/" + mail, httpOptions);
+  }
+
+  rentDoneOwner(mail):Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.get(this.url + "/rentsDone/owner/" + mail, httpOptions);
+  }
 }
