@@ -1,8 +1,10 @@
 package model;
 
+import exception.InvalidModelException;
+
 public class HandlerUser {
 	
-	public User newUser(User user) {
+	public User newUser(User user) throws InvalidModelException {
 		
 		ArgumentsValidator.validateUser(user);
 		

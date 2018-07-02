@@ -81,7 +81,7 @@ export class NuevoUserComponent implements OnInit {
 
     this.errorNewUser = true;
     console.log(response);
-    this.errorNewUserMessage = response.message;
+    this.errorNewUserMessage = response.error;
   }
 
 

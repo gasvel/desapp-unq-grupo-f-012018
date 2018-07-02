@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import javax.ws.rs.ClientErrorException;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
@@ -13,14 +15,14 @@ public class PostService extends GenericService<Post>{
 
 	@Override
 	@Transactional
-	public void save(Post post){
+	public void save(Post post) throws ClientErrorException{
 		ArgumentsValidator.validatePost(post);
 		super.save(post);
 	}
 	
 	@Override
 	@Transactional
-	public void update(Post post){
+	public void update(Post post) throws ClientErrorException{
 		ArgumentsValidator.validatePost(post);
 		super.update(post);
 	}

@@ -45,7 +45,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void ifAValidUserIsSavedAndAdds200CreditsItShouldHave200Credits(){
+	public void ifAValidUserIsSavedAndAdds200CreditsItShouldHave200Credits() throws Exception{
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
 		this.userServ.addCredits(user.getId(), 200);
@@ -68,7 +68,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void ifAValidUserIsSavedAndAdds200CreditsAndExtract100CreditsItShouldHave100Credits(){
+	public void ifAValidUserIsSavedAndAdds200CreditsAndExtract100CreditsItShouldHave100Credits() throws Exception{
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
 		this.userServ.addCredits(user.getId(), 200);

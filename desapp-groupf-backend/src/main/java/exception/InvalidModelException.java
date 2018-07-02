@@ -1,14 +1,14 @@
 package exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.core.Response;
 
-@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR,reason="Not valid arguments")
-public class InvalidModelException extends IllegalArgumentException {
+
+public class InvalidModelException extends ClientErrorException {
 
 	private static final long serialVersionUID = 1L;
 
 	public InvalidModelException(String message){
-		super(message);
+		super(Response.status(Response.Status.NOT_ACCEPTABLE).entity(message).build(),new Throwable(message));
 	}
 }

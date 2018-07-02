@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import javax.ws.rs.ClientErrorException;
+
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +22,12 @@ public class ReserService extends GenericService<Reservation> {
 	
 	@Override
 	@Transactional
-	public void save(Reservation reserv){
+	public void save(Reservation reserv) throws ClientErrorException{
 		super.save(reserv);
 	}
 	
 	@Transactional
-	public void saveWithPost(Reservation reserv, Post post){
+	public void saveWithPost(Reservation reserv, Post post) throws Exception{
 		ArgumentsValidator.validateReserv(reserv, post);
 		super.save(reserv);
 		if(!this.testMode) {
@@ -40,7 +42,7 @@ public class ReserService extends GenericService<Reservation> {
 	
 	@Override
 	@Transactional
-	public void update(Reservation reserv){
+	public void update(Reservation reserv) throws ClientErrorException{
 		super.update(reserv);
 	}
 	

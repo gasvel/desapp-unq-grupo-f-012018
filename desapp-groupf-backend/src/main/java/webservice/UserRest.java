@@ -2,20 +2,23 @@ package webservice;
 
 import java.util.List;
 
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotAcceptableException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import model.Credential;
 import model.User;
 import service.UserService;
 
@@ -56,17 +59,21 @@ public class UserRest {
    @POST
    @Path("/new")
    @Produces("application/json")
-   public ResponseEntity<Void> newUser(@RequestBody User user) throws Exception{
-	   System.out.println(user.getCuil());
+   public ResponseEntity<String> newUser(@RequestBody User user){
 	   this.userService.save(user);
-	   return new ResponseEntity<Void>(HttpStatus.CREATED);
+	   return new ResponseEntity<String>("Usuario creado",HttpStatus.CREATED);
    }
    
    @PUT
    @Path("/{id}/update")
    @Produces("application/json")
-   public void updateUser(@PathParam("id") Integer id,@RequestBody User user){
-	   this.userService.update(user);
+   public ResponseEntity<String> updateUser(@PathParam("id") Integer id,@RequestBody User user){
+	   try {
+		this.userService.update(user);
+	} catch (Exception e) {
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+	}
+	   return new ResponseEntity<String>("Usuario actualizado",HttpStatus.OK);
    }
    
    @DELETE
@@ -100,7 +107,7 @@ public class UserRest {
     @PUT
     @Path("/user/credits/add/{idUser}/{credits}")
     @Produces("application/json")
-    public void addCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits){
+    public void addCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits) throws Exception{
     	this.userService.addCredits(id,credits);
     	
     }
@@ -108,7 +115,7 @@ public class UserRest {
     @PUT
     @Path("/user/credits/remove/{idUser}/{credits}")
     @Produces("application/json")
-    public void removeCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits){
+    public void removeCredits(@PathParam("idUser") final Integer id,@PathParam("credits") final float credits) throws Exception{
     	this.userService.removeCredits(id,credits);
     	
     }

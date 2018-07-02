@@ -1,10 +1,12 @@
 package service;
 
 import javax.mail.MessagingException;
+import javax.ws.rs.ClientErrorException;
 
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
+import exception.InvalidModelException;
 import model.ArgumentsValidator;
 import model.User;
 import persistence.UserRepository;
@@ -19,7 +21,7 @@ public class UserService extends GenericService<User> {
 	
 	@Override
 	@Transactional
-	public void save(User user){
+	public void save(User user) throws ClientErrorException{
 		ArgumentsValidator.validateUser(user);
 		if(!this.testMode){
 			try {
@@ -34,7 +36,7 @@ public class UserService extends GenericService<User> {
 	
 	@Override
 	@Transactional
-	public void update(User user){
+	public void update(User user) throws ClientErrorException{
 		ArgumentsValidator.validateUser(user);
 		super.update(user);
 	}
@@ -46,7 +48,7 @@ public class UserService extends GenericService<User> {
     }
 
 	@Transactional
-	public void addCredits(Integer id, float credits) {
+	public void addCredits(Integer id, float credits) throws Exception {
 		User user = this.getById(id);
 		user.addCredits(credits);
 		this.update(user);
@@ -61,7 +63,7 @@ public class UserService extends GenericService<User> {
 	}
 	
 	@Transactional
-	public void removeCredits(Integer id, float credits) {
+	public void removeCredits(Integer id, float credits) throws Exception {
 		User user = this.getById(id);
 		user.removeCredits(credits);
 		this.update(user);

@@ -73,7 +73,7 @@ public class RentRest {
 	@PUT
 	@Path("/confirmPickUp/{mail}")
 	@Produces("application/json")
-	public void confirmRent(@PathParam("mail") String mail,@RequestBody Rent rent){
+	public void confirmRent(@PathParam("mail") String mail,@RequestBody Rent rent) throws Exception{
 		User user = this.userService.getByEmail(mail);
 		this.rentService.confirmPickUp(rent,user);
 	}
@@ -84,7 +84,7 @@ public class RentRest {
 	public void confirmVehicleReturns(
 			@PathParam("mail") String mail,
 			@PathParam("score") Integer score,
-			@RequestBody Rent rent){
+			@RequestBody Rent rent) throws Exception{
 		User user = this.userService.getByEmail(mail);
 		user = this.rentService.confirmVehicleReturns(rent,user,score);
 		this.userService.update(user);

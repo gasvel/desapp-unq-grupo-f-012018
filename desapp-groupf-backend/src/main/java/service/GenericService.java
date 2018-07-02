@@ -3,6 +3,8 @@ package service;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.ws.rs.ClientErrorException;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import persistence.GenericRepository;
@@ -31,12 +33,13 @@ public class GenericService<T> implements Serializable {
         return this.getRepository().findAll();
     }
 
-    public void save(final T object) {
+    @Transactional
+    public void save(final T object) throws ClientErrorException {
         this.getRepository().save(object);
     }
 
     @Transactional
-    public void update(final T object) {
+    public void update(final T object) throws ClientErrorException {
         this.getRepository().update(object);
     }
     

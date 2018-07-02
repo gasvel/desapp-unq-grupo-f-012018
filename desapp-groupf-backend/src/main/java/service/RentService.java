@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.mail.MessagingException;
+import javax.ws.rs.ClientErrorException;
 
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,14 +31,14 @@ public class RentService extends GenericService<Rent> {
 	
 	@Override
 	@Transactional
-	public void save(Rent rent){
+	public void save(Rent rent) throws ClientErrorException{
 		ArgumentsValidator.validateRent(rent);
 		super.save(rent);
 	}
 	
 	@Override
 	@Transactional
-	public void update(Rent rent){
+	public void update(Rent rent) throws ClientErrorException{
 		ArgumentsValidator.validateRent(rent);
 		super.update(rent);
 	}
@@ -69,7 +70,7 @@ public class RentService extends GenericService<Rent> {
 	}
 
 	@Transactional
-	public void newRent(Reservation reser) {
+	public void newRent(Reservation reser) throws Exception {
 		Rent newRent = new Rent(this.calculateCost(reser.getTimeOfRent(), reser.getPost().getPriceDay(), reser.getPost().getPriceHour()),
 								reser.getStartDate(), reser.getEndDate(),reser.getClient());
 		newRent.setPost(reser.getPost());
@@ -85,13 +86,13 @@ public class RentService extends GenericService<Rent> {
 	}
 
 	@Transactional
-	public void confirmPickUp(Rent rent, User user) {
+	public void confirmPickUp(Rent rent, User user) throws Exception {
 		HandlerReserRent.confirmVehiclePickUp(rent, rent.getPost(),user);
 		this.update(rent);
 	}
 	
 	@Transactional
-	public User confirmVehicleReturns(Rent rent, User user, Integer score) {
+	public User confirmVehicleReturns(Rent rent, User user, Integer score) throws Exception {
 		userService = new UserService();
 		Post thePost = rent.getPost();
 		User otherUser;

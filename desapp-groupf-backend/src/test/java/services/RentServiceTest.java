@@ -46,7 +46,7 @@ public class RentServiceTest {
 	}
 
 	@Test
-	public void saveANewValidRentAndSinceDBHas0ReservationsNowShouldHave1() {
+	public void saveANewValidRentAndSinceDBHas0ReservationsNowShouldHave1() throws Exception {
 		Rent newRent= Build.aRent().buildValidRent().build();
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();
@@ -69,7 +69,7 @@ public class RentServiceTest {
 	}
 
 	@Test
-	public void shouldBeAbleToCreateARentFromAReservation(){
+	public void shouldBeAbleToCreateARentFromAReservation() throws Exception{
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();
 		User user = Build.anUser().valid().build();
@@ -90,7 +90,7 @@ public class RentServiceTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToDeleteARent(){
+	public void shouldBeAbleToDeleteARent() throws Exception{
 		Rent newRent= Build.aRent().buildValidRent().build();
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();

@@ -42,7 +42,7 @@ public class ReservationServiceTest {
 
 
 	@Test
-	public void saveANewValidReservationAndSinceDBHas0ReservationsNowShouldHave1() {
+	public void saveANewValidReservationAndSinceDBHas0ReservationsNowShouldHave1() throws Exception {
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();
 		User user = Build.anUser().valid().build();
@@ -61,7 +61,7 @@ public class ReservationServiceTest {
 	}
 
 	@Test
-	public void saveANewValidReservationAndDeleteItAndSinceDBHadOnly1ReservationNowShoudHave0(){
+	public void saveANewValidReservationAndDeleteItAndSinceDBHadOnly1ReservationNowShoudHave0() throws Exception{
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();
 		User user = Build.anUser().valid().build();
@@ -79,7 +79,7 @@ public class ReservationServiceTest {
 	}
 	
 	@Test
-	public void save2NewValidReservationsFromSameCreatorAndSinceDBHas0ReservationsNowShouldHave2(){
+	public void save2NewValidReservationsFromSameCreatorAndSinceDBHas0ReservationsNowShouldHave2() throws Exception{
 		Reservation newReservation = Build.aReservation().buildValidReservation().build();
 		Reservation newReservation2 = Build.aReservation().buildValidReservation().build();
 		Post post = Build.aPost().buildValidPost().build();

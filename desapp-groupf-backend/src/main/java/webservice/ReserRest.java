@@ -44,7 +44,7 @@ public class ReserRest {
 	@POST
 	@Path("/new/{idPost}/{mailUser}")
 	@Produces("application/json")
-	public void newReser(@PathParam("idPost") final Integer idPost, @PathParam("mailUser") String emailUser,  @RequestBody Reservation reser){
+	public void newReser(@PathParam("idPost") final Integer idPost, @PathParam("mailUser") String emailUser,  @RequestBody Reservation reser) throws Exception{
 		Post post = this.postService.getById(idPost);
 		User user = this.userService.getByEmail(emailUser);
 		reser.setClient(user);
@@ -64,7 +64,7 @@ public class ReserRest {
 	@PUT
 	@Path("/confirm")
 	@Produces("application/json")
-    public void confirmReservation(@RequestBody Reservation reser){
+    public void confirmReservation(@RequestBody Reservation reser) throws Exception{
 		Post post = reser.getPost();
 		this.rentService.newRent(reser);
 		post.removeReservation(reser);
@@ -75,7 +75,7 @@ public class ReserRest {
 	@DELETE
 	@Path("/cancel/{id}")
 	@Produces("application/json")
-    public void cancelReservation(@PathParam("id") Integer id){
+    public void cancelReservation(@PathParam("id") Integer id) throws Exception{
 		Reservation reser = this.reserService.getById(id);
 		Post post = reser.getPost();
 		post.removeReservation(reser);
@@ -86,7 +86,7 @@ public class ReserRest {
 	@PUT
 	@Path("/{id}/update")
 	@Produces("application/json")
-    public void updateReser(@PathParam("id") Integer id,@RequestBody Reservation reser, @RequestBody Post post){
+    public void updateReser(@PathParam("id") Integer id,@RequestBody Reservation reser, @RequestBody Post post) throws Exception{
 		ArgumentsValidator.validateReserv(reser, post);
 		this.reserService.update(reser);
 	}

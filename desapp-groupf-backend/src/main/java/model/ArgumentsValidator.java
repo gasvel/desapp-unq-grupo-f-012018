@@ -73,13 +73,13 @@ public class ArgumentsValidator {
 		return (start.after(end) || start.before(new Date()));
 	}
 	
-	public static void validateRent(Rent rent){
+	public static void validateRent(Rent rent) throws InvalidModelException{
 		if(ArgumentsValidator.areInvalidDates(rent.getStartDate(), rent.getEndDate())){
 			throwErrorModel("Invalid dates of rent, check fields");
 		}
 	}
 	
-	public static void validateReserv(Reservation reserv, Post post){
+	public static void validateReserv(Reservation reserv, Post post) throws InvalidModelException{
 		if(ArgumentsValidator.areInvalidDates(reserv.getStartDate(), reserv.getEndDate())){
 			throwErrorModel("Invalid dates of reservation, check fields");
 		}
@@ -91,7 +91,7 @@ public class ArgumentsValidator {
 		}
 	}
 
-	public static void validateUser(User user) {
+	public static void validateUser(User user) throws InvalidModelException {
 
 		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwErrorModel("Invalid CUIT");;}
 		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwErrorModel("Invalid mail");;}
@@ -102,7 +102,7 @@ public class ArgumentsValidator {
 		
 	}
 	
-	public static void validatePost(Post post) {
+	public static void validatePost(Post post) throws InvalidModelException {
 		if(post.getTypeVehicle() == null) {
 			throwErrorModel("Invalid vehicle type");
 		}
@@ -125,7 +125,7 @@ public class ArgumentsValidator {
 	}
 	
 	
-	public static void throwErrorModel(String message) {
+	public static void throwErrorModel(String message) throws InvalidModelException {
 		throw new InvalidModelException(message);
 	}
 
