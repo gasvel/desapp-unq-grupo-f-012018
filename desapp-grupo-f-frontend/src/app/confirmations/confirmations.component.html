@@ -53,19 +53,24 @@
                 </span>
               </a>
           </div>
-          <div class="col-md">
-            <a [routerLink]="" (click)="confirmRent(rentOwn)">
-              <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-                <i class="fas fa-check-circle"></i>
-              </span>
-            </a>
+          <div *ngIf="rentOwn.state != 'PickUpConfirmed' && rentOwn.state != 'ClientConfirmedReturn'">
+            <div class="col-md">
+              <a [routerLink]="" (click)="confirmRent(rentOwn)">
+                <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                  <i class="fas fa-check-circle"></i>
+                </span>
+              </a>
+            </div>
+            <div class="col-md">
+              <a [routerLink]="" (click)="cancelRent(rentOwn)">
+                <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                  <i class="fas fa-times"></i>
+                </span>
+              </a>
+            </div>
           </div>
-          <div class="col-md">
-            <a [routerLink]="" (click)="cancelRent(rentOwn)">
-              <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-                <i class="fas fa-times"></i>
-              </span>
-            </a>
+          <div *ngIf="rentOwn.state == 'ClientConfirmedReturn'">
+            <button class="btn btn-success" (click)="seleccionarRent(rentOwn)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Confirmar devolución' | translate}}</button>
           </div>
         </div>
     </li>
@@ -90,19 +95,24 @@
                   </span>
                 </a>
             </div>
-            <div class="col-md">
-              <a [routerLink]="" (click)="confirmRent(rentCli)">
-                <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-                  <i class="fas fa-check-circle"></i>
-                </span>
-              </a>
+            <div *ngIf="rentCli.state != 'PickUpConfirmed'">
+              <div class="col-md">
+                <a [routerLink]="" (click)="confirmRent(rentCli)">
+                  <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                    <i class="fas fa-check-circle"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="col-md">
+                <a [routerLink]="" (click)="cancelRent(rentCli)">
+                  <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </a>
+              </div>
             </div>
-            <div class="col-md">
-              <a [routerLink]="" (click)="cancelRent(rentCli)">
-                <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-                  <i class="fas fa-times"></i>
-                </span>
-              </a>
+            <div *ngIf="rentCli.state == 'PickUpConfirmed'">
+              <button class="btn btn-success" (click)="seleccionarRent(rentCli)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Devolver vehiculo' | translate}}</button>
             </div>
           </div>
       </li>
@@ -138,6 +148,26 @@
                   <p>Score del cliente: <strong>{{reservaSeleccionada.client.score}}</strong></p>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="modalCenterReturnVehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Confirmar devolución del vehículo</h5>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formRent">
+              <h5 >Ingrese una calificacíon</h5>
+              <input type="number" id="score" class="form-control"
+                placeholder="Por favor ingresa una calificacíon entre 1 y 10"
+                formControlName="score" min="1" max="10"><br>
+
+              <button class="btn btn-success" (click)="confirmVehicleReturns()">Continuar</button>
+            </form>
           </div>
         </div>
       </div>
