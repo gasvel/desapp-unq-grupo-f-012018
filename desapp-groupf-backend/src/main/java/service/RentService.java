@@ -19,7 +19,6 @@ import persistence.RentRepository;
 public class RentService extends GenericService<Rent> {
 	
 	public static Logger log = Logger.getLogger(RentService.class);
-	private UserService userService;
 
 	private static final long serialVersionUID = 5091408438519087152L;
 	
@@ -80,7 +79,6 @@ public class RentService extends GenericService<Rent> {
 	
 	@Transactional
 	public User confirmVehicleReturns(Rent rent, User user, Integer score) {
-		userService = new UserService();
 		Post thePost = rent.getPost();
 		User otherUser;
 		if(user.getCuil().equals(rent.getClient().getCuil())){
@@ -107,8 +105,15 @@ public class RentService extends GenericService<Rent> {
 		return repo.allToConfirmClient(mail);
 	}
 	
-	public void setUserService(final UserService userServ){
-		userService = userServ;
+	@Transactional
+	public List<Rent> allRentsDoneOwner(String mail) {
+		RentRepository repo = (RentRepository) this.getRepository();
+		return repo.allRentsDoneOwner(mail);
 	}
-	
+
+	@Transactional
+	public List<Rent> allRentsDoneClient(String mail) {
+		RentRepository repo = (RentRepository) this.getRepository();
+		return repo.allRentsDoneClient(mail);
+	}	
 }

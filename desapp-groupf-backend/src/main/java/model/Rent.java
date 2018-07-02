@@ -116,7 +116,7 @@ public class Rent extends Entity{
 
 	public void pickUpConfirmed() {
 		timer.cancel();
-		timer.purge();
+		timer.purge();		
 		this.setState(Rent_State.PickUpConfirmed);
 		
 	}

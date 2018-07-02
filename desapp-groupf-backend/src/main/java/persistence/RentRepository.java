@@ -30,6 +30,24 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 	}
 
 	@SuppressWarnings("unchecked")
+	public List<Rent> allRentsDoneOwner(String mail) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
+		criteria.createAlias("client", "user").add(Restrictions.or(Restrictions.eq("state", Rent_State.Cancelled)
+				,Restrictions.eq("state", Rent_State.RentDone))).add(Restrictions.eq("user.email", mail));
+		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Rent> allRentsDoneClient(String mail) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
+		criteria.createAlias("post", "p").createAlias("p.creator", "user").add(
+				Restrictions.or(Restrictions.eq("state", Rent_State.Cancelled),
+				Restrictions.eq("state", Rent_State.RentDone))).add(
+				Restrictions.eq("user.email", mail));
+		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
+	}
+
+	@SuppressWarnings("unchecked")
 	public List<Rent> allToConfirmClient(String mail) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
 		criteria.createAlias("client", "user").add(Restrictions.and(Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled))
@@ -37,6 +55,4 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 				,Restrictions.eq("user.email", mail)));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
 	}
-
-
 }

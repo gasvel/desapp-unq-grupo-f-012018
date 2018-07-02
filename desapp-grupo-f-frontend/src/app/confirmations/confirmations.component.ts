@@ -31,7 +31,6 @@ export class ConfirmationsComponent implements OnInit {
     this.mailUser = JSON.parse(localStorage.getItem("userInfo")).email;
     console.log(this.mailUser);
     this.loadData();
-
   }
 
   loadData(){
