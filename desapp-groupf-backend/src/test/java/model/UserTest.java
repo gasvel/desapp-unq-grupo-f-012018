@@ -1,12 +1,15 @@
 package model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import exception.InvalidModelException;
 
 public class UserTest {
 	public HandlerUser handler; 
@@ -93,28 +96,28 @@ public class UserTest {
 		assertEquals(User_State.BANNED, anUser.getState());
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = InvalidModelException.class)
 	public void ifAnUserIsCreatedWithInvalidCUITitShouldThrowIllegalArgumentException() {
 		User anUser = Build.anUser().valid().build();
 		anUser.setCuil("1000000000");
 		handler.newUser(anUser);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = InvalidModelException.class)
 	public void ifAnUserIsCreatedWithInvalidAddressitShouldThrowIllegalArgumentException() {
 		User anUser = Build.anUser().valid().build();
 		anUser.setAddress("");
 		handler.newUser(anUser);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = InvalidModelException.class)
 	public void ifAnUserIsCreatedWithInvalidNameitShouldThrowIllegalArgumentException() {
 		User anUser = Build.anUser().valid().build();
 		anUser.setName("Car");
 		handler.newUser(anUser);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = InvalidModelException.class)
 	public void ifAnUserIsCreatedWithInvalidEmailitShouldThrowIllegalArgumentException() {
 		User anUser = Build.anUser().valid().build();
 		anUser.setEmail("carlitogmail.com");
