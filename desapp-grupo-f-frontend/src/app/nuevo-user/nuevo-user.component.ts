@@ -16,6 +16,10 @@ export class NuevoUserComponent implements OnInit {
   EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
+  errorNewUser = false;
+  successModal = false;
+  errorNewUserMessage = '';
+
   usuario : FormGroup = this.formBuilder.group({
     imgsrc: new FormControl(),
     cuil : new FormControl('',Validators.compose([
@@ -48,6 +52,7 @@ export class NuevoUserComponent implements OnInit {
   }
 
   volverAtras(){
+    location.reload();
     this.router.navigate(['/posts']);
   }
 
@@ -63,9 +68,21 @@ export class NuevoUserComponent implements OnInit {
   onSubmit(){   
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();location.reload();this.volverAtras()},
-      error => {console.log(error);this.spinner.hide();}
+      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();this.handleSuccess();},
+      error => {this.handleError(error);console.log(error);this.spinner.hide();}
     );
   }
+
+  handleSuccess(){
+    this.successModal=true;
+  }
+
+  handleError(response:any){
+
+    this.errorNewUser = true;
+    console.log(response);
+    this.errorNewUserMessage = response.message;
+  }
+
 
 }

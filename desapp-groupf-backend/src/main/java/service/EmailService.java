@@ -21,7 +21,7 @@ public class EmailService implements Serializable {
 		MimeMessage msg = sender.createMimeMessage();
         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
         msgHelper.setTo(user.getEmail());
-        msgHelper.setText(buildHtml("Bienvenido a CarPnD " + user.getName()));
+        msgHelper.setText(buildHtml("Bienvenido a CarPnD " + user.getName()), true);;
         msgHelper.setSubject("Mensaje de bienvenida - CarPnD");
         sender.send(msg);
 	}
@@ -80,6 +80,43 @@ public static String buildHtml(String text){
 
 	public void setSender(JavaMailSender sender) {
 		this.sender = sender;
+	}
+
+	public void creditsAdded(float added, User user) throws MessagingException {
+		MimeMessage msg = sender.createMimeMessage();
+        MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+        msgHelper.setTo(user.getEmail());
+        msgHelper.setText(buildHtml("Hola " + user.getName() + " agregaste " + added + " creditos. Tu nuevo saldo es de " + user.getCredits()), true);;
+        msgHelper.setSubject("Creditos agregados - CarPnD");
+        sender.send(msg);		
+	}
+
+	public void creditsExtracted(float extracted,User user) throws MessagingException {
+		MimeMessage msg = sender.createMimeMessage();
+        MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+        msgHelper.setTo(user.getEmail());
+        msgHelper.setText(buildHtml("Hola " + user.getName() + " retiraste " + extracted + " creditos. Tu nuevo saldo es de " + user.getCredits()), true);;
+        msgHelper.setSubject("Extracto de creditos - CarPnD");
+        sender.send(msg);		
+	}
+
+	public void newRent(User client, User creator) throws MessagingException {
+		MimeMessage msg = sender.createMimeMessage();
+        MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+        msgHelper.setTo(creator.getEmail());
+        msgHelper.setText(buildHtml("Hola " + creator.getName() + ", el usuario " + client.getName() + " ha realizado un alquiler en uno de tus vehiculos."), true);;
+        msgHelper.setSubject("Nuevo alquiler - CarPnD");
+        sender.send(msg);			
+	}
+
+	public void newReservation(User creator, User client) throws MessagingException {
+		MimeMessage msg = sender.createMimeMessage();
+        MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+        msgHelper.setTo(creator.getEmail());
+        msgHelper.setText(buildHtml("Hola " + creator.getName() + ", el usuario " + client.getName() + " ha realizado una reserva en uno de tus vehiculos."), true);;
+        msgHelper.setSubject("Nueva reserva - CarPnD");
+        sender.send(msg);
+		
 	}
 	
 	

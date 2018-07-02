@@ -145,7 +145,7 @@
                   <p>Cliente: <strong>{{reservaSeleccionada.client.name}}</strong></p>
               </li>
               <li class="list-group-item">
-                  <p>Score del cliente: <strong>{{reservaSeleccionada.client.score}}</strong></p>
+                  <p>Score del cliente: <strong *ngIf="reservaSeleccionada">{{reservaSeleccionada.client.score}}</strong><strong *ngIf="reservaSeleccionada != null">0.0</strong></p>
               </li>
             </ul>
           </div>

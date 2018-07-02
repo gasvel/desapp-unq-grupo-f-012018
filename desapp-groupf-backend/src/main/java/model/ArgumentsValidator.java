@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import exception.InvalidModelException;
+
 public class ArgumentsValidator {
 	public static boolean isNullOrEmptyString(String... strArr) {
 	    for (String st : strArr) {
@@ -73,40 +75,46 @@ public class ArgumentsValidator {
 	
 	public static void validateRent(Rent rent){
 		if(ArgumentsValidator.areInvalidDates(rent.getStartDate(), rent.getEndDate())){
-			throwError();
+			throwErrorModel("Invalid dates of rent, check fields");
 		}
 	}
 	
 	public static void validateReserv(Reservation reserv, Post post){
-		if(ArgumentsValidator.areInvalidDates(reserv.getStartDate(), reserv.getEndDate()) || post.isThereAnotherReservation(reserv.getStartDate(),reserv.getEndDate()) || post.isThereAnotherRent(reserv.getStartDate(), reserv.getEndDate())){
-			throwError();
+		if(ArgumentsValidator.areInvalidDates(reserv.getStartDate(), reserv.getEndDate())){
+			throwErrorModel("Invalid dates of reservation, check fields");
+		}
+		if(post.isThereAnotherReservation(reserv.getStartDate(),reserv.getEndDate())){
+			throwErrorModel("Invalid reservation, it already exits a reservation on these days");
+		}
+		if(post.isThereAnotherRent(reserv.getStartDate(), reserv.getEndDate())){
+			throwErrorModel("Invalid reservation, it already exits a rent on these days");
 		}
 	}
 
 	public static void validateUser(User user) {
 
-		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwError();}
-		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwError();}
-		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwError();}
+		if(ArgumentsValidator.isInvalidCUIT(user.getCuil())){throwErrorModel("Invalid CUIT");;}
+		if( ArgumentsValidator.isNotAValidMailAddress(user.getEmail())){throwErrorModel("Invalid mail");;}
+		if(ArgumentsValidator.isNullOrEmptyString(user.getAddress())){throwErrorModel("Invalid address");;}
 		if(ArgumentsValidator.isInvalidFullName(user.getName())) {
-			throwError();
+			throwErrorModel("Invalid name");
 		}
 		
 	}
 	
 	public static void validatePost(Post post) {
 		if(post.getTypeVehicle() == null) {
-			throwError();
+			throwErrorModel("Invalid vehicle type");
 		}
 		
 		//agregar photo location
 		if(ArgumentsValidator.isNullOrEmptyString(post.getAddressToDrop(),post.getAddressToPickUp(),post.getAvailability(),
 				post.getDescription(),post.getPhoneNumber())) { 
-			throwError();
+			throwErrorModel("Invalid post, check fields address availability description and phonenumber");
 		}
 		
 		if(ArgumentsValidator.isNegativeInt(post.getCapacity(), post.getPriceDay(), post.getPriceHour())) {
-			throwError();
+			throwErrorModel("Invalid post, check fields capacity and prices");
 		}
 
 		
@@ -114,6 +122,11 @@ public class ArgumentsValidator {
 	
 	public static void throwError() {
 		throw new IllegalArgumentException("Invalid argument");
+	}
+	
+	
+	public static void throwErrorModel(String message) {
+		throw new InvalidModelException(message);
 	}
 
 }

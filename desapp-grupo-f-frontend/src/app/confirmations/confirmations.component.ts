@@ -62,7 +62,7 @@ export class ConfirmationsComponent implements OnInit {
 
   confirmRent(rent){
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
-      res => {console.log(res)},
+      res => {console.log(res); this.loadData()},
       error => console.log(error)
     )
   }
@@ -82,7 +82,7 @@ export class ConfirmationsComponent implements OnInit {
   cancelReserv(reser){
     this.spinner.show();
     this.reservService.cancelReserv(reser.id).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();},
+      res => {console.log(res);this.spinner.hide();window.location.reload();this.loadData();},
       error => {console.log(error);this.spinner.hide();}
     );
   }

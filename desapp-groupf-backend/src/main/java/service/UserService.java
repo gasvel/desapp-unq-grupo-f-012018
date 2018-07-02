@@ -50,6 +50,13 @@ public class UserService extends GenericService<User> {
 		User user = this.getById(id);
 		user.addCredits(credits);
 		this.update(user);
+		if(!this.testMode){
+			try {
+				emailServ.creditsAdded(credits,user);
+			} catch (MessagingException e) {
+				log.error("Error al enviar mail", e);
+			}
+		}
 		
 	}
 	
@@ -58,6 +65,13 @@ public class UserService extends GenericService<User> {
 		User user = this.getById(id);
 		user.removeCredits(credits);
 		this.update(user);
+		if(!this.testMode){
+			try {
+				emailServ.creditsExtracted(credits,user);
+			} catch (MessagingException e) {
+				log.error("Error al enviar mail", e);
+			}
+		}
 		
 	}
 

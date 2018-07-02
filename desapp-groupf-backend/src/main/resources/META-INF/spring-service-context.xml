@@ -46,9 +46,11 @@
 	</bean>
 	<bean id="services.rent" class="service.RentService">
 		<property name="repository" ref="persistence.rentrepository"></property>
+		<property name="emailServ" ref="services.email" />
 	</bean>
 	<bean id="services.reser" class="service.ReserService">
 		<property name="repository" ref="persistence.reserrepository"></property>
+		<property name="emailServ" ref="services.email" />
 	</bean>
 
 </beans>

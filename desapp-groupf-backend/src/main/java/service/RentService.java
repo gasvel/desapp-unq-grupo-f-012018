@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.mail.MessagingException;
+
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,9 @@ import persistence.RentRepository;
 public class RentService extends GenericService<Rent> {
 	
 	public static Logger log = Logger.getLogger(RentService.class);
+
+	private boolean testMode = false;
+	private EmailService emailServ;
 
 	private static final long serialVersionUID = 5091408438519087152L;
 	
@@ -68,12 +73,19 @@ public class RentService extends GenericService<Rent> {
 								reser.getStartDate(), reser.getEndDate(),reser.getClient());
 		newRent.setPost(reser.getPost());
 		super.save(newRent);
+		if(!this.testMode) {
+			try {
+				this.emailServ.newRent(reser.getClient(),reser.getPost().getCreator());
+			} catch (MessagingException e) {
+				log.error("Error al mandar mail",e);
+			}
+		}
+
 	}
 
 	@Transactional
 	public void confirmPickUp(Rent rent, User user) {
 		HandlerReserRent.confirmVehiclePickUp(rent, rent.getPost(),user);
-		log.info("RENTA CAMBIADA " + rent.getState());
 		this.update(rent);
 	}
 	
@@ -109,6 +121,23 @@ public class RentService extends GenericService<Rent> {
 	public List<Rent> allRentsDoneOwner(String mail) {
 		RentRepository repo = (RentRepository) this.getRepository();
 		return repo.allRentsDoneOwner(mail);
+	}
+	
+	public void setTestMode(boolean b) {
+		this.testMode = b;
+		
+	}
+	
+	public boolean getTestMode(){
+		return this.testMode;
+	}
+	
+	public EmailService getEmailServ() {
+		return emailServ;
+	}
+
+	public void setEmailServ(EmailService emailServ) {
+		this.emailServ = emailServ;
 	}
 
 	@Transactional

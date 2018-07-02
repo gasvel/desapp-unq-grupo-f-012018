@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
@@ -10,9 +11,13 @@ import model.Reservation;
 import persistence.ReserRepository;
 
 public class ReserService extends GenericService<Reservation> {
+	
+	public static Logger log = Logger.getLogger(ReserService.class);
 
 	private static final long serialVersionUID = -2541042982395208583L;
-
+	private boolean testMode = false;
+	private EmailService emailServ;
+	
 	@Override
 	@Transactional
 	public void save(Reservation reserv){
@@ -23,6 +28,14 @@ public class ReserService extends GenericService<Reservation> {
 	public void saveWithPost(Reservation reserv, Post post){
 		ArgumentsValidator.validateReserv(reserv, post);
 		super.save(reserv);
+		if(!this.testMode) {
+			try {
+				this.emailServ.newReservation(post.getCreator(),reserv.getClient());
+			}
+			catch(Exception e) {
+				log.error("Error al enviar email",e);
+			}
+		}
 	}
 	
 	@Override
@@ -54,5 +67,22 @@ public class ReserService extends GenericService<Reservation> {
 		ReserRepository repo = (ReserRepository) this.getRepository();
 		return repo.getAllFromCreator(emailUser);
 		
+	}
+	
+	public void setTestMode(boolean b) {
+		this.testMode = b;
+		
+	}
+	
+	public boolean getTestMode(){
+		return this.testMode;
+	}
+	
+	public EmailService getEmailServ() {
+		return emailServ;
+	}
+
+	public void setEmailServ(EmailService emailServ) {
+		this.emailServ = emailServ;
 	}
 }
