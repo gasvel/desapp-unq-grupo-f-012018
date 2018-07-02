@@ -12,11 +12,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./confirmations.component.css']
 })
 export class ConfirmationsComponent implements OnInit {
-
+  formRent:FormGroup = this.formBuilder.group({
+    score: new FormControl('', Validators.compose([
+      Validators.required, Validators.min(0), Validators.max(10)
+    ]))
+  })
   reservs = [];
   rentsOwner = [];
   rentsClient = [];
   reservaSeleccionada;
+  rentSelected;
   mailUser:any;
 
   constructor(private reservService: ReservationService, private formBuilder: FormBuilder,
@@ -35,7 +40,7 @@ export class ConfirmationsComponent implements OnInit {
       this.reservService.getAll(this.mailUser),
       this.rentServ.toConfirmClient(this.mailUser),
       this.rentServ.toConfirmOwner(this.mailUser)
-    ).subscribe( 
+    ).subscribe(
       response =>{
         this.reservs = <any>response[0];
         this.rentsClient = <any>response[1];
@@ -63,6 +68,14 @@ export class ConfirmationsComponent implements OnInit {
     )
   }
 
+  confirmVehicleReturns(){
+    var score = this.formRent.controls.score.value;
+    this.rentServ.confirmVehicleReturns(this.rentSelected,this. mailUser, score).subscribe(
+      res => {console.log(res)},
+      error => console.log(error)
+    )
+  }
+
   cancelRent(rent){
 
   }
@@ -80,6 +93,11 @@ export class ConfirmationsComponent implements OnInit {
     this.reservaSeleccionada = reser;
     this.reservaSeleccionada.startDate = new Date(this.reservaSeleccionada.startDate);
     this.reservaSeleccionada.endDate = new Date(this.reservaSeleccionada.endDate);
+  }
+
+  seleccionarRent(rent){
+    console.log(rent.id);
+    this.rentSelected = rent;
   }
 
   getReservs(){

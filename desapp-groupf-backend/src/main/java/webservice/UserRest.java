@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import model.Credential;
@@ -54,9 +56,10 @@ public class UserRest {
    @POST
    @Path("/new")
    @Produces("application/json")
-   public void newUser(@RequestBody User user){
+   public ResponseEntity<Void> newUser(@RequestBody User user) throws Exception{
 	   System.out.println(user.getCuil());
 	   this.userService.save(user);
+	   return new ResponseEntity<Void>(HttpStatus.CREATED);
    }
    
    @PUT

@@ -6,7 +6,6 @@ public class Score extends Entity{
 	private String description;
 	private Integer value;
 	
-	
 	public Score() {
 		
 	}
@@ -34,7 +33,5 @@ public class Score extends Entity{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	
+	}	
 }

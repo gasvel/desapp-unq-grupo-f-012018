@@ -21,7 +21,8 @@ export class AppComponent implements OnInit{
     private sharedSearchService: SharedSearchFilterService,
     private userServ : UsersService,
     private routerServ : Router,
-  private socialAuthService: AuthService, private activeRoute: ActivatedRoute
+    private socialAuthService: AuthService,
+    private activeRoute: ActivatedRoute
   ) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');
@@ -65,9 +66,9 @@ export class AppComponent implements OnInit{
     else{
     	this.routerServ.navigate(["/posts"]).then(
     		() => this.sharedSearchService.setSetSearchText(this.searchText)
-    		);	
+    		);
     }
-    
+
   }
 
   cleanSearch(){
@@ -83,7 +84,7 @@ export class AppComponent implements OnInit{
     this.routerServ.navigate(["/credits/extract",this.user.id,this.user.credits]);
   }
 
-  confirmation(){
-    this.routerServ.navigate(["/confirmations"]);
+  routeTo(routeName){
+    this.routerServ.navigate(["/"+routeName]);
   }
 }

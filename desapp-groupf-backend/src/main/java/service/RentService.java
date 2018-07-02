@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
 import model.HandlerReserRent;
+import model.Post;
 import model.Rent;
 import model.Reservation;
+import model.Score;
 import model.User;
 import persistence.RentRepository;
 
@@ -22,9 +24,10 @@ public class RentService extends GenericService<Rent> {
 	private boolean testMode = false;
 	private EmailService emailServ;
 
+	private UserService userService;
 
 	private static final long serialVersionUID = 5091408438519087152L;
-
+	
 	@Override
 	@Transactional
 	public void save(Rent rent){
@@ -86,8 +89,23 @@ public class RentService extends GenericService<Rent> {
 		HandlerReserRent.confirmVehiclePickUp(rent, rent.getPost(),user);
 		this.update(rent);
 	}
-
-
+	
+	@Transactional
+	public User confirmVehicleReturns(Rent rent, User user, Integer score) {
+		userService = new UserService();
+		Post thePost = rent.getPost();
+		User otherUser;
+		if(user.getCuil().equals(rent.getClient().getCuil())){
+			otherUser = thePost.getCreator();
+		} else {
+			otherUser = rent.getClient();
+		}
+		
+		HandlerReserRent.confirmVehicleReturns(rent, thePost,user, otherUser, new Score("", score));
+		log.info("RENTA CAMBIADA " + rent.getState());
+		this.update(rent);
+		return otherUser;
+	}
 
 	@Transactional
 	public List<Rent> allToConfirmOwner(String mail) {
@@ -118,4 +136,8 @@ public class RentService extends GenericService<Rent> {
 	public void setEmailServ(EmailService emailServ) {
 		this.emailServ = emailServ;
 	}
+	public void setUserService(final UserService userServ){
+		userService = userServ;
+	}
+	
 }

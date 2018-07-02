@@ -1,6 +1,12 @@
 package model;
 
 public enum Rent_State {
-
-	New,ClientConfirmedPickUp,OwnerConfirmedPickUp,PickUpConfirmed,Cancelled, ClientConfirmedReturn, OwnerConfirmedReturn, RentDone
+	New,
+	ClientConfirmedPickUp,
+	OwnerConfirmedPickUp,
+	PickUpConfirmed,
+	Cancelled, 
+	ClientConfirmedReturn, 
+	OwnerConfirmedReturn, 
+	RentDone
 }

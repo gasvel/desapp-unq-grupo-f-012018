@@ -15,8 +15,8 @@ import { UsersService } from './services/users.service';
 import { PostService } from './services/post.service';
 import { SharedSearchFilterService } from './services/shared-search-filter.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {MatDialogModule, MatMenuModule} from "@angular/material";
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule, MatMenuModule } from "@angular/material";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteDialogComponent } from './posts/delete-dialog/delete-dialog.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -39,11 +39,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/es-AR';
-import {environment} from '../environments/environment';
+import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { RentService } from './services/rent.service';
 import { InfoCuentaComponent } from './info-cuenta/info-cuenta.component';
+import { RentHistoryComponent } from './rent-history/rent-history.component';
 
 
 registerLocaleData(localePt);
@@ -75,8 +76,8 @@ let config = new AuthServiceConfig([
     ReservationComponent,
     PostMapComponent,
     ConfirmationsComponent,
-    InfoCuentaComponent
-
+    InfoCuentaComponent,
+    RentHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -150,6 +151,10 @@ let config = new AuthServiceConfig([
         {
 					path:'posts/map',
 					component: PostMapComponent
+				},
+        {
+					path:'history',
+					component: RentHistoryComponent
 				}
 			]),
 			TranslateModule.forRoot({
