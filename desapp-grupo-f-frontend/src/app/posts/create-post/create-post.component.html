@@ -16,6 +16,7 @@
           <br>
           <button class="btn btn-primary" (click)="upload()">{{'Subir imagen' | translate}}</button>
         <br/>
+        <small style="color: red" *ngIf="imageUrl == ''">{{'Debe subir una imagen del vehiculo'|translate}}</small>
       </div>
       <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="form-group">

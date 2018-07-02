@@ -18,7 +18,7 @@ export class RentService {
 
   getRents(): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.get(this.url + "/all", httpOptions);
   }
 
@@ -30,13 +30,18 @@ export class RentService {
 
   confirmPickUp(rent,mail): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.put(this.url + "/confirmPickUp/" + mail, rent, httpOptions)
+  }
+
+  confirmVehicleReturns(rent,mail,score): Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.put(this.url + "/confirmVehicleReturn/" + mail +"/" +score, rent, httpOptions)
   }
 
   toConfirmOwner(mail):Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.get(this.url + "/toConfirm/owner/" + mail , httpOptions)
   }
 

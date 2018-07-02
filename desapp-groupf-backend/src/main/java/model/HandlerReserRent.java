@@ -3,7 +3,11 @@ package model;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
+
 public final class HandlerReserRent {
+	
+	public static Logger log = Logger.getLogger(HandlerReserRent.class);
 
 	public void newReservation(Date start, Date end, User client, Post post) {
 		if(ArgumentsValidator.areInvalidDates(start, end) || post.isThereAnotherReservation(start,end) || post.isThereAnotherRent(start, end)){
@@ -36,23 +40,24 @@ public final class HandlerReserRent {
 	public static void confirmVehiclePickUp(Rent rent,Post post,User user) {
 		switch(rent.getState()) {
 		case New:
-			if(user.getCuil() == rent.getClient().getCuil()) {
+			log.info("RENT STATE " + post.getCreator().getCuil().equals(user.getCuil()));
+			if(user.getCuil().equals(rent.getClient().getCuil())) {
 				rent.clientConfirmsPickUp(rent.PICK_UP_TIME);
 				
 			}
-			else if(post.getCreator().getCuil() == user.getCuil()) {
+			else if(post.getCreator().getCuil().equals(user.getCuil())) {
 				rent.ownerConfirmsPickUp(rent.PICK_UP_TIME);
 			}
 			break;
 			
 		case ClientConfirmedPickUp:
-			if(user.getCuil() != rent.getClient().getCuil()) {
+			if(!user.getCuil().equals(rent.getClient().getCuil())) {
 				rent.pickUpConfirmed();
 			}
 			break;
 			
 		case OwnerConfirmedPickUp:
-			if(user.getCuil() == rent.getClient().getCuil()) {
+			if(user.getCuil().equals(rent.getClient().getCuil())) {
 				rent.pickUpConfirmed();
 			}
 			break;
@@ -63,27 +68,27 @@ public final class HandlerReserRent {
 		}		
 	}
 	
-	public void confirmVehicleReturns(Rent rent, Post post, User user, User otherUser, Score score){
+	public static void confirmVehicleReturns(Rent rent, Post post, User user, User otherUser, Score score){
 		
 		switch(rent.getState()) {
 		case PickUpConfirmed:
-			if(user.getCuil() == rent.getClient().getCuil()){
+			if(user.getCuil().equals(rent.getClient().getCuil())){
 				rent.clientConfirmsReturn();
 				otherUser.addScore(score);
-			} else if(post.getCreator() == user) {
+			} else if(post.getCreator().getCuil().equals(user.getCuil())) {
 				rent.ownerConfirmsReturn();
 				otherUser.addScore(score);
 			}
 			break;
 		
 		case ClientConfirmedReturn:
-			if(user.getCuil() != rent.getClient().getCuil()) {
+			if(!user.getCuil().equals(rent.getClient().getCuil())) {
 				rent.transactionDone();
 			}
 			break;
 			
 		case OwnerConfirmedReturn:
-			if(user.getCuil() == rent.getClient().getCuil()) {
+			if(user.getCuil().equals(rent.getClient().getCuil())) {
 				rent.transactionDone();
 			}
 			break;

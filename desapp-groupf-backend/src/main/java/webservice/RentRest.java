@@ -78,6 +78,18 @@ public class RentRest {
 		this.rentService.confirmPickUp(rent,user);
 	}
 	
+	@PUT
+	@Path("/confirmVehicleReturn/{mail}/{score}")
+	@Produces("application/json")
+	public void confirmVehicleReturns(
+			@PathParam("mail") String mail,
+			@PathParam("score") Integer score,
+			@RequestBody Rent rent){
+		User user = this.userService.getByEmail(mail);
+		user = this.rentService.confirmVehicleReturns(rent,user,score);
+		this.userService.update(user);
+	}
+	
 	@GET
 	@Path("/toConfirm/owner/{mail}")
 	@Produces("application/json")
