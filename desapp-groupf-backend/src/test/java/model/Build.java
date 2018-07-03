@@ -24,6 +24,7 @@ public class Build {
 		
 		public UserBuilder valid(){
 			anUser.setCuil("20108181843");
+			anUser.addCredits(10000000);
 			anUser.setAddress("Calle falsa 123");
 			anUser.setName("Carlos");
 			anUser.setEmail("carlito@gmail.com");

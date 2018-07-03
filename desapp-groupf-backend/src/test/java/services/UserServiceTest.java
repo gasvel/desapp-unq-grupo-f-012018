@@ -3,7 +3,6 @@ package services;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +28,6 @@ public class UserServiceTest {
 	@Autowired
 	private UserService userServ;
 	
-	
 	@Before
 	public void setUp(){
 		this.userServ.setTestMode(true);
@@ -49,6 +47,7 @@ public class UserServiceTest {
 	@Test
 	public void ifAValidUserIsSavedAndAdds200CreditsItShouldHave200Credits() throws Exception{
 		User user = Build.anUser().valid().build();
+		user.setCredits(0);
 		this.userServ.save(user);
 		this.userServ.addCredits(user.getId(), 200);
 		assert(200 == this.userServ.getById(user.getId()).getCredits());
@@ -58,6 +57,7 @@ public class UserServiceTest {
 	@Test
 	public void ifAValidUserIsSavedAndAddsANegativeAmountOfCreditsItShouldThrowAnException(){
 		User user = Build.anUser().valid().build();
+		user.setCredits(0);
 		this.userServ.save(user);
 		try {
 			this.userServ.addCredits(user.getId(), -200);
@@ -72,6 +72,7 @@ public class UserServiceTest {
 	@Test
 	public void ifAValidUserIsSavedAndAdds200CreditsAndExtract100CreditsItShouldHave100Credits() throws Exception{
 		User user = Build.anUser().valid().build();
+		user.setCredits(0);
 		this.userServ.save(user);
 		this.userServ.addCredits(user.getId(), 200);
 		this.userServ.removeCredits(user.getId(), 100);
@@ -82,6 +83,7 @@ public class UserServiceTest {
 	@Test
 	public void ifAValidUserIsSavedAndExtract100CreditsWhithoutHavingThatAmountItShouldThrowAnException(){
 		User user = Build.anUser().valid().build();
+		user.setCredits(0);
 		this.userServ.save(user);
 		try {
 			this.userServ.removeCredits(user.getId(), 100);
