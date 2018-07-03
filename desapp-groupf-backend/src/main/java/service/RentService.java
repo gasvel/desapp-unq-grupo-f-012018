@@ -70,8 +70,16 @@ public class RentService extends GenericService<Rent> {
 
 	@Transactional
 	public void newRent(Reservation reser) throws Exception {
-		Rent newRent = new Rent(this.calculateCost(reser.getTimeOfRent(), reser.getPost().getPriceDay(), reser.getPost().getPriceHour()),
-								reser.getStartDate(), reser.getEndDate(),reser.getClient());
+		Float cost = this.calculateCost(reser.getTimeOfRent(), reser.getPost().getPriceDay(), reser.getPost().getPriceHour());
+		User client = reser.getClient();
+		User owner = reser.getPost().getCreator();
+		Float oldCredit = client.getCredits();
+		ArgumentsValidator.validateCost(cost, oldCredit);
+		
+		client.removeCredits(cost);
+		owner.addCredits(cost);
+		
+		Rent newRent = new Rent(cost, reser.getStartDate(), reser.getEndDate(),reser.getClient());
 		newRent.setPost(reser.getPost());
 		super.save(newRent);
 		if(!this.testMode) {

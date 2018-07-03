@@ -147,6 +147,10 @@ public class User extends Entity{
 		this.imgsrc = imgsrc;
 	}
 
+	public void setCredits(Float credit) {
+		this.credits = credit;		
+	}
+
 	
 
 	

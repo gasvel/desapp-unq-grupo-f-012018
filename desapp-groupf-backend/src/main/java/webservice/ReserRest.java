@@ -71,8 +71,10 @@ public class ReserRest {
 		Post post = reser.getPost();
 		this.rentService.newRent(reser);
 		post.removeReservation(reser);
+		this.userService.update(reser.getClient());
+		this.userService.update(post.getCreator());
 		this.reserService.delete(reser);
-		this.postService.update(post);
+		this.postService.update(post);		
 		return new ResponseEntity<String>("Reserva confirmada",HttpStatus.OK);
 	}	
 	

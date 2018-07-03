@@ -129,4 +129,10 @@ public class ArgumentsValidator {
 		throw new InvalidModelException(message);
 	}
 
+	public static void validateCost(Float cost, Float credits)  throws InvalidModelException{
+		if(cost > credits) {
+			throwErrorModel("Insufficient credit");
+		}		
+	}
+
 }
