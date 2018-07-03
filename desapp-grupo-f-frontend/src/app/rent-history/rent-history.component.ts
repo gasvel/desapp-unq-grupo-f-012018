@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./rent-history.component.css']
 })
 export class RentHistoryComponent implements OnInit {
-
   mailUser:any;
   rentsOwner= [];
   rentsClient= [];
@@ -40,7 +39,6 @@ export class RentHistoryComponent implements OnInit {
         console.log(error);this.spinner.hide();
       }
     );
-
   }
 
 }

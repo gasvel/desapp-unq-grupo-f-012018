@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservationService } from '../services/reservation.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RentService } from '../services/rent.service';
 import { Observable } from 'rxjs';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-confirmations',
   templateUrl: './confirmations.component.html',
   styleUrls: ['./confirmations.component.css']
 })
+
 export class ConfirmationsComponent implements OnInit {
+  @ViewChild('modalCenterReturnVehicle') public modal: ModalDirective;
+
   formRent:FormGroup = this.formBuilder.group({
     score: new FormControl('', Validators.compose([
       Validators.required, Validators.min(0), Validators.max(10)
@@ -61,22 +65,28 @@ export class ConfirmationsComponent implements OnInit {
   }
 
   confirmRent(rent){
+    this.spinner.show();
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
       res => {console.log(res); this.loadData()},
-      error => console.log(error)
+      error => {console.log(error) ;this.spinner.hide();}
     )
   }
 
   confirmVehicleReturns(){
+    this.spinner.show();
     var score = this.formRent.controls.score.value;
     this.rentServ.confirmVehicleReturns(this.rentSelected,this. mailUser, score).subscribe(
-      res => {console.log(res)},
-      error => console.log(error)
+      res => {console.log(res); this.loadData()},
+      error => {console.log(error) ;this.spinner.hide();}
     )
   }
 
   cancelRent(rent){
 
+  }
+
+  closeModal(){
+    //this.modal.hide();
   }
 
   cancelReserv(reser){

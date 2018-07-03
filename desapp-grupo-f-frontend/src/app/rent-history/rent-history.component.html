@@ -7,8 +7,10 @@
           <div class="card-body">
             <h5 class="card-title">Dueño: {{rent.post.creator.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{rent.state | translate}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rent.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rent.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+            <div *ngIf="rent.state == 'RentDone'">
+              <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rent.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rent.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+            </div>
           </div>
       </div>
   <div *ngIf="rentsClient.length == 0">
@@ -25,8 +27,10 @@
     		<div class="card-body">
           <h5 class="card-title">Alquilado a: {{rentOwn.client.name}}</h5>
       		<h6 class="card-subtitle mb-2 text-muted">{{rentOwn.state | translate}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rentOwn.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rentOwn.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+          <div *ngIf="rentOwn.state == 'RentDone'">
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rentOwn.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rentOwn.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+          </div>
     		</div>
   	</div>
     <div *ngIf="rentsOwner.length == 0">
