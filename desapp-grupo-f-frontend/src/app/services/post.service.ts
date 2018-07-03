@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PostService {
 
-  //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/posts";
+  url:String = "https://desapp-unq-grupof.herokuapp.com/rest/posts";
 
-  url:String = "http://localhost:8080/rest/posts";
+  //url:String = "http://localhost:8080/rest/posts";
 
   constructor(private http: HttpClient) { }
 

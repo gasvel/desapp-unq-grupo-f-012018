@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class RentService {
 
-  url:String = "http://localhost:8080/rest/rents";
+  url:String = "https://desapp-unq-grupof.herokuapp.com/rest/rents";
+  //url:String = "http://localhost:8080/rest/rents";
 
   constructor(private http: HttpClient) { }
 
