@@ -14,6 +14,10 @@ export class EditarUserComponent implements OnInit {
 
   EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+  errorNewUser = false;
+  successModal = false;
+  successModalMessage = '';
+  errorNewUserMessage = '';
 
   usuario : FormGroup = this.formBuilder.group({
     cuil : new FormControl('',Validators.compose([
@@ -85,9 +89,21 @@ export class EditarUserComponent implements OnInit {
   onSubmit(){    
     this.spinner.show();
     this.userServ.updateUser(this.setFinalUser()).subscribe(
-      res => {console.log(res);this.volverAtras();this.spinner.hide();},
-      error => {console.log(error);this.spinner.hide();}
+      res => {console.log(res);this.spinner.hide();this.handleSuccess(res);},
+      error => {this.handleError(error);console.log(error);this.spinner.hide();}
     );
+  }
+
+  handleSuccess(response:any){
+    this.successModal=true;
+    this.successModalMessage = response.error;
+  }
+
+  handleError(response:any){
+
+    this.errorNewUser = true;
+    console.log(response);
+    this.errorNewUserMessage = response.error;
   }
 
 }

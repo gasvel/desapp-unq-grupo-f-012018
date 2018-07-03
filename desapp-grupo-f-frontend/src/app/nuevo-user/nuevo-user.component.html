@@ -38,10 +38,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">{{'Creado con exito' | translate}}</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">{{'Confirmacion' | translate}}</h5>
         </div>
         <div class="modal-body">
-          <p style="font-family: 'Poppins',sans-serif;color: blue">{{'Su cuenta ha sido creada' | translate}}</p>
+          <p style="font-family: 'Poppins',sans-serif;color: blue">{{successModalMessage}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" (click)="volverAtras()" class="btn btn-primary" data-dismiss="modal">{{'Inicio' | translate}}</button>

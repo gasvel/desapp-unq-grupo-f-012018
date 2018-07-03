@@ -98,6 +98,15 @@
               {{'Por favor ingrese un telefono válido' | translate}}
             </small>
         </div>
+
+
+        <div *ngIf="errorNewPost" class="alert alert-danger" role="alert">
+          {{errorNewPostMessage}}
+          <button type="button" class="close" (click)="errorNewPost = false" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
         <button class="btn btn-default" (click)="back()">{{'Atras' | translate}}</button>
         <button type="submit" [disabled]="postForm.invalid" class="btn btn-primary" (click)="save()">{{'Guardar' | translate}}</button>
 

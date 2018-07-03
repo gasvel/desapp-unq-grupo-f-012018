@@ -14,6 +14,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ReservationComponent implements OnInit {
 
+  errorNewReser = false;
+  errorNewReserMessage = '';
+  successModal = false;
+  successModalMessage = '';
+
   @ViewChild("scheduler_here") schedulerContainer: ElementRef;
   formReserv:FormGroup = this.formBuilder.group({
     startDate: new FormControl('', Validators.required),
@@ -50,9 +55,22 @@ export class ReservationComponent implements OnInit {
     this.getClient();
     this.setNewReservation();
     this.reservService.saveReservation(this.newReservation, this.idPost, this.mailUser).subscribe(
-        res => {console.log(res); this.router.navigate(['posts']);},
-  			error => console.log(error)
+        res => {this.handleSuccess(res);console.log(res); /*this.router.navigate(['posts']);*/},
+  			error => {this.handleError(error);console.log(error)}
     );
+  }
+
+  handleSuccess(response:any){
+    this.successModal=true;
+    console.log(response);
+    this.successModalMessage = response.body;
+  }
+
+  handleError(response:any){
+
+    this.errorNewReser = true;
+    console.log(response);
+    this.errorNewReserMessage = response.error;
   }
 
   setNewReservation(){

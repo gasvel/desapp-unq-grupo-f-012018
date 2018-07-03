@@ -15,6 +15,12 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+
+  errorNewPost = false;
+  successModal = false;
+  successModalMessage = '';
+  errorNewPostMessage = '';
+
   isSave:boolean = true;
   imagePost:any = "assets/img/no-image.jpg";
   typeOptions:any = ["Car", "Motorcycle", "Van", "Pickup"];
@@ -163,10 +169,24 @@ export class CreatePostComponent implements OnInit {
     this.service.savePost(post,this.userId).subscribe(
       res => {
           console.log(res);
-          this.router.navigate(['']);
+          this.router.navigate(['']);//si modal sale el ok del modal lo haria
+          this.handleSuccess(res);
       },
-      error => console.log(error)
+      error => {this.handleError(error);console.log(error)}
     );
+  }
+
+  handleSuccess(response:any){
+    this.successModal=true;
+    console.log(response);
+    this.successModalMessage = response.body;
+  }
+
+  handleError(response:any){
+
+    this.errorNewPost = true;
+    console.log(response);
+    this.errorNewPostMessage = response.error;
   }
 
   save(){

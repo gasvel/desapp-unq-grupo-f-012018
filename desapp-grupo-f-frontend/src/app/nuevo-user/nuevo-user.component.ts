@@ -18,6 +18,7 @@ export class NuevoUserComponent implements OnInit {
 
   errorNewUser = false;
   successModal = false;
+  successModalMessage = '';
   errorNewUserMessage = '';
 
   usuario : FormGroup = this.formBuilder.group({
@@ -52,7 +53,7 @@ export class NuevoUserComponent implements OnInit {
   }
 
   volverAtras(){
-    location.reload();
+    // location.reload();
     this.router.navigate(['/posts']);
   }
 
@@ -68,13 +69,15 @@ export class NuevoUserComponent implements OnInit {
   onSubmit(){   
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();this.handleSuccess();},
+      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();this.handleSuccess(res);location.reload();this.volverAtras();},
       error => {this.handleError(error);console.log(error);this.spinner.hide();}
     );
   }
 
-  handleSuccess(){
+  handleSuccess(response:any){
     this.successModal=true;
+    console.log(response);
+    this.successModalMessage = response.body;
   }
 
   handleError(response:any){

@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import model.Post;
@@ -41,18 +43,24 @@ public class PostRest {
 	@POST
 	@Path("/{id}/new")
 	@Produces("application/json")
-	public void newPost(@RequestBody Post post,@PathParam("id") final Integer id){
+	public ResponseEntity<String> newPost(@RequestBody Post post,@PathParam("id") final Integer id){
 		post.setCreator(this.userService.getById(id));
 		this.postService.save(post);
+		return new ResponseEntity<String>("Post creado",HttpStatus.CREATED);
 	}
 	
 	@PUT
 	@Path("{id}/update")
 	@Produces("application/json")
-    public void updatePost(@PathParam("id") Integer id,@RequestBody Post post){
+    public ResponseEntity<String> updatePost(@PathParam("id") Integer id,@RequestBody Post post){
 		User creator = this.userService.getById(id);
 		post.setCreator(creator);
-		this.postService.update(post);
+		try{
+			this.postService.update(post);
+		} catch(Exception e){
+			return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+		}
+		return new ResponseEntity<String>("Post actualizado",HttpStatus.OK);
 	}
 	   
 	@DELETE

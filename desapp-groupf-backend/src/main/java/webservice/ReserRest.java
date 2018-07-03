@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import model.ArgumentsValidator;
@@ -44,13 +46,14 @@ public class ReserRest {
 	@POST
 	@Path("/new/{idPost}/{mailUser}")
 	@Produces("application/json")
-	public void newReser(@PathParam("idPost") final Integer idPost, @PathParam("mailUser") String emailUser,  @RequestBody Reservation reser) throws Exception{
+	public ResponseEntity<String> newReser(@PathParam("idPost") final Integer idPost, @PathParam("mailUser") String emailUser,  @RequestBody Reservation reser) throws Exception{
 		Post post = this.postService.getById(idPost);
 		User user = this.userService.getByEmail(emailUser);
 		reser.setClient(user);
 		reser.generateTimeRent();
 		reser.setPost(post);
 		this.reserService.saveWithPost(reser, post);
+		return new ResponseEntity<String>("Reserva creada",HttpStatus.CREATED);
 	}
 	
 	@GET
@@ -64,23 +67,25 @@ public class ReserRest {
 	@PUT
 	@Path("/confirm")
 	@Produces("application/json")
-    public void confirmReservation(@RequestBody Reservation reser) throws Exception{
+    public ResponseEntity<String> confirmReservation(@RequestBody Reservation reser) throws Exception{
 		Post post = reser.getPost();
 		this.rentService.newRent(reser);
 		post.removeReservation(reser);
 		this.reserService.delete(reser);
 		this.postService.update(post);
+		return new ResponseEntity<String>("Reserva confirmada",HttpStatus.OK);
 	}	
 	
 	@DELETE
 	@Path("/cancel/{id}")
 	@Produces("application/json")
-    public void cancelReservation(@PathParam("id") Integer id) throws Exception{
+    public ResponseEntity<String> cancelReservation(@PathParam("id") Integer id) throws Exception{
 		Reservation reser = this.reserService.getById(id);
 		Post post = reser.getPost();
 		post.removeReservation(reser);
 		this.reserService.delete(reser);
 		this.postService.update(post);
+		return new ResponseEntity<String>("Reserva cancelada",HttpStatus.OK);
 	}
 	
 	@PUT

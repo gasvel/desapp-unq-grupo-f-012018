@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -73,9 +75,10 @@ public class RentRest {
 	@PUT
 	@Path("/confirmPickUp/{mail}")
 	@Produces("application/json")
-	public void confirmRent(@PathParam("mail") String mail,@RequestBody Rent rent) throws Exception{
+	public ResponseEntity<String> confirmRent(@PathParam("mail") String mail,@RequestBody Rent rent) throws Exception{
 		User user = this.userService.getByEmail(mail);
 		this.rentService.confirmPickUp(rent,user);
+		return new ResponseEntity<String>("Renta entregada",HttpStatus.OK);
 	}
 	
 	@PUT

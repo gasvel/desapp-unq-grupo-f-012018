@@ -12,6 +12,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./confirmations.component.css']
 })
 export class ConfirmationsComponent implements OnInit {
+
+  successModal = false;
+  successModalMessage = '';
+
   formRent:FormGroup = this.formBuilder.group({
     score: new FormControl('', Validators.compose([
       Validators.required, Validators.min(0), Validators.max(10)
@@ -52,17 +56,22 @@ export class ConfirmationsComponent implements OnInit {
 
   }
 
+  handleModal(response:any){
+    this.successModal = true;
+    this.successModalMessage = response.body;
+  }
+
   confirmReserv(reser){
     this.spinner.show();
     this.reservService.confirmReserv(reser).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();},
+      res => {console.log(res);this.spinner.hide();window.location.reload();this.handleModal(res);},
       error => {console.log(error);this.spinner.hide();}
     );
   }
 
   confirmRent(rent){
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
-      res => {console.log(res); this.loadData()},
+      res => {console.log(res); this.loadData(); this.handleModal(res);},
       error => console.log(error)
     )
   }
@@ -82,7 +91,7 @@ export class ConfirmationsComponent implements OnInit {
   cancelReserv(reser){
     this.spinner.show();
     this.reservService.cancelReserv(reser.id).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();this.loadData();},
+      res => {console.log(res);this.spinner.hide();window.location.reload();this.loadData();this.handleModal(res);},
       error => {console.log(error);this.spinner.hide();}
     );
   }
