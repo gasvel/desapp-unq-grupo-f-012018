@@ -36,7 +36,7 @@ export class PostDetailComponent implements OnInit {
   rent() {
     console.log('Rent');
     //si no funca lo del localstorage le puedo mandar el post.creator.id y alv
-    this.router.navigate(['reservation', this.post.id])
+    this.router.navigate(['reservation', this.post.id, this.post.priceDay])
   }
 
   getPost(id) {

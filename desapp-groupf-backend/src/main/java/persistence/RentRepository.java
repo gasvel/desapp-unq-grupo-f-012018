@@ -35,8 +35,7 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 	@SuppressWarnings("unchecked")
 	public List<Rent> allRentsDoneOwner(String mail) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
-		criteria.createAlias("client", "user").add(Restrictions.or(Restrictions.eq("state", Rent_State.Cancelled)
-				,Restrictions.eq("state", Rent_State.RentDone))).add(Restrictions.eq("user.email", mail));
+		criteria.createAlias("client", "user").add(Restrictions.eq("user.email", mail));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
 	}
 	
@@ -44,8 +43,6 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 	public List<Rent> allRentsDoneClient(String mail) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
 		criteria.createAlias("post", "p").createAlias("p.creator", "user").add(
-				Restrictions.or(Restrictions.eq("state", Rent_State.Cancelled),
-				Restrictions.eq("state", Rent_State.RentDone))).add(
 				Restrictions.eq("user.email", mail));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
 	}

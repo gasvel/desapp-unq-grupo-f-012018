@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import model.ArgumentsValidator;
 import model.Post;
 import model.Reservation;
+import model.User;
 import persistence.ReserRepository;
 
 public class ReserService extends GenericService<Reservation> {
@@ -30,9 +31,13 @@ public class ReserService extends GenericService<Reservation> {
 	@Transactional
 	public void saveWithPost(Reservation reserv, Post post) throws Exception{
 		this.checkDate(reserv,post);
+		Float cost = this.rentServ.calculateCost(reserv.getTimeOfRent(), reserv.getPost().getPriceDay(), reserv.getPost().getPriceHour());		
 		this.rentServ.checkDate(reserv,post);
 		ArgumentsValidator.validateReserv(reserv, post);
-		super.save(reserv);
+		User client = reserv.getClient();
+		Float oldCredit = client.getCredits();
+		ArgumentsValidator.validateCost(cost, oldCredit);	
+		super.save(reserv);		
 		if(!this.testMode) {
 			try {
 				this.emailServ.newReservation(post.getCreator(),reserv.getClient());

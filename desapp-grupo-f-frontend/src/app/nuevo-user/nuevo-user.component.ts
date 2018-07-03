@@ -71,7 +71,7 @@ export class NuevoUserComponent implements OnInit {
   }
 
 
-  onSubmit(){   
+  onSubmit(){
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
       res => {console.log(res);this.handleSuccess(res);},
