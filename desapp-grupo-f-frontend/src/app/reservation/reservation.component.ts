@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ReservationService } from '../services/reservation.service';
 import { UsersService } from '../services/users.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+declare var jQuery:any;
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -18,6 +19,8 @@ export class ReservationComponent implements OnInit {
   errorNewReserMessage = '';
   successModal = false;
   successModalMessage = '';
+
+  @ViewChild('confirmationModal') modal: ElementRef;
 
   @ViewChild("scheduler_here") schedulerContainer: ElementRef;
   formReserv:FormGroup = this.formBuilder.group({
@@ -55,15 +58,19 @@ export class ReservationComponent implements OnInit {
     this.getClient();
     this.setNewReservation();
     this.reservService.saveReservation(this.newReservation, this.idPost, this.mailUser).subscribe(
-        res => {this.handleSuccess(res);console.log(res); this.router.navigate(['posts']);},
+        res => {this.handleSuccess(res);console.log(res);},
   			error => {this.handleError(error);console.log(error)}
     );
   }
 
+  volverAtras(){
+    this.router.navigate(['posts']);
+  }
+
   handleSuccess(response:any){
-    this.successModal=true;
     console.log(response);
     this.successModalMessage = response.body;
+    jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){

@@ -75,15 +75,16 @@ export class NuevoUserComponent implements OnInit {
   onSubmit(){   
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);this.handleSuccess();},
+      res => {console.log(res);this.handleSuccess(res);},
       error => {this.handleError(error);console.log(error);this.spinner.hide();}
     );
   }
 
-  handleSuccess(){
+  handleSuccess(response:any){
     localStorage.setItem("token",this.userInfo.idToken);
     this.spinner.hide();
     this.updateServ.setUpdate(true);
+    this.successModalMessage = response.body;
     jQuery(this.modal.nativeElement).modal('show');
   }
 

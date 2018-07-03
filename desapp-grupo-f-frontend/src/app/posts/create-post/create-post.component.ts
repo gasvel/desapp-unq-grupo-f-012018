@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
+declare var jQuery:any;
 
 @Component({
   selector: 'app-create-post',
@@ -20,6 +21,8 @@ export class CreatePostComponent implements OnInit {
   successModal = false;
   successModalMessage = '';
   errorNewPostMessage = '';
+
+  @ViewChild('confirmationModal') modal: ElementRef;
 
   isSave:boolean = true;
   imagePost:any = "assets/img/no-image.jpg";
@@ -169,17 +172,20 @@ export class CreatePostComponent implements OnInit {
     this.service.savePost(post,this.userId).subscribe(
       res => {
           console.log(res);
-          this.router.navigate(['']);
           this.handleSuccess(res);
       },
       error => {this.handleError(error);console.log(error)}
     );
   }
 
+  volverAtras(){
+    this.router.navigate(['']);
+  }
+
   handleSuccess(response:any){
-    this.successModal=true;
     console.log(response);
     this.successModalMessage = response.body;
+    jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){

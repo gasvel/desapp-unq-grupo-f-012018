@@ -123,7 +123,7 @@
     </div>
 
     <div *ngIf="successModal" class="alert alert-success" role="alert">
-      {{successModalMessage}}
+      {{successModalMessage | translate}}
       <button type="button" class="close" (click)="successModal = false" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -143,16 +143,16 @@
           <div class="modal-body">
             <ul class="list-group">
               <li class="list-group-item">
-                <p>Fecha comienzo: <strong>{{reservaSeleccionada.startDate | date:'medium':'shortTime':'es-AR'}}</strong></p>
+                <p>{{'Fecha comienzo' | translate}}: <strong>{{reservaSeleccionada.startDate | date:'medium':'shortTime':'es-AR'}}</strong></p>
               </li>
               <li class="list-group-item">
-                  <p>Fecha fin: <strong>{{reservaSeleccionada.endDate | date:'medium':'short':'es-AR'}}</strong></p>
+                  <p>{{'Fecha fin' | translate}}: <strong>{{reservaSeleccionada.endDate | date:'medium':'short':'es-AR'}}</strong></p>
               </li>
               <li class="list-group-item">
-                  <p>Cliente: <strong>{{reservaSeleccionada.client.name}}</strong></p>
+                  <p>{{'Cliente' | translate}}: <strong>{{reservaSeleccionada.client.name}}</strong></p>
               </li>
               <li class="list-group-item">
-                  <p>Score del cliente: <strong *ngIf="reservaSeleccionada">{{reservaSeleccionada.client.score}}</strong><strong *ngIf="reservaSeleccionada != null">0.0</strong></p>
+                  <p>{{'Score del cliente' | translate}}: <strong *ngIf="reservaSeleccionada">{{reservaSeleccionada.client.score}}</strong><strong *ngIf="reservaSeleccionada != null">0.0</strong></p>
               </li>
             </ul>
           </div>
@@ -164,16 +164,16 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Confirmar devolución del vehículo</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">{{'Confirmar devolución del vehículo' | translate}}</h5>
           </div>
           <div class="modal-body">
             <form [formGroup]="formRent">
-              <h5 >Ingrese una calificacíon</h5>
+              <h5 >{{'Ingrese una calificacíon' | translate}}</h5>
               <input type="number" id="score" class="form-control"
                 placeholder="Por favor ingresa una calificacíon entre 1 y 10"
                 formControlName="score" min="1" max="10"><br>
-              <button class="btn btn-danger" (click)="closeModal()">Atras</button>
-              <button class="btn btn-success" (click)="confirmVehicleReturns()">Continuar</button>
+              <button class="btn btn-danger" (click)="closeModal()">{{'Atras' | translate}}</button>
+              <button class="btn btn-success" (click)="confirmVehicleReturns()">{{'Continuar' | translate}}</button>
             </form>
           </div>
         </div>
