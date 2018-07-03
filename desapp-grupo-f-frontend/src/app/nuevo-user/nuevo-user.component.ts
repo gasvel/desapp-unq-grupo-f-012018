@@ -24,7 +24,6 @@ export class NuevoUserComponent implements OnInit {
   public successModalMessage = '';
   public errorNewUserMessage = '';
 
-  @Output() Update = new EventEmitter();
 
   @ViewChild('confirmationModal') modal: ElementRef;
 
@@ -75,20 +74,20 @@ export class NuevoUserComponent implements OnInit {
   onSubmit(){   
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);this.handleSuccess();},
-      error => {this.handleError(error);console.log(error);this.spinner.hide();}
+      res => {console.log(res);this.handleSuccess(res);},
+      err => {this.handleError(err);console.log(err);this.spinner.hide();}
     );
   }
 
-  handleSuccess(){
+  handleSuccess(response){
     localStorage.setItem("token",this.userInfo.idToken);
     this.spinner.hide();
+    this.successModalMessage = response.body;
     this.updateServ.setUpdate(true);
     jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){
-
     this.errorNewUser = true;
     console.log(response);
     this.errorNewUserMessage = response.error;

@@ -13,10 +13,9 @@
             <div class="progress-bar bg-success" role="progressbar" [style.width]="filePorcentage + '%'" attr.aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           </div>
-          <br>
-          <button class="btn btn-primary" (click)="upload()">{{'Subir imagen' | translate}}</button>
+
         <br/>
-        <small style="color: red" *ngIf="imageUrl == ''">{{'Debe subir una imagen del vehiculo'|translate}}</small>
+        <small style="color: red" *ngIf="!NgxInputFileUploadComponent.imageData">{{'Debe subir una imagen del vehiculo'|translate}}</small>
       </div>
       <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
