@@ -146,15 +146,4 @@ public class User extends Entity{
 	public void setImgsrc(String imgsrc) {
 		this.imgsrc = imgsrc;
 	}
-
-	public void setCredits(Float credit) {
-		this.credits = credit;		
-	}
-
-	
-
-	
-	
-	
-	
 }
