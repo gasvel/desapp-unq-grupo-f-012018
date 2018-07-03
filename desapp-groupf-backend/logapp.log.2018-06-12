@@ -1,0 +1,43 @@
+2018-06-04 00:27:56,328 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:862) - Closing Root WebApplicationContext: startup date [Sun Jun 03 21:17:46 ART 2018]; root of context hierarchy
+2018-06-04 00:27:56,830 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-04 00:27:59,327 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-06-04 21:40:39,102 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:285) - Root WebApplicationContext: initialization started
+2018-06-04 21:40:40,140 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:510) - Refreshing Root WebApplicationContext: startup date [Mon Jun 04 21:40:40 ART 2018]; root of context hierarchy
+2018-06-04 21:40:40,259 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-persistence-context.xml]
+2018-06-04 21:40:41,150 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-service-context.xml]
+2018-06-04 21:40:41,319 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-web-context.xml]
+2018-06-04 21:40:41,491 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+2018-06-04 21:40:41,579 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-extension-soap.xml]
+2018-06-04 21:40:41,656 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+2018-06-04 21:40:42,360 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/hibernate.properties]
+2018-06-04 21:40:42,385 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/jdbc.properties]
+2018-06-04 21:40:43,843 INFO  org.hibernate.annotations.common.reflection.java.JavaReflectionManager (JavaReflectionManager.java:66) - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-06-04 21:40:43,850 INFO  org.hibernate.Version (Version.java:54) - HHH000412: Hibernate Core {4.3.6.Final}
+2018-06-04 21:40:43,853 INFO  org.hibernate.cfg.Environment (Environment.java:239) - HHH000206: hibernate.properties not found
+2018-06-04 21:40:43,855 INFO  org.hibernate.cfg.Environment (Environment.java:346) - HHH000021: Bytecode provider name : javassist
+2018-06-04 21:40:43,987 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-04 21:40:44,053 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-04 21:40:44,098 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-04 21:40:44,123 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-04 21:40:44,157 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-04 21:40:46,721 INFO  org.hibernate.dialect.Dialect (Dialect.java:145) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-06-04 21:40:46,746 INFO  org.hibernate.engine.jdbc.internal.LobCreatorBuilder (LobCreatorBuilder.java:123) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-06-04 21:40:46,986 INFO  org.hibernate.engine.transaction.internal.TransactionFactoryInitiator (TransactionFactoryInitiator.java:62) - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-06-04 21:40:47,004 INFO  org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory (ASTQueryTranslatorFactory.java:47) - HHH000397: Using ASTQueryTranslatorFactory
+2018-06-04 21:40:48,242 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-04 21:40:48,498 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Post drop constraint FK_s7ui38nhrh0c7q4nfpgf93bfk
+2018-06-04 21:40:48,498 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "post" does not exist
+2018-06-04 21:40:48,500 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_g8f4s1lu288ksqyh26wjybfft
+2018-06-04 21:40:48,500 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-06-04 21:40:48,501 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_eep53lit29vaworhvvislx1h3
+2018-06-04 21:40:48,502 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-06-04 21:40:48,503 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Score drop constraint FK_3t8l1e15f6giw5f5tnthtqrah
+2018-06-04 21:40:48,504 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "score" does not exist
+2018-06-04 21:40:51,525 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-06-04 21:40:51,672 INFO  org.springframework.orm.hibernate4.HibernateTransactionManager (HibernateTransactionManager.java:360) - Using DataSource [org.apache.commons.dbcp.BasicDataSource@2c16fadb] of Hibernate SessionFactory for HibernateTransactionManager
+2018-06-04 21:40:51,857 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-06-04 21:40:51,966 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory (SQLErrorCodesFactory.java:126) - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-06-04 21:40:54,508 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:325) - Root WebApplicationContext: initialization completed in 15351 ms
+2018-06-04 23:20:30,244 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:862) - Closing Root WebApplicationContext: startup date [Mon Jun 04 21:40:40 ART 2018]; root of context hierarchy
+2018-06-04 23:20:32,842 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-04 23:20:37,751 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete

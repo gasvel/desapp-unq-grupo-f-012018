@@ -1,0 +1,112 @@
+2018-06-28 20:32:46,291 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:285) - Root WebApplicationContext: initialization started
+2018-06-28 20:32:47,913 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:510) - Refreshing Root WebApplicationContext: startup date [Thu Jun 28 20:32:47 ART 2018]; root of context hierarchy
+2018-06-28 20:32:48,560 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/gaston/desapp-unq/desapp-groupf-backend/target/classes/META-INF/spring-persistence-context.xml]
+2018-06-28 20:32:50,042 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/gaston/desapp-unq/desapp-groupf-backend/target/classes/META-INF/spring-service-context.xml]
+2018-06-28 20:32:50,153 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/gaston/desapp-unq/desapp-groupf-backend/target/classes/META-INF/spring-web-context.xml]
+2018-06-28 20:32:50,350 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+2018-06-28 20:32:50,385 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-extension-soap.xml]
+2018-06-28 20:32:50,417 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+2018-06-28 20:32:52,800 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/gaston/desapp-unq/desapp-groupf-backend/target/classes/META-INF/hibernate.properties]
+2018-06-28 20:32:52,810 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/gaston/desapp-unq/desapp-groupf-backend/target/classes/META-INF/jdbc.properties]
+2018-06-28 20:32:57,771 INFO  org.hibernate.annotations.common.reflection.java.JavaReflectionManager (JavaReflectionManager.java:66) - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-06-28 20:32:57,895 INFO  org.hibernate.Version (Version.java:54) - HHH000412: Hibernate Core {4.3.6.Final}
+2018-06-28 20:32:57,900 INFO  org.hibernate.cfg.Environment (Environment.java:239) - HHH000206: hibernate.properties not found
+2018-06-28 20:32:57,913 INFO  org.hibernate.cfg.Environment (Environment.java:346) - HHH000021: Bytecode provider name : javassist
+2018-06-28 20:32:58,214 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-28 20:32:58,426 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-28 20:32:58,465 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-28 20:32:58,537 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-28 20:32:58,587 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-06-28 20:33:01,734 INFO  org.hibernate.dialect.Dialect (Dialect.java:145) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-06-28 20:33:01,793 INFO  org.hibernate.engine.jdbc.internal.LobCreatorBuilder (LobCreatorBuilder.java:123) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-06-28 20:33:02,271 INFO  org.hibernate.engine.transaction.internal.TransactionFactoryInitiator (TransactionFactoryInitiator.java:62) - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-06-28 20:33:02,300 INFO  org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory (ASTQueryTranslatorFactory.java:47) - HHH000397: Using ASTQueryTranslatorFactory
+2018-06-28 20:33:03,510 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-06-28 20:33:03,545 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Post drop constraint FK_3cu4u3ke419xpd0p557dtvy0h
+2018-06-28 20:33:03,546 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "post" does not exist
+2018-06-28 20:33:03,548 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_bm96fq847v3fhbu3ip6vdqqhc
+2018-06-28 20:33:03,549 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-06-28 20:33:03,550 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_94jci3rlegua6h2njir8bd4f7
+2018-06-28 20:33:03,551 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-06-28 20:33:03,552 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_om769847dsa3btpvyu3db919x
+2018-06-28 20:33:03,553 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-06-28 20:33:03,554 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_gaaan5b999hk5p3fglrl3fi5a
+2018-06-28 20:33:03,554 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-06-28 20:33:03,555 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Score drop constraint FK_3t8l1e15f6giw5f5tnthtqrah
+2018-06-28 20:33:03,556 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "score" does not exist
+2018-06-28 20:33:07,063 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-06-28 20:33:07,401 INFO  org.springframework.orm.hibernate4.HibernateTransactionManager (HibernateTransactionManager.java:360) - Using DataSource [org.apache.commons.dbcp.BasicDataSource@4ba380c7] of Hibernate SessionFactory for HibernateTransactionManager
+2018-06-28 20:33:07,464 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-06-28 20:33:07,517 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory (SQLErrorCodesFactory.java:126) - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-06-28 20:33:12,082 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:325) - Root WebApplicationContext: initialization completed in 25784 ms
+2018-06-28 20:36:30,390 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:36:30.39 , service.PostService.retriveAll ,  >
+2018-06-28 20:37:11,417 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:11.417 , service.PostService.retriveAll ,  >
+2018-06-28 20:37:18,320 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:18.32 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-28 20:37:34,839 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:37:35,215 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:35.215 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-28 20:37:35,281 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:35.281 , service.EmailService.welcomeMsg , [Ljava.lang.Object; ,  >
+2018-06-28 20:37:42,268 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:42.268 , service.PostService.retriveAll ,  >
+2018-06-28 20:37:58,451 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:37:58,457 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:37:58.457 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:38:02,650 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:38:02.65 , service.PostService.retriveAll ,  >
+2018-06-28 20:39:16,689 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:39:16.689 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-28 20:40:00,539 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:40:00.539 , service.PostService.retriveAll ,  >
+2018-06-28 20:40:39,373 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:40:39,639 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:40:39.639 , service.UserService.getById , [Ljava.lang.Object; ,  >
+2018-06-28 20:40:39,888 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:40:39.888 , service.PostService.save , [Ljava.lang.Object; ,  >
+2018-06-28 20:40:40,287 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:40:40.287 , service.PostService.retriveAll ,  >
+2018-06-28 20:40:47,788 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:40:47,795 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:40:47.794 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:41:05,874 INFO  webservice.AuthFilter (AuthFilter.java:66) - Zaira Micaela | Zaira Micaela Ferreira | zairamicaelaferreira@gmail.com | es
+2018-06-28 20:41:05,876 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:05.875 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-28 20:41:05,877 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:05.877 , service.EmailService.welcomeMsg , [Ljava.lang.Object; ,  >
+2018-06-28 20:41:10,417 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:10.417 , service.PostService.retriveAll ,  >
+2018-06-28 20:41:17,869 INFO  webservice.AuthFilter (AuthFilter.java:66) - Zaira Micaela | Zaira Micaela Ferreira | zairamicaelaferreira@gmail.com | es
+2018-06-28 20:41:17,871 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:17.871 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:41:21,425 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:21.425 , service.PostService.retriveAll ,  >
+2018-06-28 20:41:38,760 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:41:38.76 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-28 20:42:03,194 INFO  webservice.AuthFilter (AuthFilter.java:66) - Zaira Micaela | Zaira Micaela Ferreira | zairamicaelaferreira@gmail.com | es
+2018-06-28 20:42:03,196 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:42:03.196 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-28 20:42:03,215 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:42:03.214 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:43:29,655 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:43:29.655 , service.PostService.retriveAll ,  >
+2018-06-28 20:43:49,539 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:43:49.539 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-06-28 20:44:03,417 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:44:09,077 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:44:09.077 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-06-28 20:44:09,078 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:44:09.078 , service.EmailService.welcomeMsg , [Ljava.lang.Object; ,  >
+2018-06-28 20:44:29,117 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:44:29.117 , service.PostService.retriveAll ,  >
+2018-06-28 20:44:44,138 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:44:44.138 , service.PostService.retriveAll ,  >
+2018-06-28 20:44:44,649 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:44:44,903 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:44:44.903 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:03,746 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:03.746 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:23,411 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:45:23,416 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:23.416 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:23,425 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:23.425 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:23,447 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:23.447 , service.ReserService.saveWithPost , [Ljava.lang.Object; , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:23,933 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:23.933 , service.PostService.retriveAll ,  >
+2018-06-28 20:45:28,637 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:45:28,649 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:28.649 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:28,695 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:45:28,697 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:28.697 , service.RentService.allToConfirmClient , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:28,713 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-06-28 20:45:28,730 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:28.73 , service.RentService.allToConfirmOwner , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:37,780 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:45:37,786 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:37.786 , service.RentService.allToConfirmClient , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:37,797 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:45:37,807 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:45:37,809 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:37.809 , service.RentService.allToConfirmOwner , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:37,817 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:37.817 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:41,795 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:45:41,806 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:41.806 , service.RentService.newRent , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:41,860 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:41.859 , service.ReserService.delete , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:41,926 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:41.926 , service.PostService.update , [Ljava.lang.Object; ,  >
+2018-06-28 20:45:54,519 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:45:54,523 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:45:54.523 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:46:01,446 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:46:01,447 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:46:01.447 , service.RentService.allToConfirmOwner , [Ljava.lang.Object; ,  >
+2018-06-28 20:46:01,464 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:46:01,465 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:46:01.465 , service.RentService.allToConfirmClient , [Ljava.lang.Object; ,  >
+2018-06-28 20:46:01,481 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:46:01,482 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:46:01.482 , service.ReserService.getAllFromCreator , [Ljava.lang.Object; ,  >
+2018-06-28 20:46:12,110 INFO  webservice.AuthFilter (AuthFilter.java:66) - Gaston | Gaston Veliez | gastonveliez95@gmail.com | es
+2018-06-28 20:46:12,114 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:46:12.113 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-06-28 20:46:12,124 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-06-28 20:46:12.123 , service.RentService.confirmPickUp , [Ljava.lang.Object; , [Ljava.lang.Object; ,  >

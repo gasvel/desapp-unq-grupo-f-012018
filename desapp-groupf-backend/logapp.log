@@ -635,3 +635,4 @@
 2018-07-03 17:36:01,250 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:862) - Closing Root WebApplicationContext: startup date [Tue Jul 03 17:31:54 ART 2018]; root of context hierarchy
 2018-07-03 17:36:01,275 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
 2018-07-03 17:36:01,407 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+
