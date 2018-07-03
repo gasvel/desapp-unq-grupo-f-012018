@@ -3,6 +3,7 @@ package services;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,13 +34,14 @@ public class UserServiceTest {
 	public void setUp(){
 		this.userServ.setTestMode(true);
 	}
+	
 
 
 	@Test
 	public void ifAValidUserIsSavedInADBWith3UseresTheListOfUsersInDBShouldHaveSize4() {
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
-		assertEquals(4,this.userServ.retriveAll().size());
+		assertEquals(5,this.userServ.retriveAll().size());
 		assertEquals(user.getCuil(),this.userServ.getById(user.getId()).getCuil());
 		
 	}
@@ -96,7 +98,7 @@ public class UserServiceTest {
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
 		this.userServ.delete(user);
-		assertEquals(3,this.userServ.retriveAll().size());
+		assertEquals(4,this.userServ.retriveAll().size());
 	}
 	
 	@Test

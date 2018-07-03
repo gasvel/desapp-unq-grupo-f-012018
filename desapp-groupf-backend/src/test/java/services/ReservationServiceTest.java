@@ -2,6 +2,10 @@ package services;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +54,7 @@ public class ReservationServiceTest {
 		user.setName("Robert");
 		this.userServ.update(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
@@ -67,7 +71,7 @@ public class ReservationServiceTest {
 		User user = Build.anUser().valid().build();
 		this.userServ.save(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
@@ -88,7 +92,7 @@ public class ReservationServiceTest {
 		user.setName("Robert");
 		this.userServ.update(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
@@ -96,6 +100,13 @@ public class ReservationServiceTest {
 		newReservation.setPost(post);
 		newReservation2.setClient(client);
 		newReservation2.setPost(post);
+		Calendar cal = new GregorianCalendar();
+		cal.set(2018, 9, 10);
+		Date start2 = cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, 10);
+		Date end2 = cal.getTime();
+		newReservation2.setStartDate(start2);
+		newReservation2.setEndDate(end2);
 		this.reservService.saveWithPost(newReservation, post);
 		this.reservService.saveWithPost(newReservation2, post);
 		assertEquals(2,this.reservService.retriveAll().size());

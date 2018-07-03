@@ -55,7 +55,7 @@ public class RentServiceTest {
 		user.setName("Robert");
 		this.userServ.update(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
@@ -77,7 +77,7 @@ public class RentServiceTest {
 		user.setName("Robert");
 		this.userServ.update(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
@@ -99,7 +99,7 @@ public class RentServiceTest {
 		user.setName("Robert");
 		this.userServ.update(user);
 		post.setCreator(user);
-		User client = Build.anUser().valid().build();
+		User client = Build.anUser().valid().withCuil("20360702015").build();
 		client.setEmail("mailfalso@gmail.com");
 		this.postServ.save(post);
 		this.userServ.save(client);
