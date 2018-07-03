@@ -54,4 +54,9 @@ export class RentService {
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
     return this.http.get(this.url + "/rentsDone/owner/" + mail, httpOptions);
   }
+
+  cancelRent(rentId):Observable<any>{
+    let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
+    return this.http.put(this.url + "/cancelRent/" + rentId,httpOptions)
+  }
 }

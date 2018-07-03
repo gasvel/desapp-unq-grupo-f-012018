@@ -18,6 +18,8 @@ export class ConfirmationsComponent implements OnInit {
 
   successModal = false;
   successModalMessage = '';
+  errorAlert = false;
+  errorMessage = "";
   @ViewChild('modalCenterReturnVehicle') public modal: ElementRef;
 
   formRent:FormGroup = this.formBuilder.group({
@@ -65,11 +67,16 @@ export class ConfirmationsComponent implements OnInit {
     this.successModalMessage = response.body;
   }
 
+  handleError(res){
+    this.errorAlert = true;
+    this.errorMessage = res.error;
+  }
+
   confirmReserv(reser){
     this.spinner.show();
     this.reservService.confirmReserv(reser).subscribe(
       res => {console.log(res);this.spinner.hide();this.loadData();this.handleAlert(res);},
-      error => {console.log(error);this.spinner.hide();}
+      error => {console.log(error);this.handleError(error);this.spinner.hide();}
     );
   }
 
@@ -77,7 +84,7 @@ export class ConfirmationsComponent implements OnInit {
     this.spinner.show();
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
       res => {console.log(res);this.spinner.hide(); this.loadData(); this.handleAlert(res);},
-      error => {console.log(error) ;this.spinner.hide();}
+      error => {console.log(error);this.handleError(error) ;this.spinner.hide();}
     )
   }
 
@@ -86,12 +93,16 @@ export class ConfirmationsComponent implements OnInit {
     var score = this.formRent.controls.score.value;
     this.rentServ.confirmVehicleReturns(this.rentSelected,this. mailUser, score).subscribe(
       res => {console.log(res);this.spinner.hide() ;this.loadData();this.handleAlert(res)},
-      error => {console.log(error) ;this.spinner.hide();}
+      error => {console.log(error);this.handleError(error) ;this.spinner.hide();}
     )
   }
 
   cancelRent(rent){
-
+    this.spinner.show();
+    this.rentServ.cancelRent(rent.id).subscribe(
+      res => {console.log(res);this.loadData();this.handleAlert(res);this.spinner.hide()},
+      error => {console.log(error);this.handleError(error);this.spinner.hide()}
+    );
   }
 
   closeModal(){

@@ -7,12 +7,14 @@ import javax.mail.MessagingException;
 import javax.ws.rs.ClientErrorException;
 
 import org.apache.log4j.Logger;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.ArgumentsValidator;
 import model.HandlerReserRent;
 import model.Post;
 import model.Rent;
+import model.Rent_State;
 import model.Reservation;
 import model.Score;
 import model.User;
@@ -150,5 +152,11 @@ public class RentService extends GenericService<Rent> {
 	public void checkDate(Reservation reserv,Post post) {
 		RentRepository repo = (RentRepository) this.getRepository();
 		repo.checkDate(reserv.getStartDate(),reserv.getEndDate(),post.getId());
+	}
+
+	public void cancelRent(Integer idRent) {
+		Rent rent = this.getById(idRent);
+		rent.setState(Rent_State.Cancelled);
+		this.update(rent);
 	}	
 }

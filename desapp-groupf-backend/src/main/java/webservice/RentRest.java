@@ -120,6 +120,14 @@ public class RentRest {
 	public List<Rent> rentsDoneClient(@PathParam("mail") String mail){
 		return this.rentService.allRentsDoneClient(mail);
 	}
+	
+	@PUT
+	@Path("/cancelRent/{id}")
+	@Produces("application/json")
+	public ResponseEntity<String> cancelRent(@PathParam("id") Integer idRent){
+		this.rentService.cancelRent(idRent);
+		return new ResponseEntity<String>("Rent cancelled",HttpStatus.OK);
+	}
 
 	public void setRentService(final RentService rentSer) {
 		rentService = rentSer;

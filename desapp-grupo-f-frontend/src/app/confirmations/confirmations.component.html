@@ -115,6 +115,13 @@
       </button>
     </div>
 
+    <div *ngIf="errorAlert" class="alert alert-danger" role="alert">
+      {{errorMessage | translate}}
+      <button type="button" class="close" (click)="successModal = false" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
 
 
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
