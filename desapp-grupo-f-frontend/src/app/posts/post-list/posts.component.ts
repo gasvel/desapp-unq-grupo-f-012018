@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription }   from 'rxjs';
 import { SharedSearchFilterService } from './../../services/shared-search-filter.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UpdateService } from '../../services/update.service';
 
 @Component({
   selector: 'app-posts',
@@ -23,8 +24,12 @@ export class PostsComponent implements OnInit {
     private router: Router,
     private postServ: PostService,
     private searchFilterServ: SharedSearchFilterService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private updateServ: UpdateService
     ){
+      updateServ.updatePost$.subscribe(res => {if(res){
+        this.traerPosts();this.updateServ.setUpdatePost(false);
+      }});
       this.subscription = searchFilterServ.sharedSearchText$.subscribe(
         text => {
           this.searchText = text;
@@ -40,7 +45,6 @@ export class PostsComponent implements OnInit {
     this.spinner.show();
     this.postServ.getAll().subscribe(
       res => {
-        console.log(res);
         this.posts = res;
         this.spinner.hide();
       },

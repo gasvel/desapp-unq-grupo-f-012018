@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedSearchFilterService } from './services/shared-search-filter.service'
 import { UsersService } from './services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService, SocialUser } from 'angularx-social-login';
+import { PostsComponent } from './posts/post-list/posts.component';
+import { UpdateService } from './services/update.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [UsersService]
+  providers: [UsersService,UpdateService]
 })
 export class AppComponent implements OnInit{
   title = 'app';
@@ -22,13 +24,27 @@ export class AppComponent implements OnInit{
     private userServ : UsersService,
     private routerServ : Router,
     private socialAuthService: AuthService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private updateServ: UpdateService
   ) {
     this.translateService.setDefaultLang('es');
     this.translateService.use('es');
+    updateServ.update$.subscribe(res => {if(res){
+      this.updateData();this.updateServ.setUpdate(false);
+    }});
+
   }
 
   ngOnInit(){
+
+    if(this.logged()){
+      this.getUser();
+    }
+  }
+
+
+  updateData(){
+    console.log("actualizado");
     if(this.logged()){
       this.getUser();
     }
@@ -54,7 +70,9 @@ export class AppComponent implements OnInit{
     this.socialAuthService.signOut().then(
       () => {
         localStorage.clear();
+        this.updateServ.setUpdatePost(true);
         this.routerServ.navigate(["/posts"]);
+   
       }
     );
   }

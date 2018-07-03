@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService} from '../services/users.service';
 import { Router } from '@angular/router';
 import { SocialUser } from 'angularx-social-login';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UpdateService } from '../services/update.service';
+declare var jQuery:any;
+
 
 @Component({
   selector: 'app-nuevo-user',
@@ -16,9 +19,13 @@ export class NuevoUserComponent implements OnInit {
   EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
-  errorNewUser = false;
-  successModal = false;
-  errorNewUserMessage = '';
+  public errorNewUser = false;
+  public successModal = false;
+  public errorNewUserMessage = '';
+
+  @Output() Update = new EventEmitter();
+
+  @ViewChild('confirmationModal') modal: ElementRef;
 
   usuario : FormGroup = this.formBuilder.group({
     imgsrc: new FormControl(),
@@ -40,7 +47,7 @@ export class NuevoUserComponent implements OnInit {
   isEdit:boolean = false;
   userInfo:SocialUser;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private spinner: NgxSpinnerService) {
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private spinner: NgxSpinnerService,private updateServ : UpdateService) {
       this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
    }
 
@@ -52,7 +59,6 @@ export class NuevoUserComponent implements OnInit {
   }
 
   volverAtras(){
-    location.reload();
     this.router.navigate(['/posts']);
   }
 
@@ -68,13 +74,16 @@ export class NuevoUserComponent implements OnInit {
   onSubmit(){   
     this.spinner.show() ;
     this.userServ.saveUser(this.usuario.value).subscribe(
-      res => {console.log(res);localStorage.setItem("token",this.userInfo.idToken);this.spinner.hide();this.handleSuccess();},
+      res => {console.log(res);this.handleSuccess();},
       error => {this.handleError(error);console.log(error);this.spinner.hide();}
     );
   }
 
   handleSuccess(){
-    this.successModal=true;
+    localStorage.setItem("token",this.userInfo.idToken);
+    this.spinner.hide();
+    this.updateServ.setUpdate(true);
+    jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){
