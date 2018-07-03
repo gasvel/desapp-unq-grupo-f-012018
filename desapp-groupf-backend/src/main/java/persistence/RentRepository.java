@@ -1,11 +1,13 @@
 package persistence;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
+import exception.InvalidModelException;
 import model.Rent;
 import model.Rent_State;
 
@@ -53,5 +55,22 @@ public class RentRepository extends HibernateGenericDAO<Rent> implements Generic
 				,Restrictions.not(Restrictions.eq("state", Rent_State.ClientConfirmedPickUp)),Restrictions.not(Restrictions.eq("state", Rent_State.Cancelled))
 				,Restrictions.eq("user.email", mail)));
 		return (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
+	}
+
+	public void checkDate(Date startDate, Date endDate,Integer idPost) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Rent.class);
+		criteria.createAlias("post", "p").add(Restrictions.and(
+				Restrictions.eq("p.id", idPost),
+				Restrictions.or(
+						(Restrictions.and(Restrictions.le("startDate", startDate),Restrictions.ge("endDate", startDate))),
+						(Restrictions.and(Restrictions.le("startDate", endDate),Restrictions.ge("endDate", endDate))))
+						)
+				
+				);
+		@SuppressWarnings("unchecked")
+		List<Rent> founded = (List<Rent>) this.getHibernateTemplate().findByCriteria(criteria);
+		if(!founded.isEmpty()){
+			throw new InvalidModelException("There is another rent in that period");
+		}
 	}
 }

@@ -10,7 +10,7 @@ public final class HandlerReserRent {
 	public static Logger log = Logger.getLogger(HandlerReserRent.class);
 
 	public void newReservation(Date start, Date end, User client, Post post) {
-		if(ArgumentsValidator.areInvalidDates(start, end) || post.isThereAnotherReservation(start,end) || post.isThereAnotherRent(start, end)){
+		if(ArgumentsValidator.areInvalidDates(start, end)){
 			throwError();
 		}
 		Reservation newReservation = new Reservation(start, end, client);
