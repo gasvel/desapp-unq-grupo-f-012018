@@ -46,7 +46,6 @@ import { RentService } from './services/rent.service';
 import { InfoCuentaComponent } from './info-cuenta/info-cuenta.component';
 import { RentHistoryComponent } from './rent-history/rent-history.component';
 
-
 registerLocaleData(localePt);
 
 export function createTranslateLoader(http: HttpClient) {

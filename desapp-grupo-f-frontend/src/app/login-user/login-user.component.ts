@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { LoginService } from './../services/login.service';
 import { Router } from '@angular/router';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { PostsComponent } from '../posts/post-list/posts.component';
+import { UpdateService } from '../services/update.service';
 
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  styleUrls: ['./login-user.component.css'],
+  providers: []
 })
 export class LoginUserComponent implements OnInit {
 
   //public credential = {email: '', password: ''};
   public user: any;
+  @Output() Update = new EventEmitter();
+
 
   constructor(
     private loginServ: LoginService,
     private routerServ: Router,
-    private authService: AuthService
+    private authService: AuthService,private updateServ: UpdateService
   ) {
 
   }
@@ -51,8 +56,8 @@ export class LoginUserComponent implements OnInit {
           res => {if(res){
             localStorage.setItem("token",userData.idToken);
             localStorage.setItem("userInfo",JSON.stringify(userData));
-            
-            this.routerServ.navigate(['/posts']).then(()=> location.reload());
+            this.updateServ.setUpdate(true);
+            this.routerServ.navigate(['/posts']);
           }
           else{
             localStorage.setItem("userInfo",JSON.stringify(userData));

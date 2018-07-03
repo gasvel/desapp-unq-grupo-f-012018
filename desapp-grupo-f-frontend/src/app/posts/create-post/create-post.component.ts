@@ -169,7 +169,7 @@ export class CreatePostComponent implements OnInit {
     this.service.savePost(post,this.userId).subscribe(
       res => {
           console.log(res);
-          this.router.navigate(['']);//si modal sale el ok del modal lo haria
+          this.router.navigate(['']);
           this.handleSuccess(res);
       },
       error => {this.handleError(error);console.log(error)}

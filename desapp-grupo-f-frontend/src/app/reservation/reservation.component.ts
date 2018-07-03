@@ -55,7 +55,7 @@ export class ReservationComponent implements OnInit {
     this.getClient();
     this.setNewReservation();
     this.reservService.saveReservation(this.newReservation, this.idPost, this.mailUser).subscribe(
-        res => {this.handleSuccess(res);console.log(res); /*this.router.navigate(['posts']);*/},
+        res => {this.handleSuccess(res);console.log(res); this.router.navigate(['posts']);},
   			error => {this.handleError(error);console.log(error)}
     );
   }

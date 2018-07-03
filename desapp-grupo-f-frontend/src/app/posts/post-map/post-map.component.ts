@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operator/map';
@@ -22,7 +22,7 @@ export class PostMapComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private postServ: PostService) {
+    private postServ: PostService, private zone: NgZone) {
 
   }
 
@@ -115,8 +115,8 @@ export class PostMapComponent implements OnInit {
 
   viewPost(id) {
     this.render = false;
+    this.zone.run(()=>{this.router.navigate(['post', id ])});
     
-    this.router.navigate(['post', id ]).then(() => location.reload());
   }
 
 }

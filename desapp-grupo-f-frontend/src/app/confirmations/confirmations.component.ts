@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservationService } from '../services/reservation.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RentService } from '../services/rent.service';
 import { Observable } from 'rxjs';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-confirmations',
   templateUrl: './confirmations.component.html',
   styleUrls: ['./confirmations.component.css']
 })
+
 export class ConfirmationsComponent implements OnInit {
 
   successModal = false;
   successModalMessage = '';
+  @ViewChild('modalCenterReturnVehicle') public modal: ModalDirective;
 
   formRent:FormGroup = this.formBuilder.group({
     score: new FormControl('', Validators.compose([
@@ -56,7 +59,7 @@ export class ConfirmationsComponent implements OnInit {
 
   }
 
-  handleModal(response:any){
+  handleAlert(response:any){
     this.successModal = true;
     this.successModalMessage = response.body;
   }
@@ -64,23 +67,25 @@ export class ConfirmationsComponent implements OnInit {
   confirmReserv(reser){
     this.spinner.show();
     this.reservService.confirmReserv(reser).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();this.handleModal(res);},
+      res => {console.log(res);this.spinner.hide();window.location.reload();this.handleAlert(res);},
       error => {console.log(error);this.spinner.hide();}
     );
   }
 
   confirmRent(rent){
+    this.spinner.show();
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
-      res => {console.log(res); this.loadData(); this.handleModal(res);},
-      error => console.log(error)
+      res => {console.log(res); this.loadData(); this.handleAlert(res);},
+      error => {console.log(error) ;this.spinner.hide();}
     )
   }
 
   confirmVehicleReturns(){
+    this.spinner.show();
     var score = this.formRent.controls.score.value;
     this.rentServ.confirmVehicleReturns(this.rentSelected,this. mailUser, score).subscribe(
-      res => {console.log(res)},
-      error => console.log(error)
+      res => {console.log(res); this.loadData()},
+      error => {console.log(error) ;this.spinner.hide();}
     )
   }
 
@@ -88,10 +93,14 @@ export class ConfirmationsComponent implements OnInit {
 
   }
 
+  closeModal(){
+    //this.modal.hide();
+  }
+
   cancelReserv(reser){
     this.spinner.show();
     this.reservService.cancelReserv(reser.id).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();this.loadData();this.handleModal(res);},
+      res => {console.log(res);this.spinner.hide();window.location.reload();this.loadData();this.handleAlert(res);},
       error => {console.log(error);this.spinner.hide();}
     );
   }
