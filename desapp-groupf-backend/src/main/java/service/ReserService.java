@@ -19,6 +19,7 @@ public class ReserService extends GenericService<Reservation> {
 	private static final long serialVersionUID = -2541042982395208583L;
 	private boolean testMode = false;
 	private EmailService emailServ;
+	private RentService rentServ;
 	
 	@Override
 	@Transactional
@@ -28,6 +29,8 @@ public class ReserService extends GenericService<Reservation> {
 	
 	@Transactional
 	public void saveWithPost(Reservation reserv, Post post) throws Exception{
+		this.checkDate(reserv,post);
+		this.rentServ.checkDate(reserv,post);
 		ArgumentsValidator.validateReserv(reserv, post);
 		super.save(reserv);
 		if(!this.testMode) {
@@ -38,6 +41,12 @@ public class ReserService extends GenericService<Reservation> {
 				log.error("Error al enviar email",e);
 			}
 		}
+	}
+	
+	@Transactional
+	public void checkDate(Reservation reserv, Post post){
+		ReserRepository repo = (ReserRepository) this.getRepository();
+		repo.checkDate(reserv.getStartDate(),reserv.getEndDate(),post.getId());
 	}
 	
 	@Override
@@ -87,4 +96,14 @@ public class ReserService extends GenericService<Reservation> {
 	public void setEmailServ(EmailService emailServ) {
 		this.emailServ = emailServ;
 	}
+
+	public RentService getRentServ() {
+		return rentServ;
+	}
+
+	public void setRentServ(RentService rentServ) {
+		this.rentServ = rentServ;
+	}
+	
+	
 }

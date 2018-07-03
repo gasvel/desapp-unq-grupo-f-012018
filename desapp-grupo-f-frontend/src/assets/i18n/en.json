@@ -74,10 +74,17 @@
     "Puntuación": "Score",
     "Estado": "State",
     "Puntuación del dueño": "Owner's score",
-    "New": "Nueva",
+    "New": "New",
     "ClientConfirmedPickUp": "Pick up confirmed by client",
     "OwnerConfirmedPickUp": "Pick up confirmed by owner",
     "PickUpConfirmed": "Pick up confirmed",
-    "Nuevo": "New",
-    "Historial de alquileres": "Rent history"
+    "Nueva": "New",
+    "Historial de alquileres": "Rent history",
+    "Nueva reserva": "New reservation",
+    "No posee confirmaciones pendientes": "No confirmations left",
+    "Vehiculos pedidos": "Rented vehicles",
+    "Mis vehiculos solicitados": "My rented vehicles",
+    "Reservas por confirmar": "Reservations to confirm",
+    "Estado cuenta": "Account state"
+
 }

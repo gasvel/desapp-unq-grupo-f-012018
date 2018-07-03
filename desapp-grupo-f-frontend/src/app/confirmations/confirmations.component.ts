@@ -68,7 +68,7 @@ export class ConfirmationsComponent implements OnInit {
   confirmReserv(reser){
     this.spinner.show();
     this.reservService.confirmReserv(reser).subscribe(
-      res => {console.log(res);this.spinner.hide();window.location.reload();this.handleAlert(res);},
+      res => {console.log(res);this.spinner.hide();this.loadData();this.handleAlert(res);},
       error => {console.log(error);this.spinner.hide();}
     );
   }
@@ -76,7 +76,7 @@ export class ConfirmationsComponent implements OnInit {
   confirmRent(rent){
     this.spinner.show();
     this.rentServ.confirmPickUp(rent,this.mailUser).subscribe(
-      res => {console.log(res); this.loadData(); this.handleAlert(res);},
+      res => {console.log(res);this.spinner.hide(); this.loadData(); this.handleAlert(res);},
       error => {console.log(error) ;this.spinner.hide();}
     )
   }
@@ -85,7 +85,7 @@ export class ConfirmationsComponent implements OnInit {
     this.spinner.show();
     var score = this.formRent.controls.score.value;
     this.rentServ.confirmVehicleReturns(this.rentSelected,this. mailUser, score).subscribe(
-      res => {console.log(res); this.loadData()},
+      res => {console.log(res);this.spinner.hide() ;this.loadData();this.handleAlert(res)},
       error => {console.log(error) ;this.spinner.hide();}
     )
   }

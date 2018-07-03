@@ -8,7 +8,7 @@
 			<generator class="increment" />
 		</id>
 		<property name="imgsrc" />
-		<property name="cuil" />
+		<property name="cuil" unique="true"/>
 		<property name="address" />
 		<property name="name"/>
 		<property name="email" unique="true"/>
