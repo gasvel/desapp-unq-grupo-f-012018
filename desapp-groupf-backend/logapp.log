@@ -267,3 +267,145 @@
 2018-07-03 01:52:49,416 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:862) - Closing Root WebApplicationContext: startup date [Tue Jul 03 01:27:32 ART 2018]; root of context hierarchy
 2018-07-03 01:52:49,754 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
 2018-07-03 01:52:50,356 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-07-03 13:58:00,218 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:285) - Root WebApplicationContext: initialization started
+2018-07-03 13:58:00,982 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:510) - Refreshing Root WebApplicationContext: startup date [Tue Jul 03 13:58:00 ART 2018]; root of context hierarchy
+2018-07-03 13:58:01,142 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-persistence-context.xml]
+2018-07-03 13:58:01,787 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-service-context.xml]
+2018-07-03 13:58:01,971 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/spring-web-context.xml]
+2018-07-03 13:58:02,170 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+2018-07-03 13:58:02,211 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-extension-soap.xml]
+2018-07-03 13:58:02,289 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+2018-07-03 13:58:03,718 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/hibernate.properties]
+2018-07-03 13:58:03,719 INFO  org.springframework.core.io.support.PropertiesLoaderSupport (PropertiesLoaderSupport.java:172) - Loading properties file from URL [file:/home/jeremias/git/desapp/desapp-unq-grupo-f-012018/desapp-groupf-backend/target/classes/META-INF/jdbc.properties]
+2018-07-03 13:58:05,528 INFO  org.hibernate.annotations.common.reflection.java.JavaReflectionManager (JavaReflectionManager.java:66) - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-07-03 13:58:05,563 INFO  org.hibernate.Version (Version.java:54) - HHH000412: Hibernate Core {4.3.6.Final}
+2018-07-03 13:58:05,566 INFO  org.hibernate.cfg.Environment (Environment.java:239) - HHH000206: hibernate.properties not found
+2018-07-03 13:58:05,568 INFO  org.hibernate.cfg.Environment (Environment.java:346) - HHH000021: Bytecode provider name : javassist
+2018-07-03 13:58:05,689 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-07-03 13:58:05,868 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-07-03 13:58:05,893 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-07-03 13:58:05,909 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-07-03 13:58:05,925 WARN  org.hibernate.internal.util.xml.DTDEntityResolver (DTDEntityResolver.java:75) - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2018-07-03 13:58:07,600 INFO  org.hibernate.dialect.Dialect (Dialect.java:145) - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-07-03 13:58:07,615 INFO  org.hibernate.engine.jdbc.internal.LobCreatorBuilder (LobCreatorBuilder.java:123) - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-07-03 13:58:07,768 INFO  org.hibernate.engine.transaction.internal.TransactionFactoryInitiator (TransactionFactoryInitiator.java:62) - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-07-03 13:58:07,785 INFO  org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory (ASTQueryTranslatorFactory.java:47) - HHH000397: Using ASTQueryTranslatorFactory
+2018-07-03 13:58:08,267 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:343) - HHH000227: Running hbm2ddl schema export
+2018-07-03 13:58:08,366 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Post drop constraint FK_3cu4u3ke419xpd0p557dtvy0h
+2018-07-03 13:58:08,367 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "post" does not exist
+2018-07-03 13:58:08,369 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_bm96fq847v3fhbu3ip6vdqqhc
+2018-07-03 13:58:08,369 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-07-03 13:58:08,371 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Rent drop constraint FK_94jci3rlegua6h2njir8bd4f7
+2018-07-03 13:58:08,371 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "rent" does not exist
+2018-07-03 13:58:08,372 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_om769847dsa3btpvyu3db919x
+2018-07-03 13:58:08,373 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-07-03 13:58:08,374 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Reservation drop constraint FK_gaaan5b999hk5p3fglrl3fi5a
+2018-07-03 13:58:08,374 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "reservation" does not exist
+2018-07-03 13:58:08,376 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Score drop constraint FK_3t8l1e15f6giw5f5tnthtqrah
+2018-07-03 13:58:08,376 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - ERROR: relation "score" does not exist
+2018-07-03 13:58:10,518 INFO  org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:405) - HHH000230: Schema export complete
+2018-07-03 13:58:10,698 INFO  org.springframework.orm.hibernate4.HibernateTransactionManager (HibernateTransactionManager.java:360) - Using DataSource [org.apache.commons.dbcp.BasicDataSource@4ba380c7] of Hibernate SessionFactory for HibernateTransactionManager
+2018-07-03 13:58:10,746 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-07-03 13:58:10,792 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory (SQLErrorCodesFactory.java:126) - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-07-03 13:58:14,886 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:325) - Root WebApplicationContext: initialization completed in 14645 ms
+2018-07-03 14:00:12,992 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:00:12.992 , service.PostService.retriveAll ,  >
+2018-07-03 14:07:10,392 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:07:10.392 , service.PostService.retriveAll ,  >
+2018-07-03 14:07:37,450 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:07:37.45 , service.PostService.retriveAll ,  >
+2018-07-03 14:08:18,142 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:08:18.142 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-07-03 14:08:37,378 INFO  webservice.AuthFilter (AuthFilter.java:66) - Jeremias | Jeremias Tome | jeremias.tome1@gmail.com | es-419
+2018-07-03 14:08:37,610 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:08:37.61 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-07-03 14:08:37,694 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:08:37.693 , service.EmailService.welcomeMsg , [Ljava.lang.Object; ,  >
+2018-07-03 14:08:42,983 INFO  webservice.AuthFilter (AuthFilter.java:66) - Jeremias | Jeremias Tome | jeremias.tome1@gmail.com | es-419
+2018-07-03 14:08:42,985 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:08:42.985 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:08:55,228 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:08:55.228 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:15,644 INFO  webservice.AuthFilter (AuthFilter.java:66) - Jeremias | Jeremias Tome | jeremias.tome1@gmail.com | es-419
+2018-07-03 14:12:15,734 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:15.734 , service.UserService.getById , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:15,764 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:15.764 , service.PostService.save , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:15,906 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:15.906 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:20,102 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:20.102 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:20,138 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:20.138 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:20,173 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:20.173 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:33,146 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:33.146 , service.UserService.checkMail , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:41,967 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:12:41,971 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:41.971 , service.UserService.save , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:41,972 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:41.972 , service.EmailService.welcomeMsg , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:46,013 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:12:46,014 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:46.014 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:48,656 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:48.656 , service.PostService.retriveAll ,  >
+2018-07-03 14:12:52,781 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:52.781 , service.PostService.getById , [Ljava.lang.Object; ,  >
+2018-07-03 14:12:52,971 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:12:52,975 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:12:52.975 , service.UserService.getById , [Ljava.lang.Object; ,  >
+2018-07-03 14:13:12,870 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:13:13,057 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:13:13.057 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:15:51,014 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:15:51,234 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:15:51.234 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:15:57,441 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:15:57,443 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:15:57.443 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:18:03,692 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:18:03,748 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:18:03.748 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:18:05,500 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:18:05,502 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:18:05.502 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:19:17,706 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:19:17,771 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:19:17.77 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:19:18,600 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:19:18,602 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:19:18.602 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:20:09,303 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:20:09,306 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:20:09.306 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:20:09,498 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:20:09,735 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:20:09.735 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:21:11,657 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:21:11,738 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:21:11.738 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:21:11,886 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:21:11,890 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:21:11.89 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:21:34,553 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:21:35,941 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:21:35.941 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:21:36,514 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:21:36,515 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:21:36.515 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:22:13,954 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:22:14,452 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:22:14.452 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:22:15,109 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:22:15,111 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:22:15.111 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:22:53,238 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:22:53,322 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:22:53.322 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:22:53,349 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:22:53,350 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:22:53.35 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:33:05,627 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:33:07,010 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:33:07.003 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:33:10,085 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:33:10,251 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:33:10.251 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:37:01,628 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:37:02,153 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:37:02.152 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:37:06,375 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:37:06,642 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:37:06.642 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:45:33,281 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:45:33,351 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:45:33.351 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:45:33,561 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:45:33,591 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:45:33.591 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:45:55,156 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:45:55,157 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:45:55.157 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:45:55,865 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:45:55,869 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:45:55.869 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:46:38,664 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:46:38,800 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:46:38.8 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:46:38,872 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:46:39,017 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:46:39.016 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:50:58,497 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:50:58,499 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:50:58.499 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:50:58,582 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:50:58,584 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:50:58.584 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:53:24,289 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:53:24,309 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:53:24.309 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:53:24,322 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:53:24,326 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:53:24.326 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:55:43,662 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:55:43,663 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:55:43.663 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:55:44,101 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:55:44,190 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:55:44.19 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:57:40,272 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:57:40,273 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:57:40.273 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:57:40,516 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:57:40,517 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:57:40.517 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:58:30,284 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:58:30,286 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:58:30.286 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >
+2018-07-03 14:58:30,324 INFO  webservice.AuthFilter (AuthFilter.java:66) - tools | tools studio | toolsstudio1@gmail.com | es-419
+2018-07-03 14:58:30,325 INFO  aspects.AuditAspect (AuditAspect.java:28) - < 2018-07-03 14:58:30.325 , service.UserService.getByEmail , [Ljava.lang.Object; ,  >

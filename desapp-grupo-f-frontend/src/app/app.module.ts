@@ -98,7 +98,7 @@ let config = new AuthServiceConfig([
     			component:PostDetailComponent
 				},
 				{
-					path:'reservation/:id',
+					path:'reservation/:id/:price',
 					component: ReservationComponent
 				},
 				{
