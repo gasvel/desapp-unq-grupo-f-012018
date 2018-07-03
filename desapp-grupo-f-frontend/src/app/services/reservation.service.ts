@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ReservationService {
 
-  //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/reservations";
+  url:String = "https://desapp-unq-grupof.herokuapp.com/rest/reservations";
 
-  url:String = "http://localhost:8080/rest/reservations";
+  // url:String = "http://localhost:8080/rest/reservations";
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class ReservationService {
 
   getReservations(): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.get(this.url + "/all", httpOptions);
   }
 
@@ -32,13 +32,13 @@ export class ReservationService {
 
   confirmReserv(reser): Observable<any>{
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.put(this.url + "/confirm", reser, httpOptions)
   }
 
   cancelReserv(idReser){
     let httpOptions = {headers: new HttpHeaders({"Authorization": localStorage.getItem("token")})};
-    
+
     return this.http.delete(this.url + "/cancel/" + idReser , httpOptions)
   }
 }

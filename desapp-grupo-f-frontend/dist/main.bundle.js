@@ -2277,10 +2277,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LoginService = /** @class */ (function () {
+    //url:String = "http://localhost:8080/rest/users";
     function LoginService(http) {
         this.http = http;
-        //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/users";
-        this.url = "http://localhost:8080/rest/users";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/users";
     }
     /*logIn(cred): Observable<any> {
       return this.http.post(this.url + "/login", cred);
@@ -2318,10 +2318,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var PostService = /** @class */ (function () {
+    //url:String = "http://localhost:8080/rest/posts";
     function PostService(http) {
         this.http = http;
-        //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/posts";
-        this.url = "http://localhost:8080/rest/posts";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/posts";
     }
     PostService.prototype.getVehicleTypes = function () {
         var httpOptions = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": localStorage.getItem("token") }) };
@@ -2375,9 +2375,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var RentService = /** @class */ (function () {
+    //url:String = "http://localhost:8080/rest/rents";
     function RentService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/rest/rents";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/rents";
     }
     RentService.prototype.saveRent = function (rent) {
         var httpOptions = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": localStorage.getItem("token") }) };
@@ -2445,10 +2446,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ReservationService = /** @class */ (function () {
+    // url:String = "http://localhost:8080/rest/reservations";
     function ReservationService(http) {
         this.http = http;
-        //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/reservations";
-        this.url = "http://localhost:8080/rest/reservations";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/reservations";
     }
     ReservationService.prototype.saveReservation = function (reservation, idPost, mailUser) {
         var httpOptions = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": localStorage.getItem("token") }) };
@@ -2584,10 +2585,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UsersService = /** @class */ (function () {
+    //url:String = "http://localhost:8080/rest/users";
     function UsersService(http) {
         this.http = http;
-        //url:String = "https://desapp-unq-grupof.herokuapp.com/rest/users";
-        this.url = "http://localhost:8080/rest/users";
+        this.url = "https://desapp-unq-grupof.herokuapp.com/rest/users";
     }
     UsersService.prototype.getUsers = function () {
         return this.http.get(this.url + "/all");
