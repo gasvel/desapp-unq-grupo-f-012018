@@ -6,7 +6,6 @@ import javax.ws.rs.ClientErrorException;
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
-import exception.InvalidModelException;
 import model.ArgumentsValidator;
 import model.User;
 import persistence.UserRepository;

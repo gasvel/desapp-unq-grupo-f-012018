@@ -23,7 +23,7 @@ public class Build {
 
 		
 		public UserBuilder valid(){
-			anUser.setCuil("20390960299");
+			anUser.setCuil("20108181843");
 			anUser.setAddress("Calle falsa 123");
 			anUser.setName("Carlos");
 			anUser.setEmail("carlito@gmail.com");

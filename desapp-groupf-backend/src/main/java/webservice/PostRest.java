@@ -55,11 +55,7 @@ public class PostRest {
     public ResponseEntity<String> updatePost(@PathParam("id") Integer id,@RequestBody Post post){
 		User creator = this.userService.getById(id);
 		post.setCreator(creator);
-		try{
-			this.postService.update(post);
-		} catch(Exception e){
-			return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
-		}
+		this.postService.update(post);
 		return new ResponseEntity<String>("Post actualizado",HttpStatus.OK);
 	}
 	   

@@ -18,5 +18,6 @@
     "Invalid name": "Nombre invalido",
     "Invalid vehicle type": "Tipo vehiculo invalido",
     "Invalid post, check fields address availability description and phonenumber": "Post invalido, revise los campos direccion disponibilidad descripcion y numero de telefono",
-    "Invalid post, check fields capacity and prices": "Post invalido, revise campos capacidad y precios"
+    "Invalid post, check fields capacity and prices": "Post invalido, revise campos capacidad y precios",
+    "New reservation": "Nueva reserva"
 }

@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import {Observable} from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
+import { UpdateService } from '../../services/update.service';
 declare var jQuery:any;
 
 @Component({
@@ -35,12 +36,13 @@ export class CreatePostComponent implements OnInit {
   capacityOptions:any = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
   @ViewChild(NgxInputFileUploadComponent)
 
-  private NgxInputFileUploadComponent: NgxInputFileUploadComponent;
+  public NgxInputFileUploadComponent: NgxInputFileUploadComponent;
   acceptHtml="image/*"
   acceptTs=/image-*/
   activeColor: string = '#3366CC';
   submitted:boolean = false;
   post:any;
+  path:string;
   location: string;
   postForm : FormGroup = this.formBuilder.group({
     postTitle: new FormControl('' ,Validators.compose([
@@ -174,7 +176,7 @@ export class CreatePostComponent implements OnInit {
           console.log(res);
           this.handleSuccess(res);
       },
-      error => {this.handleError(error);console.log(error)}
+      err => {this.handleError(err);console.log(err)}
     );
   }
 
@@ -183,13 +185,16 @@ export class CreatePostComponent implements OnInit {
   }
 
   handleSuccess(response:any){
+    this.spinner.hide();
+    this.successModal=true;
     console.log(response);
     this.successModalMessage = response.body;
     jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){
-
+    this.spinner.hide();
+    this.cloud.storage.ref(this.path).delete().then(val => console.log(val)).catch(err => console.log(err));
     this.errorNewPost = true;
     console.log(response);
     this.errorNewPostMessage = response.error;
@@ -200,7 +205,7 @@ export class CreatePostComponent implements OnInit {
     if(this.postForm.valid) {
       let post = this.getPostToSave();
       if(this.isSave) {
-        this.savePost(post);
+        this.uploadAndSave(post);
       }
       else {
         this.updatePost(post)
@@ -212,16 +217,17 @@ export class CreatePostComponent implements OnInit {
     console.log(this.NgxInputFileUploadComponent.imageData);
   }
 
-  upload(){
-    let path = 'post/' + this.userId + "/" + new Date();
+  uploadAndSave(post){
+    this.spinner.show();
+    this.path = 'post/' + this.userId + "/" + new Date();
     const customMetadata = {app: 'Carpnd'};
-    const ref = this.cloud.ref(path);
-    this.task = this.cloud.upload(path,
+    const ref = this.cloud.ref(this.path);
+    this.task = this.cloud.upload(this.path,
      this.NgxInputFileUploadComponent.imageData, { customMetadata });
           
      this.percentage = this.task.percentageChanges();
-     this.percentage.subscribe(res=> {this.filePorcentage = res,console.log(res)},error => console.log(error));
-     this.task.snapshotChanges().subscribe(res => res.ref.getDownloadURL().then(url =>{console.log(url);this.imageUrl = url;}));
+     this.percentage.subscribe(res=> {this.filePorcentage = res;console.log(res);},error => console.log(error));
+     this.task.snapshotChanges().subscribe(res => res.ref.getDownloadURL().then(url =>{console.log(url);this.imageUrl = url;if(this.imageUrl != ""){this.post.photo = this.imageUrl;this.savePost(post)}}));
 
    
   }

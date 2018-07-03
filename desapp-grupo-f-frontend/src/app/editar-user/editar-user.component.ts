@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService} from '../services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UpdateService } from '../services/update.service';
+declare var jQuery:any;
 
 @Component({
   selector: 'app-editar-user',
@@ -19,6 +21,9 @@ export class EditarUserComponent implements OnInit {
   successModalMessage = '';
   errorNewUserMessage = '';
 
+  @ViewChild('confirmationModal') modal: ElementRef;
+
+
   usuario : FormGroup = this.formBuilder.group({
     cuil : new FormControl('',Validators.compose([
       Validators.required,
@@ -33,14 +38,15 @@ export class EditarUserComponent implements OnInit {
     email: new FormControl('',Validators.compose([
       Validators.pattern(this.EMAIL_REGEXP),
       Validators.required
-    ]))
+    ])),
+    imgsrc: new FormControl()
   });
 
   oldUser:any;
   isEdit:boolean = true;
   userId:any;
 
-  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private route : ActivatedRoute, private spinner: NgxSpinnerService) {
+  constructor(private formBuilder: FormBuilder, private userServ : UsersService,private router : Router, private route : ActivatedRoute, private spinner: NgxSpinnerService,private updateServ : UpdateService) {
     this.userId = this.route.snapshot.paramMap.get("id");
    }
 
@@ -62,6 +68,7 @@ export class EditarUserComponent implements OnInit {
     this.usuario.controls.address.setValue(res.address);
     this.usuario.controls.name.setValue(res.name);
     this.usuario.controls.email.setValue( res.email);
+    this.usuario.controls.imgsrc.setValue(res.imgsrc);
   }
 
   volverAtras(){
@@ -95,8 +102,9 @@ export class EditarUserComponent implements OnInit {
   }
 
   handleSuccess(response:any){
-    this.successModal=true;
-    this.successModalMessage = response.error;
+    this.successModalMessage = response.body;
+    this.updateServ.setUpdate(true);
+    jQuery(this.modal.nativeElement).modal("show");
   }
 
   handleError(response:any){

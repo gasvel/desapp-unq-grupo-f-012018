@@ -2,36 +2,33 @@
   <div style="border: 1px solid black; margin: 20px; padding-top: 30 px">
       <h2 style="margin: 20px"> {{'Reservas por confirmar' | translate}}</h2>
 
-  <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
-    <li class="list-group-item" style="margin: 10px" *ngFor="let reserv of reservs">
-    <div class="row">
-      <div class="col-md-3">{{reserv.client.name}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <a [routerLink]="" (click)="seleccionarReser(reserv)" data-toggle="modal" data-target="#exampleModalCenter">
-              <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
-                <i class="fas fa-info"></i>
-              </span>
-            </a>
+  <div style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
+ 
+        <div class="card" style="width: 18rem;margin:10px" *ngFor="let reserv of reservs">
+            <div class="card-body">
+              <h5 class="card-title">{{reserv.client.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{'Nueva reserva'| translate}}</h6>
+              <p class="card-text">{{reserv.startDate | date: 'dd-MM-yyyy'}} - {{reserv.endDate | date: 'dd-MM-yyyy'}}</p>
+              <a [routerLink]="" (click)="seleccionarReser(reserv)" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">
+                  <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
+                    <i class="fas fa-info"></i>
+                  </span>
+                </a>
+                <a [routerLink]="" (click)="confirmReserv(reserv)" class="card-link">
+                    <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                      <i class="fas fa-check-circle"></i>
+                    </span>
+                  </a>
+                  <a [routerLink]="" (click)="cancelReserv(reserv)" class="card-link">
+                      <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </a>
+            </div>
+          </div>
+   
+
         </div>
-        <div class="col-md">
-          <a [routerLink]="" (click)="confirmReserv(reserv)">
-            <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-              <i class="fas fa-check-circle"></i>
-            </span>
-          </a>
-        </div>
-        <div class="col-md">
-          <a [routerLink]="" (click)="cancelReserv(reserv)">
-            <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-              <i class="fas fa-times"></i>
-            </span>
-          </a>
-        </div>
-      </div>
-  </li>
-  </ul>
   <div *ngIf="reservs.length == 0">
     <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
   </div>
@@ -40,41 +37,35 @@
 <div style="border: 1px solid black; margin: 20px; padding: 30 px">
     <h2 style="margin: 20px"> {{'Mis vehiculos solicitados' | translate}}</h2>
 
-    <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
-      <li class="list-group-item" style="margin: 10px" *ngFor="let rentOwn of rentsOwner">
-      <div class="row">
-        <div class="col-md-3">{{rentOwn.client.name}} - {{rentOwn.state | translate}}</div>
+    <div style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
+
+
+          <div class="card" style="width: 18rem;margin: 10px;display: inline-block" *ngFor="let rentOwn of rentsOwner">
+              <div class="card-body">
+                <h5 class="card-title">{{rentOwn.client.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{rentOwn.state | translate}}</h6>
+                <p class="card-text">{{rentOwn.startDate | date: 'dd-MM-yyyy'}} - {{rentOwn.endDate | date: 'dd-MM-yyyy'}}</p>
+                <a [routerLink]="" (click)="seleccionarReser(rentOwn)" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">
+                    <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
+                      <i class="fas fa-info"></i>
+                    </span>
+                  </a>
+                  <a [routerLink]="" (click)="confirmRent(rentOwn)" class="card-link" *ngIf="rentOwn.state != 'PickUpConfirmed' && rentOwn.state != 'ClientConfirmedReturn'">
+                      <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                        <i class="fas fa-check-circle"></i>
+                      </span>
+                    </a>
+                    <a [routerLink]="" (click)="cancelRent(rentOwn)" class="card-link">
+                        <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </a>
+
+                      <button *ngIf="rentOwn.state == 'ClientConfirmedReturn'" class="btn btn-success" (click)="seleccionarRent(rentOwn)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Confirmar devolución' | translate}}</button>
+
+              </div>
+            </div>
       </div>
-      <div class="row">
-          <div class="col-md">
-              <a [routerLink]="" (click)="seleccionarReser(rentOwn)" data-toggle="modal" data-target="#exampleModalCenter">
-                <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
-                  <i class="fas fa-info"></i>
-                </span>
-              </a>
-          </div>
-          <div *ngIf="rentOwn.state != 'PickUpConfirmed' && rentOwn.state != 'ClientConfirmedReturn'">
-            <div class="col-md">
-              <a [routerLink]="" (click)="confirmRent(rentOwn)">
-                <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-                  <i class="fas fa-check-circle"></i>
-                </span>
-              </a>
-            </div>
-            <div class="col-md">
-              <a [routerLink]="" (click)="cancelRent(rentOwn)">
-                <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-                  <i class="fas fa-times"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div *ngIf="rentOwn.state == 'ClientConfirmedReturn'">
-            <button class="btn btn-success" (click)="seleccionarRent(rentOwn)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Confirmar devolución' | translate}}</button>
-          </div>
-        </div>
-    </li>
-    </ul>
     <div *ngIf="rentsOwner.length == 0">
       <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
     </div>
@@ -82,41 +73,36 @@
 
   <div style="border: 1px solid black; margin: 20px; padding: 30 px">
     <h2 style="margin: 20px"> {{'Vehiculos pedidos' | translate}}</h2>
-      <ul class="list-group" style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
-        <li class="list-group-item" style="margin: 10px" *ngFor="let rentCli of rentsClient">
-        <div class="row">
-          <div class="col-md-3">{{rentCli.client.name}} - {{rentCli.state | translate}}</div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <a [routerLink]="" (click)="seleccionarReser(rentCli)" data-toggle="modal" data-target="#exampleModalCenter">
-                  <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
-                    <i class="fas fa-info"></i>
-                  </span>
-                </a>
-            </div>
-            <div *ngIf="rentCli.state != 'PickUpConfirmed'">
-              <div class="col-md">
-                <a [routerLink]="" (click)="confirmRent(rentCli)">
-                  <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
-                    <i class="fas fa-check-circle"></i>
-                  </span>
-                </a>
+      <div style="width: 18rem;margin-top: 20px;margin-left: 10px;font-family: Nunito, sans-serif ">
+
+            <div class="card" style="width: 18rem;margin: 10px" *ngFor="let rentCli of rentsClient">
+                <div class="card-body">
+                  <h5 class="card-title">{{rentCli.client.name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{rentCli.state | translate}}</h6>
+                  <p class="card-text">{{rentCli.startDate | date: 'dd-MM-yyyy'}} - {{rentCli.endDate | date: 'dd-MM-yyyy'}}</p>
+                  <a [routerLink]="" (click)="seleccionarReser(rentCli)" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">
+                      <span class="badge badge-light badge-pill"  style="color: rgb(79, 182, 196)">
+                        <i class="fas fa-info"></i>
+                      </span>
+                    </a>
+                    <a [routerLink]="" (click)="confirmRent(rentCli)" class="card-link" *ngIf="rentCli.state != 'PickUpConfirmed'">
+                            <span class="badge badge-light badge-pill"  style="color: rgb(66, 240, 23)">
+                              <i class="fas fa-check-circle"></i>
+                            </span>
+                        </a>
+
+                        <a [routerLink]="" (click)="cancelRent(rentCli)" class="card-link">
+                            <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
+                              <i class="fas fa-times"></i>
+                            </span>
+                          </a>
+
+                          <button *ngIf="rentCli.state == 'PickUpConfirmed'" class="btn btn-success" (click)="seleccionarRent(rentCli)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Devolver vehiculo' | translate}}</button>
+
+                </div>
               </div>
-              <div class="col-md">
-                <a [routerLink]="" (click)="cancelRent(rentCli)">
-                  <span class="badge badge-light badge-pill"  style="color: rgb(252, 39, 39)">
-                    <i class="fas fa-times"></i>
-                  </span>
-                </a>
-              </div>
+
             </div>
-            <div *ngIf="rentCli.state == 'PickUpConfirmed'">
-              <button class="btn btn-success" (click)="seleccionarRent(rentCli)" data-toggle="modal" data-target="#modalCenterReturnVehicle">{{'Devolver vehiculo' | translate}}</button>
-            </div>
-          </div>
-      </li>
-      </ul>
       <div *ngIf="rentsClient.length == 0">
         <h2 style="margin: 20px">{{'No posee confirmaciones pendientes' | translate}}</h2>
       </div>
@@ -172,8 +158,8 @@
               <input type="number" id="score" class="form-control"
                 placeholder="Por favor ingresa una calificacíon entre 1 y 10"
                 formControlName="score" min="1" max="10"><br>
-              <button class="btn btn-danger" (click)="closeModal()">{{'Atras' | translate}}</button>
-              <button class="btn btn-success" (click)="confirmVehicleReturns()">{{'Continuar' | translate}}</button>
+              <button class="btn btn-danger" (click)="closeModal()" data-dismiss="modal">Atras</button>
+              <button class="btn btn-success" (click)="confirmVehicleReturns()" data-dismiss="modal">Continuar</button>
             </form>
           </div>
         </div>

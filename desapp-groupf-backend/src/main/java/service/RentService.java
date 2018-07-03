@@ -145,5 +145,10 @@ public class RentService extends GenericService<Rent> {
 	public List<Rent> allRentsDoneClient(String mail) {
 		RentRepository repo = (RentRepository) this.getRepository();
 		return repo.allRentsDoneClient(mail);
+	}
+
+	public void checkDate(Reservation reserv,Post post) {
+		RentRepository repo = (RentRepository) this.getRepository();
+		repo.checkDate(reserv.getStartDate(),reserv.getEndDate(),post.getId());
 	}	
 }

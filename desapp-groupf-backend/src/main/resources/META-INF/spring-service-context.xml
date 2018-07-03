@@ -51,6 +51,7 @@
 	<bean id="services.reser" class="service.ReserService">
 		<property name="repository" ref="persistence.reserrepository"></property>
 		<property name="emailServ" ref="services.email" />
+		<property name="rentServ" ref="services.rent"></property>
 	</bean>
 
 </beans>
