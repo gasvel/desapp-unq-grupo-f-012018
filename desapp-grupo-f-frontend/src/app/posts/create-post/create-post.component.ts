@@ -9,6 +9,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import {Observable} from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { UpdateService } from '../../services/update.service';
+declare var jQuery:any;
 
 @Component({
   selector: 'app-create-post',
@@ -21,6 +22,8 @@ export class CreatePostComponent implements OnInit {
   successModal = false;
   successModalMessage = '';
   errorNewPostMessage = '';
+
+  @ViewChild('confirmationModal') modal: ElementRef;
 
   isSave:boolean = true;
   imagePost:any = "assets/img/no-image.jpg";
@@ -171,11 +174,14 @@ export class CreatePostComponent implements OnInit {
     this.service.savePost(post,this.userId).subscribe(
       res => {
           console.log(res);
-          this.router.navigate(['']);
           this.handleSuccess(res);
       },
       err => {this.handleError(err);console.log(err)}
     );
+  }
+
+  volverAtras(){
+    this.router.navigate(['']);
   }
 
   handleSuccess(response:any){
@@ -183,6 +189,7 @@ export class CreatePostComponent implements OnInit {
     this.successModal=true;
     console.log(response);
     this.successModalMessage = response.body;
+    jQuery(this.modal.nativeElement).modal('show');
   }
 
   handleError(response:any){

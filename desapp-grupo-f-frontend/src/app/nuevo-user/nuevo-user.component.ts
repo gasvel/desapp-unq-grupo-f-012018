@@ -84,6 +84,7 @@ export class NuevoUserComponent implements OnInit {
     this.spinner.hide();
     this.successModalMessage = response.body;
     this.updateServ.setUpdate(true);
+    this.successModalMessage = response.body;
     jQuery(this.modal.nativeElement).modal('show');
   }
 

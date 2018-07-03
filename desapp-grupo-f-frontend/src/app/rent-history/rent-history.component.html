@@ -5,11 +5,11 @@
           <h5 class="card-title">{{rent.post.title}}</h5>
           <img class="card-img-top" src="{{rent.post.photo}}" alt="Card image cap" height="150px" width="250px">
           <div class="card-body">
-            <h5 class="card-title">Dueño: {{rent.post.creator.name}}</h5>
+            <h5 class="card-title">{{'Dueño' | translate}}: {{rent.post.creator.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{rent.state | translate}}</h6>
             <div *ngIf="rent.state == 'RentDone'">
-              <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rent.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rent.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{'Fecha de retiro' | translate}}: {{rent.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{'Fecha de entrega' | translate}}: {{rent.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
             </div>
           </div>
       </div>
@@ -25,11 +25,11 @@
         <h5 class="card-title">{{rentOwn.post.title}}</h5>
     		<img class="card-img-top" src="{{rentOwn.post.photo}}" alt="Card image cap" height="150px" width="250px">
     		<div class="card-body">
-          <h5 class="card-title">Alquilado a: {{rentOwn.client.name}}</h5>
+          <h5 class="card-title">{{'Alquilado a' | translate}}: {{rentOwn.client.name}}</h5>
       		<h6 class="card-subtitle mb-2 text-muted">{{rentOwn.state | translate}}</h6>
           <div *ngIf="rentOwn.state == 'RentDone'">
-            <h6 class="card-subtitle mb-2 text-muted">Fecha de retiro: {{rentOwn.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{rentOwn.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{'Fecha de retiro' | translate}}: {{rentOwn.startDate | date:'medium':'shortTime':'es-AR'}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{'Fecha de entrega' | translate}}: {{rentOwn.endDate | date:'medium':'shortTime':'es-AR'}}</h6>
           </div>
     		</div>
   	</div>

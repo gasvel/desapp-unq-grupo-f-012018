@@ -100,7 +100,7 @@
 
 
         <div *ngIf="errorNewPost" class="alert alert-danger" role="alert">
-          {{errorNewPostMessage}}
+          {{errorNewPostMessage | translate}}
           <button type="button" class="close" (click)="errorNewPost = false" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -110,6 +110,22 @@
         <button type="submit" [disabled]="postForm.invalid" class="btn btn-primary" (click)="save()">{{'Guardar' | translate}}</button>
 
       </form>
+
+      <div #confirmationModal class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">{{'Confirmacion' | translate}}</h5>
+            </div>
+            <div class="modal-body">
+              <p style="font-family: 'Poppins',sans-serif;color: blue">{{successModalMessage | translate}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" (click)="volverAtras()" class="btn btn-primary" data-dismiss="modal">{{'Inicio' | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <ngx-spinner  
       bdColor="rgba(51,51,51,0.8)"

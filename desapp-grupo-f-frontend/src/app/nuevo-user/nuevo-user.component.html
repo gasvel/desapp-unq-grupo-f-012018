@@ -22,7 +22,7 @@
     </div>
 
     <div *ngIf="errorNewUser" class="alert alert-danger" role="alert">
-      {{errorNewUserMessage}}
+      {{errorNewUserMessage | translate}}
       <button type="button" class="close" (click)="errorNewUser = false" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -41,7 +41,7 @@
           <h5 class="modal-title" id="exampleModalLongTitle">{{'Confirmacion' | translate}}</h5>
         </div>
         <div class="modal-body">
-          <p style="font-family: 'Poppins',sans-serif;color: blue">{{successModalMessage}}</p>
+          <p style="font-family: 'Poppins',sans-serif;color: blue">{{successModalMessage | translate}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" (click)="volverAtras()" class="btn btn-primary" data-dismiss="modal">{{'Inicio' | translate}}</button>

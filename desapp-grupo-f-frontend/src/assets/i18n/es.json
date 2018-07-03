@@ -8,5 +8,16 @@
     "PickUpConfirmed": "Retiro confirmado",
     "RentDone": "Alquiler finalizado",
     "Cancelled": "Cancelado",
+    "Invalid dates of rent, check fields": "Fechas de la renta invalidas, revise los campos",
+    "Invalid dates of reservation, check fields": "Fechas de la reserva invalidas, revise los campos",
+    "Invalid reservation, it already exits a reservation on these days": "Reserva invalida, ya existe una reserva dentro de esos dias",
+    "Invalid reservation, it already exits a rent on these days": "Reserva invalida, ya existe una renta dentro de esos dias",
+    "Invalid CUIT": "CUIT invalido",
+    "Invalid mail": "Mail invalido",
+    "Invalid address": "Direccion invalida",
+    "Invalid name": "Nombre invalido",
+    "Invalid vehicle type": "Tipo vehiculo invalido",
+    "Invalid post, check fields address availability description and phonenumber": "Post invalido, revise los campos direccion disponibilidad descripcion y numero de telefono",
+    "Invalid post, check fields capacity and prices": "Post invalido, revise campos capacidad y precios",
     "New reservation": "Nueva reserva"
 }
