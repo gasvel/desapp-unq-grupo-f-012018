@@ -51,4 +51,19 @@ NOTES:
 * Missing architecture test
 
 
+---------------------------------------------------------------------
+TAG ENTREGA 4
+---------------------------------------------------------------------
+NEW FEATURES:
+* Validations in frontend and backend
+* Achitecture test (package access)
+* Vehicle pick up
+* Vehicle return
+* Account status
+* Post photos upload to cloud
+* Reservations and rents history
+* Email notifications
+
+NOTES:
+* Missing email with account status
 
